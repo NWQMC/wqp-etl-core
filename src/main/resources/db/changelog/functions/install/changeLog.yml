@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.install_new_data"
+      changes:
+        - sqlFile:
+            path: install.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists install_new_data(character varying,character varying,character varying,integer);

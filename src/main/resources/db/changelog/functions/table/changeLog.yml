@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.create_swap_table"
+      changes:
+        - sqlFile:
+            path: createSwapTable.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists create_swap_table(character varying,character varying,character varying);
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.destroy_swap_table"
+      changes:
+        - sqlFile:
+            path: destroySwapTable.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists destroy_swap_table(character varying,character varying,character varying);
