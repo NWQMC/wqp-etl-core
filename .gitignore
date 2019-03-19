@@ -1,4 +1,6 @@
-/.attach_pid115870
-/.classpath
-/.project
+.attach_pid*
+.classpath
+.project
+.settings
 /application.yml
+
