@@ -26,8 +26,6 @@ public class SetupMonitoringLocationSwapTableFlowIT extends BaseFlowIT {
 	@Qualifier("setupMonitoringLocationSwapTableFlow")
 	private Flow setupMonitoringLocationSwapTableFlow;
 
-	private Job testJob;
-
 	@Before
 	public void setup() {
 		testJob = jobBuilderFactory.get("setupMonitoringLocationSwapTableFlowTest")

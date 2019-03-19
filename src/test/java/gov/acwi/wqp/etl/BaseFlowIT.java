@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 
 import org.junit.Before;
 import org.junit.runner.RunWith;
+import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
@@ -22,6 +23,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.EncodedResource;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.init.ScriptException;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.test.context.TestExecutionListeners;
@@ -44,15 +46,19 @@ import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 public abstract class BaseFlowIT {
 
 	@Autowired
+	protected JdbcTemplate jdbcTemplate;
+	@Autowired
 	protected JobBuilderFactory jobBuilderFactory;
 	@Autowired
 	protected JobLauncherTestUtils jobLauncherTestUtils;
 	@Autowired
-	private DataSource dataSource;
+	protected DataSource dataSource;
 	@Value("classpath:db/test_db.sql")
-	private Resource resource;
+	protected Resource resource;
 
 	protected JobParameters testJobParameters;
+
+	protected Job testJob;
 
 	@PostConstruct
 	public void beforeClass() throws ScriptException, SQLException {

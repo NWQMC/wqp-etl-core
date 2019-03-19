@@ -4,6 +4,8 @@ import gov.acwi.wqp.etl.activity.Activity;
 
 public class Result extends Activity {
 
+	public static final String BASE_TABLE_NAME = "result";
+
 	private Integer resultId;
 	private String resultDetectionConditionTx;
 	private String characteristicName;

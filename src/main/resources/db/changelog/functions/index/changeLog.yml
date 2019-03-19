@@ -18,3 +18,15 @@ databaseChangeLog:
   - include:
       file: "monitoringLocation/changeLog.yml"
       relativeToChangelogFile: true
+
+  - include:
+      file: "activity/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "result/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "resDetectQntLimit/changeLog.yml"
+      relativeToChangelogFile: true

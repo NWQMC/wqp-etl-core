@@ -17,21 +17,21 @@ public class BuildResDetectQntLimitIndexes {
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 
-//	@Autowired
-//	@Qualifier("buildResDetectQntLimitOrganizationIndex")
-//	private Tasklet buildResDetectQntLimitOrganizationIndex;
-//
+	@Autowired
+	@Qualifier("buildResDetectQntLimitOrganizationIndex")
+	private Tasklet buildResDetectQntLimitOrganizationIndex;
+
 //	@Autowired
 //	@Qualifier("buildResDetectQntLimitIdentifierIndex")
 //	private Tasklet buildResDetectQntLimitIdentifierIndex;
-//
-//	@Bean
-//	public Step buildResDetectQntLimitOrganizationIndexStep() {
-//		return stepBuilderFactory.get("buildResDetectQntLimitOrganizationIndexStep")
-//				.tasklet(buildResDetectQntLimitOrganizationIndex)
-//				.build();
-//	}
-//
+
+	@Bean
+	public Step buildResDetectQntLimitOrganizationIndexStep() {
+		return stepBuilderFactory.get("buildResDetectQntLimitOrganizationIndexStep")
+				.tasklet(buildResDetectQntLimitOrganizationIndex)
+				.build();
+	}
+
 //	@Bean
 //	public Step buildResDetectQntLimitIdentifierIndexStep() {
 //		return stepBuilderFactory.get("buildResDetectQntLimitIdentifierIndexStep")
@@ -39,15 +39,10 @@ public class BuildResDetectQntLimitIndexes {
 //				.build();
 //	}
 
-	@Autowired
-	@Qualifier("noopStep")
-	private Step noopStep;
-
 	@Bean
 	public Flow buildResDetectQntLimitIndexesFlow() {
 		return new FlowBuilder<SimpleFlow>("buildResDetectQntLimitIndexesFlow")
-				.start(noopStep)
-//				.start(buildResDetectQntLimitOrganizationIndexStep())
+				.start(buildResDetectQntLimitOrganizationIndexStep())
 //				.next(buildResDetectQntLimitIdentifierIndexStep())
 				.build();
 	}

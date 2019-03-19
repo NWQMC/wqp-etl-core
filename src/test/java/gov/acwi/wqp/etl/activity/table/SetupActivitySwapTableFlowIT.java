@@ -26,8 +26,6 @@ public class SetupActivitySwapTableFlowIT extends BaseFlowIT {
 	@Qualifier("setupActivitySwapTableFlow")
 	private Flow setupActivitySwapTableFlow;
 
-	private Job testJob;
-
 	@Before
 	public void setup() {
 		testJob = jobBuilderFactory.get("setupActivitySwapTableFlowTest")

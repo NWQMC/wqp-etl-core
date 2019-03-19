@@ -26,8 +26,6 @@ public class BuildActivityIndexesFlowIT extends BaseFlowIT {
 	@Qualifier("buildActivityIndexesFlow")
 	private Flow buildActivityIndexesFlow;
 
-	private Job testJob;
-
 	@Before
 	public void setup() {
 		testJob = jobBuilderFactory.get("BuildActivityIndexesFlowTest")

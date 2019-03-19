@@ -6,7 +6,6 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.batch.core.ExitStatus;
-import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +24,6 @@ public class BuildOrgDataIndexesFlowIT extends BaseFlowIT {
 	@Autowired
 	@Qualifier("buildOrgDataIndexesFlow")
 	private Flow buildOrgDataIndexesFlow;
-
-	private Job testJob;
 
 	@Before
 	public void setup() {

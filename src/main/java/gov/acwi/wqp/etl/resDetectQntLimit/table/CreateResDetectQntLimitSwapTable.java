@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import gov.acwi.wqp.etl.CreateSwapTable;
-import gov.acwi.wqp.etl.result.Result;
+import gov.acwi.wqp.etl.resDetectQntLimit.ResDetectQntLimit;
 
 @Component
 @StepScope
@@ -21,6 +21,6 @@ public class CreateResDetectQntLimitSwapTable extends CreateSwapTable {
 	}
 
 	protected String getBaseTableName() {
-		return Result.BASE_TABLE_NAME;
+		return ResDetectQntLimit.BASE_TABLE_NAME;
 	}
 }

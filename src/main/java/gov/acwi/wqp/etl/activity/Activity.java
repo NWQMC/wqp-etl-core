@@ -2,6 +2,8 @@ package gov.acwi.wqp.etl.activity;
 
 import java.time.LocalDate;
 
+import org.postgis.PGgeometry;
+
 public class Activity {
 
 	public static final String BASE_TABLE_NAME = "activity";
@@ -17,7 +19,7 @@ public class Activity {
 	private String siteType;
 	private String huc;
 	private String governmentalUnitCode;
-	private String geom;
+	private PGgeometry geom;
 	private String organizationName;
 	private Integer activityId;
 	private String activityTypeCode;
@@ -97,10 +99,10 @@ public class Activity {
 	public void setGovernmentalUnitCode(String governmentalUnitCode) {
 		this.governmentalUnitCode = governmentalUnitCode;
 	}
-	public String getGeom() {
+	public PGgeometry getGeom() {
 		return geom;
 	}
-	public void setGeom(String geom) {
+	public void setGeom(PGgeometry geom) {
 		this.geom = geom;
 	}
 	public String getOrganizationName() {
