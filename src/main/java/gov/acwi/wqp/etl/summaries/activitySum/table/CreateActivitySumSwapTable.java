@@ -1,4 +1,4 @@
-package gov.acwi.wqp.etl.projectData.index;
+package gov.acwi.wqp.etl.summaries.activitySum.table;
 
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,21 +6,21 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import gov.acwi.wqp.etl.BuildOrganizationIndex;
-import gov.acwi.wqp.etl.projectData.ProjectData;
+import gov.acwi.wqp.etl.CreateSwapTable;
+import gov.acwi.wqp.etl.summaries.activitySum.ActivitySum;
 
 @Component
 @StepScope
-public class BuildProjectDataOrganizationIndex extends BuildOrganizationIndex {
+public class CreateActivitySumSwapTable extends CreateSwapTable {
 
 	@Autowired
-	public BuildProjectDataOrganizationIndex(JdbcTemplate jdbcTemplate,
+	public CreateActivitySumSwapTable(JdbcTemplate jdbcTemplate,
 			@Value("#{jobParameters['wqpDataSource']}") String wqpDataSource,
 			@Value("#{jobParameters['schemaName']}") String schemaName) {
 		super(jdbcTemplate, wqpDataSource, schemaName);
 	}
 
 	protected String getBaseTableName() {
-		return ProjectData.BASE_TABLE_NAME;
+		return ActivitySum.BASE_TABLE_NAME;
 	}
 }

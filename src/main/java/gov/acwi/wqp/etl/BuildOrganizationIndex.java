@@ -2,11 +2,11 @@ package gov.acwi.wqp.etl;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 
-public abstract class DropSwapTable extends FunctionCallTasklet {
+public abstract class BuildOrganizationIndex extends FunctionCallTasklet {
 
-	public static final String FUNCTION_NAME = "destroy_swap_table";
+	public static final String FUNCTION_NAME = "build_organization_index";
 
-	public DropSwapTable(JdbcTemplate jdbcTemplate,
+	public BuildOrganizationIndex(JdbcTemplate jdbcTemplate,
 			String wqpDataSource,
 			String schemaName) {
 		super(jdbcTemplate, wqpDataSource, schemaName);

@@ -1,4 +1,4 @@
-package gov.acwi.wqp.etl.projectData.index;
+package gov.acwi.wqp.etl.summaries.activitySum.index;
 
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,20 +7,20 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import gov.acwi.wqp.etl.BuildOrganizationIndex;
-import gov.acwi.wqp.etl.projectData.ProjectData;
+import gov.acwi.wqp.etl.summaries.activitySum.ActivitySum;
 
 @Component
 @StepScope
-public class BuildProjectDataOrganizationIndex extends BuildOrganizationIndex {
+public class BuildActivitySumOrganizationIndex extends BuildOrganizationIndex {
 
 	@Autowired
-	public BuildProjectDataOrganizationIndex(JdbcTemplate jdbcTemplate,
+	public BuildActivitySumOrganizationIndex(JdbcTemplate jdbcTemplate,
 			@Value("#{jobParameters['wqpDataSource']}") String wqpDataSource,
 			@Value("#{jobParameters['schemaName']}") String schemaName) {
 		super(jdbcTemplate, wqpDataSource, schemaName);
 	}
 
 	protected String getBaseTableName() {
-		return ProjectData.BASE_TABLE_NAME;
+		return ActivitySum.BASE_TABLE_NAME;
 	}
 }

@@ -1,9 +1,8 @@
-create or replace function build_station_swap_organization_index(wqp_data_source character varying, schema_name character varying)
+create or replace function build_organization_index(wqp_data_source character varying, schema_name character varying, base_table_name character varying)
 returns void
 language plpgsql
 as $$
 declare
-	base_table_name varchar := 'station';
 	swap_table_name varchar := base_table_name || '_swap_' || wqp_data_source;
 	index_name varchar := swap_table_name || '_organization';
 begin

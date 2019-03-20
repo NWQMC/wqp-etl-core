@@ -4,6 +4,10 @@ databaseChangeLog:
         type: postgresql
 
   - include:
+      file: "organization/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
       file: "orgData/changeLog.yml"
       relativeToChangelogFile: true
 

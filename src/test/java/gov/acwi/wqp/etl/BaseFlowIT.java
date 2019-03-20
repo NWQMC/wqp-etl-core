@@ -26,6 +26,7 @@ import org.springframework.core.io.support.EncodedResource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.init.ScriptException;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
@@ -43,6 +44,7 @@ import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 @AutoConfigureTestDatabase(replace=Replace.NONE)
 @Import({DBTestConfig.class})
 @DbUnitConfiguration(databaseConnection={"wqp","pg"})
+@DirtiesContext
 public abstract class BaseFlowIT {
 
 	@Autowired

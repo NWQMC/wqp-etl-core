@@ -3,12 +3,12 @@ databaseChangeLog:
     - dbms:
         type: postgresql
 
-  - changeSet:
-      author: drsteini
-      id: "create.function.build_result_swap_organization_index"
-      changes:
-        - sqlFile:
-            path: organization.sql
-            relativeToChangelogFile: true
-            splitStatements: false
-        - rollback: drop function if exists build_result_swap_organization_index(character varying,character varying);
+#  - changeSet:
+#      author: drsteini
+#      id: "create.function.build_result_swap_organization_index"
+#      changes:
+#        - sqlFile:
+#            path: organization.sql
+#            relativeToChangelogFile: true
+#            splitStatements: false
+#        - rollback: drop function if exists build_result_swap_organization_index(character varying,character varying);
