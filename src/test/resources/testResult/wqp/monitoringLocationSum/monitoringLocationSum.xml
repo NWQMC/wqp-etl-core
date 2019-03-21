@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <station_swap_stewards
+    <station_sum_swap_stewards
         data_source_id="1"
         data_source="STEWARDS"
         station_id="1"
@@ -19,7 +19,7 @@
         geopositioning_method="GPS Code (Pseudo Range) Differential"
         hdatum_id_code="NAD83"
     />
-    <station_swap_stewards
+    <station_sum_swap_stewards
         data_source_id="1"
         data_source="STEWARDS"
         station_id="2"
@@ -38,7 +38,7 @@
         geopositioning_method="GPS Code (Pseudo Range) Differential"
         hdatum_id_code="NAD83"
     />
-    <station_swap_stewards
+    <station_sum_swap_stewards
         data_source_id="1"
         data_source="STEWARDS"
         station_id="3"
@@ -59,7 +59,7 @@
         drain_area_value="18210"
         drain_area_unit="ha"
     />
-    <station_swap_stewards
+    <station_sum_swap_stewards
         data_source_id="1"
         data_source="STEWARDS"
         station_id="4"
@@ -78,7 +78,7 @@
         geopositioning_method="GPS Code (Pseudo Range) Differential"
         hdatum_id_code="NAD83"
     />
-    <station_swap_stewards
+    <station_sum_swap_stewards
         data_source_id="1"
         data_source="STEWARDS"
         station_id="5"
@@ -97,7 +97,7 @@
         geopositioning_method="GPS Code (Pseudo Range) Differential"
         hdatum_id_code="NAD83"
     />
-    <station_swap_stewards
+    <station_sum_swap_stewards
         data_source_id="1"
         data_source="STEWARDS"
         station_id="6"
@@ -116,7 +116,7 @@
         geopositioning_method="GPS Code (Pseudo Range) Differential"
         hdatum_id_code="NAD83"
     />
-    <station_swap_stewards
+    <station_sum_swap_stewards
         data_source_id="1"
         data_source="STEWARDS"
         station_id="7"
@@ -135,7 +135,7 @@
         geopositioning_method="GPS Code (Pseudo Range) Differential"
         hdatum_id_code="NAD83"
     />
-    <station_swap_stewards
+    <station_sum_swap_stewards
         data_source_id="1"
         data_source="STEWARDS"
         station_id="8"
@@ -154,7 +154,7 @@
         geopositioning_method="GPS Code (Pseudo Range) Differential"
         hdatum_id_code="NAD83"
     />
-    <station_swap_stewards
+    <station_sum_swap_stewards
         data_source_id="1"
         data_source="STEWARDS"
         station_id="9"
@@ -173,7 +173,7 @@
         geopositioning_method="GPS Code (Pseudo Range) Differential"
         hdatum_id_code="NAD83"
     />
-    <station_swap_stewards
+    <station_sum_swap_stewards
         data_source_id="1"
         data_source="STEWARDS"
         station_id="10"

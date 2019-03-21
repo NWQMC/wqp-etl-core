@@ -7,6 +7,22 @@ databaseChangeLog:
       file: "activitySum/changeLog.yml"
       relativeToChangelogFile: true
 
+  - include:
+      file: "resultSum/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "orgGrouping/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "mlGrouping/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "monitoringLocationSum/changeLog.yml"
+      relativeToChangelogFile: true
+
 #  - include:
 #      file: "orgData/changeLog.yml"
 #      relativeToChangelogFile: true
