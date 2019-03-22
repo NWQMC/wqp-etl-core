@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.transform_sample_media"
+      changes:
+        - sqlFile:
+            path: transformSampleMedia.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists transform_sample_media(character varying,character varying);

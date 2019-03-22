@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.transform_project_dim"
+      changes:
+        - sqlFile:
+            path: transformProjectDim.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists transform_project_dim(character varying,character varying);

@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.transform_taxa_name"
+      changes:
+        - sqlFile:
+            path: transformTaxaName.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists transform_taxa_name(character varying,character varying);

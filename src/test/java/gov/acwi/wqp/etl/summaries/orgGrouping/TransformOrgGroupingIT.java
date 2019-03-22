@@ -1,4 +1,4 @@
-package gov.acwi.wqp.etl.summaries.activitySum;
+package gov.acwi.wqp.etl.summaries.orgGrouping;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -11,6 +11,7 @@ import javax.annotation.PostConstruct;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.batch.core.ExitStatus;
+import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +25,14 @@ import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
 import gov.acwi.wqp.etl.BaseFlowIT;
-import gov.acwi.wqp.etl.summaries.activitySum.index.BuildActivitySumIndexesFlowIT;
-import gov.acwi.wqp.etl.summaries.activitySum.table.SetupActivitySumSwapTableFlowIT;
+import gov.acwi.wqp.etl.summaries.orgGrouping.index.BuildOrgGroupingIndexesFlowIT;
+import gov.acwi.wqp.etl.summaries.orgGrouping.table.SetupOrgGroupingSwapTableFlowIT;
 
-public class TransformActivitySumIT extends BaseFlowIT {
+public class TransformOrgGroupingIT extends BaseFlowIT {
 
 	@Autowired
-	@Qualifier("activitySumFlow")
-	private Flow activitySumFlow;
+	@Qualifier("orgGroupingFlow")
+	private Flow orgGroupingFlow;
 
 	@PostConstruct
 	public void beforeClass() throws ScriptException, SQLException {
@@ -41,21 +42,20 @@ public class TransformActivitySumIT extends BaseFlowIT {
 
 	@Before
 	public void setup() {
-		testJob = jobBuilderFactory.get("activitySumFlowTest")
-				.start(activitySumFlow)
+		testJob = jobBuilderFactory.get("orgGroupingFlowTest")
+				.start(orgGroupingFlow)
 				.build()
 				.build();
 		jobLauncherTestUtils.setJob(testJob);
 	}
 
 	@Test
-	@DatabaseSetup(value="classpath:/testResult/wqp/activitySum/empty.xml")
-	@DatabaseSetup(value="classpath:/testData/wqp/activity/activity.xml")
+	@DatabaseSetup(value="classpath:/testResult/wqp/orgGrouping/empty.xml")
 	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
-	@ExpectedDatabase(value="classpath:/testResult/wqp/activitySum/activitySum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
-	public void transformActivitySumStepTest() {
+	@ExpectedDatabase(value="classpath:/testResult/wqp/orgGrouping/orgGrouping.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	public void transformOrgGroupingStepTest() {
 		try {
-			JobExecution jobExecution = jobLauncherTestUtils.launchStep("transformActivitySumStep", testJobParameters);
+			JobExecution jobExecution = jobLauncherTestUtils.launchStep("transformOrgGroupingStep", testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -64,19 +64,23 @@ public class TransformActivitySumIT extends BaseFlowIT {
 	}
 
 	@Test
-	@DatabaseSetup(value="classpath:/testResult/wqp/activitySum/empty.xml")
-	@DatabaseSetup(value="classpath:/testData/wqp/activity/activity.xml")
+	@DatabaseSetup(value="classpath:/testResult/wqp/orgGrouping/empty.xml")
 	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
-	@ExpectedDatabase(value="classpath:/testResult/wqp/activitySum/indexes/all.xml",
+	@ExpectedDatabase(value="classpath:/testResult/wqp/orgGrouping/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=BuildActivitySumIndexesFlowIT.EXPECTED_DATABASE_TABLE,
-			query=BuildActivitySumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/activitySum/create.xml",
+			table=BuildOrgGroupingIndexesFlowIT.EXPECTED_DATABASE_TABLE,
+			query=BuildOrgGroupingIndexesFlowIT.EXPECTED_DATABASE_QUERY)
+	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/orgGrouping/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=SetupActivitySumSwapTableFlowIT.EXPECTED_DATABASE_TABLE,
-			query=SetupActivitySumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(value="classpath:/testResult/wqp/activitySum/activitySum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
-	public void activitySumFlowTest() {
+			table=SetupOrgGroupingSwapTableFlowIT.EXPECTED_DATABASE_TABLE,
+			query=SetupOrgGroupingSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
+	@ExpectedDatabase(value="classpath:/testResult/wqp/orgGrouping/orgGrouping.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	public void orgGroupingFlowTest() {
+		Job orgGroupingFlowTest = jobBuilderFactory.get("orgGroupingFlowTest")
+					.start(orgGroupingFlow)
+					.build()
+					.build();
+		jobLauncherTestUtils.setJob(orgGroupingFlowTest);
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());

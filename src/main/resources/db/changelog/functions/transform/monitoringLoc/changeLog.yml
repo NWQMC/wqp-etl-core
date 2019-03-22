@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.transform_monitoring_loc"
+      changes:
+        - sqlFile:
+            path: transformMonitoringLoc.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists transform_monitoring_loc(character varying,character varying);

@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.transform_state"
+      changes:
+        - sqlFile:
+            path: transformState.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists transform_state(character varying,character varying);

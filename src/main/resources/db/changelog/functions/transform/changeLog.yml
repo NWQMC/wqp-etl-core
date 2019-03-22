@@ -3,6 +3,7 @@ databaseChangeLog:
     - dbms:
         type: postgresql
 
+#   Summaries
   - include:
       file: "activitySum/changeLog.yml"
       relativeToChangelogFile: true
@@ -23,26 +24,55 @@ databaseChangeLog:
       file: "monitoringLocationSum/changeLog.yml"
       relativeToChangelogFile: true
 
-#  - include:
-#      file: "orgData/changeLog.yml"
-#      relativeToChangelogFile: true
+#   Codes
+  - include:
+      file: "assemblage/changeLog.yml"
+      relativeToChangelogFile: true
 
-#  - include:
-#      file: "projectData/changeLog.yml"
-#      relativeToChangelogFile: true
+  - include:
+      file: "characteristicName/changeLog.yml"
+      relativeToChangelogFile: true
 
-#  - include:
-#      file: "projectObject/changeLog.yml"
-#      relativeToChangelogFile: true
+  - include:
+      file: "characteristicType/changeLog.yml"
+      relativeToChangelogFile: true
 
-#  - include:
-#      file: "monitoringLocation/changeLog.yml"
-#      relativeToChangelogFile: true
+  - include:
+      file: "country/changeLog.yml"
+      relativeToChangelogFile: true
 
-#  - include:
-#      file: "result/changeLog.yml"
-#      relativeToChangelogFile: true
+  - include:
+      file: "county/changeLog.yml"
+      relativeToChangelogFile: true
 
-#  - include:
-#      file: "resDetectQntLimit/changeLog.yml"
-#      relativeToChangelogFile: true
+  - include:
+      file: "monitoringLoc/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "organization/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "project/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "projectDim/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "sampleMedia/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "siteType/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "state/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "taxaName/changeLog.yml"
+      relativeToChangelogFile: true
