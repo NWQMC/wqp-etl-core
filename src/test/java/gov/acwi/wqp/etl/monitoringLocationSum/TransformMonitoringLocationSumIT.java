@@ -30,6 +30,13 @@ import gov.acwi.wqp.etl.monitoringLocationSum.table.SetupMonitoringLocationSumSw
 
 public class TransformMonitoringLocationSumIT extends BaseFlowIT {
 
+	public static final String EXPECTED_DATABASE_TABLE = "station_sum_swap_stewards";
+	public static final String EXPECTED_DATABASE_QUERY = "select data_source_id,data_source,station_id,site_id,"
+			+ "station_name,organization,organization_name,site_type,station_type_name,huc,governmental_unit_code,"
+			+ "geom,country_name,state_name,county_name,activity_count,activity_count_past_12_months,"
+			+ "activity_count_past_60_months,result_count,result_count_past_12_months,result_count_past_60_months,"
+			+ "summary_all_months from station_sum_swap_stewards order by station_id";
+
 	@Autowired
 	@Qualifier("monitoringLocationSumFlow")
 	private Flow monitoringLocationSumFlow;
@@ -54,7 +61,15 @@ public class TransformMonitoringLocationSumIT extends BaseFlowIT {
 	@DatabaseSetup(value="classpath:/testData/wqp/station/station.xml")
 	@DatabaseSetup(value="classpath:/testData/wqp/activity/activity.xml")
 	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
-//	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocationSum/monitoringLocationSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@DatabaseSetup(value="classpath:/testData/nwisWsStar/country/country.xml")
+	@DatabaseSetup(value="classpath:/testData/nwisWsStar/state/state.xml")
+	@DatabaseSetup(value="classpath:/testData/nwisWsStar/county/county.xml")
+	@DatabaseSetup(value="classpath:/testData/wqx/country/country.xml")
+	@DatabaseSetup(value="classpath:/testData/wqx/state/state.xml")
+	@DatabaseSetup(value="classpath:/testData/wqx/county/county.xml")
+	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocationSum/monitoringLocationSum.xml",
+			table=EXPECTED_DATABASE_TABLE,
+			query=EXPECTED_DATABASE_QUERY)
 	public void transformMonitoringLocationSumStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchStep("transformMonitoringLocationSumStep", testJobParameters);
@@ -70,6 +85,12 @@ public class TransformMonitoringLocationSumIT extends BaseFlowIT {
 	@DatabaseSetup(value="classpath:/testData/wqp/station/station.xml")
 	@DatabaseSetup(value="classpath:/testData/wqp/activity/activity.xml")
 	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
+	@DatabaseSetup(value="classpath:/testData/nwisWsStar/country/country.xml")
+	@DatabaseSetup(value="classpath:/testData/nwisWsStar/state/state.xml")
+	@DatabaseSetup(value="classpath:/testData/nwisWsStar/county/county.xml")
+	@DatabaseSetup(value="classpath:/testData/wqx/country/country.xml")
+	@DatabaseSetup(value="classpath:/testData/wqx/state/state.xml")
+	@DatabaseSetup(value="classpath:/testData/wqx/county/county.xml")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocationSum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=BuildMonitoringLocationSumIndexesFlowIT.EXPECTED_DATABASE_TABLE,
@@ -78,7 +99,9 @@ public class TransformMonitoringLocationSumIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=SetupMonitoringLocationSumSwapTableFlowIT.EXPECTED_DATABASE_TABLE,
 			query=SetupMonitoringLocationSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocationSum/monitoringLocationSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocationSum/monitoringLocationSum.xml",
+			table=EXPECTED_DATABASE_TABLE,
+			query=EXPECTED_DATABASE_QUERY)
 	public void monitoringLocationSumFlowTest() {
 		Job monitoringLocationSumFlowTest = jobBuilderFactory.get("monitoringLocationSumFlowTest")
 					.start(monitoringLocationSumFlow)

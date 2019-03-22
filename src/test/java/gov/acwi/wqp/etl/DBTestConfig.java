@@ -4,7 +4,6 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import org.dbunit.ext.postgresql.PostgresqlDataTypeFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -58,7 +57,7 @@ public class DBTestConfig {
 	@Bean
 	public DatabaseConfigBean dbUnitDatabaseConfig() {
 		DatabaseConfigBean dbUnitDbConfig = new DatabaseConfigBean();
-		dbUnitDbConfig.setDatatypeFactory(new PostgresqlDataTypeFactory());
+		dbUnitDbConfig.setDatatypeFactory(new PostgresqlDataTypeFactoryWithJson());
 		return dbUnitDbConfig;
 	}
 
