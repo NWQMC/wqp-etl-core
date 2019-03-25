@@ -12,11 +12,11 @@ begin
                             description_with_country,
                             description_with_out_country)
          select distinct data_source_id,
-                         state_code code_value,
-                         country_code || '', '' || state_name description_with_country,
+                         substring(governmental_unit_code, ''[^:]+:[^:]+'') code_value,
+                         substring(governmental_unit_code, ''[^:]+'') || '', '' || state_name description_with_country,
                          state_name description_with_out_country
            from %I.%I
-          where state_code is not null',
+          where substring(governmental_unit_code, ''[^:]+:[^:]+'') is not null',
         schema_name, code_table_name, schema_name, source_table_name);
 end
 $$

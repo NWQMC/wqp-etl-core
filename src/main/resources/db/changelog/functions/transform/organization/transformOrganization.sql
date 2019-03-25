@@ -10,7 +10,7 @@ begin
         'insert into %I.%I (data_source_id,
                             code_value,
                             description)
-         select distinct site_id code_value,
+         select distinct data_source_id,
                          organization code_value,
                          organization_name description
            from %I.%I

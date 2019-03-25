@@ -11,10 +11,10 @@ begin
                             code_value,
                             description)
          select distinct data_source_id,
-                         country_code code_value,
+                         substring(governmental_unit_code, ''[^:]+'') code_value,
                          country_name description
            from %I.%I
-          where country_code is not null',
+          where substring(governmental_unit_code, ''[^:]+'') is not null',
         schema_name, code_table_name, schema_name, source_table_name);
 end
 $$
