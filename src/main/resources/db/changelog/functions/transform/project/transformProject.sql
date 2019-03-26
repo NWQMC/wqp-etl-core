@@ -12,7 +12,7 @@ begin
          select distinct data_source_id,
                          code_value
            from %I.%I
-          where code_value is not null) a',
+          where code_value is not null',
         schema_name, code_table_name, schema_name, source_table_name);
 end
 $$

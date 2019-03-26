@@ -14,11 +14,11 @@ begin
                 code_value,
                 project_dim_value
            from (select distinct
-                        data_source_id,
-                        trim(replace(regexp_substr(project_id, ''(.*?)(;|$)'', 1, levels.column_value),'';'','''')) code_value,
-                        project_id project_dim_value
-                   from %I.%I
-                        table(cast(multiset(select level from dual connect by level <= regexp_count(project_id, '';'', 1, ''i'') + 1) as sys.odcinumberlist)) levels
+                        a.data_source_id,
+                        trim(b.split_project_id) code_value,
+                        a.project_id project_dim_value
+                   from %I.%I a,
+                        unnest(string_to_array(a.project_id, '';'')) b(split_project_id)
                   where project_id is not null) a',
         schema_name, code_table_name, schema_name, source_table_name);
 end

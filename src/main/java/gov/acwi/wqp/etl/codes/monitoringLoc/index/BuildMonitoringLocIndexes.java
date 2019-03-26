@@ -38,6 +38,7 @@ public class BuildMonitoringLocIndexes {
 				.tasklet(buildMonitoringLocOrganizationIndex)
 				.build();
 	}
+
 	@Bean
 	public Flow buildMonitoringLocIndexesFlow() {
 		return new FlowBuilder<SimpleFlow>("buildMonitoringLocIndexesFlow")

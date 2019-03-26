@@ -6,27 +6,30 @@ import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.stereotype.Component;
 
+import gov.acwi.wqp.etl.NoopResultSetExtractor;
+
+//TODO proper implementations
 @Component
 @StepScope
 public class Install implements Tasklet {
 
 	private final JdbcTemplate jdbcTemplate;
-	private final String datasource;
+	private final PreparedStatementSetter pss;
 
 	@Autowired
 	public Install(JdbcTemplate jdbcTemplate,
-			@Value("#{jobParameters['datasource']}") String datasource) {
+			PreparedStatementSetter pss) {
 		this.jdbcTemplate = jdbcTemplate;
-		this.datasource = datasource;
+		this.pss = pss;
 	}
 
 	@Override
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-		jdbcTemplate.update("call etl_helper_main.install(?)", datasource);
+		jdbcTemplate.query("select * from install_new_data(?,?)", pss, new NoopResultSetExtractor());
 		return RepeatStatus.FINISHED;
 	}
 }

@@ -15,19 +15,28 @@ import org.springframework.stereotype.Component;
 public class Finalize implements Tasklet {
 
 	private final JdbcTemplate jdbcTemplate;
-
-	@Value("#{jobParameters['datasourceId']}")
-	String datasourceId;
+	private final int wqpDataSourceId;
 
 	@Autowired
-	public Finalize(JdbcTemplate jdbcTemplate) {
+	public Finalize(JdbcTemplate jdbcTemplate,
+		@Value("#{jobParameters['wqpDataSourceId']}") int wqpDataSourceId) {
 		this.jdbcTemplate = jdbcTemplate;
+		this.wqpDataSourceId = wqpDataSourceId;
 	}
 
 	@Override
 	public RepeatStatus execute(StepContribution contribution,
 			ChunkContext chunkContext) throws Exception {
-		jdbcTemplate.update("call etl_helper_main.update_last_etl(?)", datasourceId);
+		int numRows = jdbcTemplate
+				.update("update last_etl"
+					+ "     set data_source_id = ?,"
+					+ "         completed_utc = (now() at time zone 'utc')", wqpDataSourceId);
+
+		if (0 == numRows) {
+			jdbcTemplate
+				.update("insert into last_etl"
+					+ "  values (?, (now() at time zone 'utc'))", wqpDataSourceId);
+		}
 		return RepeatStatus.FINISHED;
 	}
 }

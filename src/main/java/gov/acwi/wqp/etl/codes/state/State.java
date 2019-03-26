@@ -2,7 +2,7 @@ package gov.acwi.wqp.etl.codes.state;
 
 public class State {
 
-	public static final String BASE_TABLE_NAME = "activity";
+	public static final String BASE_TABLE_NAME = "state";
 
 	protected Integer dataSourceId;
 	protected String codeValue;

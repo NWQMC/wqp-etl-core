@@ -41,7 +41,7 @@ public class BuildOrganizationIndexesFlowIT extends BaseFlowIT {
 	public void buildOrganizationCodeValueIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils
-					.launchStep("buildOrganizationCoedValueIndexStep", testJobParameters);
+					.launchStep("buildOrganizationCodeValueIndexStep", testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
 		} catch (Exception e) {
 			e.printStackTrace();

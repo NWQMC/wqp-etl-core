@@ -135,7 +135,7 @@ public class CreateSummariesIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocationSum/monitoringLocationSum.xml",
 			table=TransformMonitoringLocationSumIT.EXPECTED_DATABASE_TABLE,
 			query=TransformMonitoringLocationSumIT.EXPECTED_DATABASE_QUERY)
-	public void activitySumFlowTest() {
+	public void createSummariesFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());

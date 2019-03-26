@@ -72,6 +72,7 @@ public abstract class BaseFlowIT {
 	public void baseSetup() {
 		testJobParameters= new JobParametersBuilder()
 				.addJobParameters(jobLauncherTestUtils.getUniqueJobParameters())
+				.addString("wqpDataSourceId", "1", true)
 				.addString("wqpDataSource", "stewards", true)
 				.addString("schemaName", "wqp", false)
 				.toJobParameters();
