@@ -40,7 +40,7 @@ public class TransformProjectIT extends BaseFlowIT {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("createProjectFlowTest")
 				.start(createProjectFlow)
 				.build()

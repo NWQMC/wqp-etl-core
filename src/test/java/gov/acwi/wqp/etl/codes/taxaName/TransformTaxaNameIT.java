@@ -40,7 +40,7 @@ public class TransformTaxaNameIT extends BaseFlowIT {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("createTaxaNameFlowTest")
 				.start(createTaxaNameFlow)
 				.build()

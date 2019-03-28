@@ -26,7 +26,7 @@ public class BuildProjectIndexesFlowIT extends BaseFlowIT {
 	private Flow buildProjectIndexesFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("BuildProjectIndexesFlowTest")
 				.start(buildProjectIndexesFlow)
 				.build()

@@ -26,7 +26,7 @@ public class BuildTaxaNameIndexesFlowIT extends BaseFlowIT {
 	private Flow buildTaxaNameIndexesFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("BuildTaxaNameIndexesFlowTest")
 				.start(buildTaxaNameIndexesFlow)
 				.build()

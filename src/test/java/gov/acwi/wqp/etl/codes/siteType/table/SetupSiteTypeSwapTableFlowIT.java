@@ -26,7 +26,7 @@ public class SetupSiteTypeSwapTableFlowIT extends BaseFlowIT {
 	private Flow setupSiteTypeSwapTableFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("setupSiteTypeSwapTableFlowTest")
 				.start(setupSiteTypeSwapTableFlow)
 				.build()

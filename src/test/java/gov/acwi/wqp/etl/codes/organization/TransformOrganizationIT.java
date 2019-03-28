@@ -40,7 +40,7 @@ public class TransformOrganizationIT extends BaseFlowIT {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("createOrganizationFlowTest")
 				.start(createOrganizationFlow)
 				.build()

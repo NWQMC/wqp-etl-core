@@ -40,7 +40,7 @@ public class TransformCountryIT extends BaseFlowIT {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("createCountryFlowTest")
 				.start(createCountryFlow)
 				.build()

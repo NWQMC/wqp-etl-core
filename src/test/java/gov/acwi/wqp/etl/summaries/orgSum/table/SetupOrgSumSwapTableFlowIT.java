@@ -26,7 +26,7 @@ public class SetupOrgSumSwapTableFlowIT extends BaseFlowIT {
 	private Flow setupOrgSumSwapTableFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("setupOrgSumSwapTableFlowTest")
 				.start(setupOrgSumSwapTableFlow)
 				.build()

@@ -26,7 +26,7 @@ public class SetupResDetectQntLimitSwapTableFlowIT extends BaseFlowIT {
 	private Flow setupResDetectQntLimitSwapTableFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("setupResDetectQntLimitSwapTableFlowTest")
 				.start(setupResDetectQntLimitSwapTableFlow)
 				.build()

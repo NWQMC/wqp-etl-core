@@ -41,7 +41,7 @@ public class TransformOrgGroupingIT extends BaseFlowIT {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("orgGroupingFlowTest")
 				.start(orgGroupingFlow)
 				.build()

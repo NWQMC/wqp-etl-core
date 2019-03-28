@@ -28,17 +28,4 @@ public class County extends BaseLookupCode {
 	public void setDescriptionWithoutCountryState(String descriptionWithoutCountryState) {
 		this.descriptionWithoutCountryState = descriptionWithoutCountryState;
 	}
-
-	@Override
-	public String toString() {
-		StringBuilder rtn = new StringBuilder("BaseLookupCode [");
-		rtn.append("dataSourceId=").append(dataSourceId == null ? "{null}" : dataSourceId.toString());
-		rtn.append(", codeValue=").append(codeValue == null ? "{null}" : codeValue.toString());
-		rtn.append(", description=").append(description == null ? "{null}" : description.toString());
-		rtn.append(", countryCode=").append(countryCode == null ? "{null}" : countryCode.toString());
-		rtn.append(", stateCode=").append(stateCode == null ? "{null}" : stateCode.toString());
-		rtn.append(", descriptionWithoutCountryState=").append(descriptionWithoutCountryState == null
-				? "{null}" : descriptionWithoutCountryState.toString());
-		return rtn.append("]").toString();
-	}
 }

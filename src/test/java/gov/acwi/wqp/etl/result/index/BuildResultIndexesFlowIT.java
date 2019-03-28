@@ -26,7 +26,7 @@ public class BuildResultIndexesFlowIT extends BaseFlowIT {
 	private Flow buildResultIndexesFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("BuildResultIndexesFlowTest")
 				.start(buildResultIndexesFlow)
 				.build()

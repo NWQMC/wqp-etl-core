@@ -26,7 +26,7 @@ public class BuildSampleMediaIndexesFlowIT extends BaseFlowIT {
 	private Flow buildSampleMediaIndexesFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("BuildSampleMediaIndexesFlowTest")
 				.start(buildSampleMediaIndexesFlow)
 				.build()

@@ -40,7 +40,7 @@ public class TransformAssemblageIT extends BaseFlowIT {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("createAssemblageFlowTest")
 				.start(createAssemblageFlow)
 				.build()

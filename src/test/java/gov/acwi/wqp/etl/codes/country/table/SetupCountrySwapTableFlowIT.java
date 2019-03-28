@@ -26,7 +26,7 @@ public class SetupCountrySwapTableFlowIT extends BaseFlowIT {
 	private Flow setupCountrySwapTableFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("setupCountrySwapTableFlowTest")
 				.start(setupCountrySwapTableFlow)
 				.build()

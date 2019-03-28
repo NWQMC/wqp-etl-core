@@ -133,29 +133,4 @@ public class Result extends Activity {
 	public void setDetectionLimitDesc(String detectionLimitDesc) {
 		this.detectionLimitDesc = detectionLimitDesc;
 	}
-
-	@Override
-	public String toString() {
-		StringBuilder rtn = new StringBuilder("Result [");
-		rtn.append(super.toString());
-		rtn.append("] resultId=").append(resultId == null ? "{null}" : resultId.toString());
-		rtn.append(", resultDetectionConditionTx=").append(resultDetectionConditionTx == null ? "{null}" : resultDetectionConditionTx.toString());
-		rtn.append(", characteristicName=").append(characteristicName == null ? "{null}" : characteristicName.toString());
-		rtn.append(", characteristicType=").append(characteristicType == null ? "{null}" : characteristicType.toString());
-		rtn.append(", sampleFractionType=").append(sampleFractionType == null ? "{null}" : sampleFractionType.toString());
-		rtn.append(", resultMeasureValue=").append(resultMeasureValue == null ? "{null}" : resultMeasureValue.toString());
-		rtn.append(", resultUnit=").append(resultUnit == null ? "{null}" : resultUnit.toString());
-		rtn.append(", resultValueStatus=").append(resultValueStatus == null ? "{null}" : resultValueStatus.toString());
-		rtn.append(", resultValueType=").append(resultValueType == null ? "{null}" : resultValueType.toString());
-		rtn.append(", precision=").append(precision == null ? "{null}" : precision.toString());
-		rtn.append(", resultComment=").append(resultComment == null ? "{null}" : resultComment.toString());
-		rtn.append(", analyticalProcedureId=").append(analyticalProcedureId == null ? "{null}" : analyticalProcedureId.toString());
-		rtn.append(", analyticalProcedureSource=").append(analyticalProcedureSource == null ? "{null}" : analyticalProcedureSource.toString());
-		rtn.append(", analyticalMethodName=").append(analyticalMethodName == null ? "{null}" : analyticalMethodName.toString());
-		rtn.append(", analyticalMethodCitation=").append(analyticalMethodCitation == null ? "{null}" : analyticalMethodCitation.toString());
-		rtn.append(", detectionLimit=").append(detectionLimit == null ? "{null}" : detectionLimit.toString());
-		rtn.append(", detectionLimitUnit=").append(detectionLimitUnit == null ? "{null}" : detectionLimitUnit.toString());
-		rtn.append(", detectionLimitDesc=").append(detectionLimitDesc == null ? "{null}" : detectionLimitDesc.toString());
-		return rtn.append("]").toString();
-	}
 }

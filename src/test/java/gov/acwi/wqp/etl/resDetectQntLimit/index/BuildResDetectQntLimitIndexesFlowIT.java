@@ -26,7 +26,7 @@ public class BuildResDetectQntLimitIndexesFlowIT extends BaseFlowIT {
 	private Flow buildResDetectQntLimitIndexesFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("BuildResDetectQntLimitIndexesFlowTest")
 				.start(buildResDetectQntLimitIndexesFlow)
 				.build()

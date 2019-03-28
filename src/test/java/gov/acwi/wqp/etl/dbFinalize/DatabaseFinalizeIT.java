@@ -24,8 +24,6 @@ import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
 import gov.acwi.wqp.etl.BaseFlowIT;
-import gov.acwi.wqp.etl.codes.taxaName.index.BuildTaxaNameIndexesFlowIT;
-import gov.acwi.wqp.etl.codes.taxaName.table.SetupTaxaNameSwapTableFlowIT;
 
 public class DatabaseFinalizeIT extends BaseFlowIT {
 
@@ -40,7 +38,7 @@ public class DatabaseFinalizeIT extends BaseFlowIT {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("databaseFinalizeFlowTest")
 				.start(databaseFinalizeFlow)
 				.build()

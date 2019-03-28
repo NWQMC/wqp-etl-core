@@ -40,7 +40,7 @@ public class TransformSiteTypeIT extends BaseFlowIT {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("createSiteTypeFlowTest")
 				.start(createSiteTypeFlow)
 				.build()

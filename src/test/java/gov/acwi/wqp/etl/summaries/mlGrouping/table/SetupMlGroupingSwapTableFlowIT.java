@@ -26,7 +26,7 @@ public class SetupMlGroupingSwapTableFlowIT extends BaseFlowIT {
 	private Flow setupMlGroupingSwapTableFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("setupMlGroupingSwapTableFlowTest")
 				.start(setupMlGroupingSwapTableFlow)
 				.build()

@@ -40,7 +40,7 @@ public class TransformMonitoringLocIT extends BaseFlowIT {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("createMonitoringLocFlowTest")
 				.start(createMonitoringLocFlow)
 				.build()

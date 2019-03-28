@@ -12,13 +12,13 @@ import org.springframework.stereotype.Component;
 
 @Component
 @StepScope
-public class Finalize implements Tasklet {
+public class UpdateLastETL implements Tasklet {
 
 	private final JdbcTemplate jdbcTemplate;
 	private final int wqpDataSourceId;
 
 	@Autowired
-	public Finalize(JdbcTemplate jdbcTemplate,
+	public UpdateLastETL(JdbcTemplate jdbcTemplate,
 		@Value("#{jobParameters['wqpDataSourceId']}") int wqpDataSourceId) {
 		this.jdbcTemplate = jdbcTemplate;
 		this.wqpDataSourceId = wqpDataSourceId;

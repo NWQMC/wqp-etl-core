@@ -48,7 +48,7 @@ public class TransformMonitoringLocationSumIT extends BaseFlowIT {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("monitoringLocationSumFlowTest")
 				.start(monitoringLocationSumFlow)
 				.build()

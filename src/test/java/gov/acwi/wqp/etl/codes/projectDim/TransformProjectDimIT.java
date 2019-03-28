@@ -40,7 +40,7 @@ public class TransformProjectDimIT extends BaseFlowIT {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("createProjectDimFlowTest")
 				.start(createProjectDimFlow)
 				.build()

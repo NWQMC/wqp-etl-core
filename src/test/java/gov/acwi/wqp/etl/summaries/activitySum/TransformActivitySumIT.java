@@ -40,7 +40,7 @@ public class TransformActivitySumIT extends BaseFlowIT {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("activitySumFlowTest")
 				.start(activitySumFlow)
 				.build()

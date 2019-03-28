@@ -64,7 +64,7 @@ public class CreateLookupCodesFlowIT extends BaseFlowIT {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("createLookupCodesFlowTest")
 				.start(createLookupCodesFlow)
 				.build()

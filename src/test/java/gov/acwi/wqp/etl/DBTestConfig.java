@@ -15,7 +15,7 @@ import com.github.springtestdbunit.bean.DatabaseDataSourceConnectionFactoryBean;
 public class DBTestConfig {
 
 	@Autowired
-	DataSource dataSource;
+	private DataSource dataSource;
 
 //	@Bean
 //	@ConfigurationProperties("app.datasource.wqx")

@@ -26,7 +26,7 @@ public class BuildMlGroupingIndexesFlowIT extends BaseFlowIT {
 	private Flow buildMlGroupingIndexesFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("BuildMlGroupingIndexesFlowTest")
 				.start(buildMlGroupingIndexesFlow)
 				.build()
