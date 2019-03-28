@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class NoopStep {
+public class NoopStepConfig {
 
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
