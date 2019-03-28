@@ -30,13 +30,13 @@ public class DatabaseFinalize {
 //	private Tasklet install;
 
 	@Autowired
-	@Qualifier("UpdateLastETL")
-	private Tasklet UpdateLastETL;
+	@Qualifier("updateLastETL")
+	private Tasklet updateLastETL;
 	
 	@Bean
-	public Step UpdateLastETLStep() {
-		return stepBuilderFactory.get("UpdateLastETLStep")
-				.tasklet(UpdateLastETL)
+	public Step updateLastETLStep() {
+		return stepBuilderFactory.get("updateLastETLStep")
+				.tasklet(updateLastETL)
 				.build();
 	}
 
@@ -48,7 +48,7 @@ public class DatabaseFinalize {
 //				.next(validateStep())
 //				.next(installStep())
 //				.next(finalizeStep())
-				.start(UpdateLastETLStep())
+				.start(updateLastETLStep())
 				.build();
 	}
 
