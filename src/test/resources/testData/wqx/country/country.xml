@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <wqx_country
+        cntry_uid="1"
+        cntry_cd="US"
+        cntry_name="United States"
+        cntry_last_change_date="2006-07-26"
+        usr_uid_last_change="1"
+    />
+    <wqx_country
+        cntry_uid="2"
+        cntry_cd="CA"
+        cntry_name="Canada"
+        cntry_last_change_date="2017-01-04"
+        usr_uid_last_change="100"
+    />
+    <wqx_country
+        cntry_uid="3"
+        cntry_cd="MX"
+        cntry_name="Mexico"
+        cntry_last_change_date="2006-07-26"
+        usr_uid_last_change="1"
+    />
+    <wqx_country
+        cntry_uid="4"
+        cntry_cd="PR"
+        cntry_name="Puerto Rico"
+        cntry_last_change_date="2009-07-27"
+        usr_uid_last_change="1"
+    />
+    <wqx_country
+        cntry_uid="5"
+        cntry_cd="VI"
+        cntry_name="United States Virgin Islands"
+        cntry_last_change_date="2009-07-27"
+        usr_uid_last_change="1"
+    />
+    <wqx_country
+        cntry_uid="6"
+        cntry_cd="UM"
+        cntry_name="United State Minor Outlying Islands"
+        cntry_last_change_date="2009-07-27"
+        usr_uid_last_change="1"
+    />
+    <wqx_country
+        cntry_uid="7"
+        cntry_cd="AS"
+        cntry_name="American Samoa"
+        cntry_last_change_date="2009-07-27"
+        usr_uid_last_change="1"
+    />
+    <wqx_country
+        cntry_uid="11"
+        cntry_cd="PO"
+        cntry_name="Pacific Ocean "
+        cntry_last_change_date="2009-07-27"
+        usr_uid_last_change="1"
+    />
+    <wqx_country
+        cntry_uid="12"
+        cntry_cd="AO"
+        cntry_name="Atlantic Ocean "
+        cntry_last_change_date="2009-07-27"
+        usr_uid_last_change="1"
+    />
+    <wqx_country
+        cntry_uid="13"
+        cntry_cd="IO"
+        cntry_name="Indian Ocean "
+        cntry_last_change_date="2009-07-27"
+        usr_uid_last_change="1"
+    />
+    <wqx_country
+        cntry_uid="14"
+        cntry_cd="RO"
+        cntry_name="Arctic Ocean"
+        cntry_last_change_date="2009-07-27"
+        usr_uid_last_change="1"
+    />
+    <wqx_country
+        cntry_uid="15"
+        cntry_cd="GM"
+        cntry_name="Gulf of Mexico"
+        cntry_last_change_date="2009-07-27"
+        usr_uid_last_change="1"
+    />
+    <wqx_country cntry_uid="16" cntry_cd="CS" cntry_name="Caribbean Sea" cntry_last_change_date="2009-07-27" usr_uid_last_change="1" />
+    <wqx_country cntry_uid="17" cntry_cd="NI" cntry_name="Nicaragua" cntry_last_change_date="2009-07-27" usr_uid_last_change="1" />
+    <wqx_country cntry_uid="18" cntry_cd="TH" cntry_name="Thailand" cntry_last_change_date="2009-07-27" usr_uid_last_change="1" />
+    <wqx_country cntry_uid="19" cntry_cd="IN" cntry_name="India" cntry_last_change_date="2011-02-18" usr_uid_last_change="1" />
+    <wqx_country cntry_uid="20" cntry_cd="AU" cntry_name="Australia" cntry_last_change_date="2016-05-16" usr_uid_last_change="1" />
+    <wqx_country cntry_uid="21" cntry_cd="BU" cntry_name="Bulgaria" cntry_last_change_date="2016-05-16" usr_uid_last_change="1" />
+    <wqx_country cntry_uid="22" cntry_cd="CR" cntry_name="Costa Rica" cntry_last_change_date="2016-05-16" usr_uid_last_change="1" />
+    <wqx_country cntry_uid="23" cntry_cd="EN" cntry_name="England" cntry_last_change_date="2016-05-16" usr_uid_last_change="1" />
+    <wqx_country cntry_uid="24" cntry_cd="FI" cntry_name="Finland" cntry_last_change_date="2016-05-16" usr_uid_last_change="1" />
+    <wqx_country cntry_uid="25" cntry_cd="IE" cntry_name="Ireland" cntry_last_change_date="2016-05-16" usr_uid_last_change="1" />
+    <wqx_country cntry_uid="26" cntry_cd="P" cntry_name="Peru" cntry_last_change_date="2016-05-16" usr_uid_last_change="1" />
+    <wqx_country cntry_uid="27" cntry_cd="SK" cntry_name="South Korea" cntry_last_change_date="2016-05-16" usr_uid_last_change="1" />
+    <wqx_country cntry_uid="28" cntry_cd="SW" cntry_name="Sweden" cntry_last_change_date="2016-05-16" usr_uid_last_change="1" />
+    <wqx_country cntry_uid="29" cntry_cd="CH" cntry_name="China" cntry_last_change_date="2016-05-16" usr_uid_last_change="1" />
+    <wqx_country cntry_uid="30" cntry_cd="DK" cntry_name="Denmark" cntry_last_change_date="2017-07-26" usr_uid_last_change="1" />
+    <wqx_country cntry_uid="31" cntry_cd="IT" cntry_name="Italy" cntry_last_change_date="2017-07-26" usr_uid_last_change="1" />
+</dataset>

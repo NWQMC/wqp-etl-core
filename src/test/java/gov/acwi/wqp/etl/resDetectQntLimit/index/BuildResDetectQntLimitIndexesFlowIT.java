@@ -6,7 +6,6 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.batch.core.ExitStatus;
-import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +25,6 @@ public class BuildResDetectQntLimitIndexesFlowIT extends BaseFlowIT {
 	@Qualifier("buildResDetectQntLimitIndexesFlow")
 	private Flow buildResDetectQntLimitIndexesFlow;
 
-	private Job testJob;
-
 	@Before
 	public void setup() {
 		testJob = jobBuilderFactory.get("BuildResDetectQntLimitIndexesFlowTest")
@@ -40,7 +37,7 @@ public class BuildResDetectQntLimitIndexesFlowIT extends BaseFlowIT {
 	@Test
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resDetectQntLimit/indexes/organization.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE, query=EXPECTED_DATABASE_QUERY + " and indexname='r_detect_qnt_lmt_swap_stewards'")
+			table=EXPECTED_DATABASE_TABLE, query=EXPECTED_DATABASE_QUERY + " and indexname='r_detect_qnt_lmt_swap_stewards_organization'")
 	public void buildResDetectQntLimitOrganizationIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

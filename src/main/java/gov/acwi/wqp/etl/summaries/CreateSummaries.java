@@ -1,6 +1,5 @@
 package gov.acwi.wqp.etl.summaries;
 
-import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.FlowBuilder;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.batch.core.job.flow.support.SimpleFlow;
@@ -12,43 +11,38 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class CreateSummaries {
 
-//	@Autowired
-//	@Qualifier("createActivitySumFlow")
-//	private Flow createActivitySumFlow;
-//	@Autowired
-//	@Qualifier("createResultSumFlow")
-//	private Flow createResultSumFlow;
-//	@Autowired
-//	@Qualifier("createOrgGroupingFlow")
-//	private Flow createOrgGroupingFlow;
-//	@Autowired
-//	@Qualifier("createMlGroupingFlow")
-//	private Flow createMlGroupingFlow;
-//	@Autowired
-//	@Qualifier("createOrganizationSumFlow")
-//	private Flow createOrganizationSumFlow;
-//	@Autowired
-//	@Qualifier("createStationSumFlow")
-//	private Flow createStationSumFlow;
-//	@Autowired
-//	@Qualifier("createQwportalSumFlow")
-//	private Flow createQwportalSumFlow;
-
-
 	@Autowired
-	@Qualifier("noopStep")
-	private Step noopStep;
+	@Qualifier("activitySumFlow")
+	private Flow activitySumFlow;
+	@Autowired
+	@Qualifier("resultSumFlow")
+	private Flow resultSumFlow;
+	@Autowired
+	@Qualifier("orgGroupingFlow")
+	private Flow orgGroupingFlow;
+	@Autowired
+	@Qualifier("mlGroupingFlow")
+	private Flow mlGroupingFlow;
+//	@Autowired
+//	@Qualifier("orgSumFlow")
+//	private Flow orgSumFlow;
+	@Autowired
+	@Qualifier("monitoringLocationSumFlow")
+	private Flow monitoringLocationSumFlow;
+//	@Autowired
+//	@Qualifier("qwportalSumFlow")
+//	private Flow qwportalSumFlow;
+
 	@Bean
 	public Flow createSummariesFlow() {
 		return new FlowBuilder<SimpleFlow>("createSummariesFlow")
-				.start(noopStep)
-//				.start(createActivitySumFlow)
-//				.next(createResultSumFlow)
-//				.next(createOrgGroupingFlow)
-//				.next(createMlGroupingFlow)
-//				.next(createOrganizationSumFlow)
-//				.next(createStationSumFlow)
-//				.next(createQwportalSumFlow)
+				.start(activitySumFlow)
+				.next(resultSumFlow)
+				.next(orgGroupingFlow)
+				.next(mlGroupingFlow)
+				//TODO				.next(orgSumFlow)
+				.next(monitoringLocationSumFlow)
+//TODO				.next(qwportalSumFlow)
 				.build();
 	}
 

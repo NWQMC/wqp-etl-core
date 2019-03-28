@@ -2,9 +2,15 @@ package gov.acwi.wqp.etl.monitoringLocation;
 
 import java.math.BigDecimal;
 
-public class MonitoringLocation {
+import org.postgis.PGgeometry;
+import org.postgis.Point;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+public class MonitoringLocation {
+	private static final Logger LOG = LoggerFactory.getLogger(MonitoringLocation.class);
 	public static final String BASE_TABLE_NAME = "station";
+	public static final int DEFAULT_SRID = 4269;
 
 	private Integer dataSourceId;
 	private String dataSource;
@@ -14,7 +20,7 @@ public class MonitoringLocation {
 	private String siteType;
 	private String huc;
 	private String governmentalUnitCode;
-	private String geom;
+	private PGgeometry geom;
 	private String stationName;
 	private String organizationName;
 	private String descriptionText;
@@ -93,10 +99,10 @@ public class MonitoringLocation {
 	public void setGovernmentalUnitCode(String governmentalUnitCode) {
 		this.governmentalUnitCode = governmentalUnitCode;
 	}
-	public String getGeom() {
+	public PGgeometry getGeom() {
 		return geom;
 	}
-	public void setGeom(String geom) {
+	public void setGeom(PGgeometry geom) {
 		this.geom = geom;
 	}
 	public String getStationName() {
@@ -272,5 +278,18 @@ public class MonitoringLocation {
 	}
 	public void setHoleDepthUnit(String holeDepthUnit) {
 		this.holeDepthUnit = holeDepthUnit;
+	}
+
+	public void calculateGeom(BigDecimal latitude, BigDecimal longitude, int srid) {
+		this.geom = null;
+		Point point = null;
+		try {
+			point = new Point(longitude.doubleValue(), latitude.doubleValue());
+			point.setSrid(srid);
+			LOG.info("Converted: from lat:{};long{} - to lat:{};long{}", latitude, longitude, point.getY(), point.getX());
+		} catch (Throwable e) {
+			LOG.info("Unable to determine point from coordinates:{}-{}", latitude, longitude);
+		}
+		this.geom = new PGgeometry(point);
 	}
 }

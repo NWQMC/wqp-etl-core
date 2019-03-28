@@ -1,34 +1,26 @@
 package gov.acwi.wqp.etl.monitoringLocation.index;
 
-import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.configuration.annotation.StepScope;
-import org.springframework.batch.core.scope.context.ChunkContext;
-import org.springframework.batch.core.step.tasklet.Tasklet;
-import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.stereotype.Component;
 
-import gov.acwi.wqp.etl.NoopResultSetExtractor;
+import gov.acwi.wqp.etl.BuildOrganizationIndex;
+import gov.acwi.wqp.etl.monitoringLocation.MonitoringLocation;
 
 @Component
 @StepScope
-public class BuildMonitoringLocationOrganizationIndex implements Tasklet {
-
-	private final JdbcTemplate jdbcTemplate;
-	private final PreparedStatementSetter pss;
+public class BuildMonitoringLocationOrganizationIndex extends BuildOrganizationIndex {
 
 	@Autowired
 	public BuildMonitoringLocationOrganizationIndex(JdbcTemplate jdbcTemplate,
-			PreparedStatementSetter pss) {
-		this.jdbcTemplate = jdbcTemplate;
-		this.pss = pss;
+			@Value("#{jobParameters['wqpDataSource']}") String wqpDataSource,
+			@Value("#{jobParameters['schemaName']}") String schemaName) {
+		super(jdbcTemplate, wqpDataSource, schemaName);
 	}
 
-	@Override
-	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-		jdbcTemplate.query("select * from build_station_swap_organization_index(?,?)", pss, new NoopResultSetExtractor());
-		return RepeatStatus.FINISHED;
+	protected String getBaseTableName() {
+		return MonitoringLocation.BASE_TABLE_NAME;
 	}
 }

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <wqx_state st_uid="1" cntry_uid="1" st_cd="AL" st_name="Alabama" st_fips_cd="1" />
+    <wqx_state st_uid="2" cntry_uid="1" st_cd="AK" st_name="Alaska" st_fips_cd="2" />
+    <wqx_state st_uid="3" cntry_uid="1" st_cd="AZ" st_name="Arizona" st_fips_cd="4" />
+    <wqx_state st_uid="4" cntry_uid="1" st_cd="AR" st_name="Arkansas" st_fips_cd="5" />
+    <wqx_state st_uid="5" cntry_uid="1" st_cd="CA" st_name="California" st_fips_cd="6" />
+    <wqx_state st_uid="6" cntry_uid="1" st_cd="CO" st_name="Colorado" st_fips_cd="8" />
+    <wqx_state st_uid="7" cntry_uid="1" st_cd="CT" st_name="Connecticut" st_fips_cd="9" />
+    <wqx_state st_uid="8" cntry_uid="1" st_cd="DE" st_name="Delaware" st_fips_cd="10" />
+    <wqx_state st_uid="9" cntry_uid="1" st_cd="DC" st_name="District of Columbia" st_fips_cd="11" />
+    <wqx_state st_uid="10" cntry_uid="1" st_cd="FL" st_name="Florida" st_fips_cd="12" />
+    <wqx_state st_uid="11" cntry_uid="1" st_cd="GA" st_name="Georgia" st_fips_cd="13" />
+    <wqx_state st_uid="12" cntry_uid="1" st_cd="HI" st_name="Hawaii" st_fips_cd="15" />
+    <wqx_state st_uid="13" cntry_uid="1" st_cd="ID" st_name="Idaho" st_fips_cd="16" />
+    <wqx_state st_uid="14" cntry_uid="1" st_cd="IL" st_name="Illinois" st_fips_cd="17" />
+    <wqx_state st_uid="15" cntry_uid="1" st_cd="IN" st_name="Indiana" st_fips_cd="18" />
+    <wqx_state st_uid="16" cntry_uid="1" st_cd="IA" st_name="Iowa" st_fips_cd="19" />
+    <wqx_state st_uid="17" cntry_uid="1" st_cd="KS" st_name="Kansas" st_fips_cd="20" />
+    <wqx_state st_uid="18" cntry_uid="1" st_cd="KY" st_name="Kentucky" st_fips_cd="21" />
+    <wqx_state st_uid="19" cntry_uid="1" st_cd="LA" st_name="Louisiana" st_fips_cd="22" />
+    <wqx_state st_uid="20" cntry_uid="1" st_cd="ME" st_name="Maine" st_fips_cd="23" />
+    <wqx_state st_uid="21" cntry_uid="1" st_cd="MD" st_name="Maryland" st_fips_cd="24" />
+    <wqx_state st_uid="22" cntry_uid="1" st_cd="MA" st_name="Massachusetts" st_fips_cd="25" />
+    <wqx_state st_uid="23" cntry_uid="1" st_cd="MI" st_name="Michigan" st_fips_cd="26" />
+    <wqx_state st_uid="24" cntry_uid="1" st_cd="MN" st_name="Minnesota" st_fips_cd="27" />
+    <wqx_state st_uid="25" cntry_uid="1" st_cd="MS" st_name="Mississippi" st_fips_cd="28" />
+    <wqx_state st_uid="26" cntry_uid="1" st_cd="MO" st_name="Missouri" st_fips_cd="29" />
+    <wqx_state st_uid="27" cntry_uid="1" st_cd="MT" st_name="Montana" st_fips_cd="30" />
+    <wqx_state st_uid="28" cntry_uid="1" st_cd="NE" st_name="Nebraska" st_fips_cd="31" />
+    <wqx_state st_uid="29" cntry_uid="1" st_cd="NV" st_name="Nevada" st_fips_cd="32" />
+    <wqx_state st_uid="30" cntry_uid="1" st_cd="NH" st_name="New Hampshire" st_fips_cd="33" />
+    <wqx_state st_uid="31" cntry_uid="1" st_cd="NJ" st_name="New Jersey" st_fips_cd="34" />
+    <wqx_state st_uid="32" cntry_uid="1" st_cd="NM" st_name="New Mexico" st_fips_cd="35" />
+    <wqx_state st_uid="33" cntry_uid="1" st_cd="NY" st_name="New York" st_fips_cd="36" />
+    <wqx_state st_uid="34" cntry_uid="1" st_cd="NC" st_name="North Carolina" st_fips_cd="37" />
+    <wqx_state st_uid="35" cntry_uid="1" st_cd="ND" st_name="North Dakota" st_fips_cd="38" />
+    <wqx_state st_uid="36" cntry_uid="1" st_cd="OH" st_name="Ohio" st_fips_cd="39" />
+    <wqx_state st_uid="37" cntry_uid="1" st_cd="OK" st_name="Oklahoma" st_fips_cd="40" />
+    <wqx_state st_uid="38" cntry_uid="1" st_cd="OR" st_name="Oregon" st_fips_cd="41" />
+    <wqx_state st_uid="39" cntry_uid="1" st_cd="PA" st_name="Pennsylvania" st_fips_cd="42" />
+    <wqx_state st_uid="40" cntry_uid="1" st_cd="RI" st_name="Rhode Island" st_fips_cd="44" />
+    <wqx_state st_uid="41" cntry_uid="1" st_cd="SC" st_name="South Carolina" st_fips_cd="45" />
+    <wqx_state st_uid="42" cntry_uid="1" st_cd="SD" st_name="South Dakota" st_fips_cd="46" />
+    <wqx_state st_uid="43" cntry_uid="1" st_cd="TN" st_name="Tennessee" st_fips_cd="47" />
+    <wqx_state st_uid="44" cntry_uid="1" st_cd="TX" st_name="Texas" st_fips_cd="48" />
+    <wqx_state st_uid="45" cntry_uid="1" st_cd="UT" st_name="Utah" st_fips_cd="49" />
+    <wqx_state st_uid="46" cntry_uid="1" st_cd="VT" st_name="Vermont" st_fips_cd="50" />
+    <wqx_state st_uid="47" cntry_uid="1" st_cd="VA" st_name="Virginia" st_fips_cd="51" />
+    <wqx_state st_uid="48" cntry_uid="1" st_cd="WA" st_name="Washington" st_fips_cd="53" />
+    <wqx_state st_uid="49" cntry_uid="1" st_cd="WV" st_name="West Virginia" st_fips_cd="54" />
+    <wqx_state st_uid="50" cntry_uid="1" st_cd="WI" st_name="Wisconsin" st_fips_cd="55" />
+    <wqx_state st_uid="51" cntry_uid="1" st_cd="WY" st_name="Wyoming" st_fips_cd="56" />
+    <wqx_state st_uid="52" cntry_uid="1" st_cd="AS" st_name="American Samoa" st_fips_cd="60" />
+    <wqx_state st_uid="53" cntry_uid="1" st_cd="FM" st_name="Micronesia" st_fips_cd="64" />
+    <wqx_state st_uid="54" cntry_uid="1" st_cd="GU" st_name="Guam" st_fips_cd="66" />
+    <wqx_state st_uid="55" cntry_uid="1" st_cd="67" st_name="Johnston Atoll" st_fips_cd="67" />
+    <wqx_state st_uid="56" cntry_uid="1" st_cd="MH" st_name="Marshall Islands" st_fips_cd="68" />
+    <wqx_state st_uid="57" cntry_uid="1" st_cd="MP" st_name="N. Mariana Islands" st_fips_cd="69" />
+    <wqx_state st_uid="58" cntry_uid="1" st_cd="PW" st_name="Palau" st_fips_cd="70" />
+    <wqx_state st_uid="59" cntry_uid="1" st_cd="71" st_name="Midway Islands" st_fips_cd="71" />
+    <wqx_state st_uid="60" cntry_uid="1" st_cd="PR" st_name="Puerto Rico" st_fips_cd="72" />
+    <wqx_state st_uid="61" cntry_uid="1" st_cd="76" st_name="Navassa Island" st_fips_cd="76" />
+    <wqx_state st_uid="62" cntry_uid="1" st_cd="VI" st_name="Virgin Islands" st_fips_cd="78" />
+    <wqx_state st_uid="63" cntry_uid="1" st_cd="79" st_name="Wake Island" st_fips_cd="79" />
+    <wqx_state st_uid="64" cntry_uid="1" st_cd="81" st_name="Baker Island" st_fips_cd="81" />
+    <wqx_state st_uid="65" cntry_uid="1" st_cd="84" st_name="Howland Island" st_fips_cd="84" />
+    <wqx_state st_uid="66" cntry_uid="1" st_cd="86" st_name="Jarvis Island" st_fips_cd="86" />
+    <wqx_state st_uid="67" cntry_uid="1" st_cd="89" st_name="Kingman Reef" st_fips_cd="89" />
+    <wqx_state st_uid="68" cntry_uid="1" st_cd="95" st_name="Palmyra Atoll" st_fips_cd="95" />
+</dataset>

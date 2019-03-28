@@ -52,11 +52,11 @@ public class BuildResultIndexes {
 //	@Autowired
 //	@Qualifier("buildResultHuc8Index")
 //	private Tasklet buildResultHuc8Index;
-//
-//	@Autowired
-//	@Qualifier("buildResultOrganizationIndex")
-//	private Tasklet buildResultOrganizationIndex;
-//
+
+	@Autowired
+	@Qualifier("buildResultOrganizationIndex")
+	private Tasklet buildResultOrganizationIndex;
+
 //	@Autowired
 //	@Qualifier("buildResultSiteIndex")
 //	private Tasklet buildResultSiteIndex;
@@ -136,14 +136,14 @@ public class BuildResultIndexes {
 //				.tasklet(buildResultHuc8Index)
 //				.build();
 //	}
-//
-//	@Bean
-//	public Step buildResultOrganizationIndexStep() {
-//		return stepBuilderFactory.get("buildResultOrganizationIndexStep")
-//				.tasklet(buildResultOrganizationIndex)
-//				.build();
-//	}
-//
+
+	@Bean
+	public Step buildResultOrganizationIndexStep() {
+		return stepBuilderFactory.get("buildResultOrganizationIndexStep")
+				.tasklet(buildResultOrganizationIndex)
+				.build();
+	}
+
 //	@Bean
 //	public Step buildResultSiteIndexStep() {
 //		return stepBuilderFactory.get("buildResultSiteIndexStep")
@@ -173,14 +173,10 @@ public class BuildResultIndexes {
 //	}
 
 
-	@Autowired
-	@Qualifier("noopStep")
-	private Step noopStep;
-
 	@Bean
 	public Flow buildResultIndexesFlow() {
 		return new FlowBuilder<SimpleFlow>("buildResultIndexesFlow")
-				.start(noopStep)
+				.start(buildResultOrganizationIndexStep())
 //				.start(buildResultCountryIndexStep())
 //				.next(buildResultCountyIndexStep())
 //				.next(buildResultGeomIndexStep())

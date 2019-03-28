@@ -26,8 +26,6 @@ public class BuildMonitoringLocationIndexesFlowIT extends BaseFlowIT {
 	@Qualifier("buildMonitoringLocationIndexesFlow")
 	private Flow buildMonitoringLocationIndexesFlow;
 
-	private Job testJob;
-
 	@Before
 	public void setup() {
 		testJob = jobBuilderFactory.get("BuildMonitoringLocationIndexesFlowTest")

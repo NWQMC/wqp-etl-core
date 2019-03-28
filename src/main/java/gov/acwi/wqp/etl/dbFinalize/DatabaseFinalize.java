@@ -18,10 +18,6 @@ public class DatabaseFinalize {
 	private StepBuilderFactory stepBuilderFactory;
 
 //	@Autowired
-//	@Qualifier("addRi")
-//	private Tasklet addRi;
-//
-//	@Autowired
 //	@Qualifier("analyze")
 //	private Tasklet analyze;
 //
@@ -32,24 +28,27 @@ public class DatabaseFinalize {
 //	@Autowired
 //	@Qualifier("install")
 //	private Tasklet install;
-//
-//	@Autowired
-//	@Qualifier("finalize")
-//	private Tasklet finalize;
 
 	@Autowired
-	@Qualifier("noopStep")
-	private Step noopStep;
+	@Qualifier("finalize")
+	private Tasklet finalize;
+	
+	@Bean
+	public Step finalizeStep() {
+		return stepBuilderFactory.get("finalizeStep")
+				.tasklet(finalize)
+				.build();
+	}
 
 	@Bean
 	public Flow databaseFinalizeFlow() {
 		return new FlowBuilder<SimpleFlow>("databaseFinalizeFlow")
-				.start(noopStep)
 //				.start(addRiStep())
 //				.next(analyzeStep())
 //				.next(validateStep())
 //				.next(installStep())
 //				.next(finalizeStep())
+				.start(finalizeStep())
 				.build();
 	}
 
@@ -78,13 +77,6 @@ public class DatabaseFinalize {
 //	public Step installStep() {
 //		return stepBuilderFactory.get("installStep")
 //				.tasklet(install)
-//				.build();
-//	}
-//
-//	@Bean
-//	public Step finalizeStep() {
-//		return stepBuilderFactory.get("finalizeStep")
-//				.tasklet(finalize)
 //				.build();
 //	}
 }
