@@ -26,7 +26,7 @@ public class BuildCharacteristicNameIndexesFlowIT extends BaseFlowIT {
 	private Flow buildCharacteristicNameIndexesFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("BuildCharacteristicNameIndexesFlowTest")
 				.start(buildCharacteristicNameIndexesFlow)
 				.build()

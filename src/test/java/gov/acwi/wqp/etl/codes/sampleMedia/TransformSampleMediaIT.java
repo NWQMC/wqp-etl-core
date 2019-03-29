@@ -40,7 +40,7 @@ public class TransformSampleMediaIT extends BaseFlowIT {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("createSampleMediaFlowTest")
 				.start(createSampleMediaFlow)
 				.build()

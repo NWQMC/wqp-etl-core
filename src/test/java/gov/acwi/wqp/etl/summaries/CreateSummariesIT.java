@@ -33,8 +33,6 @@ import gov.acwi.wqp.etl.summaries.monitoringLocationSum.index.BuildMonitoringLoc
 import gov.acwi.wqp.etl.summaries.monitoringLocationSum.table.SetupMonitoringLocationSumSwapTableFlowIT;
 import gov.acwi.wqp.etl.summaries.orgGrouping.index.BuildOrgGroupingIndexesFlowIT;
 import gov.acwi.wqp.etl.summaries.orgGrouping.table.SetupOrgGroupingSwapTableFlowIT;
-import gov.acwi.wqp.etl.summaries.orgSum.index.BuildOrgSumIndexesFlowIT;
-import gov.acwi.wqp.etl.summaries.orgSum.table.SetupOrgSumSwapTableFlowIT;
 import gov.acwi.wqp.etl.summaries.resultSum.index.BuildResultSumIndexesFlowIT;
 import gov.acwi.wqp.etl.summaries.resultSum.table.SetupResultSumSwapTableFlowIT;
 
@@ -51,7 +49,7 @@ public class CreateSummariesIT extends BaseFlowIT {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("createSummariesFlowTest")
 				.start(createSummariesFlow)
 				.build()

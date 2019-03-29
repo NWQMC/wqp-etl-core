@@ -41,7 +41,7 @@ public class TransformMlGroupingIT extends BaseFlowIT {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("mlGroupingFlowTest")
 				.start(mlGroupingFlow)
 				.build()

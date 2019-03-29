@@ -26,7 +26,7 @@ public class BuildCountryIndexesFlowIT extends BaseFlowIT {
 	private Flow buildCountryIndexesFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("BuildCountryIndexesFlowTest")
 				.start(buildCountryIndexesFlow)
 				.build()

@@ -40,15 +40,4 @@ public class State {
 	public void setCountryCode(String countryCode) {
 		this.countryCode = countryCode;
 	}
-
-	@Override
-	public String toString() {
-		StringBuilder rtn = new StringBuilder("BaseLookupCode [");
-		rtn.append("dataSourceId=").append(dataSourceId == null ? "{null}" : dataSourceId.toString());
-		rtn.append(", codeValue=").append(codeValue == null ? "{null}" : codeValue.toString());
-		rtn.append(", descriptionWithCountry=").append(descriptionWithCountry == null ? "{null}" : descriptionWithCountry.toString());
-		rtn.append(", descriptionWithoutCountry=").append(descriptionWithoutCountry == null ? "{null}" : descriptionWithoutCountry.toString());
-		rtn.append(", countryCode=").append(countryCode == null ? "{null}" : countryCode.toString());
-		return rtn.append("]").toString();
-	}
 }

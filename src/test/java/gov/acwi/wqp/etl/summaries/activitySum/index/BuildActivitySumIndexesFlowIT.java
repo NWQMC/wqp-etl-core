@@ -26,7 +26,7 @@ public class BuildActivitySumIndexesFlowIT extends BaseFlowIT {
 	private Flow buildActivitySumIndexesFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("BuildActivitySumIndexesFlowTest")
 				.start(buildActivitySumIndexesFlow)
 				.build()

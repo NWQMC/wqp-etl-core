@@ -26,13 +26,4 @@ public class ProjectDim  {
 	public void setProjectDimValue(String projectDimValue) {
 		this.projectDimValue = projectDimValue;
 	}
-
-	@Override
-	public String toString() {
-		StringBuilder rtn = new StringBuilder("BaseLookupCode [");
-		rtn.append("dataSourceId=").append(dataSourceId == null ? "{null}" : dataSourceId.toString());
-		rtn.append(", codeValue=").append(codeValue == null ? "{null}" : codeValue.toString());
-		rtn.append(", projectDimValue=").append(projectDimValue == null ? "{null}" : projectDimValue.toString());
-		return rtn.append("]").toString();
-	}
 }

@@ -26,7 +26,7 @@ public class BuildOrgGroupingIndexesFlowIT extends BaseFlowIT {
 	private Flow buildOrgGroupingIndexesFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("BuildOrgGroupingIndexesFlowTest")
 				.start(buildOrgGroupingIndexesFlow)
 				.build()

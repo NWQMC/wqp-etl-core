@@ -40,7 +40,7 @@ public class TransformCharacteristicTypeIT extends BaseFlowIT {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("createCharacteristicTypeFlowTest")
 				.start(createCharacteristicTypeFlow)
 				.build()

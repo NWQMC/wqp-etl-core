@@ -26,7 +26,7 @@ public class SetupCharacteristicNameSwapTableFlowIT extends BaseFlowIT {
 	private Flow setupCharacteristicNameSwapTableFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("setupCharacteristicNameSwapTableFlowTest")
 				.start(setupCharacteristicNameSwapTableFlow)
 				.build()

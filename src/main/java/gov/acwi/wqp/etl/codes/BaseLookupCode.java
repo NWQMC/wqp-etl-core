@@ -24,13 +24,4 @@ public abstract class BaseLookupCode {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	@Override
-	public String toString() {
-		StringBuilder rtn = new StringBuilder("BaseLookupCode [");
-		rtn.append("dataSourceId=").append(dataSourceId == null ? "{null}" : dataSourceId.toString());
-		rtn.append(", codeValue=").append(codeValue == null ? "{null}" : codeValue.toString());
-		rtn.append(", description=").append(description == null ? "{null}" : description.toString());
-		return rtn.append("]").toString();
-	}
 }

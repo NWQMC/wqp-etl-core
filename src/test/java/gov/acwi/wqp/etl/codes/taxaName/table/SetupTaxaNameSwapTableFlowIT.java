@@ -26,7 +26,7 @@ public class SetupTaxaNameSwapTableFlowIT extends BaseFlowIT {
 	private Flow setupTaxaNameSwapTableFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("setupTaxaNameSwapTableFlowTest")
 				.start(setupTaxaNameSwapTableFlow)
 				.build()

@@ -26,7 +26,7 @@ public class SetupMonitoringLocationSumSwapTableFlowIT extends BaseFlowIT {
 	private Flow setupMonitoringLocationSumSwapTableFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("setupMonitoringLocationSumSwapTableFlowTest")
 				.start(setupMonitoringLocationSumSwapTableFlow)
 				.build()

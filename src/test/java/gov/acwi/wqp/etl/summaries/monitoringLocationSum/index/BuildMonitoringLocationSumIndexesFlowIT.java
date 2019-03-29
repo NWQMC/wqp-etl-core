@@ -26,7 +26,7 @@ public class BuildMonitoringLocationSumIndexesFlowIT extends BaseFlowIT {
 	private Flow buildMonitoringLocationSumIndexesFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("BuildMonitoringLocationSumIndexesFlowTest")
 				.start(buildMonitoringLocationSumIndexesFlow)
 				.build()

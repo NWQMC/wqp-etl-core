@@ -26,7 +26,7 @@ public class BuildAssemblageIndexesFlowIT extends BaseFlowIT {
 	private Flow buildAssemblageIndexesFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("BuildAssemblageIndexesFlowTest")
 				.start(buildAssemblageIndexesFlow)
 				.build()

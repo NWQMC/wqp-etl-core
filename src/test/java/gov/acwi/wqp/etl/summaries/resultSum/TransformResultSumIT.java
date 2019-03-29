@@ -41,7 +41,7 @@ public class TransformResultSumIT extends BaseFlowIT {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("resultSumFlowTest")
 				.start(resultSumFlow)
 				.build()

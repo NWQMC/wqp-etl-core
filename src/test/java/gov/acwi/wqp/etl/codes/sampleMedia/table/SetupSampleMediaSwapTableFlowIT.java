@@ -26,7 +26,7 @@ public class SetupSampleMediaSwapTableFlowIT extends BaseFlowIT {
 	private Flow setupSampleMediaSwapTableFlow;
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		testJob = jobBuilderFactory.get("setupSampleMediaSwapTableFlowTest")
 				.start(setupSampleMediaSwapTableFlow)
 				.build()

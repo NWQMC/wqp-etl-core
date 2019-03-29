@@ -21,15 +21,4 @@ public class MonitoringLoc extends BaseLookupCode {
 	public void setText(String text) {
 		this.text = text;
 	}
-
-	@Override
-	public String toString() {
-		StringBuilder rtn = new StringBuilder("Activity [");
-		rtn.append("dataSourceId=").append(dataSourceId == null ? "{null}" : dataSourceId.toString());
-		rtn.append(", codeValue=").append(codeValue == null ? "{null}" : codeValue.toString());
-		rtn.append(", description=").append(description == null ? "{null}" : description.toString());
-		rtn.append(", organization=").append(organization == null ? "{null}" : organization.toString());
-		rtn.append(", text=").append(text == null ? "{null}" : text.toString());
-		return rtn.append("]").toString();
-	}
 }

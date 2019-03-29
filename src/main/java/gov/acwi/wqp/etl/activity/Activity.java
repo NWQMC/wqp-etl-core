@@ -177,34 +177,4 @@ public class Activity {
 	public void setSampleCollectEquipName(String sampleCollectEquipName) {
 		this.sampleCollectEquipName = sampleCollectEquipName;
 	}
-
-	@Override
-	public String toString() {
-		StringBuilder rtn = new StringBuilder("Activity [");
-		rtn.append("dataSourceId=").append(dataSourceId == null ? "{null}" : dataSourceId.toString());
-		rtn.append(", dataSource=").append(dataSource == null ? "{null}" : dataSource.toString());
-		rtn.append(", stationId=").append(stationId == null ? "{null}" : stationId.toString());
-		rtn.append(", siteId=").append(siteId == null ? "{null}" : siteId.toString());
-		rtn.append(", eventDate=").append(eventDate == null ? "{null}" : eventDate.toString());
-		rtn.append(", activity=").append(activity == null ? "{null}" : activity.toString());
-		rtn.append(", sampleMedia=").append(sampleMedia == null ? "{null}" : sampleMedia.toString());
-		rtn.append(", organization=").append(organization == null ? "{null}" : organization.toString());
-		rtn.append(", siteType=").append(siteType == null ? "{null}" : siteType.toString());
-		rtn.append(", huc=").append(huc == null ? "{null}" : huc.toString());
-		rtn.append(", governmentalUnitCode=").append(governmentalUnitCode == null ? "{null}" : governmentalUnitCode.toString());
-		rtn.append(", geom=").append(geom == null ? "{null}" : geom.toString());
-		rtn.append(", organizationName=").append(organizationName == null ? "{null}" : organizationName.toString());
-		rtn.append(", activityId=").append(activityId == null ? "{null}" : activityId.toString());
-		rtn.append(", activityTypeCode=").append(activityTypeCode == null ? "{null}" : activityTypeCode.toString());
-		rtn.append(", activityStartTime=").append(activityStartTime == null ? "{null}" : activityStartTime.toString());
-		rtn.append(", actStartTimeZone=").append(actStartTimeZone == null ? "{null}" : actStartTimeZone.toString());
-		rtn.append(", projectId=").append(projectId == null ? "{null}" : projectId.toString());
-		rtn.append(", projectName=").append(projectName == null ? "{null}" : projectName.toString());
-		rtn.append(", monitoringLocationName=").append(monitoringLocationName == null ? "{null}" : monitoringLocationName.toString());
-		rtn.append(", sampleCollectMethodId=").append(sampleCollectMethodId == null ? "{null}" : sampleCollectMethodId.toString());
-		rtn.append(", sampleCollectMethodCtx=").append(sampleCollectMethodCtx == null ? "{null}" : sampleCollectMethodCtx.toString());
-		rtn.append(", sampleCollectMethodName=").append(sampleCollectMethodName == null ? "{null}" : sampleCollectMethodName.toString());
-		rtn.append(", sampleCollectEquipName=").append(sampleCollectEquipName == null ? "{null}" : sampleCollectEquipName.toString());
-		return rtn.append("]").toString();
-	}
 }
