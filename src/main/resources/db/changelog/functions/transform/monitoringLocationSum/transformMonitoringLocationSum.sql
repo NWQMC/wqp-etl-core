@@ -1,4 +1,4 @@
-create or replace function transform_monitoring_location_sum(wqp_data_source character varying, schema_name character varying)
+create or replace function transform_monitoring_location_sum(wqp_data_source character varying, schema_name character varying, geo_schema_name character varying)
 returns void
 language plpgsql
 as $$
@@ -68,51 +68,7 @@ begin
                                             group by data_source_id, station_id, characteristic_type
                                        ) a
                                     group by data_source_id, station_id
-                               ),
-              full_country as (
-                               select coalesce(nwis.country_cd, wqx.cntry_cd) country_code,
-                                      coalesce(nwis.country_nm, wqx.cntry_name) country_name
-                                 from nwis_ws_star_country nwis
-                                      full outer join wqx_country wqx
-                                        on nwis.country_cd = wqx.cntry_cd
-                              ),
-              full_state as (
-                             select coalesce(nwis.country_cd, wqx.cntry_cd) || '':'' ||
-                                    coalesce(nwis.state_cd, wqx.st_fips_cd) state_code,
-                                    coalesce(nwis.state_nm, wqx.st_name) state_name
-                               from nwis_ws_star_state nwis
-                                    full outer join (
-                                                     select country.cntry_cd,
-                                                            to_char(state.st_fips_cd, ''fm00'') st_fips_cd,
-                                                            state.st_name
-                                                       from wqx_country country
-                                                       join wqx_state state
-                                                         on country.cntry_uid = state.cntry_uid
-                                                    ) wqx
-                                      on nwis.country_cd = wqx.cntry_cd and
-                                         nwis.state_cd = wqx.st_fips_cd
-                            ),
-              full_county as (
-                              select coalesce(nwis.country_cd, wqx.cntry_cd) || '':'' ||
-                                     coalesce(nwis.state_cd, wqx.st_fips_cd) || '':'' ||
-                                     coalesce(nwis.county_cd, wqx.cnty_fips_cd) county_code,
-                                     coalesce(nwis.county_nm, wqx.cnty_name) county_name
-                                from nwis_ws_star_county nwis
-                                     full outer join (
-                                                      select country.cntry_cd,
-                                                             to_char(state.st_fips_cd, ''fm00'') st_fips_cd,
-                                                             county.cnty_fips_cd,
-                                                             county.cnty_name
-                                                        from wqx_country country
-                                                             join wqx_state state
-                                                               on country.cntry_uid = state.cntry_uid
-                                                             join wqx_county county
-                                                               on state.st_uid = county.st_uid
-                                                ) wqx
-                                       on nwis.country_cd = wqx.cntry_cd and
-                                          nwis.state_cd = wqx.st_fips_cd and
-                                          nwis.county_cd = wqx.cnty_fips_cd
-                             )
+                               )
          select station.data_source_id,
                 station.data_source,
                 station.station_id,
@@ -144,12 +100,12 @@ begin
                 left join ml_period_agg
                   on station.data_source_id = ml_period_agg.data_source_id and
                      station.station_id = ml_period_agg.station_id
-                left join full_country
+                left join %I.full_country
                   on substring(station.governmental_unit_code, ''[^:]+'') = full_country.country_code
-                left join full_state
+                left join %I.full_state
                   on substring(station.governmental_unit_code, ''[^:]+:[^:]+'') = full_state.state_code
-                left join full_county
+                left join %I.full_county
                   on substring(station.governmental_unit_code, ''[^:]+:[^:]+:[^:]+'') = full_county.county_code',
-        schema_name, summary_table_name, schema_name, result_table_name, schema_name, monitoring_location_table_name);
+        schema_name, summary_table_name, schema_name, result_table_name, schema_name, monitoring_location_table_name, geo_schema_name, geo_schema_name, geo_schema_name);
 end
 $$

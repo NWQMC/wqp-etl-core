@@ -4,9 +4,11 @@ import java.sql.SQLException;
 
 import javax.sql.DataSource;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
 
 import com.github.springtestdbunit.bean.DatabaseConfigBean;
 import com.github.springtestdbunit.bean.DatabaseDataSourceConnectionFactoryBean;
@@ -14,45 +16,31 @@ import com.github.springtestdbunit.bean.DatabaseDataSourceConnectionFactoryBean;
 @TestConfiguration
 public class DBTestConfig {
 
-	@Autowired
-	private DataSource dataSource;
+	@Bean
+	@Primary
+	@ConfigurationProperties(prefix="spring.datasource-wqp")
+	public DataSourceProperties dataSourcePropertiesWqp() {
+		return new DataSourceProperties();
+	}
 
-//	@Bean
-//	@ConfigurationProperties("app.datasource.wqx")
-//	public DataSourceProperties wqxDataSourceProperties() {
-//		return new DataSourceProperties();
-//	}
-//
-//	@Bean
-//	@ConfigurationProperties("app.datasource.wqx")
-//	public DataSource wqxDataSource() {
-//		return wqxDataSourceProperties().initializeDataSourceBuilder().build();
-//	}
-//
-//	@Bean
-//	@ConfigurationProperties(prefix = "app.datasource.wqx.liquibase")
-//	public LiquibaseProperties wqxLiquibaseProperties() {
-//		return new LiquibaseProperties();
-//	}
+	@Bean
+	@Primary
+	@ConfigurationProperties(prefix="spring.datasource-wqp")
+	public DataSource dataSourceWqp() {
+		return dataSourcePropertiesWqp().initializeDataSourceBuilder().build();
+	}
 
-//	@Bean(name = "liquibase")
-//	public SpringLiquibase wqxLiquibase(@Qualifier("wqxLiquibaseProperties") LiquibaseProperties liquibaseProperties) {
-//		return springLiquibase(wqxDataSource(), wqxLiquibaseProperties());
-//	}
+	@Bean
+	@ConfigurationProperties(prefix="spring.datasource-nwis")
+	public DataSourceProperties dataSourcePropertiesNwis() {
+		return new DataSourceProperties();
+	}
 
-//	private static SpringLiquibase springLiquibase(DataSource dataSource, LiquibaseProperties properties) {
-//		SpringLiquibase liquibase = new SpringLiquibase();
-//		liquibase.setDataSource(dataSource);
-//		liquibase.setChangeLog(properties.getChangeLog());
-//		liquibase.setContexts(properties.getContexts());
-//		liquibase.setDefaultSchema(properties.getDefaultSchema());
-//		liquibase.setDropFirst(properties.isDropFirst());
-//		liquibase.setShouldRun(properties.isEnabled());
-//		liquibase.setLabels(properties.getLabels());
-//		liquibase.setChangeLogParameters(properties.getParameters());
-//		liquibase.setRollbackFile(properties.getRollbackFile());
-//		return liquibase;
-//	}
+	@Bean
+	@ConfigurationProperties(prefix="spring.datasource-nwis")
+	public DataSource dataSourceNwis() {
+		return dataSourcePropertiesNwis().initializeDataSourceBuilder().build();
+	}
 
 	@Bean
 	public DatabaseConfigBean dbUnitDatabaseConfig() {
@@ -65,7 +53,7 @@ public class DBTestConfig {
 	public DatabaseDataSourceConnectionFactoryBean wqp() throws SQLException {
 		DatabaseDataSourceConnectionFactoryBean dbUnitDatabaseConnection = new DatabaseDataSourceConnectionFactoryBean();
 		dbUnitDatabaseConnection.setDatabaseConfig(dbUnitDatabaseConfig());
-		dbUnitDatabaseConnection.setDataSource(dataSource);
+		dbUnitDatabaseConnection.setDataSource(dataSourceWqp());
 		dbUnitDatabaseConnection.setSchema("wqp");
 		return dbUnitDatabaseConnection;
 	}
@@ -74,8 +62,17 @@ public class DBTestConfig {
 	public DatabaseDataSourceConnectionFactoryBean pg() throws SQLException {
 		DatabaseDataSourceConnectionFactoryBean dbUnitDatabaseConnection = new DatabaseDataSourceConnectionFactoryBean();
 		dbUnitDatabaseConnection.setDatabaseConfig(dbUnitDatabaseConfig());
-		dbUnitDatabaseConnection.setDataSource(dataSource);
+		dbUnitDatabaseConnection.setDataSource(dataSourceWqp());
 		dbUnitDatabaseConnection.setSchema("information_schema");
+		return dbUnitDatabaseConnection;
+	}
+
+	@Bean
+	public DatabaseDataSourceConnectionFactoryBean nwis() throws SQLException {
+		DatabaseDataSourceConnectionFactoryBean dbUnitDatabaseConnection = new DatabaseDataSourceConnectionFactoryBean();
+		dbUnitDatabaseConnection.setDatabaseConfig(dbUnitDatabaseConfig());
+		dbUnitDatabaseConnection.setDataSource(dataSourceNwis());
+		dbUnitDatabaseConnection.setSchema("nwis");
 		return dbUnitDatabaseConnection;
 	}
 

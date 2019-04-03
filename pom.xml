@@ -77,6 +77,12 @@
             <version>1.3.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <pluginRepositories>
@@ -146,10 +152,10 @@
 <!--                         <WQP_DB_PORT>5434</WQP_DB_PORT> -->
 <!--                         <WQP_DB_NAME>db_name</WQP_DB_NAME> -->
 <!--                         <WQP_DB_URL>jdbc:postgresql://localhost:5434/db_name</WQP_DB_URL> -->
-<!--                         <WQP_DB_DATA_OWNER_USERNAME>data_owner</WQP_DB_DATA_OWNER_USERNAME> -->
-<!--                         <WQP_DB_DATA_OWNER_PASSWORD>changeMe</WQP_DB_DATA_OWNER_PASSWORD> -->
-<!--                         <WQP_DB_READ_ONLY_USERNAME>read_only</WQP_DB_READ_ONLY_USERNAME> -->
-<!--                         <WQP_DB_READ_ONLY_PASSWORD>changeMe</WQP_DB_READ_ONLY_PASSWORD> -->
+<!--                         <WQP_SCHEMA_OWNER_USERNAME>data_owner</WQP_SCHEMA_OWNER_USERNAME> -->
+<!--                         <WQP_SCHEMA_OWNER_PASSWORD>changeMe</WQP_SCHEMA_OWNER_PASSWORD> -->
+<!--                         <WQP_READ_ONLY_USERNAME>read_only</WQP_READ_ONLY_USERNAME> -->
+<!--                         <WQP_READ_ONLY_PASSWORD>changeMe</WQP_READ_ONLY_PASSWORD> -->
 <!--                         <SCHEMA_NAME>schema_name</SCHEMA_NAME> -->
 <!--                         <SWAGGER_SERVICES_LOOKUPS_URL>http://127.0.0.1:8080/qw_portal_services</SWAGGER_SERVICES_LOOKUPS_URL> -->
 <!--                         <SWAGGER_SERVICES_CORE_URL>http://127.0.0.1:8080/wqp</SWAGGER_SERVICES_CORE_URL> -->
@@ -232,10 +238,10 @@
 <!--                                     <CONTEXTS>external,ci,noindexes,schemaLoad</CONTEXTS> -->
 <!--                                     <DATABASE_NAME>db_name</DATABASE_NAME> -->
 <!--                                     <SCHEMA_NAME>schema_name</SCHEMA_NAME> -->
-<!--                                     <WQP_DB_DATA_OWNER_USERNAME>data_owner</WQP_DB_DATA_OWNER_USERNAME> -->
-<!--                                     <WQP_DB_DATA_OWNER_PASSWORD>changeMe</WQP_DB_DATA_OWNER_PASSWORD> -->
-<!--                                     <WQP_DB_READ_ONLY_USERNAME>read_only</WQP_DB_READ_ONLY_USERNAME> -->
-<!--                                     <WQP_DB_READ_ONLY_PASSWORD>changeMe</WQP_DB_READ_ONLY_PASSWORD> -->
+<!--                                     <WQP_SCHEMA_OWNER_USERNAME>data_owner</WQP_SCHEMA_OWNER_USERNAME> -->
+<!--                                     <WQP_SCHEMA_OWNER_PASSWORD>changeMe</WQP_SCHEMA_OWNER_PASSWORD> -->
+<!--                                     <WQP_READ_ONLY_USERNAME>read_only</WQP_READ_ONLY_USERNAME> -->
+<!--                                     <WQP_READ_ONLY_PASSWORD>changeMe</WQP_READ_ONLY_PASSWORD> -->
 <!--                                 </env> -->
 <!--                                 <wait> -->
 <!--                                     <time>150000</time> -->

@@ -6,6 +6,7 @@ import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.stereotype.Component;
@@ -21,14 +22,14 @@ public class TransformMonitoringLocationSumTasklet implements Tasklet {
 
 	@Autowired
 	public TransformMonitoringLocationSumTasklet(JdbcTemplate jdbcTemplate,
-			PreparedStatementSetter pss) {
+			@Qualifier("monitoringLocationSumPreparedStatementSetter") PreparedStatementSetter pss) {
 		this.jdbcTemplate = jdbcTemplate;
 		this.pss = pss;
 	}
 
 	@Override
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-		jdbcTemplate.query("select * from transform_monitoring_location_sum(?,?)", pss, new NoopResultSetExtractor());
+		jdbcTemplate.query("select * from transform_monitoring_location_sum(?,?,?)", pss, new NoopResultSetExtractor());
 		return RepeatStatus.FINISHED;
 	}
 }
