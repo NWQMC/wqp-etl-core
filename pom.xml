@@ -21,13 +21,13 @@
         <tag>HEAD</tag>
     </scm>
 
-<distributionManagement>
-    <snapshotRepository>
-        <id>snapshots</id>
-        <name>cidasdpdasartip.cr.usgs.gov-snapshots</name>
-        <url>https://cida.usgs.gov/artifactory/wma-maven-snapshots</url>
-    </snapshotRepository>
-</distributionManagement>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>wma-maven-snapshots</id>
+            <name>cidasdpdasartip.cr.usgs.gov-snapshots</name>
+            <url>https://cida.usgs.gov/artifactory/wma-maven-snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
