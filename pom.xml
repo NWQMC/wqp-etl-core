@@ -25,7 +25,7 @@
     <snapshotRepository>
         <id>snapshots</id>
         <name>cidasdpdasartip.cr.usgs.gov-snapshots</name>
-        <url>https://cida.usgs.gov/artifactory/wqp-maven-snapshots</url>
+        <url>https://cida.usgs.gov/artifactory/wma-maven-snapshots</url>
     </snapshotRepository>
 </distributionManagement>
 
