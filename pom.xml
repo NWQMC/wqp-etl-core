@@ -21,6 +21,14 @@
         <tag>HEAD</tag>
     </scm>
 
+<distributionManagement>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>cidasdpdasartip.cr.usgs.gov-snapshots</name>
+        <url>https://cida.usgs.gov/artifactory/wqp-maven-snapshots</url>
+    </snapshotRepository>
+</distributionManagement>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
