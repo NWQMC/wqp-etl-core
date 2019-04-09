@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <state country_cd="US" state_cd="00" state_nm="Unspecified" />
+    <state country_cd="US" state_cd="01" state_nm="Alabama" />
+    <state country_cd="US" state_cd="02" state_nm="Alaska" />
+    <state country_cd="US" state_cd="04" state_nm="Arizona" />
+    <state country_cd="US" state_cd="05" state_nm="Arkansas" />
+    <state country_cd="US" state_cd="06" state_nm="California" />
+    <state country_cd="US" state_cd="08" state_nm="Colorado" />
+    <state country_cd="US" state_cd="09" state_nm="Connecticut" />
+    <state country_cd="US" state_cd="10" state_nm="Delaware" />
+    <state country_cd="US" state_cd="11" state_nm="District of Columbia" />
+    <state country_cd="US" state_cd="12" state_nm="Florida" />
+    <state country_cd="US" state_cd="13" state_nm="Georgia" />
+    <state country_cd="US" state_cd="15" state_nm="Hawaii" />
+    <state country_cd="US" state_cd="16" state_nm="Idaho" />
+    <state country_cd="US" state_cd="17" state_nm="Illinois" />
+    <state country_cd="US" state_cd="18" state_nm="Indiana" />
+    <state country_cd="US" state_cd="19" state_nm="Iowa" />
+    <state country_cd="US" state_cd="20" state_nm="Kansas" />
+    <state country_cd="US" state_cd="21" state_nm="Kentucky" />
+    <state country_cd="US" state_cd="22" state_nm="Louisiana" />
+    <state country_cd="US" state_cd="23" state_nm="Maine" />
+    <state country_cd="US" state_cd="24" state_nm="Maryland" />
+    <state country_cd="US" state_cd="25" state_nm="Massachusetts" />
+    <state country_cd="US" state_cd="26" state_nm="Michigan" />
+    <state country_cd="US" state_cd="27" state_nm="Minnesota" />
+    <state country_cd="US" state_cd="28" state_nm="Mississippi" />
+    <state country_cd="US" state_cd="29" state_nm="Missouri" />
+    <state country_cd="US" state_cd="30" state_nm="Montana" />
+    <state country_cd="US" state_cd="31" state_nm="Nebraska" />
+    <state country_cd="US" state_cd="32" state_nm="Nevada" />
+    <state country_cd="US" state_cd="33" state_nm="New Hampshire" />
+    <state country_cd="US" state_cd="34" state_nm="New Jersey" />
+    <state country_cd="US" state_cd="35" state_nm="New Mexico" />
+    <state country_cd="US" state_cd="36" state_nm="New York" />
+    <state country_cd="US" state_cd="37" state_nm="North Carolina" />
+    <state country_cd="US" state_cd="38" state_nm="North Dakota" />
+    <state country_cd="US" state_cd="39" state_nm="Ohio" />
+    <state country_cd="US" state_cd="40" state_nm="Oklahoma" />
+    <state country_cd="US" state_cd="41" state_nm="Oregon" />
+    <state country_cd="US" state_cd="42" state_nm="Pennsylvania" />
+    <state country_cd="US" state_cd="44" state_nm="Rhode Island" />
+    <state country_cd="US" state_cd="45" state_nm="South Carolina" />
+    <state country_cd="US" state_cd="46" state_nm="South Dakota" />
+    <state country_cd="US" state_cd="47" state_nm="Tennessee" />
+    <state country_cd="US" state_cd="48" state_nm="Texas" />
+    <state country_cd="US" state_cd="49" state_nm="Utah" />
+    <state country_cd="US" state_cd="50" state_nm="Vermont" />
+    <state country_cd="US" state_cd="51" state_nm="Virginia" />
+    <state country_cd="US" state_cd="53" state_nm="Washington" />
+    <state country_cd="US" state_cd="54" state_nm="West Virginia" />
+    <state country_cd="US" state_cd="55" state_nm="Wisconsin" />
+    <state country_cd="US" state_cd="56" state_nm="Wyoming" />
+    <state country_cd="US" state_cd="60" state_nm="American Samoa" />
+    <state country_cd="US" state_cd="65" state_nm="Palmyra Atoll" />
+    <state country_cd="US" state_cd="66" state_nm="Guam" />
+    <state country_cd="US" state_cd="67" state_nm="Johnston Atoll" />
+    <state country_cd="US" state_cd="69" state_nm="Northern Mariana Islands" />
+    <state country_cd="US" state_cd="71" state_nm="Midway Islands" />
+    <state country_cd="US" state_cd="72" state_nm="Puerto Rico" />
+    <state country_cd="US" state_cd="73" state_nm="Ryukyu Islands, Southern" />
+    <state country_cd="US" state_cd="74" state_nm="Swan Islands" />
+    <state country_cd="US" state_cd="76" state_nm="U.S. Misc Caribbean Islands" />
+    <state country_cd="US" state_cd="77" state_nm="U.S. Misc Pacific Islands" />
+    <state country_cd="US" state_cd="78" state_nm="Virgin Islands" />
+    <state country_cd="US" state_cd="79" state_nm="Wake Island" />
+</dataset>

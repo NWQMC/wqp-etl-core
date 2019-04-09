@@ -69,12 +69,12 @@ public class CreateSummariesIT extends BaseFlowIT {
 	@DatabaseSetup(value="classpath:/testData/wqp/activity/activity.xml")
 	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
 
-	@DatabaseSetup(value="classpath:/testData/nwisWsStar/country/country.xml")
-	@DatabaseSetup(value="classpath:/testData/nwisWsStar/state/state.xml")
-	@DatabaseSetup(value="classpath:/testData/nwisWsStar/county/county.xml")
-	@DatabaseSetup(value="classpath:/testData/wqx/country/country.xml")
-	@DatabaseSetup(value="classpath:/testData/wqx/state/state.xml")
-	@DatabaseSetup(value="classpath:/testData/wqx/county/county.xml")
+	@DatabaseSetup(connection="nwis", value="classpath:/testData/nwis/country/country.xml")
+	@DatabaseSetup(connection="nwis", value="classpath:/testData/nwis/state/state.xml")
+	@DatabaseSetup(connection="nwis", value="classpath:/testData/nwis/county/county.xml")
+//TODO	@DatabaseSetup(value="classpath:/testData/wqx/country/country.xml")
+//TODO	@DatabaseSetup(value="classpath:/testData/wqx/state/state.xml")
+//TODO	@DatabaseSetup(value="classpath:/testData/wqx/county/county.xml")
 
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activitySum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,

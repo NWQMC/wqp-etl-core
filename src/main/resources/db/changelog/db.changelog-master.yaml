@@ -4,6 +4,10 @@ databaseChangeLog:
         type: postgresql
 
   - include:
+      file: "grants/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
       file: "functions/table/changeLog.yml"
       relativeToChangelogFile: true
 

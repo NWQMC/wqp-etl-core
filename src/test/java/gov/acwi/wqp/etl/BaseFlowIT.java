@@ -43,7 +43,7 @@ import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 	})
 @AutoConfigureTestDatabase(replace=Replace.NONE)
 @Import({DBTestConfig.class})
-@DbUnitConfiguration(databaseConnection={"wqp","pg"})
+@DbUnitConfiguration(databaseConnection={"wqp","pg","nwis"})
 @DirtiesContext
 public abstract class BaseFlowIT {
 
@@ -75,6 +75,7 @@ public abstract class BaseFlowIT {
 				.addString("wqpDataSourceId", "1", true)
 				.addString("wqpDataSource", "stewards", true)
 				.addString("schemaName", "wqp", false)
+				.addString("geoSchemaName", "nwis", false)
 				.toJobParameters();
 	}
 
