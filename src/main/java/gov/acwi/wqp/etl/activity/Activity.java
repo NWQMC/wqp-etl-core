@@ -23,9 +23,25 @@ public class Activity {
 	private String organizationName;
 	private Integer activityId;
 	private String activityTypeCode;
+	private String activityMediaSubdivName;
 	private String activityStartTime;
 	private String actStartTimeZone;
+	private String activityStopDate;
+	private String activityStopTime;
+	private String actStopTimeZone;
+	private String activityDepth;
+	private String activityDepthUnit;
+	private String activityDepthRefPoint;
+	private String activityUpperDepth;
+	private String activityUpperDepthUnit;
+	private String activityLowerDepth;
+	private String activityLowerDepthUnit;
 	private String projectId;
+	private String activityConductionOrg;
+	private String activityComment;
+	private String sampleAqfrName;
+	private String hydrologicConditionName;
+	private String hydrologicEventName;
 	private String projectName;
 	private String monitoringLocationName;
 	private String sampleCollectMethodId;
@@ -123,6 +139,12 @@ public class Activity {
 	public void setActivityTypeCode(String activityTypeCode) {
 		this.activityTypeCode = activityTypeCode;
 	}
+	public String getActivityMediaSubdivName() {
+		return activityMediaSubdivName;
+	}
+	public void setActivityMediaSubdivName(String activityMediaSubdivName) {
+		this.activityMediaSubdivName = activityMediaSubdivName;
+	}
 	public String getActivityStartTime() {
 		return activityStartTime;
 	}
@@ -135,11 +157,101 @@ public class Activity {
 	public void setActStartTimeZone(String actStartTimeZone) {
 		this.actStartTimeZone = actStartTimeZone;
 	}
+	public String getActivityStopDate() {
+		return activityStopDate;
+	}
+	public void setActivityStopDate(String activityStopDate) {
+		this.activityStopDate = activityStopDate;
+	}
+	public String getActivityStopTime() {
+		return activityStopTime;
+	}
+	public void setActivityStopTime(String activityStopTime) {
+		this.activityStopTime = activityStopTime;
+	}
+	public String getActStopTimeZone() {
+		return actStopTimeZone;
+	}
+	public void setActStopTimeZone(String actStopTimeZone) {
+		this.actStopTimeZone = actStopTimeZone;
+	}	
+	public String getActivityDepth() {
+		return activityDepth;
+	}
+	public void setActivityDepth(String activityDepth) {
+		this.activityDepth = activityDepth;
+	}
+	public String getActivityDepthUnit() {
+		return activityDepthUnit;
+	}
+	public void setActivityDepthUnit(String activityDepthUnit) {
+		this.activityDepthUnit = activityDepthUnit;
+	}
+	public String getActivityDepthRefPoint() {
+		return activityDepthRefPoint;
+	}
+	public void setActivityDepthRefPoint(String activityDepthRefPoint) {
+		this.activityDepthRefPoint = activityDepthRefPoint;
+	}
+	public String getActivityUpperDepth() {
+		return activityUpperDepth;
+	}
+	public void setActivityUpperDepth(String activityUpperDepth) {
+		this.activityUpperDepth = activityUpperDepth;
+	}
+	public String getActivityUpperDepthUnit() {
+		return activityUpperDepthUnit;
+	}
+	public void setActivityUpperDepthUnit(String activityUpperDepthUnit) {
+		this.activityUpperDepthUnit = activityUpperDepthUnit;
+	}
+	public String getActivityLowerDepth() {
+		return activityLowerDepth;
+	}
+	public void setActivityLowerDepth(String activityLowerDepth) {
+		this.activityLowerDepth = activityLowerDepth;
+	}
+	public String getActivityLowerDepthUnit() {
+		return activityLowerDepthUnit;
+	}
+	public void setActivityLowerDepthUnit(String activityLowerDepthUnit) {
+		this.activityLowerDepthUnit = activityLowerDepthUnit;
+	}
 	public String getProjectId() {
 		return projectId;
 	}
 	public void setProjectId(String projectId) {
 		this.projectId = projectId;
+	}
+	public String getActivityConductionOrg() {
+		return activityConductionOrg;
+	}
+	public void setActivityConductionOrg(String activityConductionOrg) {
+		this.activityConductionOrg = activityConductionOrg;
+	}
+	public String getActivityComment() {
+		return activityComment;
+	}
+	public void setActivityComment(String activityComment) {
+		this.activityComment = activityComment;
+	}
+	public String getSampleAqfrName() {
+		return sampleAqfrName;
+	}
+	public void setSampleAqfrName(String sampleAqfrName) {
+		this.sampleAqfrName = sampleAqfrName;
+	}
+	public String getHydrologicConditionName() {
+		return hydrologicConditionName;
+	}
+	public void setHydrologicConditionName(String hydrologicConditionName) {
+		this.hydrologicConditionName = hydrologicConditionName;
+	}
+	public String getHydrologicEventName() {
+		return hydrologicEventName;
+	}
+	public void setHydrologicEventName(String hydrologicEventName) {
+		this.hydrologicEventName = hydrologicEventName;
 	}
 	public String getProjectName() {
 		return projectName;
