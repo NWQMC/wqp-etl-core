@@ -28,6 +28,7 @@ public class Activity {
 	private String projectId;
 	private String projectName;
 	private String monitoringLocationName;
+	private String activityComment;
 	private String sampleCollectMethodId;
 	private String sampleCollectMethodCtx;
 	private String sampleCollectMethodName;
@@ -152,6 +153,12 @@ public class Activity {
 	}
 	public void setMonitoringLocationName(String monitoringLocationName) {
 		this.monitoringLocationName = monitoringLocationName;
+	}
+	public String getActivityComment() {
+		return activityComment;
+	}
+	public void setActivityComment(String activityComment) {
+		this.activityComment = activityComment;
 	}
 	public String getSampleCollectMethodId() {
 		return sampleCollectMethodId;

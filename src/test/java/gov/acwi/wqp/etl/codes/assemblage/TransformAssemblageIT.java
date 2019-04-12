@@ -67,11 +67,11 @@ public class TransformAssemblageIT extends BaseFlowIT {
 	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/assemblage/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=BuildAssemblageIndexesFlowIT.EXPECTED_DATABASE_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildAssemblageIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/assemblage/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=SetupAssemblageSwapTableFlowIT.EXPECTED_DATABASE_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupAssemblageSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/assemblage/assemblage.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void assemblageFlowTest() {

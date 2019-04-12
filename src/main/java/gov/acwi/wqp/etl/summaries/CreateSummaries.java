@@ -24,8 +24,8 @@ public class CreateSummaries {
 	@Qualifier("mlGroupingFlow")
 	private Flow mlGroupingFlow;
 //	@Autowired
-//	@Qualifier("orgSumFlow")
-//	private Flow orgSumFlow;
+//	@Qualifier("organizationSumFlow")
+//	private Flow organizationSumFlow;
 	@Autowired
 	@Qualifier("monitoringLocationSumFlow")
 	private Flow monitoringLocationSumFlow;
@@ -40,7 +40,7 @@ public class CreateSummaries {
 				.next(resultSumFlow)
 				.next(orgGroupingFlow)
 				.next(mlGroupingFlow)
-				//TODO				.next(orgSumFlow)
+				//TODO				.next(organizationSumFlow)
 				.next(monitoringLocationSumFlow)
 //TODO				.next(qwportalSumFlow)
 				.build();

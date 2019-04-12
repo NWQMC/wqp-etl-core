@@ -67,11 +67,11 @@ public class TransformStateIT extends BaseFlowIT {
 	@DatabaseSetup(value="classpath:/testResult/wqp/monitoringLocationSum/monitoringLocationSum.xml")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/state/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=BuildStateIndexesFlowIT.EXPECTED_DATABASE_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildStateIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/state/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=SetupStateSwapTableFlowIT.EXPECTED_DATABASE_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupStateSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/state/state.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void stateFlowTest() {

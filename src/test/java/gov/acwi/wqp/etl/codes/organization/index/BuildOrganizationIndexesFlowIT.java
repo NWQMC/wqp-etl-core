@@ -18,8 +18,7 @@ import gov.acwi.wqp.etl.BaseFlowIT;
 
 public class BuildOrganizationIndexesFlowIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = "select tablename, indexname, indexdef from pg_indexes where tablename='organization_swap_stewards'";
-	public static final String EXPECTED_DATABASE_TABLE = "pg_indexes";
+	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX + "'organization_swap_stewards'";
 
 	@Autowired
 	@Qualifier("buildOrganizationIndexesFlow")
@@ -37,7 +36,7 @@ public class BuildOrganizationIndexesFlowIT extends BaseFlowIT {
 	@Test
 	@ExpectedDatabase(value="classpath:/testResult/wqp/organization/indexes/codeValue.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE, query=EXPECTED_DATABASE_QUERY + " and indexname='organization_swap_stewards_code_value'")
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY + " and indexname='organization_swap_stewards_code_value'")
 	public void buildOrganizationCodeValueIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils
@@ -52,7 +51,7 @@ public class BuildOrganizationIndexesFlowIT extends BaseFlowIT {
 	@Test
 	@ExpectedDatabase(value="classpath:/testResult/wqp/organization/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE, query=EXPECTED_DATABASE_QUERY)
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY)
 	public void buildOrganizationIndexesFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);

@@ -68,11 +68,11 @@ public class TransformOrgGroupingIT extends BaseFlowIT {
 	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/orgGrouping/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=BuildOrgGroupingIndexesFlowIT.EXPECTED_DATABASE_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildOrgGroupingIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/orgGrouping/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=SetupOrgGroupingSwapTableFlowIT.EXPECTED_DATABASE_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupOrgGroupingSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/orgGrouping/orgGrouping.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void orgGroupingFlowTest() {

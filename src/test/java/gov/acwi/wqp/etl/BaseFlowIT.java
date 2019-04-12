@@ -49,6 +49,18 @@ import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 @DirtiesContext
 public abstract class BaseFlowIT {
 
+	public static final String EXPECTED_DATABASE_TABLE_CHECK_TABLE = "tables";
+	public static final String EXPECTED_DATABASE_TABLE_CHECK_INDEX = "pg_indexes";
+
+	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE = "select table_catalog, table_schema, table_name, table_type from information_schema.tables where table_name=";
+	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX = "select tablename, indexname, indexdef from pg_indexes where tablename=";
+
+	public static final String BASE_EXPECTED_DATABASE_QUERY_STATION_SUM = "select data_source_id,data_source,station_id,site_id,"
+			+ "station_name,organization,organization_name,site_type,station_type_name,huc,governmental_unit_code,"
+			+ "geom,country_name,state_name,county_name,activity_count,activity_count_past_12_months,"
+			+ "activity_count_past_60_months,result_count,result_count_past_12_months,result_count_past_60_months,"
+			+ "summary_all_months from ";
+
 	@Autowired
 	protected JdbcTemplate jdbcTemplate;
 	@Autowired

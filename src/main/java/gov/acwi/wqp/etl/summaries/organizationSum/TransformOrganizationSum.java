@@ -1,4 +1,4 @@
-package gov.acwi.wqp.etl.summaries.orgSum;
+package gov.acwi.wqp.etl.summaries.organizationSum;
 
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -11,38 +11,37 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-
 @Configuration
-public class TransformOrgSum {
+public class TransformOrganizationSum {
 
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 
 	@Autowired
-	@Qualifier("setupOrgSumSwapTableFlow")
-	private Flow setupOrgSumSwapTableFlow;
+	@Qualifier("setupOrganizationSumSwapTableFlow")
+	private Flow setupOrganizationSumSwapTableFlow;
 
 	@Autowired
-	@Qualifier("transformOrgSumTasklet")
-	private Tasklet transformOrgSumTasklet;
+	@Qualifier("transformOrganizationSumTasklet")
+	private Tasklet transformOrganizationSumTasklet;
 
 	@Autowired
-	@Qualifier("buildOrgSumIndexesFlow")
-	private Flow buildOrgSumIndexesFlow;
+	@Qualifier("buildOrganizationSumIndexesFlow")
+	private Flow buildOrganizationSumIndexesFlow;
 
 	@Bean
-	public Step transformOrgSumStep() {
-		return stepBuilderFactory.get("transformOrgSumStep")
-				.tasklet(transformOrgSumTasklet)
+	public Step transformOrganizationSumStep() {
+		return stepBuilderFactory.get("transformOrganizationSumStep")
+				.tasklet(transformOrganizationSumTasklet)
 				.build();
 	}
 
 	@Bean
-	public Flow orgSumFlow() {
-		return new FlowBuilder<SimpleFlow>("orgSumFlow")
-				.start(setupOrgSumSwapTableFlow)
-				.next(transformOrgSumStep())
-				.next(buildOrgSumIndexesFlow)
+	public Flow organizationSumFlow() {
+		return new FlowBuilder<SimpleFlow>("organizationSumFlow")
+				.start(setupOrganizationSumSwapTableFlow)
+				.next(transformOrganizationSumStep())
+				.next(buildOrganizationSumIndexesFlow)
 				.build();
 	}
 
