@@ -1,8 +1,6 @@
 package gov.acwi.wqp.etl;
 
-public final class EtlConstants {
-
-	private EtlConstants() {}
+public final class EtlConstantUtils {
 
 	public static final String JOB_ID = "jobId";
 	//TODO make configurable
@@ -14,5 +12,7 @@ public final class EtlConstants {
 	public static final String JOB_PARM_DATA_SOURCE_ID = "wqpDataSourceId";
 	public static final String JOB_PARM_SCHEMA = "schemaName";
 	public static final String JOB_PARM_GEO_SCHEMA = "geoSchemaName";
+
+	private EtlConstantUtils() {}
 
 }
