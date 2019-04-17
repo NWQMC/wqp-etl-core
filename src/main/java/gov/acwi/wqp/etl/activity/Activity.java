@@ -37,7 +37,7 @@ public class Activity {
 	private String activityLowerDepth;
 	private String activityLowerDepthUnit;
 	private String projectId;
-	private String activityConductionOrg;
+	private String activityConductingOrg;
 	private String activityComment;
 	private String sampleAqfrName;
 	private String hydrologicConditionName;
@@ -223,11 +223,11 @@ public class Activity {
 	public void setProjectId(String projectId) {
 		this.projectId = projectId;
 	}
-	public String getActivityConductionOrg() {
-		return activityConductionOrg;
+	public String getActivityConductingOrg() {
+		return activityConductingOrg;
 	}
-	public void setActivityConductionOrg(String activityConductionOrg) {
-		this.activityConductionOrg = activityConductionOrg;
+	public void setActivityConductingOrg(String activityConductingOrg) {
+		this.activityConductingOrg = activityConductingOrg;
 	}
 	public String getActivityComment() {
 		return activityComment;
