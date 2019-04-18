@@ -62,7 +62,7 @@ public class CreateSummariesIT extends BaseFlowIT {
 	@DatabaseSetup(value="classpath:/testResult/wqp/resultSum/empty.xml")
 	@DatabaseSetup(value="classpath:/testResult/wqp/orgGrouping/empty.xml")
 	@DatabaseSetup(value="classpath:/testResult/wqp/mlGrouping/empty.xml")
-//TODO	@DatabaseSetup(value="classpath:/testResult/wqp/orgSum/empty.xml")
+//TODO	@DatabaseSetup(value="classpath:/testResult/wqp/organizationSum/empty.xml")
 	@DatabaseSetup(value="classpath:/testResult/wqp/monitoringLocationSum/empty.xml")
 
 	@DatabaseSetup(value="classpath:/testData/wqp/station/station.xml")
@@ -78,61 +78,61 @@ public class CreateSummariesIT extends BaseFlowIT {
 
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activitySum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=BuildActivitySumIndexesFlowIT.EXPECTED_DATABASE_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildActivitySumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/activitySum/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=SetupActivitySumSwapTableFlowIT.EXPECTED_DATABASE_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupActivitySumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resultSum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=BuildResultSumIndexesFlowIT.EXPECTED_DATABASE_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildResultSumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/resultSum/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=SetupResultSumSwapTableFlowIT.EXPECTED_DATABASE_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupResultSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/orgGrouping/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=BuildOrgGroupingIndexesFlowIT.EXPECTED_DATABASE_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildOrgGroupingIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/orgGrouping/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=SetupOrgGroupingSwapTableFlowIT.EXPECTED_DATABASE_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupOrgGroupingSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/mlGrouping/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=BuildMlGroupingIndexesFlowIT.EXPECTED_DATABASE_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildMlGroupingIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/mlGrouping/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=SetupMlGroupingSwapTableFlowIT.EXPECTED_DATABASE_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupMlGroupingSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
-//	@ExpectedDatabase(value="classpath:/testResult/wqp/orgSum/indexes/all.xml",
+//	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/indexes/all.xml",
 //			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-//			table=BuildOrgSumIndexesFlowIT.EXPECTED_DATABASE_TABLE,
-//			query=BuildOrgSumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-//	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/orgSum/create.xml",
+//			table=EXPECTED_DATABASE_TABLE,
+//			query=BuildOrganizationSumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
+//	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/organizationSum/create.xml",
 //			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-//			table=SetupOrgSumSwapTableFlowIT.EXPECTED_DATABASE_TABLE,
-//			query=SetupOrgSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
+//			table=EXPECTED_DATABASE_TABLE,
+//			query=SetupOrganizationSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocationSum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=BuildMonitoringLocationSumIndexesFlowIT.EXPECTED_DATABASE_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildMonitoringLocationSumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/monitoringLocationSum/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=SetupMonitoringLocationSumSwapTableFlowIT.EXPECTED_DATABASE_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupMonitoringLocationSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activitySum/activitySum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resultSum/resultSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/orgGrouping/orgGrouping.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/mlGrouping/mlGrouping.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
-//TODO	@ExpectedDatabase(value="classpath:/testResult/wqp/orgSum/orgSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+//TODO	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocationSum/monitoringLocationSum.xml",
-			table=TransformMonitoringLocationSumIT.EXPECTED_DATABASE_TABLE,
-			query=TransformMonitoringLocationSumIT.EXPECTED_DATABASE_QUERY)
+			table=TransformMonitoringLocationSumIT.EXPECTED_DATABASE_TABLE_STATION_SUM,
+			query=TransformMonitoringLocationSumIT.EXPECTED_DATABASE_QUERY_STATION_SUM)
 	public void createSummariesFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);

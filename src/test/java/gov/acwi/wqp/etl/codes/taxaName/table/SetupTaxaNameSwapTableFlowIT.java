@@ -18,8 +18,7 @@ import gov.acwi.wqp.etl.BaseFlowIT;
 
 public class SetupTaxaNameSwapTableFlowIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = "select table_catalog, table_schema, table_name, table_type from information_schema.tables where table_name='taxa_name_swap_stewards'";
-	public static final String EXPECTED_DATABASE_TABLE = "tables";
+	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE + "'taxa_name_swap_stewards'";
 
 	@Autowired
 	@Qualifier("setupTaxaNameSwapTableFlow")
@@ -37,7 +36,7 @@ public class SetupTaxaNameSwapTableFlowIT extends BaseFlowIT {
 	@Test
 	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/taxaName/drop.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE, query=EXPECTED_DATABASE_QUERY)
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void dropTaxaNameSwapTableStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils
@@ -52,7 +51,7 @@ public class SetupTaxaNameSwapTableFlowIT extends BaseFlowIT {
 	@Test
 	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/taxaName/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE, query=EXPECTED_DATABASE_QUERY)
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void createTaxaNameSwapTableStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils
@@ -67,7 +66,7 @@ public class SetupTaxaNameSwapTableFlowIT extends BaseFlowIT {
 	@Test
 	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/taxaName/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE, query=EXPECTED_DATABASE_QUERY)
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void setupTaxaNameSwapTableFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);

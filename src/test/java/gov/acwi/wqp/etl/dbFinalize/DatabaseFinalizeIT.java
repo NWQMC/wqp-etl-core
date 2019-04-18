@@ -52,7 +52,7 @@ public class DatabaseFinalizeIT extends BaseFlowIT {
 	public void finalizeStepEmptyTest() {
 		//TODO check new time.
 		try {
-			JobExecution jobExecution = jobLauncherTestUtils.launchStep("finalizeStep", testJobParameters);
+			JobExecution jobExecution = jobLauncherTestUtils.launchStep("updateLastETLStep", testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -66,7 +66,7 @@ public class DatabaseFinalizeIT extends BaseFlowIT {
 	public void finalizeStepNotEmptyTest() {
 		//TODO fill in old time and check new time.
 		try {
-			JobExecution jobExecution = jobLauncherTestUtils.launchStep("finalizeStep", testJobParameters);
+			JobExecution jobExecution = jobLauncherTestUtils.launchStep("updateLastETLStep", testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -79,11 +79,11 @@ public class DatabaseFinalizeIT extends BaseFlowIT {
 //	@DatabaseSetup(value="classpath:/testResult/wqp/resultSum/resultSum.xml")
 //	@ExpectedDatabase(value="classpath:/testResult/wqp/taxaName/indexes/all.xml",
 //			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-//			table=BuildTaxaNameIndexesFlowIT.EXPECTED_DATABASE_TABLE,
+//			table=EXPECTED_DATABASE_TABLE,
 //			query=BuildTaxaNameIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 //	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/taxaName/create.xml",
 //			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-//			table=SetupTaxaNameSwapTableFlowIT.EXPECTED_DATABASE_TABLE,
+//			table=EXPECTED_DATABASE_TABLE,
 //			query=SetupTaxaNameSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 //	@ExpectedDatabase(value="classpath:/testResult/wqp/taxaName/taxaName.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 //	public void taxaNameFlowTest() {

@@ -1,4 +1,4 @@
-package gov.acwi.wqp.etl.summaries.orgSum.table;
+package gov.acwi.wqp.etl.summaries.organizationSum.table;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -16,32 +16,31 @@ import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
 import gov.acwi.wqp.etl.BaseFlowIT;
 
-public class SetupOrgSumSwapTableFlowIT extends BaseFlowIT {
+public class SetupOrganizationSumSwapTableFlowIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = "select table_catalog, table_schema, table_name, table_type from information_schema.tables where table_name='org_sum_swap_stewards'";
-	public static final String EXPECTED_DATABASE_TABLE = "tables";
+	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE + "'organization_sum_swap_stewards'";
 
 	@Autowired
-	@Qualifier("setupOrgSumSwapTableFlow")
-	private Flow setupOrgSumSwapTableFlow;
+	@Qualifier("setupOrganizationSumSwapTableFlow")
+	private Flow setupOrganizationSumSwapTableFlow;
 
 	@Before
 	public void setUp() {
-		testJob = jobBuilderFactory.get("setupOrgSumSwapTableFlowTest")
-				.start(setupOrgSumSwapTableFlow)
+		testJob = jobBuilderFactory.get("setupOrganizationSumSwapTableFlowTest")
+				.start(setupOrganizationSumSwapTableFlow)
 				.build()
 				.build();
 		jobLauncherTestUtils.setJob(testJob);
 	}
 
 	@Test
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/orgSum/drop.xml",
+	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/organizationSum/drop.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE, query=EXPECTED_DATABASE_QUERY)
-	public void dropOrgSumSwapTableStepTest() {
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
+	public void dropOrganizationSumSwapTableStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils
-					.launchStep("dropOrgSumSwapTableStep", testJobParameters);
+					.launchStep("dropOrganizationSumSwapTableStep", testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -50,13 +49,13 @@ public class SetupOrgSumSwapTableFlowIT extends BaseFlowIT {
 	}
 
 	@Test
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/orgSum/create.xml",
+	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/organizationSum/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE, query=EXPECTED_DATABASE_QUERY)
-	public void createOrgSumSwapTableStepTest() {
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
+	public void createOrganizationSumSwapTableStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils
-					.launchStep("createOrgSumSwapTableStep", testJobParameters);
+					.launchStep("createOrganizationSumSwapTableStep", testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -65,10 +64,10 @@ public class SetupOrgSumSwapTableFlowIT extends BaseFlowIT {
 	}
 
 	@Test
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/orgSum/create.xml",
+	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/organizationSum/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE, query=EXPECTED_DATABASE_QUERY)
-	public void setupOrgSumSwapTableFlowTest() {
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
+	public void setupOrganizationSumSwapTableFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());

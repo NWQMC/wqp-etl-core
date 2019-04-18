@@ -68,11 +68,11 @@ public class TransformResultSumIT extends BaseFlowIT {
 	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resultSum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=BuildResultSumIndexesFlowIT.EXPECTED_DATABASE_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildResultSumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/resultSum/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=SetupResultSumSwapTableFlowIT.EXPECTED_DATABASE_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupResultSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resultSum/resultSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void resultSumFlowTest() {

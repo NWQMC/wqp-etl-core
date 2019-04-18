@@ -27,11 +27,6 @@ select create_swap_table ('stewards', 'wqp', 'site_type');
 select create_swap_table ('stewards', 'wqp', 'state');
 select create_swap_table ('stewards', 'wqp', 'taxa_name');
 
-create table if not exists nwis_ws_star_country
-(country_cd character varying (2)
-,country_nm character varying (48)
-);
-
 create table if not exists wqx_country
 (cntry_uid integer
 ,cntry_cd character varying (2)
@@ -40,25 +35,12 @@ create table if not exists wqx_country
 ,usr_uid_last_change integer
 );
 
-create table if not exists nwis_ws_star_state
-(country_cd character varying (2)
-,state_cd character varying (2)
-,state_nm character varying (53)
-);
-
 create table if not exists wqx_state
 (st_uid integer
 ,cntry_uid integer
 ,st_cd character varying (2)
 ,st_name character varying (35)
 ,st_fips_cd integer
-);
-
-create table if not exists nwis_ws_star_county
-(country_cd character varying (2)
-,state_cd character varying (2)
-,county_cd character varying (3)
-,county_nm character varying (48)
 );
 
 create table if not exists wqx_county

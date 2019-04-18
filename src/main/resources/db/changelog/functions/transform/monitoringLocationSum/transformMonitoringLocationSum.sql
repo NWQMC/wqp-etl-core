@@ -59,13 +59,13 @@ begin
                                   from (
                                         select data_source_id,
                                                station_id,
-                                               characteristic_type,
+                                               coalesce(characteristic_type, ''Not Assigned'') characteristic_type,
                                                sum(case when years_window = 1 then total_results else null end) past_12_months,
                                                sum(case when years_window < 6 then total_results else null end) past_60_months,
                                                sum(total_results) all_months
                                           from ml_grouping_swap_stewards
                                          where grouping_id = 1001
-                                            group by data_source_id, station_id, characteristic_type
+                                            group by data_source_id, station_id, coalesce(characteristic_type, ''Not Assigned'')
                                        ) a
                                     group by data_source_id, station_id
                                )

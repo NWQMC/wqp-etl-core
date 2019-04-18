@@ -1,4 +1,4 @@
-package gov.acwi.wqp.etl.summaries.orgSum.index;
+package gov.acwi.wqp.etl.summaries.organizationSum.index;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -16,32 +16,31 @@ import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
 import gov.acwi.wqp.etl.BaseFlowIT;
 
-public class BuildOrgSumIndexesFlowIT extends BaseFlowIT {
+public class BuildOrganizationSumIndexesFlowIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = "select tablename, indexname, indexdef from pg_indexes where tablename='org_sum_swap_stewards'";
-	public static final String EXPECTED_DATABASE_TABLE = "pg_indexes";
+	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX + "'organization_sum_swap_stewards'";
 
 	@Autowired
-	@Qualifier("buildOrgSumIndexesFlow")
-	private Flow buildOrgSumIndexesFlow;
+	@Qualifier("buildOrganizationSumIndexesFlow")
+	private Flow buildOrganizationSumIndexesFlow;
 
 	@Before
 	public void setUp() {
-		testJob = jobBuilderFactory.get("BuildOrgSumIndexesFlowTest")
-				.start(buildOrgSumIndexesFlow)
+		testJob = jobBuilderFactory.get("BuildOrganizationSumIndexesFlowTest")
+				.start(buildOrganizationSumIndexesFlow)
 				.build()
 				.build();
 		jobLauncherTestUtils.setJob(testJob);
 	}
 
 	@Test
-	@ExpectedDatabase(value="classpath:/testResult/wqp/orgSum/indexes/organization.xml",
+	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/indexes/organization.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE, query=EXPECTED_DATABASE_QUERY + " and indexname='org_sum_swap_stewards_organization'")
-	public void buildOrgSumOrganizationIndexStepTest() {
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY + " and indexname='organization_sum_swap_stewards_organization'")
+	public void buildOrganizationSumOrganizationIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils
-					.launchStep("buildOrgSumOrganizationIndexStep", testJobParameters);
+					.launchStep("buildOrganizationSumOrganizationIndexStep", testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -50,10 +49,10 @@ public class BuildOrgSumIndexesFlowIT extends BaseFlowIT {
 	}
 
 	@Test
-	@ExpectedDatabase(value="classpath:/testResult/wqp/orgSum/indexes/all.xml",
+	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE, query=EXPECTED_DATABASE_QUERY)
-	public void buildOrgSumIndexesFlowTest() {
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY)
+	public void buildOrganizationSumIndexesFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
