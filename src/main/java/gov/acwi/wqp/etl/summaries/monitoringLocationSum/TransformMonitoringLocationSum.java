@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-
 @Configuration
 public class TransformMonitoringLocationSum {
 
@@ -30,6 +29,10 @@ public class TransformMonitoringLocationSum {
 	@Qualifier("buildMonitoringLocationSumIndexesFlow")
 	private Flow buildMonitoringLocationSumIndexesFlow;
 
+//	@Autowired
+//	@Qualifier("createMonitoringLocationSumPkTasklet")
+//	private Tasklet createMonitoringLocationSumPkTasklet;
+
 	@Bean
 	public Step transformMonitoringLocationSumStep() {
 		return stepBuilderFactory.get("transformMonitoringLocationSumStep")
@@ -37,11 +40,19 @@ public class TransformMonitoringLocationSum {
 				.build();
 	}
 
+//	@Bean
+//	public Step createMonitoringLocationSumPkStep() {
+//		return stepBuilderFactory.get("createMonitoringLocationSumPkStep")
+//				.tasklet(createMonitoringLocationSumPkTasklet)
+//				.build();
+//	}
+
 	@Bean
 	public Flow monitoringLocationSumFlow() {
 		return new FlowBuilder<SimpleFlow>("monitoringLocationSumFlow")
 				.start(setupMonitoringLocationSumSwapTableFlow)
 				.next(transformMonitoringLocationSumStep())
+//				.next(createMonitoringLocationSumPkStep())
 				.next(buildMonitoringLocationSumIndexesFlow)
 				.build();
 	}

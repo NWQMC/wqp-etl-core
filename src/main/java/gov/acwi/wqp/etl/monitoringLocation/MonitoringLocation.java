@@ -280,16 +280,15 @@ public class MonitoringLocation {
 		this.holeDepthUnit = holeDepthUnit;
 	}
 
-	public void calculateGeom(BigDecimal latitude, BigDecimal longitude, int srid) {
-		this.geom = null;
+	public static PGgeometry calculateGeom(BigDecimal latitude, BigDecimal longitude, int srid) {
 		Point point = null;
 		try {
 			point = new Point(longitude.doubleValue(), latitude.doubleValue());
 			point.setSrid(srid);
-			LOG.info("Converted: from lat:{};long{} - to lat:{};long{}", latitude, longitude, point.getY(), point.getX());
+			LOG.debug("Converted: from lat:{};long{} - to lat:{};long{}", latitude, longitude, point.getY(), point.getX());
 		} catch (Throwable e) {
 			LOG.info("Unable to determine point from coordinates:{}-{}", latitude, longitude);
 		}
-		this.geom = new PGgeometry(point);
+		return new PGgeometry(point);
 	}
 }

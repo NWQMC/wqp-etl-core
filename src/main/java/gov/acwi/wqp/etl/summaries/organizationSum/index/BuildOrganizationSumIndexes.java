@@ -1,4 +1,4 @@
-package gov.acwi.wqp.etl.summaries.orgSum.index;
+package gov.acwi.wqp.etl.summaries.organizationSum.index;
 
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -12,26 +12,26 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class BuildOrgSumIndexes {
+public class BuildOrganizationSumIndexes {
 
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 
 	@Autowired
-	@Qualifier("buildOrgSumOrganizationIndex")
-	private Tasklet buildOrgSumOrganizationIndex;
+	@Qualifier("buildOrganizationSumOrganizationIndex")
+	private Tasklet buildOrganizationSumOrganizationIndex;
 
 	@Bean
-	public Step buildOrgSumOrganizationIndexStep() {
-		return stepBuilderFactory.get("buildOrgSumOrganizationIndexStep")
-				.tasklet(buildOrgSumOrganizationIndex)
+	public Step buildOrganizationSumOrganizationIndexStep() {
+		return stepBuilderFactory.get("buildOrganizationSumOrganizationIndexStep")
+				.tasklet(buildOrganizationSumOrganizationIndex)
 				.build();
 	}
 
 	@Bean
-	public Flow buildOrgSumIndexesFlow() {
-		return new FlowBuilder<SimpleFlow>("buildOrgSumIndexesFlow")
-				.start(buildOrgSumOrganizationIndexStep())
+	public Flow buildOrganizationSumIndexesFlow() {
+		return new FlowBuilder<SimpleFlow>("buildOrganizationSumIndexesFlow")
+				.start(buildOrganizationSumOrganizationIndexStep())
 				.build();
 	}
 

@@ -1,4 +1,4 @@
-package gov.acwi.wqp.etl.summaries.orgSum.table;
+package gov.acwi.wqp.etl.summaries.organizationSum.table;
 
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,20 +7,20 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import gov.acwi.wqp.etl.CreateSwapTable;
-import gov.acwi.wqp.etl.summaries.orgSum.OrgSum;
+import gov.acwi.wqp.etl.summaries.organizationSum.OrganizationSum;
 
 @Component
 @StepScope
-public class CreateOrgSumSwapTable extends CreateSwapTable {
+public class CreateOrganizationSumSwapTable extends CreateSwapTable {
 
 	@Autowired
-	public CreateOrgSumSwapTable(JdbcTemplate jdbcTemplate,
+	public CreateOrganizationSumSwapTable(JdbcTemplate jdbcTemplate,
 			@Value("#{jobParameters['wqpDataSource']}") String wqpDataSource,
 			@Value("#{jobParameters['schemaName']}") String schemaName) {
 		super(jdbcTemplate, wqpDataSource, schemaName);
 	}
 
 	protected String getBaseTableName() {
-		return OrgSum.BASE_TABLE_NAME;
+		return OrganizationSum.BASE_TABLE_NAME;
 	}
 }

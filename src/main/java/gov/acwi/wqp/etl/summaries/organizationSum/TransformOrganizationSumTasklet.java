@@ -1,4 +1,4 @@
-package gov.acwi.wqp.etl.summaries.orgSum;
+package gov.acwi.wqp.etl.summaries.organizationSum;
 
 import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.configuration.annotation.StepScope;
@@ -14,13 +14,13 @@ import gov.acwi.wqp.etl.NoopResultSetExtractor;
 
 @Component
 @StepScope
-public class TransformOrgSumTasklet implements Tasklet {
+public class TransformOrganizationSumTasklet implements Tasklet {
 
 	private final JdbcTemplate jdbcTemplate;
 	private final PreparedStatementSetter pss;
 
 	@Autowired
-	public TransformOrgSumTasklet(JdbcTemplate jdbcTemplate,
+	public TransformOrganizationSumTasklet(JdbcTemplate jdbcTemplate,
 			PreparedStatementSetter pss) {
 		this.jdbcTemplate = jdbcTemplate;
 		this.pss = pss;
@@ -28,7 +28,7 @@ public class TransformOrgSumTasklet implements Tasklet {
 
 	@Override
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-		jdbcTemplate.query("select * from transform_org_sum(?,?)", pss, new NoopResultSetExtractor());
+		jdbcTemplate.query("select * from transform_organization_sum(?,?)", pss, new NoopResultSetExtractor());
 		return RepeatStatus.FINISHED;
 	}
 }

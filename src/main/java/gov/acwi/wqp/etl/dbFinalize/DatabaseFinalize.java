@@ -32,7 +32,7 @@ public class DatabaseFinalize {
 	@Autowired
 	@Qualifier("updateLastETL")
 	private Tasklet updateLastETL;
-	
+
 	@Bean
 	public Step updateLastETLStep() {
 		return stepBuilderFactory.get("updateLastETLStep")
