@@ -14,16 +14,29 @@ public class Result extends Activity {
 	private String resultMeasureValue;
 	private String resultUnit;
 	private String resultValueStatus;
+	private String statisticType;
 	private String resultValueType;
+	private String weightBasisType;
+	private String durationBasis;
+	private String temperatureBasisLevel;
+	private String particleSize;
 	private String precision;
 	private String resultComment;
+	private String sampleTissueTaxonomicName;
+	private String sampleTissueAnatomyName;
 	private String analyticalProcedureId;
 	private String analyticalProcedureSource;
+	private String analyticalMethod;
 	private String analyticalMethodName;
 	private String analyticalMethodCitation;
+	private String labName;
+	private String analysisStartDate;
+	private String labRemark;
 	private String detectionLimit;
 	private String detectionLimitUnit;
 	private String detectionLimitDesc;
+	private String pCode;
+	private String analysisPrepDateTx;
 
 	public Integer getResultId() {
 		return resultId;
@@ -73,11 +86,41 @@ public class Result extends Activity {
 	public void setResultValueStatus(String resultValueStatus) {
 		this.resultValueStatus = resultValueStatus;
 	}
+	public String getStatisticType() {
+		return statisticType;
+	}
+	public void setStatisticType(String statisticType) {
+		this.statisticType = statisticType;
+	}
 	public String getResultValueType() {
 		return resultValueType;
 	}
 	public void setResultValueType(String resultValueType) {
 		this.resultValueType = resultValueType;
+	}
+	public String getWeightBasisType() {
+		return weightBasisType;
+	}
+	public void setWeightBasisType(String weightBasisType) {
+		this.weightBasisType = weightBasisType;
+	}
+	public String getDurationBasis() {
+		return durationBasis;
+	}
+	public void setDurationBasis(String durationBasis) {
+		this.durationBasis = durationBasis;
+	}
+	public String getTemperatureBasisLevel() {
+		return temperatureBasisLevel;
+	}
+	public void setTemperatureBasisLevel(String temperatureBasisLevel) {
+		this.temperatureBasisLevel = temperatureBasisLevel;
+	}
+	public String getParticleSize() {
+		return particleSize;
+	}
+	public void setParticleSize(String particleSize) {
+		this.particleSize = particleSize;
 	}
 	public String getPrecision() {
 		return precision;
@@ -90,6 +133,24 @@ public class Result extends Activity {
 	}
 	public void setResultComment(String resultComment) {
 		this.resultComment = resultComment;
+	}
+	public String getSampleTissueTaxonomicName() {
+		return sampleTissueTaxonomicName;
+	}
+	public void setSampleTissueTaxonomicName(String sampleTissueTaxonomicName) {
+		this.sampleTissueTaxonomicName = sampleTissueTaxonomicName;
+	}
+	public String getSampleTissueAnatomyName() {
+		return sampleTissueAnatomyName;
+	}
+	public void setSampleTissueAnatomyName(String sampleTissueAnatomyName) {
+		this.sampleTissueAnatomyName = sampleTissueAnatomyName;
+	}
+	public String getAnalyticalMethod() {
+		return analyticalMethod;
+	}
+	public void setAnalyticalMethod(String analyticalMethod) {
+		this.analyticalMethod = analyticalMethod;
 	}
 	public String getAnalyticalProcedureId() {
 		return analyticalProcedureId;
@@ -115,6 +176,24 @@ public class Result extends Activity {
 	public void setAnalyticalMethodCitation(String analyticalMethodCitation) {
 		this.analyticalMethodCitation = analyticalMethodCitation;
 	}
+	public String getLabName() {
+		return labName;
+	}
+	public void setLabName(String labName) {
+		this.labName = labName;
+	}
+	public String getAnalysisStartDate() {
+		return analysisStartDate;
+	}
+	public void setAnalysisStartDate(String analysisStartDate) {
+		this.analysisStartDate = analysisStartDate;
+	}
+	public String getLabRemark() {
+		return labRemark;
+	}
+	public void setLabRemark(String labRemark) {
+		this.labRemark = labRemark;
+	}
 	public String getDetectionLimit() {
 		return detectionLimit;
 	}
@@ -132,5 +211,17 @@ public class Result extends Activity {
 	}
 	public void setDetectionLimitDesc(String detectionLimitDesc) {
 		this.detectionLimitDesc = detectionLimitDesc;
+	}
+	public String getpCode() {
+		return pCode;
+	}
+	public void setpCode(String pCode) {
+		this.pCode = pCode;
+	}
+	public String getAnalysisPrepDateTx() {
+		return analysisPrepDateTx;
+	}
+	public void setAnalysisPrepDateTx(String analysisPrepDateTx) {
+		this.analysisPrepDateTx = analysisPrepDateTx;
 	}
 }
