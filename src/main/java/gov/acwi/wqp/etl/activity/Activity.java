@@ -229,12 +229,7 @@ public class Activity {
 	public void setActivityConductingOrg(String activityConductingOrg) {
 		this.activityConductingOrg = activityConductingOrg;
 	}
-	public String getActivityComment() {
-		return activityComment;
-	}
-	public void setActivityComment(String activityComment) {
-		this.activityComment = activityComment;
-	}
+	
 	public String getSampleAqfrName() {
 		return sampleAqfrName;
 	}
@@ -264,6 +259,12 @@ public class Activity {
 	}
 	public void setMonitoringLocationName(String monitoringLocationName) {
 		this.monitoringLocationName = monitoringLocationName;
+	}
+	public String getActivityComment() {
+		return activityComment;
+	}
+	public void setActivityComment(String activityComment) {
+		this.activityComment = activityComment;
 	}
 	public String getSampleCollectMethodId() {
 		return sampleCollectMethodId;
