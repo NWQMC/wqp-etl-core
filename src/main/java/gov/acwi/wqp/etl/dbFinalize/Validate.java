@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 @StepScope
 public class Validate implements Tasklet {
-
+	//TODO WQP-1396
 	private final JdbcTemplate jdbcTemplate;
 	private final String datasource;
 

@@ -24,6 +24,7 @@ import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
 import gov.acwi.wqp.etl.BaseFlowIT;
+import gov.acwi.wqp.etl.EtlConstantUtils;
 import gov.acwi.wqp.etl.codes.assemblage.index.BuildAssemblageIndexesFlowIT;
 import gov.acwi.wqp.etl.codes.assemblage.table.SetupAssemblageSwapTableFlowIT;
 import gov.acwi.wqp.etl.codes.characteristicName.index.BuildCharacteristicNameIndexesFlowIT;
@@ -54,7 +55,7 @@ import gov.acwi.wqp.etl.codes.taxaName.table.SetupTaxaNameSwapTableFlowIT;
 public class CreateLookupCodesFlowIT extends BaseFlowIT {
 
 	@Autowired
-	@Qualifier("createLookupCodesFlow")
+	@Qualifier(EtlConstantUtils.CREATE_LOOKUP_CODES_FLOW)
 	private Flow createLookupCodesFlow;
 
 	@PostConstruct
@@ -73,31 +74,17 @@ public class CreateLookupCodesFlowIT extends BaseFlowIT {
 	}
 
 	@Test
-	@DatabaseSetup(value="classpath:/testResult/wqp/assemblage/empty.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/characteristicName/empty.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/characteristicType/empty.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/country/empty.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/county/empty.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/monitoringLoc/empty.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/organization/empty.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/project/empty.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/projectDim/empty.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/sampleMedia/empty.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/siteType/empty.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/state/empty.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/taxaName/empty.xml")
-
 	@DatabaseSetup(value="classpath:/testResult/wqp/activitySum/activitySum.xml")
 	@DatabaseSetup(value="classpath:/testResult/wqp/monitoringLocationSum/monitoringLocationSum.xml")
 	@DatabaseSetup(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml")
-	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/resultSum/resultSum.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/result/csv/")
+	@DatabaseSetup(value="classpath:/testResult/wqp/resultSum/csv/")
 
 	@ExpectedDatabase(value="classpath:/testResult/wqp/assemblage/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildAssemblageIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/assemblage/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/assemblage/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupAssemblageSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
@@ -105,7 +92,7 @@ public class CreateLookupCodesFlowIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildCharacteristicNameIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/characteristicName/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/characteristicName/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupCharacteristicNameSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
@@ -113,7 +100,7 @@ public class CreateLookupCodesFlowIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildCharacteristicTypeIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/characteristicType/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/characteristicType/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupCharacteristicTypeSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
@@ -121,7 +108,7 @@ public class CreateLookupCodesFlowIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildCountryIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/country/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/country/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupCountrySwapTableFlowIT.EXPECTED_DATABASE_QUERY)
@@ -129,7 +116,7 @@ public class CreateLookupCodesFlowIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildCountyIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/county/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/county/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupCountySwapTableFlowIT.EXPECTED_DATABASE_QUERY)
@@ -137,7 +124,7 @@ public class CreateLookupCodesFlowIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildMonitoringLocIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/monitoringLoc/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/monitoringLoc/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupMonitoringLocSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
@@ -145,7 +132,7 @@ public class CreateLookupCodesFlowIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildOrganizationIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/organization/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/organization/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupOrganizationSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
@@ -153,7 +140,7 @@ public class CreateLookupCodesFlowIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildProjectIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/project/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/project/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupProjectSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
@@ -161,7 +148,7 @@ public class CreateLookupCodesFlowIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildProjectDimIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/projectDim/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/projectDim/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupProjectDimSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
@@ -169,7 +156,7 @@ public class CreateLookupCodesFlowIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildSampleMediaIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/sampleMedia/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/sampleMedia/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupSampleMediaSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
@@ -177,7 +164,7 @@ public class CreateLookupCodesFlowIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildSiteTypeIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/siteType/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/siteType/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupSiteTypeSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
@@ -185,7 +172,7 @@ public class CreateLookupCodesFlowIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildStateIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/state/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/state/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupStateSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
@@ -193,7 +180,7 @@ public class CreateLookupCodesFlowIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildTaxaNameIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/taxaName/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/taxaName/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupTaxaNameSwapTableFlowIT.EXPECTED_DATABASE_QUERY)

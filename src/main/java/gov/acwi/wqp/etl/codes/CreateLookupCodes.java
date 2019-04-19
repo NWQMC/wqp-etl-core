@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
+import gov.acwi.wqp.etl.EtlConstantUtils;
+
 @Component
 public class CreateLookupCodes {
 
@@ -65,7 +67,7 @@ public class CreateLookupCodes {
 
 	@Bean
 	public Flow createLookupCodesFlow() {
-		return new FlowBuilder<SimpleFlow>("createLookupCodesFlow")
+		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.CREATE_LOOKUP_CODES_FLOW)
 				.start(createAssemblageFlow)
 				.next(createCharacteristicNameFlow)
 				.next(createCharacteristicTypeFlow)

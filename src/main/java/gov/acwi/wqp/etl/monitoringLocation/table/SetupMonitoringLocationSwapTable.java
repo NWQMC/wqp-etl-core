@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import gov.acwi.wqp.etl.EtlConstantUtils;
+
 @Configuration
 public class SetupMonitoringLocationSwapTable {
 
@@ -41,7 +43,7 @@ public class SetupMonitoringLocationSwapTable {
 
 	@Bean
 	public Flow setupMonitoringLocationSwapTableFlow() {
-		return new FlowBuilder<SimpleFlow>("setupMonitoringLocationSwapTableFlow")
+		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.SETUP_MONITORING_LOCATION_SWAP_TABLE_FLOW)
 				.start(dropMonitoringLocationSwapTableStep())
 				.next(createMonitoringLocationSwapTableStep())
 				.build();

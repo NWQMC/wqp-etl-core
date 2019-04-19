@@ -15,13 +15,14 @@ import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
 import gov.acwi.wqp.etl.BaseFlowIT;
+import gov.acwi.wqp.etl.EtlConstantUtils;
 
 public class BuildOrgDataIndexesFlowIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX + "'org_data_swap_stewards'";
+	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX + "'org_data_swap_testsrc'";
 
 	@Autowired
-	@Qualifier("buildOrgDataIndexesFlow")
+	@Qualifier(EtlConstantUtils.BUILD_ORG_DATA_INDEXES_FLOW)
 	private Flow buildOrgDataIndexesFlow;
 
 	@Before

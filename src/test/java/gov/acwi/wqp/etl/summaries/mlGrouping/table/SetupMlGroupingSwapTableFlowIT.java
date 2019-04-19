@@ -18,7 +18,7 @@ import gov.acwi.wqp.etl.BaseFlowIT;
 
 public class SetupMlGroupingSwapTableFlowIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE + "'ml_grouping_swap_stewards'";
+	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE + "'ml_grouping_swap_testsrc'";
 
 	@Autowired
 	@Qualifier("setupMlGroupingSwapTableFlow")
@@ -34,7 +34,7 @@ public class SetupMlGroupingSwapTableFlowIT extends BaseFlowIT {
 	}
 
 	@Test
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/mlGrouping/drop.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/mlGrouping/drop.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void dropMlGroupingSwapTableStepTest() {
@@ -49,7 +49,7 @@ public class SetupMlGroupingSwapTableFlowIT extends BaseFlowIT {
 	}
 
 	@Test
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/mlGrouping/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/mlGrouping/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void createMlGroupingSwapTableStepTest() {
@@ -64,7 +64,7 @@ public class SetupMlGroupingSwapTableFlowIT extends BaseFlowIT {
 	}
 
 	@Test
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/mlGrouping/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/mlGrouping/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void setupMlGroupingSwapTableFlowTest() {

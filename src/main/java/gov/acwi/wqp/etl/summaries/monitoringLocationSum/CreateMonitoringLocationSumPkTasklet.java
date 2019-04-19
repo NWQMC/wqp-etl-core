@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-//TODO
+//TODO - WQP-1395
 @Component
 @StepScope
 public class CreateMonitoringLocationSumPkTasklet implements Tasklet {
@@ -27,7 +27,7 @@ public class CreateMonitoringLocationSumPkTasklet implements Tasklet {
 	@Override
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
 //		jdbcTemplate.execute(new String(FileCopyUtils.copyToByteArray(executeResource.getInputStream())));
-		jdbcTemplate.execute("alter table station_sum_swap_stewards add primary key (data_source_id, station_id)");
+		jdbcTemplate.execute("alter table station_sum_swap_testsrc add primary key (data_source_id, station_id)");
 		return RepeatStatus.FINISHED;
 	}
 

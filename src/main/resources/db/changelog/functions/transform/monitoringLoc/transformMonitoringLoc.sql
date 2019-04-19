@@ -1,4 +1,4 @@
-create or replace function transform_monitoring_loc(wqp_data_source character varying, schema_name character varying)
+create or replace function transform_monitoring_loc(wqp_data_source character varying, wqp_schema_name character varying)
 returns void
 language plpgsql
 as $$
@@ -20,6 +20,6 @@ begin
            from %I.%I
           where site_type is not null and
                 activity_count > 0',
-        schema_name, code_table_name, schema_name, source_table_name);
+        wqp_schema_name, code_table_name, wqp_schema_name, source_table_name);
 end
 $$

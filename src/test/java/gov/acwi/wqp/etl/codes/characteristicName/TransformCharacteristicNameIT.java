@@ -50,7 +50,7 @@ public class TransformCharacteristicNameIT extends BaseFlowIT {
 
 	@Test
 	@DatabaseSetup(value="classpath:/testResult/wqp/characteristicName/empty.xml")
-	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/result/csv/")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/characteristicName/characteristicName.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void transformCharacteristicNameStepTest() {
 		try {
@@ -63,13 +63,12 @@ public class TransformCharacteristicNameIT extends BaseFlowIT {
 	}
 
 	@Test
-	@DatabaseSetup(value="classpath:/testResult/wqp/characteristicName/empty.xml")
-	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/result/csv/")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/characteristicName/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildCharacteristicNameIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/characteristicName/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/characteristicName/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupCharacteristicNameSwapTableFlowIT.EXPECTED_DATABASE_QUERY)

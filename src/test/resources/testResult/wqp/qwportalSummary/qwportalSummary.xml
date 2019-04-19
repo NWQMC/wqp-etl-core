@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <qwportal_summary_swap_testsrc
+        data_source_id="0"
+        fips_state_code="18"
+        fips_county_code="033"
+        fips_state_and_county="18033"
+        huc8="04100003"
+        min_date="2007-01-01"
+        max_date="[DATE-LE-12-MONTHS]"
+        samples_past_12_months="1"
+        samples_past_60_months="3"
+        samples_all_time="9"
+        nwis_or_epa="E"
+    />
+    <qwportal_summary_swap_testsrc
+        data_source_id="0"
+        fips_state_code="55"
+        fips_county_code="043"
+        fips_state_and_county="55043"
+        huc8="07060003"
+        min_date="1980-04-17"
+        max_date="1980-04-20"
+        samples_past_12_months="0"
+        samples_past_60_months="0"
+        samples_all_time="4"
+        nwis_or_epa="E"
+    />
+</dataset>

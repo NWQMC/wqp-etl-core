@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 @StepScope
 public class AddRi implements Tasklet {
-
+//TODO WQP-1395
 	private final JdbcTemplate jdbcTemplate;
 	private final String datasource;
 

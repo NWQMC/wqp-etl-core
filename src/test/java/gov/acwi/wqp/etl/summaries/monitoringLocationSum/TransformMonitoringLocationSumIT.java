@@ -30,8 +30,9 @@ import gov.acwi.wqp.etl.summaries.monitoringLocationSum.table.SetupMonitoringLoc
 
 public class TransformMonitoringLocationSumIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_TABLE_STATION_SUM = "station_sum_swap_stewards";
-	public static final String EXPECTED_DATABASE_QUERY_STATION_SUM = BASE_EXPECTED_DATABASE_QUERY_STATION_SUM + EXPECTED_DATABASE_TABLE_STATION_SUM;
+	public static final String EXPECTED_DATABASE_TABLE_STATION_SUM = "station_sum_swap_testsrc";
+	public static final String EXPECTED_DATABASE_QUERY_STATION_SUM = BASE_EXPECTED_DATABASE_QUERY_STATION_SUM
+			+ EXPECTED_DATABASE_TABLE_STATION_SUM + EXPECTED_DATABASE_QUERY_STATION_SUM_ORDER_BY;
 
 	@Autowired
 	@Qualifier("monitoringLocationSumFlow")
@@ -54,12 +55,13 @@ public class TransformMonitoringLocationSumIT extends BaseFlowIT {
 
 	@Test
 	@DatabaseSetup(value="classpath:/testResult/wqp/monitoringLocationSum/empty.xml")
-	@DatabaseSetup(value="classpath:/testData/wqp/station/station.xml")
-	@DatabaseSetup(value="classpath:/testData/wqp/activity/activity.xml")
-	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
-	@DatabaseSetup(connection="nwis", value="classpath:/testData/nwis/country/country.xml")
-	@DatabaseSetup(connection="nwis", value="classpath:/testData/nwis/state/state.xml")
-	@DatabaseSetup(connection="nwis", value="classpath:/testData/nwis/county/county.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/monitoringLocation/monitoringLocation.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/activity/csv/")
+	@DatabaseSetup(value="classpath:/testData/wqp/result/csv/")
+	@DatabaseSetup(value="classpath:/testResult/wqp/mlGrouping/csv/")
+	@DatabaseSetup(connection=CONNECTION_NWIS, value="classpath:/testData/nwis/country/country.xml")
+	@DatabaseSetup(connection=CONNECTION_NWIS, value="classpath:/testData/nwis/state/state.xml")
+	@DatabaseSetup(connection=CONNECTION_NWIS, value="classpath:/testData/nwis/county/county.xml")
 	@DatabaseSetup(value="classpath:/testData/wqx/country/country.xml")
 	@DatabaseSetup(value="classpath:/testData/wqx/state/state.xml")
 	@DatabaseSetup(value="classpath:/testData/wqx/county/county.xml")
@@ -77,13 +79,13 @@ public class TransformMonitoringLocationSumIT extends BaseFlowIT {
 	}
 
 	@Test
-	@DatabaseSetup(value="classpath:/testResult/wqp/monitoringLocationSum/empty.xml")
-	@DatabaseSetup(value="classpath:/testData/wqp/station/station.xml")
-	@DatabaseSetup(value="classpath:/testData/wqp/activity/activity.xml")
-	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
-	@DatabaseSetup(connection="nwis", value="classpath:/testData/nwis/country/country.xml")
-	@DatabaseSetup(connection="nwis", value="classpath:/testData/nwis/state/state.xml")
-	@DatabaseSetup(connection="nwis", value="classpath:/testData/nwis/county/county.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/monitoringLocation/monitoringLocation.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/activity/csv/")
+	@DatabaseSetup(value="classpath:/testData/wqp/result/csv/")
+	@DatabaseSetup(value="classpath:/testResult/wqp/mlGrouping/csv/")
+	@DatabaseSetup(connection=CONNECTION_NWIS, value="classpath:/testData/nwis/country/country.xml")
+	@DatabaseSetup(connection=CONNECTION_NWIS, value="classpath:/testData/nwis/state/state.xml")
+	@DatabaseSetup(connection=CONNECTION_NWIS, value="classpath:/testData/nwis/county/county.xml")
 	@DatabaseSetup(value="classpath:/testData/wqx/country/country.xml")
 	@DatabaseSetup(value="classpath:/testData/wqx/state/state.xml")
 	@DatabaseSetup(value="classpath:/testData/wqx/county/county.xml")
@@ -91,7 +93,7 @@ public class TransformMonitoringLocationSumIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildMonitoringLocationSumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/monitoringLocationSum/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/monitoringLocationSum/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupMonitoringLocationSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)

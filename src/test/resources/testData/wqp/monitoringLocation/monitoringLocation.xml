@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <station_swap_stewards
-        data_source_id="1"
-        data_source="STEWARDS"
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
         station_id="1"
         site_id="ARS-INSJ-INSJADE"
         organization="ARS"
         site_type="Land"
         huc="04100003"
         governmental_unit_code="US:18:033"
-        geom="SRID=4269;POINT(-84.990896451 41.4723060652)"
+        geom="0101000020AD1000001EB1F2D86A3F55C044DE6F8674BC4440"
         station_name="INSJADE"
         organization_name="Agricultural Research Service"
         description_text="INSJADE s located in a paired agricultural depress"
@@ -21,16 +21,16 @@
         drain_area_value="4.9"
         drain_area_unit="ha"
     />
-    <station_swap_stewards
-        data_source_id="1"
-        data_source="STEWARDS"
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
         station_id="2"
         site_id="ARS-INSJ-INSJADET"
         organization="ARS"
         site_type="Not Assigned"
         huc="041000030603"
         governmental_unit_code="US:18:033"
-        geom="SRID=4269;POINT(-84.991233201 41.4722692078)"
+        geom="0101000020AD1000004840615D703F55C05434415173BC4440"
         station_name="INSJADET"
         organization_name="Agricultural Research Service"
         description_text="INSJADET monitors Subsurface drainage from the eas"
@@ -40,16 +40,16 @@
         drain_area_value="4.9"
         drain_area_unit="ha"
     />
-    <station_swap_stewards
-        data_source_id="1"
-        data_source="STEWARDS"
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
         station_id="3"
         site_id="ARS-INSJ-INSJADW"
         organization="ARS"
         site_type="Not Assigned"
         huc="041000030603"
         governmental_unit_code="US:18:033"
-        geom="SRID=4269;POINT(-84.991524389 41.4722136688)"
+        geom="0101000020AD10000040FCB522753F55C02F1C5C7F71BC4440"
         station_name="INSJADW"
         organization_name="Agricultural Research Service"
         description_text="INSJADW is located in a paired agricultural depres"
@@ -59,16 +59,16 @@
         drain_area_value="4"
         drain_area_unit="ha"
     />
-    <station_swap_stewards
-        data_source_id="1"
-        data_source="STEWARDS"
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
         station_id="4"
         site_id="ARS-INSJ-INSJADWT"
         organization="ARS"
         site_type="Not Assigned"
         huc="041000030603"
         governmental_unit_code="US:18:033"
-        geom="SRID=4269;POINT(-84.992236656 41.4724211749)"
+        geom="0101000020AD10000065DA2CCE803F55C013110C4C78BC4440"
         station_name="INSJADWT"
         organization_name="Agricultural Research Service"
         description_text="INSJADET monitors Subsurface drainage from the eas"
@@ -78,16 +78,16 @@
         drain_area_value="1.3"
         drain_area_unit="ha"
     />
-    <station_swap_stewards
-        data_source_id="1"
-        data_source="STEWARDS"
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
         station_id="5"
         site_id="ARS-INSJ-INSJALG"
         organization="ARS"
         site_type="Not Assigned"
         huc="041000030603"
         governmental_unit_code="US:18:033"
-        geom="SRID=4269;POINT(-84.958611789 41.4566619292)"
+        geom="0101000020AD1000002AD442E5593D55C0039FE9E573BA4440"
         station_name="INSJALG"
         organization_name="Agricultural Research Service"
         description_text="INSJALG is a man made tile fed surface drainage di"
@@ -97,16 +97,16 @@
         drain_area_value="1934"
         drain_area_unit="ha"
     />
-    <station_swap_stewards
-        data_source_id="1"
-        data_source="STEWARDS"
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
         station_id="6"
         site_id="ARS-INSJ-INSJAME"
         organization="ARS"
         site_type="Not Assigned"
         huc="041000030603"
         governmental_unit_code="US:18:033"
-        geom="SRID=4269;POINT(-84.92537545 41.4937799766)"
+        geom="0101000020AD1000005D91F359393B55C05575A92E34BF4440"
         station_name="INSJAME"
         organization_name="Agricultural Research Service"
         description_text="INSJAME is a man made tile fed surface drainage di"
@@ -116,16 +116,16 @@
         drain_area_value="298"
         drain_area_unit="ha"
     />
-    <station_swap_stewards
-        data_source_id="1"
-        data_source="STEWARDS"
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
         station_id="7"
         site_id="ARS-INSJ-INSJAS1"
         organization="ARS"
         site_type="Not Assigned"
         huc="041000030603"
         governmental_unit_code="US:18:033"
-        geom="SRID=4269;POINT(-84.97495978 41.4606043099)"
+        geom="0101000020AD100000FC80B4BD653E55C065B5FF14F5BA4440"
         station_name="INSJAS1"
         organization_name="Agricultural Research Service"
         description_text="INSJAS1 is located in a  No-Till agricultural fiel"
@@ -135,16 +135,16 @@
         drain_area_value="2.2"
         drain_area_unit="ha"
     />
-    <station_swap_stewards
-        data_source_id="1"
-        data_source="STEWARDS"
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
         station_id="8"
         site_id="ARS-INSJ-INSJAS1T"
         organization="ARS"
         site_type="Not Assigned"
         huc="041000030603"
         governmental_unit_code="US:18:033"
-        geom="SRID=4269;POINT(-84.974957895 41.4605959112)"
+        geom="0101000020AD1000002180CCB5653E55C03EA38BCEF4BA4440"
         station_name="INSJAS1T"
         organization_name="Agricultural Research Service"
         description_text="INSJAS1T is located in a  No-Till agricultural fie"
@@ -154,16 +154,16 @@
         drain_area_value="2.2"
         drain_area_unit="ha"
     />
-    <station_swap_stewards
-        data_source_id="1"
-        data_source="STEWARDS"
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
         station_id="9"
         site_id="ARS-INSJ-INSJAS2"
         organization="ARS"
         site_type="Not Assigned"
         huc="041000030603"
         governmental_unit_code="US:18:033"
-        geom="SRID=4269;POINT(-84.968455196 41.4579402248)"
+        geom="0101000020AD100000859D802BFB3D55C0FA8408C99DBA4440"
         station_name="INSJAS2"
         organization_name="Agricultural Research Service"
         description_text="INSJAS2 is located in a  conventional tillage(Till"
@@ -173,16 +173,16 @@
         drain_area_value="2.7"
         drain_area_unit="ha"
     />
-    <station_swap_stewards
-        data_source_id="1"
-        data_source="STEWARDS"
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
         station_id="10"
         site_id="ARS-INSJ-INSJAS2T"
         organization="ARS"
         site_type="Not Assigned"
         huc="041000030603"
         governmental_unit_code="US:18:033"
-        geom="SRID=4269;POINT(-84.96845474 41.4579373238)"
+        geom="0101000020AD10000032FD9629FB3D55C05DABB2B09DBA4440"
         station_name="INSJAS2T"
         organization_name="Agricultural Research Service"
         description_text="INSJAS2T is located in a rotational tilled (Disk p"
@@ -192,16 +192,16 @@
         drain_area_value="2.7"
         drain_area_unit="ha"
     />
-    <station_swap_stewards
-        data_source_id="1"
-        data_source="STEWARDS"
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
         station_id="11"
         site_id="ARS-INSJ-INSJAXL"
         organization="ARS"
         site_type="Not Assigned"
         huc="041000030603"
         governmental_unit_code="US:18:033"
-        geom="SRID=4269;POINT(-85.004881664 41.4161576336)"
+        geom="0101000020AD100000B9CE2EFB4F4055C0792541A744B54440"
         station_name="INSJAXL"
         organization_name="Agricultural Research Service"
         description_text="INSJAXL is a man made tile fed surface drainage di"
@@ -211,16 +211,16 @@
         drain_area_value="4303"
         drain_area_unit="ha"
     />
-    <station_swap_stewards
-        data_source_id="1"
-        data_source="STEWARDS"
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
         station_id="12"
         site_id="ARS-INSJ-INSJBLG"
         organization="ARS"
         site_type="Not Assigned"
         huc="041000030604"
         governmental_unit_code="US:18:033"
-        geom="SRID=4269;POINT(-85.0042036 41.3954719728)"
+        geom="0101000020AD100000A1212DDF444055C08FD45AD39EB24440"
         station_name="INSJBLG"
         organization_name="Agricultural Research Service"
         description_text="INSJBLG is a man made tile fed surface drainage di"
@@ -230,16 +230,16 @@
         drain_area_value="1417"
         drain_area_unit="ha"
     />
-    <station_swap_stewards
-        data_source_id="1"
-        data_source="STEWARDS"
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
         station_id="13"
         site_id="ARS-INSJ-INSJBME"
         organization="ARS"
         site_type="Not Assigned"
         huc="041000030604"
         governmental_unit_code="US:18:033"
-        geom="SRID=4269;POINT(-84.944130184 41.435629791)"
+        geom="0101000020AD10000093DC01A16C3C55C010C18CB7C2B74440"
         station_name="INSJBME"
         organization_name="Agricultural Research Service"
         description_text="INSJBME is a man made tile fed surface drainage di"
@@ -249,16 +249,16 @@
         drain_area_value="311"
         drain_area_unit="ha"
     />
-    <station_swap_stewards
-        data_source_id="1"
-        data_source="STEWARDS"
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
         station_id="14"
         site_id="ARS-INSJ-INSJCLG"
         organization="ARS"
         site_type="Not Assigned"
         huc="041000030602"
         governmental_unit_code="US:18:033"
-        geom="SRID=4269;POINT(-85.015289684 41.4186307606)"
+        geom="0101000020AD100000C12F9581FA4055C035F058B195B54440"
         station_name="INSJCLG"
         organization_name="Agricultural Research Service"
         description_text="INSJCLG is a man made tile fed surface drainage di"
@@ -268,16 +268,16 @@
         drain_area_value="1380"
         drain_area_unit="ha"
     />
-    <station_swap_stewards
-        data_source_id="1"
-        data_source="STEWARDS"
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
         station_id="15"
         site_id="ARS-INSJ-INSJCME"
         organization="ARS"
         site_type="Not Assigned"
         huc="041000030602"
         governmental_unit_code="US:18:033"
-        geom="SRID=4269;POINT(-85.07550506 41.434843186)"
+        geom="0101000020AD1000007BD82C13D54455C0156107F1A8B74440"
         station_name="INSJCME"
         organization_name="Agricultural Research Service"
         description_text="INSJCME is a man made tile fed surface drainage di"
@@ -287,16 +287,16 @@
         drain_area_value="373"
         drain_area_unit="ha"
     />
-    <station_swap_stewards
-        data_source_id="1"
-        data_source="STEWARDS"
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
         station_id="16"
         site_id="ARS-INSJ-INSJF34"
         organization="ARS"
         site_type="Not Assigned"
         huc="041000030604"
         governmental_unit_code="US:18:033"
-        geom="SRID=4269;POINT(-85.01417061 41.4045874413)"
+        geom="0101000020AD100000EBA0D82BE84055C0BF607285C9B34440"
         station_name="INSJF34"
         organization_name="Agricultural Research Service"
         description_text="INSJF34 is a dredged and natural stream  water qua"
@@ -305,5 +305,57 @@
         hdatum_id_code="NAD83"
         drain_area_value="19341"
         drain_area_unit="ha"
+    />
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
+        station_id="818"
+        site_id="WIDNR_WQX-223217"
+        organization="WIDNR_WQX"
+        site_type="Stream"
+        huc="070600030302"
+        governmental_unit_code="US:55:043"
+        geom="0101000020AD100000247EC51A2EAF56C093FDF33460604540"
+        station_name="BOICE CREEK - BOICE CR. RD."
+        organization_name="Wisconsin Department of Natural Resources"
+        station_type_name="River/Stream"
+        latitude="42.752936"
+        longitude="-90.737189"
+        geopositioning_method="Unknown"
+        hdatum_id_code="NAD83"
+    />
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
+        station_id="900"
+        site_id="WIDNR_WQX-NO_GUC"
+        organization="WIDNR_WQX"
+        site_type="Stream"
+    />
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
+        station_id="901"
+        site_id="WIDNR_WQX-NO_COUNTRY"
+        organization="WIDNR_WQX"
+        site_type="Stream"
+        governmental_unit_code=":55:043"
+    />
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
+        station_id="902"
+        site_id="WIDNR_WQX-NO_STATE"
+        organization="WIDNR_WQX"
+        site_type="Stream"
+        governmental_unit_code="US::043"
+    />
+    <station_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
+        station_id="903"
+        site_id="WIDNR_WQX-NO_COUNTY"
+        organization="WIDNR_WQX"
+        governmental_unit_code="US:55:"
     />
 </dataset>

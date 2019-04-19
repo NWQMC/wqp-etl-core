@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import gov.acwi.wqp.etl.BuildCodeValueIndex;
+import gov.acwi.wqp.etl.EtlConstantUtils;
 import gov.acwi.wqp.etl.codes.projectDim.ProjectDim;
 
 @Component
@@ -15,9 +16,9 @@ public class BuildProjectDimCodeValueIndex extends BuildCodeValueIndex {
 
 	@Autowired
 	public BuildProjectDimCodeValueIndex(JdbcTemplate jdbcTemplate,
-			@Value("#{jobParameters['wqpDataSource']}") String wqpDataSource,
-			@Value("#{jobParameters['schemaName']}") String schemaName) {
-		super(jdbcTemplate, wqpDataSource, schemaName);
+			@Value(EtlConstantUtils.VALUE_JOB_PARM_DATA_SOURCE) String wqpDataSource,
+			@Value(EtlConstantUtils.VALUE_JOB_PARM_WQP_SCHEMA) String wqpSchemaName) {
+		super(jdbcTemplate, wqpDataSource, wqpSchemaName);
 	}
 
 	protected String getBaseTableName() {

@@ -8,8 +8,8 @@ public abstract class CreateSwapTable extends FunctionCallTasklet {
 
 	public CreateSwapTable(JdbcTemplate jdbcTemplate,
 			String wqpDataSource,
-			String schemaName) {
-		super(jdbcTemplate, wqpDataSource, schemaName);
+			String wqpSchemaName) {
+		super(jdbcTemplate, wqpDataSource, wqpSchemaName);
 	}
 
 	protected String getFunctionName() {

@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import gov.acwi.wqp.etl.EtlConstantUtils;
+
 @Configuration
 public class BuildOrgDataIndexes {
 
@@ -30,7 +32,7 @@ public class BuildOrgDataIndexes {
 
 	@Bean
 	public Flow buildOrgDataIndexesFlow() {
-		return new FlowBuilder<SimpleFlow>("buildOrgDataIndexesFlow")
+		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.BUILD_ORG_DATA_INDEXES_FLOW)
 				.start(buildOrgDataOrganizationIndexStep())
 				.build();
 	}

@@ -11,12 +11,15 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import gov.acwi.wqp.etl.EtlConstantUtils;
+
 @Configuration
 public class BuildResultIndexes {
 
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 
+	//TODO correct SQL - WQP-1400
 //	@Autowired
 //	@Qualifier("buildResultCountryIndex")
 //	private Tasklet buildResultCountryIndex;
@@ -175,7 +178,7 @@ public class BuildResultIndexes {
 
 	@Bean
 	public Flow buildResultIndexesFlow() {
-		return new FlowBuilder<SimpleFlow>("buildResultIndexesFlow")
+		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.BUILD_RESULT_INDEXES_FLOW)
 				.start(buildResultOrganizationIndexStep())
 //				.start(buildResultCountryIndexStep())
 //				.next(buildResultCountyIndexStep())

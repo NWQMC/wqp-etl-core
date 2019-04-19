@@ -1,8 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <project_dim_swap_stewards
-        data_source_id="1"
+    <project_dim_swap_testsrc
+        data_source_id="0"
         code_value="CEAP"
         project_dim_value="CEAP"
+    />
+    <project_dim_swap_testsrc
+        data_source_id="0"
+        code_value="UWSP_BUGS"
+        project_dim_value="UWSP_BUGS"
+    />
+    <project_dim_swap_testsrc
+        data_source_id="0"
+        code_value="BAY085"
+        project_dim_value="BAY085;MAIN;MDDNR;TWQMP;WATERQUALITY;MAIN"
+    />
+    <project_dim_swap_testsrc
+        data_source_id="0"
+        code_value="MAIN"
+        project_dim_value="BAY085;MAIN;MDDNR;TWQMP;WATERQUALITY;MAIN"
+    />
+    <project_dim_swap_testsrc
+        data_source_id="0"
+        code_value="MDDNR"
+        project_dim_value="BAY085;MAIN;MDDNR;TWQMP;WATERQUALITY;MAIN"
+    />
+    <project_dim_swap_testsrc
+        data_source_id="0"
+        code_value="TWQMP"
+        project_dim_value="BAY085;MAIN;MDDNR;TWQMP;WATERQUALITY;MAIN"
+    />
+    <project_dim_swap_testsrc
+        data_source_id="0"
+        code_value="WATERQUALITY"
+        project_dim_value="BAY085;MAIN;MDDNR;TWQMP;WATERQUALITY;MAIN"
+    />
+    <project_dim_swap_testsrc
+        data_source_id="0"
+        code_value="BAY085"
+        project_dim_value="BAY085;MAIN"
+    />
+    <project_dim_swap_testsrc
+        data_source_id="0"
+        code_value="MAIN"
+        project_dim_value="BAY085;MAIN"
     />
 </dataset>

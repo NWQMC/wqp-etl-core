@@ -15,13 +15,14 @@ import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
 import gov.acwi.wqp.etl.BaseFlowIT;
+import gov.acwi.wqp.etl.EtlConstantUtils;
 
 public class SetupMonitoringLocationSwapTableFlowIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE + "'station_swap_stewards'";
+	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE + "'station_swap_testsrc'";
 
 	@Autowired
-	@Qualifier("setupMonitoringLocationSwapTableFlow")
+	@Qualifier(EtlConstantUtils.SETUP_MONITORING_LOCATION_SWAP_TABLE_FLOW)
 	private Flow setupMonitoringLocationSwapTableFlow;
 
 	@Before
@@ -34,7 +35,7 @@ public class SetupMonitoringLocationSwapTableFlowIT extends BaseFlowIT {
 	}
 
 	@Test
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/monitoringLocation/drop.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/monitoringLocation/drop.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void dropMonitoringLocationSwapTableStepTest() {
@@ -49,7 +50,7 @@ public class SetupMonitoringLocationSwapTableFlowIT extends BaseFlowIT {
 	}
 
 	@Test
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/monitoringLocation/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/monitoringLocation/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void createMonitoringLocationSwapTableStepTest() {
@@ -64,7 +65,7 @@ public class SetupMonitoringLocationSwapTableFlowIT extends BaseFlowIT {
 	}
 
 	@Test
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/monitoringLocation/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/monitoringLocation/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void setupMonitoringLocationSwapTableFlowTest() {

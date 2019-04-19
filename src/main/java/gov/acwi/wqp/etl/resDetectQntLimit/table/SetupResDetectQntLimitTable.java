@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import gov.acwi.wqp.etl.EtlConstantUtils;
+
 @Configuration
 public class SetupResDetectQntLimitTable {
 
@@ -41,7 +43,7 @@ public class SetupResDetectQntLimitTable {
 
 	@Bean
 	public Flow setupResDetectQntLimitSwapTableFlow() {
-		return new FlowBuilder<SimpleFlow>("setupResDetectQntLimitSwapTableFlow")
+		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.SETUP_RES_DETECT_QNT_LIMIT_SWAP_TABLE_FLOW)
 				.start(dropResDetectQntLimitSwapTableStep())
 				.next(createResDetectQntLimitSwapTableStep())
 				.build();

@@ -8,8 +8,8 @@ public abstract class BuildStationIdIndex extends FunctionCallTasklet {
 
 	public BuildStationIdIndex(JdbcTemplate jdbcTemplate,
 			String wqpDataSource,
-			String schemaName) {
-		super(jdbcTemplate, wqpDataSource, schemaName);
+			String wqpSchemaName) {
+		super(jdbcTemplate, wqpDataSource, wqpSchemaName);
 	}
 
 	protected String getFunctionName() {

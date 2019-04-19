@@ -29,6 +29,7 @@ public class TransformMonitoringLocationSum {
 	@Qualifier("buildMonitoringLocationSumIndexesFlow")
 	private Flow buildMonitoringLocationSumIndexesFlow;
 
+	//TODO correct SQL - WQP-1395
 //	@Autowired
 //	@Qualifier("createMonitoringLocationSumPkTasklet")
 //	private Tasklet createMonitoringLocationSumPkTasklet;
@@ -40,6 +41,7 @@ public class TransformMonitoringLocationSum {
 				.build();
 	}
 
+	//TODO correct SQL - WQP-1395
 //	@Bean
 //	public Step createMonitoringLocationSumPkStep() {
 //		return stepBuilderFactory.get("createMonitoringLocationSumPkStep")

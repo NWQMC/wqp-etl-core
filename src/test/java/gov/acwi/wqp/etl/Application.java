@@ -14,10 +14,6 @@ import org.springframework.context.annotation.Bean;
 @EnableBatchProcessing
 public class Application {
 
-	public static final Integer DATA_SOURCE_ID = 1;
-	public static final String DATA_SOURCE = "STEWARDS";
-	public static final Integer ORGANIZATION_ID = 3000000;
-
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 

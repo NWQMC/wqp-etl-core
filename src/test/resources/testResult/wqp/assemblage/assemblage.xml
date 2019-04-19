@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <assemblage_swap_stewards />
+    <assemblage_swap_testsrc
+        data_source_id="0"
+        code_value="Fish/Nekton"
+    />
 </dataset>

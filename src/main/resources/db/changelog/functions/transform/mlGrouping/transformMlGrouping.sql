@@ -1,4 +1,4 @@
-create or replace function transform_ml_grouping(wqp_data_source character varying, schema_name character varying)
+create or replace function transform_ml_grouping(wqp_data_source character varying, wqp_schema_name character varying)
 returns void
 language plpgsql
 as $$
@@ -39,8 +39,8 @@ begin
                         activity_id,
                         last_updated,
                         case 
-                           when event_date > (now() - interval ''12 month'') then 1
-                           when event_date > (now() - interval ''60 month'') then 5
+                           when event_date >= (now() - interval ''12 month'')::date then 1
+                           when event_date >= (now() - interval ''60 month'')::date then 5
                            else 9
                         end years_window
                    from %I.%I
@@ -49,6 +49,6 @@ begin
                                     (data_source_id, station_id, the_year, characteristic_type, characteristic_name),
                                     (data_source_id, station_id, years_window, characteristic_type)
                                    )',
-        schema_name, summary_table_name, schema_name, result_table_name);
+        wqp_schema_name, summary_table_name, wqp_schema_name, result_table_name);
 end
 $$

@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.transform_qwportal_summary"
+      changes:
+        - sqlFile:
+            path: transformQwportalSummary.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists transform_qwportal_summary(character varying,character varying,character varying);

@@ -22,9 +22,9 @@ public class BuildMonitoringLocationSiteTypeIndex implements Tasklet {
 
 	@Override
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-		jdbcTemplate.update("create index if not exists station_stewards_site_type on station_swap_stewards(site_type)");
-//TODO correct SQL
-//		jdbcTemplate.update("create index if not exists station_stewards_site_type on ${schemaName}.station_stewards(site_type) with (fillfactor = 100)");
+		jdbcTemplate.update("create index if not exists station_testsrc_site_type on station_swap_testsrc(site_type)");
+//TODO correct SQL - WQP-1400
+//		jdbcTemplate.update("create index if not exists station_testsrc_site_type on ${schemaName}.station_testsrc(site_type) with (fillfactor = 100)");
 		return RepeatStatus.FINISHED;
 	}
 }

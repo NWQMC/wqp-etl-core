@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <project_data_swap_stewards
-        data_source_id="1"
-        data_source="STEWARDS"
+    <project_data_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
         organization="ARS"
         organization_name="Agricultural Research Service"
         project_identifier="CEAP"

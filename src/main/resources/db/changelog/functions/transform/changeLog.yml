@@ -24,6 +24,10 @@ databaseChangeLog:
       file: "monitoringLocationSum/changeLog.yml"
       relativeToChangelogFile: true
 
+  - include:
+      file: "qwportalSummary/changeLog.yml"
+      relativeToChangelogFile: true
+
 #   Codes
   - include:
       file: "assemblage/changeLog.yml"
