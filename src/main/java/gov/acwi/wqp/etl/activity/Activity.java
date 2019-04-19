@@ -38,7 +38,6 @@ public class Activity {
 	private String activityLowerDepthUnit;
 	private String projectId;
 	private String activityConductingOrg;
-	private String activityComment;
 	private String sampleAqfrName;
 	private String hydrologicConditionName;
 	private String hydrologicEventName;
@@ -265,12 +264,6 @@ public class Activity {
 	}
 	public void setMonitoringLocationName(String monitoringLocationName) {
 		this.monitoringLocationName = monitoringLocationName;
-	}
-	public String getActivityComment() {
-		return activityComment;
-	}
-	public void setActivityComment(String activityComment) {
-		this.activityComment = activityComment;
 	}
 	public String getSampleCollectMethodId() {
 		return sampleCollectMethodId;
