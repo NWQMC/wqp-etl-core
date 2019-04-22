@@ -11,7 +11,7 @@ public class ConfigurationService {
 	@Value("${GEO_SCHEMA_NAME}")
 	private String geoSchemaName;
 	@Value("${ETL_DATA_SOURCE_ID}")
-	private Integer etlDaataSourceId;
+	private Integer etlDataSourceId;
 	@Value("${ETL_DATA_SOURCE}")
 	private String etlDataSource;
 	@Value("${QWPORTAL_SUMMARY_ETL:false}")
@@ -31,10 +31,10 @@ public class ConfigurationService {
 		this.geoSchemaName = geoSchemaName;
 	}
 	public Integer getEtlDataSourceId() {
-		return etlDaataSourceId;
+		return etlDataSourceId;
 	}
 	public void setEtlDataSourceId(Integer etlDaataSourceId) {
-		this.etlDaataSourceId = etlDaataSourceId;
+		this.etlDataSourceId = etlDaataSourceId;
 	}
 	public String getEtlDataSource() {
 		return etlDataSource;
