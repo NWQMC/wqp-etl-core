@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <taxa_name_swap_stewards />
+    <taxa_name_swap_testsrc
+        data_source_id="0"
+        code_value="Moxostoma erythrurum"
+    />
 </dataset>

@@ -15,13 +15,14 @@ import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
 import gov.acwi.wqp.etl.BaseFlowIT;
+import gov.acwi.wqp.etl.EtlConstantUtils;
 
 public class BuildActivityIndexesFlowIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX + "'activity_swap_stewards'";
+	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX + "'activity_swap_testsrc'";
 
 	@Autowired
-	@Qualifier("buildActivityIndexesFlow")
+	@Qualifier(EtlConstantUtils.BUILD_ACTIVITY_INDEXES_FLOW)
 	private Flow buildActivityIndexesFlow;
 
 	@Before
@@ -37,7 +38,7 @@ public class BuildActivityIndexesFlowIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activity/indexes/organization.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY + " and indexname='activity_swap_stewards_organization'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='activity_swap_testsrc_organization'")
 	public void buildActivityOrganizationIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

@@ -11,12 +11,15 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import gov.acwi.wqp.etl.EtlConstantUtils;
+
 @Configuration
 public class BuildActivityIndexes {
 
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 
+//WQP-1400
 //	@Autowired
 //	@Qualifier("buildActivityCountryIndex")
 //	private Tasklet buildActivityCountryIndex;
@@ -174,7 +177,7 @@ public class BuildActivityIndexes {
 
 	@Bean
 	public Flow buildActivityIndexesFlow() {
-		return new FlowBuilder<SimpleFlow>("buildActivityIndexesFlow")
+		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.BUILD_ACTIVITY_INDEXES_FLOW)
 				.start(buildActivityOrganizationIndexStep())
 //				.start(buildActivityCountryIndexStep())
 //				.next(buildActivityCountyIndexStep())

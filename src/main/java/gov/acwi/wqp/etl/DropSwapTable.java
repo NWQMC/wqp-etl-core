@@ -8,8 +8,8 @@ public abstract class DropSwapTable extends FunctionCallTasklet {
 
 	public DropSwapTable(JdbcTemplate jdbcTemplate,
 			String wqpDataSource,
-			String schemaName) {
-		super(jdbcTemplate, wqpDataSource, schemaName);
+			String wqpSchemaName) {
+		super(jdbcTemplate, wqpDataSource, wqpSchemaName);
 	}
 
 	protected String getFunctionName() {

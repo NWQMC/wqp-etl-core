@@ -1,4 +1,4 @@
-create or replace function transform_state(wqp_data_source character varying, schema_name character varying)
+create or replace function transform_state(wqp_data_source character varying, wqp_schema_name character varying)
 returns void
 language plpgsql
 as $$
@@ -12,11 +12,11 @@ begin
                             description_with_country,
                             description_with_out_country)
          select distinct data_source_id,
-                         substring(governmental_unit_code, ''[^:]+:[^:]+'') code_value,
-                         substring(governmental_unit_code, ''[^:]+'') || '', '' || state_name description_with_country,
+                         substring(governmental_unit_code, ''^[^:]+:[^:]+'') code_value,
+                         substring(governmental_unit_code, ''^[^:]+'') || '', '' || state_name description_with_country,
                          state_name description_with_out_country
            from %I.%I
-          where substring(governmental_unit_code, ''[^:]+:[^:]+'') is not null',
-        schema_name, code_table_name, schema_name, source_table_name);
+          where substring(governmental_unit_code, ''^[^:]+:[^:]+'') is not null',
+        wqp_schema_name, code_table_name, wqp_schema_name, source_table_name);
 end
 $$

@@ -51,8 +51,8 @@ public class TransformMlGroupingIT extends BaseFlowIT {
 
 	@Test
 	@DatabaseSetup(value="classpath:/testResult/wqp/mlGrouping/empty.xml")
-	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
-	@ExpectedDatabase(value="classpath:/testResult/wqp/mlGrouping/mlGrouping.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@DatabaseSetup(value="classpath:/testData/wqp/result/csv/")
+	@ExpectedDatabase(value="classpath:/testResult/wqp/mlGrouping/csv/", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void transformMlGroupingStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchStep("transformMlGroupingStep", testJobParameters);
@@ -64,17 +64,17 @@ public class TransformMlGroupingIT extends BaseFlowIT {
 	}
 
 	@Test
-	@DatabaseSetup(value="classpath:/testResult/wqp/mlGrouping/empty.xml")
-	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/mlGrouping/mlGrouping.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/result/csv/")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/mlGrouping/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildMlGroupingIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/mlGrouping/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/mlGrouping/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupMlGroupingSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(value="classpath:/testResult/wqp/mlGrouping/mlGrouping.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testResult/wqp/mlGrouping/csv/", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void mlGroupingFlowTest() {
 		Job mlGroupingFlowTest = jobBuilderFactory.get("mlGroupingFlowTest")
 					.start(mlGroupingFlow)

@@ -15,13 +15,14 @@ import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
 import gov.acwi.wqp.etl.BaseFlowIT;
+import gov.acwi.wqp.etl.EtlConstantUtils;
 
 public class SetupOrgDataSwapTableFlowIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE + "'org_data_swap_stewards'";
+	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE + "'org_data_swap_testsrc'";
 
 	@Autowired
-	@Qualifier("setupOrgDataSwapTableFlow")
+	@Qualifier(EtlConstantUtils.SETUP_ORG_DATA_SWAP_TABLE_FLOW)
 	private Flow setupOrgDataSwapTableFlow;
 
 	@Before
@@ -34,7 +35,7 @@ public class SetupOrgDataSwapTableFlowIT extends BaseFlowIT {
 	}
 
 	@Test
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/orgData/drop.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/orgData/drop.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void dropOrgDataSwapTableStepTest() {
@@ -49,7 +50,7 @@ public class SetupOrgDataSwapTableFlowIT extends BaseFlowIT {
 	}
 
 	@Test
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/orgData/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/orgData/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void createOrgDataSwapTableStepTest() {
@@ -64,7 +65,7 @@ public class SetupOrgDataSwapTableFlowIT extends BaseFlowIT {
 	}
 
 	@Test
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/orgData/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/orgData/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void setupOrgDataSwapTableFlowTest() {

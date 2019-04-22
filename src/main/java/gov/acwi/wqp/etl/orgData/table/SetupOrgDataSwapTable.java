@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import gov.acwi.wqp.etl.EtlConstantUtils;
+
 @Configuration
 public class SetupOrgDataSwapTable {
 
@@ -41,7 +43,7 @@ public class SetupOrgDataSwapTable {
 
 	@Bean
 	public Flow setupOrgDataSwapTableFlow() {
-		return new FlowBuilder<SimpleFlow>("setupOrgDataSwapTableFlow")
+		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.SETUP_ORG_DATA_SWAP_TABLE_FLOW)
 				.start(dropOrgDataSwapTableStep())
 				.next(createOrgDataSwapTableStep())
 				.build();

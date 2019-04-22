@@ -15,19 +15,19 @@ import org.springframework.stereotype.Component;
 public class CorePreparedStatementSetter implements PreparedStatementSetter {
 
 	private final String wqpDataSource;
-	private final String schemaName;
+	private final String wqpSchemaName;
 
 	public CorePreparedStatementSetter(
-			@Value("#{jobParameters['wqpDataSource']}") String wqpDataSource,
-			@Value("#{jobParameters['schemaName']}") String schemaName) {
+			@Value(EtlConstantUtils.VALUE_JOB_PARM_DATA_SOURCE) String wqpDataSource,
+			@Value(EtlConstantUtils.VALUE_JOB_PARM_WQP_SCHEMA) String wqpSchemaName) {
 		this.wqpDataSource = wqpDataSource;
-		this.schemaName = schemaName;
+		this.wqpSchemaName = wqpSchemaName;
 	}
 
 	@Override
 	public void setValues(PreparedStatement ps) throws SQLException {
 		ps.setString(1, wqpDataSource);
-		ps.setString(2, schemaName);
+		ps.setString(2, wqpSchemaName);
 	}
 
 }

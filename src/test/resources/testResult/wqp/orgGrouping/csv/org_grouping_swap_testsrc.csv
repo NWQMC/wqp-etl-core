@@ -1,0 +1,24 @@
+"data_source_id","data_source","organization","the_year","characteristic_type","characteristic_name","total_monitoring_locations","total_activities","total_results","last_result_date","grouping_id"
+0,"TESTSRC","ARS","2007","Nutrient","Ammonia",4,5,6,"2018-12-31",0
+0,"TESTSRC","ARS","2007","Nutrient","Nitrogen",4,5,5,null,0
+0,"TESTSRC","ARS","2007","Nutrient","Nitrogen Kjeldahl",4,5,5,null,0
+0,"TESTSRC","ARS","2007","Nutrient","Orthophosphate",4,5,5,"2007-03-01",0
+0,"TESTSRC","ARS","2007","Nutrient","Phosphorus",4,5,5,null,0
+0,"TESTSRC","ARS","2007","Nutrient",null,4,5,26,"2018-12-31",1
+0,"TESTSRC","ARS","2007",null,null,1,1,1,null,0
+0,"TESTSRC","ARS","2007",null,null,1,1,1,null,1
+0,"TESTSRC","ARS","2007",null,null,4,5,27,"2018-12-31",11
+0,"TESTSRC","ARS","[YEAR-LE-60-MONTHS]","Nutrient","Ammonia",1,2,4,"2018-12-31",0
+0,"TESTSRC","ARS","[YEAR-LE-60-MONTHS]","Nutrient","Nitrogen",1,2,2,null,0
+0,"TESTSRC","ARS","[YEAR-LE-60-MONTHS]","Nutrient","Nitrogen Kjeldahl",1,2,2,null,0
+0,"TESTSRC","ARS","[YEAR-LE-60-MONTHS]","Nutrient","Orthophosphate",1,2,2,"2007-03-01",0
+0,"TESTSRC","ARS","[YEAR-LE-60-MONTHS]","Nutrient","Phosphorus",1,2,2,null,0
+0,"TESTSRC","ARS","[YEAR-LE-60-MONTHS]","Nutrient",null,1,2,12,"2018-12-31",1
+0,"TESTSRC","ARS","[YEAR-LE-60-MONTHS]",null,null,1,2,12,"2018-12-31",11
+0,"TESTSRC","ARS","[YEAR-LE-12-MONTHS]","Nutrient","Ammonia",1,2,4,"2018-12-31",0
+0,"TESTSRC","ARS","[YEAR-LE-12-MONTHS]","Nutrient","Nitrogen",1,2,2,null,0
+0,"TESTSRC","ARS","[YEAR-LE-12-MONTHS]","Nutrient","Nitrogen Kjeldahl",1,2,2,null,0
+0,"TESTSRC","ARS","[YEAR-LE-12-MONTHS]","Nutrient","Orthophosphate",1,2,2,"2007-03-01",0
+0,"TESTSRC","ARS","[YEAR-LE-12-MONTHS]","Nutrient","Phosphorus",1,2,2,null,0
+0,"TESTSRC","ARS","[YEAR-LE-12-MONTHS]","Nutrient",null,1,2,12,"2018-12-31",1
+0,"TESTSRC","ARS","[YEAR-LE-12-MONTHS]",null,null,1,2,12,"2018-12-31",11

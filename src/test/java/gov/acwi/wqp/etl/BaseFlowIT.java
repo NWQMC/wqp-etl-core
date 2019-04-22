@@ -2,6 +2,7 @@ package gov.acwi.wqp.etl;
 
 import java.nio.charset.Charset;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
@@ -38,16 +39,25 @@ import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 @SpringBatchTest
 @SpringBootTest
 @RunWith(SpringRunner.class)
-@TestExecutionListeners({ DependencyInjectionTestExecutionListener.class,
-	StepScopeTestExecutionListener.class,
-	DbUnitTestExecutionListener.class,
-	DirtiesContextTestExecutionListener.class
-	})
+@TestExecutionListeners({
+		DependencyInjectionTestExecutionListener.class,
+		StepScopeTestExecutionListener.class,
+		DbUnitTestExecutionListener.class,
+		DirtiesContextTestExecutionListener.class
+		})
 @AutoConfigureTestDatabase(replace=Replace.NONE)
 @Import({DBTestConfig.class})
-@DbUnitConfiguration(databaseConnection={"wqp","pg","nwis"})
+@DbUnitConfiguration(
+		databaseConnection={BaseFlowIT.CONNECTION_WQP,BaseFlowIT.CONNECTION_INFORMATION_SCHEMA,BaseFlowIT.CONNECTION_NWIS},
+		dataSetLoader=FileSensingDataSetLoader.class
+		)
 @DirtiesContext
 public abstract class BaseFlowIT {
+
+	public static final String CONNECTION_WQX = "wqx";
+	public static final String CONNECTION_NWIS = "nwis";
+	public static final String CONNECTION_INFORMATION_SCHEMA = "pg";
+	public static final String CONNECTION_WQP = "wqp";
 
 	public static final String EXPECTED_DATABASE_TABLE_CHECK_TABLE = "tables";
 	public static final String EXPECTED_DATABASE_TABLE_CHECK_INDEX = "pg_indexes";
@@ -55,11 +65,20 @@ public abstract class BaseFlowIT {
 	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE = "select table_catalog, table_schema, table_name, table_type from information_schema.tables where table_name=";
 	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX = "select tablename, indexname, indexdef from pg_indexes where tablename=";
 
+	//This query is needed as the DBUnit code doesn't correctly read the JSON columns from the catalog. By specifying the columns as text we actually get them in the compare.
 	public static final String BASE_EXPECTED_DATABASE_QUERY_STATION_SUM = "select data_source_id,data_source,station_id,site_id,"
 			+ "station_name,organization,organization_name,site_type,station_type_name,huc,governmental_unit_code,"
 			+ "geom,country_name,state_name,county_name,activity_count,activity_count_past_12_months,"
 			+ "activity_count_past_60_months,result_count,result_count_past_12_months,result_count_past_60_months,"
-			+ "summary_all_months from ";
+			+ "summary_past_12_months::text, summary_past_60_months::text, summary_all_months::text from ";
+	public static final String EXPECTED_DATABASE_QUERY_STATION_SUM_ORDER_BY = " order by data_source_id, station_id";
+
+	public static final LocalDate TEST_DATE = LocalDate.now();
+
+	public static final LocalDate TEST_DATE_MINUS_12_MONTHS = TEST_DATE.minusMonths(12);
+	public static final LocalDate TEST_DATE_MINUS_12_MONTHS_1_DAY = TEST_DATE_MINUS_12_MONTHS.minusDays(1);
+	public static final LocalDate TEST_DATE_MINUS_60_MONTHS = TEST_DATE.minusMonths(60);
+	public static final LocalDate TEST_DATE_MINUS_60_MONTHS_1_DAY = TEST_DATE_MINUS_60_MONTHS.minusDays(1);
 
 	@Autowired
 	protected JdbcTemplate jdbcTemplate;
@@ -69,6 +88,9 @@ public abstract class BaseFlowIT {
 	protected JobLauncherTestUtils jobLauncherTestUtils;
 	@Autowired
 	protected DataSource dataSource;
+	@Autowired
+	protected ConfigurationService configurationService;
+
 	@Value("classpath:db/test_db.sql")
 	protected Resource resource;
 
@@ -86,10 +108,11 @@ public abstract class BaseFlowIT {
 	public void baseSetup() {
 		testJobParameters= new JobParametersBuilder()
 				.addJobParameters(jobLauncherTestUtils.getUniqueJobParameters())
-				.addString("wqpDataSourceId", "1", true)
-				.addString("wqpDataSource", "stewards", true)
-				.addString("schemaName", "wqp", false)
-				.addString("geoSchemaName", "nwis", false)
+				.addString(EtlConstantUtils.JOB_PARM_DATA_SOURCE_ID, configurationService.getEtlDataSourceId().toString(), true)
+				.addString(EtlConstantUtils.JOB_PARM_DATA_SOURCE, configurationService.getEtlDataSource().toLowerCase(), true)
+				.addString(EtlConstantUtils.JOB_PARM_WQP_SCHEMA, configurationService.getWqpSchemaName(), false)
+				.addString(EtlConstantUtils.JOB_PARM_GEO_SCHEMA, configurationService.getGeoSchemaName(), false)
+				.addString(EtlConstantUtils.JOB_PARM_NWIS_OR_EPA, configurationService.getNwisOrEpa(), false)
 				.toJobParameters();
 	}
 

@@ -18,7 +18,7 @@ import gov.acwi.wqp.etl.BaseFlowIT;
 
 public class SetupTaxaNameSwapTableFlowIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE + "'taxa_name_swap_stewards'";
+	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE + "'taxa_name_swap_testsrc'";
 
 	@Autowired
 	@Qualifier("setupTaxaNameSwapTableFlow")
@@ -34,7 +34,7 @@ public class SetupTaxaNameSwapTableFlowIT extends BaseFlowIT {
 	}
 
 	@Test
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/taxaName/drop.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/taxaName/drop.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void dropTaxaNameSwapTableStepTest() {
@@ -49,7 +49,7 @@ public class SetupTaxaNameSwapTableFlowIT extends BaseFlowIT {
 	}
 
 	@Test
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/taxaName/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/taxaName/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void createTaxaNameSwapTableStepTest() {
@@ -64,7 +64,7 @@ public class SetupTaxaNameSwapTableFlowIT extends BaseFlowIT {
 	}
 
 	@Test
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/taxaName/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/taxaName/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void setupTaxaNameSwapTableFlowTest() {

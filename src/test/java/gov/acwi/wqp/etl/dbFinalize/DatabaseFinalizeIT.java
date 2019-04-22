@@ -24,11 +24,12 @@ import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
 import gov.acwi.wqp.etl.BaseFlowIT;
+import gov.acwi.wqp.etl.EtlConstantUtils;
 
 public class DatabaseFinalizeIT extends BaseFlowIT {
 
 	@Autowired
-	@Qualifier("databaseFinalizeFlow")
+	@Qualifier(EtlConstantUtils.CREATE_DATABASE_FINALIZE_FLOW)
 	private Flow databaseFinalizeFlow;
 
 	@PostConstruct
@@ -75,13 +76,12 @@ public class DatabaseFinalizeIT extends BaseFlowIT {
 	}
 
 //	@Test
-//	@DatabaseSetup(value="classpath:/testResult/wqp/taxaName/empty.xml")
 //	@DatabaseSetup(value="classpath:/testResult/wqp/resultSum/resultSum.xml")
 //	@ExpectedDatabase(value="classpath:/testResult/wqp/taxaName/indexes/all.xml",
 //			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 //			table=EXPECTED_DATABASE_TABLE,
 //			query=BuildTaxaNameIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-//	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/taxaName/create.xml",
+//	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/taxaName/create.xml",
 //			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 //			table=EXPECTED_DATABASE_TABLE,
 //			query=SetupTaxaNameSwapTableFlowIT.EXPECTED_DATABASE_QUERY)

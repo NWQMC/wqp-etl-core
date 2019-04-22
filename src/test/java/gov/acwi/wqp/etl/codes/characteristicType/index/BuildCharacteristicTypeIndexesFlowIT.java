@@ -18,7 +18,7 @@ import gov.acwi.wqp.etl.BaseFlowIT;
 
 public class BuildCharacteristicTypeIndexesFlowIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX + "'char_type_swap_stewards'";
+	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX + "'char_type_swap_testsrc'";
 
 	@Autowired
 	@Qualifier("buildCharacteristicTypeIndexesFlow")
@@ -36,7 +36,7 @@ public class BuildCharacteristicTypeIndexesFlowIT extends BaseFlowIT {
 	@Test
 	@ExpectedDatabase(value="classpath:/testResult/wqp/characteristicType/indexes/codeValue.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY + " and indexname='char_type_swap_stewards_code_value'")
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY + " and indexname='char_type_swap_testsrc_code_value'")
 	public void buildCharacteristicTypecodeValueIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

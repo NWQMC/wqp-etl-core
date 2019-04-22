@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import gov.acwi.wqp.etl.EtlConstantUtils;
+
 @Configuration
 public class BuildResDetectQntLimitIndexes {
 
@@ -21,6 +23,7 @@ public class BuildResDetectQntLimitIndexes {
 	@Qualifier("buildResDetectQntLimitOrganizationIndex")
 	private Tasklet buildResDetectQntLimitOrganizationIndex;
 
+	//TODO correct SQL - WQP-1400
 //	@Autowired
 //	@Qualifier("buildResDetectQntLimitIdentifierIndex")
 //	private Tasklet buildResDetectQntLimitIdentifierIndex;
@@ -32,6 +35,7 @@ public class BuildResDetectQntLimitIndexes {
 				.build();
 	}
 
+	//TODO correct SQL - WQP-1400
 //	@Bean
 //	public Step buildResDetectQntLimitIdentifierIndexStep() {
 //		return stepBuilderFactory.get("buildResDetectQntLimitIdentifierIndexStep")
@@ -41,7 +45,7 @@ public class BuildResDetectQntLimitIndexes {
 
 	@Bean
 	public Flow buildResDetectQntLimitIndexesFlow() {
-		return new FlowBuilder<SimpleFlow>("buildResDetectQntLimitIndexesFlow")
+		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.BUILD_RES_DETECT_QNT_LIMIT_INDEXES_FLOW)
 				.start(buildResDetectQntLimitOrganizationIndexStep())
 //				.next(buildResDetectQntLimitIdentifierIndexStep())
 				.build();

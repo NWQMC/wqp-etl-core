@@ -8,9 +8,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import gov.acwi.wqp.etl.ConfigurationService;
+import gov.acwi.wqp.etl.EtlConstantUtils;
+
 @Configuration
 public class CreateSummaries {
 
+	@Autowired
+	private ConfigurationService configurationService;
 	@Autowired
 	@Qualifier("activitySumFlow")
 	private Flow activitySumFlow;
@@ -29,21 +34,23 @@ public class CreateSummaries {
 	@Autowired
 	@Qualifier("monitoringLocationSumFlow")
 	private Flow monitoringLocationSumFlow;
-//	@Autowired
-//	@Qualifier("qwportalSumFlow")
-//	private Flow qwportalSumFlow;
+	@Autowired
+	@Qualifier("qwportalSummaryFlow")
+	private Flow qwportalSummaryFlow;
 
 	@Bean
 	public Flow createSummariesFlow() {
-		return new FlowBuilder<SimpleFlow>("createSummariesFlow")
+		FlowBuilder<SimpleFlow> flowBuilder = new FlowBuilder<SimpleFlow>(EtlConstantUtils.CREATE_SUMMARIES_FLOW)
 				.start(activitySumFlow)
 				.next(resultSumFlow)
 				.next(orgGroupingFlow)
 				.next(mlGroupingFlow)
-				//TODO				.next(organizationSumFlow)
-				.next(monitoringLocationSumFlow)
-//TODO				.next(qwportalSumFlow)
-				.build();
+//TODO - WQP-1406				.next(organizationSumFlow)
+				.next(monitoringLocationSumFlow);
+		if (configurationService.isQwportalSummary()) {
+			flowBuilder = flowBuilder.next(qwportalSummaryFlow);
+		}
+		return flowBuilder.build();
 	}
 
 }

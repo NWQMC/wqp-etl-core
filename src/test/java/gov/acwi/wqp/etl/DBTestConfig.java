@@ -18,26 +18,26 @@ public class DBTestConfig {
 
 	@Bean
 	@Primary
-	@ConfigurationProperties(prefix="spring.datasource-wqp")
+	@ConfigurationProperties(prefix=EtlConstantUtils.SPRING_DATASOURCE_WQP)
 	public DataSourceProperties dataSourcePropertiesWqp() {
 		return new DataSourceProperties();
 	}
 
 	@Bean
 	@Primary
-	@ConfigurationProperties(prefix="spring.datasource-wqp")
+	@ConfigurationProperties(prefix=EtlConstantUtils.SPRING_DATASOURCE_WQP)
 	public DataSource dataSourceWqp() {
 		return dataSourcePropertiesWqp().initializeDataSourceBuilder().build();
 	}
 
 	@Bean
-	@ConfigurationProperties(prefix="spring.datasource-nwis")
+	@ConfigurationProperties(prefix=EtlConstantUtils.SPRING_DATASOURCE_NWIS)
 	public DataSourceProperties dataSourcePropertiesNwis() {
 		return new DataSourceProperties();
 	}
 
 	@Bean
-	@ConfigurationProperties(prefix="spring.datasource-nwis")
+	@ConfigurationProperties(prefix=EtlConstantUtils.SPRING_DATASOURCE_NWIS)
 	public DataSource dataSourceNwis() {
 		return dataSourcePropertiesNwis().initializeDataSourceBuilder().build();
 	}

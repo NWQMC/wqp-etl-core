@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import gov.acwi.wqp.etl.EtlConstantUtils;
+
 @Component
 @StepScope
 public class UpdateLastETL implements Tasklet {
@@ -19,7 +21,7 @@ public class UpdateLastETL implements Tasklet {
 
 	@Autowired
 	public UpdateLastETL(JdbcTemplate jdbcTemplate,
-		@Value("#{jobParameters['wqpDataSourceId']}") int wqpDataSourceId) {
+		@Value(EtlConstantUtils.VALUE_JOB_PARM_DATA_SOURCE_ID) int wqpDataSourceId) {
 		this.jdbcTemplate = jdbcTemplate;
 		this.wqpDataSourceId = wqpDataSourceId;
 	}

@@ -1,7 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <project_swap_stewards
-        data_source_id="1"
+    <project_swap_testsrc
+        data_source_id="0"
         code_value="CEAP"
     />
+    <project_swap_testsrc
+        data_source_id="0"
+        code_value="UWSP_BUGS"
+    />
+    <project_swap_testsrc
+        data_source_id="0"
+        code_value="BAY085"
+    />
+    <project_swap_testsrc
+        data_source_id="0"
+        code_value="MAIN"
+    />
+    <project_swap_testsrc
+        data_source_id="0"
+        code_value="MDDNR"
+    />
+    <project_swap_testsrc
+        data_source_id="0"
+        code_value="TWQMP"
+    />
+    <project_swap_testsrc
+        data_source_id="0"
+        code_value="WATERQUALITY"
+    />
+    
 </dataset>

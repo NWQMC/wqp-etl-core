@@ -1,0 +1,39 @@
+"data_source_id","data_source","station_id","the_year","years_window","characteristic_type","characteristic_name","total_activities","total_results","last_result_date","grouping_id"
+0,"TESTSRC","5",null,1,"Nutrient",null,1,6,"2018-12-31",1001
+0,"TESTSRC","5",null,5,"Nutrient",null,2,12,"2018-12-31",1001
+0,"TESTSRC","5",null,9,"Nutrient",null,2,12,"2018-12-31",1001
+0,"TESTSRC","11",null,9,"Nutrient",null,1,5,null,1001
+0,"TESTSRC","14",null,9,"Nutrient",null,1,5,null,1001
+0,"TESTSRC","16",null,9,"Nutrient",null,2,10,null,1001
+0,"TESTSRC","16",null,9,null,null,1,1,null,1001
+0,"TESTSRC","5",2007,null,"Nutrient","Ammonia",1,2,"2018-12-31",100
+0,"TESTSRC","5",2007,null,"Nutrient","Nitrogen",1,1,null,100
+0,"TESTSRC","5",2007,null,"Nutrient","Nitrogen Kjeldahl",1,1,null,100
+0,"TESTSRC","5",2007,null,"Nutrient","Orthophosphate",1,1,"2007-03-01",100
+0,"TESTSRC","5",2007,null,"Nutrient","Phosphorus",1,1,null,100
+0,"TESTSRC","5",[YEAR-LE-60-MONTHS],null,"Nutrient","Ammonia",2,4,"2018-12-31",100
+0,"TESTSRC","5",[YEAR-LE-60-MONTHS],null,"Nutrient","Nitrogen",2,2,null,100
+0,"TESTSRC","5",[YEAR-LE-60-MONTHS],null,"Nutrient","Nitrogen Kjeldahl",2,2,null,100
+0,"TESTSRC","5",[YEAR-LE-60-MONTHS],null,"Nutrient","Orthophosphate",2,2,"2007-03-01",100
+0,"TESTSRC","5",[YEAR-LE-60-MONTHS],null,"Nutrient","Phosphorus",2,2,null,100
+0,"TESTSRC","5",[YEAR-LE-12-MONTHS],null,"Nutrient","Ammonia",2,4,"2018-12-31",100
+0,"TESTSRC","5",[YEAR-LE-12-MONTHS],null,"Nutrient","Nitrogen",2,2,null,100
+0,"TESTSRC","5",[YEAR-LE-12-MONTHS],null,"Nutrient","Nitrogen Kjeldahl",2,2,null,100
+0,"TESTSRC","5",[YEAR-LE-12-MONTHS],null,"Nutrient","Orthophosphate",2,2,"2007-03-01",100
+0,"TESTSRC","5",[YEAR-LE-12-MONTHS],null,"Nutrient","Phosphorus",2,2,null,100
+0,"TESTSRC","11",2007,null,"Nutrient","Ammonia",1,1,null,100
+0,"TESTSRC","11",2007,null,"Nutrient","Nitrogen",1,1,null,100
+0,"TESTSRC","11",2007,null,"Nutrient","Nitrogen Kjeldahl",1,1,null,100
+0,"TESTSRC","11",2007,null,"Nutrient","Orthophosphate",1,1,null,100
+0,"TESTSRC","11",2007,null,"Nutrient","Phosphorus",1,1,null,100
+0,"TESTSRC","14",2007,null,"Nutrient","Ammonia",1,1,null,100
+0,"TESTSRC","14",2007,null,"Nutrient","Nitrogen",1,1,null,100
+0,"TESTSRC","14",2007,null,"Nutrient","Nitrogen Kjeldahl",1,1,null,100
+0,"TESTSRC","14",2007,null,"Nutrient","Orthophosphate",1,1,null,100
+0,"TESTSRC","14",2007,null,"Nutrient","Phosphorus",1,1,null,100
+0,"TESTSRC","16",2007,null,"Nutrient","Ammonia",2,2,null,100
+0,"TESTSRC","16",2007,null,"Nutrient","Nitrogen",2,2,null,100
+0,"TESTSRC","16",2007,null,"Nutrient","Nitrogen Kjeldahl",2,2,null,100
+0,"TESTSRC","16",2007,null,"Nutrient","Orthophosphate",2,2,null,100
+0,"TESTSRC","16",2007,null,"Nutrient","Phosphorus",2,2,null,100
+0,"TESTSRC","16",2007,null,null,null,1,1,null,100

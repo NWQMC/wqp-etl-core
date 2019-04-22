@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
-    <sample_media_swap_stewards
-        data_source_id="1"
+    <sample_media_swap_testsrc
+        data_source_id="0"
+        code_value="Biological"
+    />
+    <sample_media_swap_testsrc
+        data_source_id="0"
         code_value="Water"
     />
 </dataset>

@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import gov.acwi.wqp.etl.EtlConstantUtils;
+
 @Configuration
 public class SetupResultTable {
 
@@ -41,7 +43,7 @@ public class SetupResultTable {
 
 	@Bean
 	public Flow setupResultSwapTableFlow() {
-		return new FlowBuilder<SimpleFlow>("setupResultSwapTableFlow")
+		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.SETUP_RESULT_SWAP_TABLE_FLOW)
 				.start(dropResultSwapTableStep())
 				.next(createResultSwapTableStep())
 				.build();

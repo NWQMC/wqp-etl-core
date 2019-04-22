@@ -22,9 +22,9 @@ public class BuildMonitoringLocationCountyIndex implements Tasklet {
 
 	@Override
 	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-		jdbcTemplate.update("create index if not exists station_stewards_county on station_swap_stewards(governmental_unit_code)");
-//TODO correct SQL
-//		jdbcTemplate.update("create index if not exists station_stewards_county on ${schemaName}.station_stewards(substring(governmental_unit_code, '[^:]+:[^:]+:[^:]+')) with (fillfactor = 100)");
+		jdbcTemplate.update("create index if not exists station_testsrc_county on station_swap_testsrc(governmental_unit_code)");
+//TODO correct SQL - WQP-1400
+//		jdbcTemplate.update("create index if not exists station_testsrc_county on ${schemaName}.station_testsrc(substring(governmental_unit_code, '[^:]+:[^:]+:[^:]+')) with (fillfactor = 100)");
 		return RepeatStatus.FINISHED;
 	}
 }

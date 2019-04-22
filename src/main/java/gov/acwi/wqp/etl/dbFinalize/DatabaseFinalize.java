@@ -11,9 +11,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import gov.acwi.wqp.etl.EtlConstantUtils;
+
 @Configuration
 public class DatabaseFinalize {
-
+//TODO WQP-1399
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 
@@ -42,7 +44,7 @@ public class DatabaseFinalize {
 
 	@Bean
 	public Flow databaseFinalizeFlow() {
-		return new FlowBuilder<SimpleFlow>("databaseFinalizeFlow")
+		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.CREATE_DATABASE_FINALIZE_FLOW)
 //				.start(addRiStep())
 //				.next(analyzeStep())
 //				.next(validateStep())

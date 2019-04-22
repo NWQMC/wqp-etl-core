@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import gov.acwi.wqp.etl.EtlConstantUtils;
+
 @Configuration
 public class SetupProjectDataSwapTable {
 
@@ -41,7 +43,7 @@ public class SetupProjectDataSwapTable {
 
 	@Bean
 	public Flow setupProjectDataSwapTableFlow() {
-		return new FlowBuilder<SimpleFlow>("setupProjectDataSwapTableFlow")
+		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.SETUP_PROJECT_DATA_SWAP_TABLE_FLOW)
 				.start(dropProjectDataSwapTableStep())
 				.next(createProjectDataSwapTableStep())
 				.build();

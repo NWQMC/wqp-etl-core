@@ -24,6 +24,7 @@ import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
 import gov.acwi.wqp.etl.BaseFlowIT;
+import gov.acwi.wqp.etl.EtlConstantUtils;
 import gov.acwi.wqp.etl.summaries.activitySum.index.BuildActivitySumIndexesFlowIT;
 import gov.acwi.wqp.etl.summaries.activitySum.table.SetupActivitySumSwapTableFlowIT;
 import gov.acwi.wqp.etl.summaries.mlGrouping.index.BuildMlGroupingIndexesFlowIT;
@@ -33,13 +34,14 @@ import gov.acwi.wqp.etl.summaries.monitoringLocationSum.index.BuildMonitoringLoc
 import gov.acwi.wqp.etl.summaries.monitoringLocationSum.table.SetupMonitoringLocationSumSwapTableFlowIT;
 import gov.acwi.wqp.etl.summaries.orgGrouping.index.BuildOrgGroupingIndexesFlowIT;
 import gov.acwi.wqp.etl.summaries.orgGrouping.table.SetupOrgGroupingSwapTableFlowIT;
+import gov.acwi.wqp.etl.summaries.qwportalSummary.table.SetupQwportalSummarySwapTableFlowIT;
 import gov.acwi.wqp.etl.summaries.resultSum.index.BuildResultSumIndexesFlowIT;
 import gov.acwi.wqp.etl.summaries.resultSum.table.SetupResultSumSwapTableFlowIT;
 
 public class CreateSummariesIT extends BaseFlowIT {
 
 	@Autowired
-	@Qualifier("createSummariesFlow")
+	@Qualifier(EtlConstantUtils.CREATE_SUMMARIES_FLOW)
 	private Flow createSummariesFlow;
 
 	@PostConstruct
@@ -58,29 +60,23 @@ public class CreateSummariesIT extends BaseFlowIT {
 	}
 
 	@Test
-	@DatabaseSetup(value="classpath:/testResult/wqp/activitySum/empty.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/resultSum/empty.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/orgGrouping/empty.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/mlGrouping/empty.xml")
-//TODO	@DatabaseSetup(value="classpath:/testResult/wqp/organizationSum/empty.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/monitoringLocationSum/empty.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/monitoringLocation/monitoringLocation.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/activity/csv/")
+	@DatabaseSetup(value="classpath:/testData/wqp/activityMetric/activityMetric.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/result/csv/")
 
-	@DatabaseSetup(value="classpath:/testData/wqp/station/station.xml")
-	@DatabaseSetup(value="classpath:/testData/wqp/activity/activity.xml")
-	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
-
-	@DatabaseSetup(connection="nwis", value="classpath:/testData/nwis/country/country.xml")
-	@DatabaseSetup(connection="nwis", value="classpath:/testData/nwis/state/state.xml")
-	@DatabaseSetup(connection="nwis", value="classpath:/testData/nwis/county/county.xml")
-//TODO	@DatabaseSetup(value="classpath:/testData/wqx/country/country.xml")
-//TODO	@DatabaseSetup(value="classpath:/testData/wqx/state/state.xml")
-//TODO	@DatabaseSetup(value="classpath:/testData/wqx/county/county.xml")
+	@DatabaseSetup(connection=CONNECTION_NWIS, value="classpath:/testData/nwis/country/country.xml")
+	@DatabaseSetup(connection=CONNECTION_NWIS, value="classpath:/testData/nwis/state/state.xml")
+	@DatabaseSetup(connection=CONNECTION_NWIS, value="classpath:/testData/nwis/county/county.xml")
+//TODO - WQP-1430	@DatabaseSetup(value="classpath:/testData/wqx/country/country.xml")
+//TODO - WQP-1430	@DatabaseSetup(value="classpath:/testData/wqx/state/state.xml")
+//TODO - WQP-1430	@DatabaseSetup(value="classpath:/testData/wqx/county/county.xml")
 
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activitySum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildActivitySumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/activitySum/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/activitySum/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupActivitySumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
@@ -88,7 +84,7 @@ public class CreateSummariesIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildResultSumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/resultSum/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/resultSum/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupResultSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
@@ -96,7 +92,7 @@ public class CreateSummariesIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildOrgGroupingIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/orgGrouping/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/orgGrouping/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupOrgGroupingSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
@@ -104,15 +100,15 @@ public class CreateSummariesIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildMlGroupingIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/mlGrouping/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/mlGrouping/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupMlGroupingSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
-//	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/indexes/all.xml",
+//TODO WQP-1406	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/indexes/all.xml",
 //			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 //			table=EXPECTED_DATABASE_TABLE,
 //			query=BuildOrganizationSumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-//	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/organizationSum/create.xml",
+//	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/organizationSum/create.xml",
 //			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 //			table=EXPECTED_DATABASE_TABLE,
 //			query=SetupOrganizationSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
@@ -120,19 +116,24 @@ public class CreateSummariesIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildMonitoringLocationSumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection="pg", value="classpath:/testResult/wqp/monitoringLocationSum/create.xml",
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/monitoringLocationSum/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupMonitoringLocationSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/qwportalSummary/create.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
+			query=SetupQwportalSummarySwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activitySum/activitySum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
-	@ExpectedDatabase(value="classpath:/testResult/wqp/resultSum/resultSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
-	@ExpectedDatabase(value="classpath:/testResult/wqp/orgGrouping/orgGrouping.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
-	@ExpectedDatabase(value="classpath:/testResult/wqp/mlGrouping/mlGrouping.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
-//TODO	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testResult/wqp/resultSum/csv/", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testResult/wqp/orgGrouping/csv/", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testResult/wqp/mlGrouping/csv/", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+//TODO WQP-1406	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocationSum/monitoringLocationSum.xml",
 			table=TransformMonitoringLocationSumIT.EXPECTED_DATABASE_TABLE_STATION_SUM,
 			query=TransformMonitoringLocationSumIT.EXPECTED_DATABASE_QUERY_STATION_SUM)
+	@ExpectedDatabase(value="classpath:/testResult/wqp/qwportalSummary/qwportalSummary.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void createSummariesFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.stereotype.Component;
 
+import gov.acwi.wqp.etl.EtlConstantUtils;
+
 @Component
 @StepScope
 public class MonitoringLocationSumPreparedStatementSetter implements PreparedStatementSetter {
@@ -17,9 +19,9 @@ public class MonitoringLocationSumPreparedStatementSetter implements PreparedSta
 	private final String geoSchemaName;
 
 	public MonitoringLocationSumPreparedStatementSetter(
-			@Value("#{jobParameters['wqpDataSource']}") String wqpDataSource,
-			@Value("#{jobParameters['schemaName']}") String schemaName,
-			@Value("#{jobParameters['geoSchemaName']}") String geoSchemaName) {
+			@Value(EtlConstantUtils.VALUE_JOB_PARM_DATA_SOURCE) String wqpDataSource,
+			@Value(EtlConstantUtils.VALUE_JOB_PARM_WQP_SCHEMA) String schemaName,
+			@Value(EtlConstantUtils.VALUE_JOB_PARM_GEO_SCHEMA) String geoSchemaName) {
 		this.wqpDataSource = wqpDataSource;
 		this.schemaName = schemaName;
 		this.geoSchemaName = geoSchemaName;

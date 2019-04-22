@@ -1,4 +1,4 @@
-create or replace function transform_result_sum(wqp_data_source character varying, schema_name character varying)
+create or replace function transform_result_sum(wqp_data_source character varying, wqp_schema_name character varying)
 returns void
 language plpgsql
 as $$
@@ -67,6 +67,6 @@ begin
                      result.project_id,
                      result.assemblage_sampled_name,
                      result.sample_tissue_taxonomic_name',
-        schema_name, summary_table_name, schema_name, result_table_name);
+        wqp_schema_name, summary_table_name, wqp_schema_name, result_table_name);
 end
 $$

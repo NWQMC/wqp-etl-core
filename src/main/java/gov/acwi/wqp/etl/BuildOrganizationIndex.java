@@ -8,8 +8,8 @@ public abstract class BuildOrganizationIndex extends FunctionCallTasklet {
 
 	public BuildOrganizationIndex(JdbcTemplate jdbcTemplate,
 			String wqpDataSource,
-			String schemaName) {
-		super(jdbcTemplate, wqpDataSource, schemaName);
+			String wqpSchemaName) {
+		super(jdbcTemplate, wqpDataSource, wqpSchemaName);
 	}
 
 	protected String getFunctionName() {

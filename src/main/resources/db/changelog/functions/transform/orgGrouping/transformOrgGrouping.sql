@@ -1,4 +1,4 @@
-create or replace function transform_org_grouping(wqp_data_source character varying, schema_name character varying)
+create or replace function transform_org_grouping(wqp_data_source character varying, wqp_schema_name character varying)
 returns void
 language plpgsql
 as $$
@@ -35,6 +35,6 @@ begin
                                     (data_source_id, organization, to_char(event_date, ''yyyy''), characteristic_type),
                                     (data_source_id, organization, to_char(event_date, ''yyyy''), characteristic_type, characteristic_name)
                                    )',
-        schema_name, summary_table_name, schema_name, result_table_name);
+        wqp_schema_name, summary_table_name, wqp_schema_name, result_table_name);
 end
 $$
