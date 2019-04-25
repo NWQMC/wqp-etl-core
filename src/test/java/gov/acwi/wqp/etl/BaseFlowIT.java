@@ -62,8 +62,13 @@ public abstract class BaseFlowIT {
 	public static final String EXPECTED_DATABASE_TABLE_CHECK_TABLE = "tables";
 	public static final String EXPECTED_DATABASE_TABLE_CHECK_INDEX = "pg_indexes";
 
-	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE = "select table_catalog, table_schema, table_name, table_type from information_schema.tables where table_name=";
-	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX = "select tablename, indexname, indexdef from pg_indexes where tablename=";
+	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_BARE = "select table_catalog, table_schema, table_name, table_type from information_schema.tables where table_name";
+	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_BARE + "=";
+	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_LIKE = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_BARE + " like ";
+
+	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX_BARE = "select tablename, indexname, indexdef from pg_indexes where tablename";
+	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX_BARE + "=";
+	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX_LIKE = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX_BARE + " like ";
 
 	//This query is needed as the DBUnit code doesn't correctly read the JSON columns from the catalog. By specifying the columns as text we actually get them in the compare.
 	public static final String BASE_EXPECTED_DATABASE_QUERY_STATION_SUM = "select data_source_id,data_source,station_id,site_id,"

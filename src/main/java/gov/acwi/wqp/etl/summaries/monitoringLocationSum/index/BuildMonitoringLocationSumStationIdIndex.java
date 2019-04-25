@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import gov.acwi.wqp.etl.BuildStationIdIndex;
 import gov.acwi.wqp.etl.EtlConstantUtils;
+import gov.acwi.wqp.etl.index.BuildStationIdIndex;
 import gov.acwi.wqp.etl.summaries.monitoringLocationSum.MonitoringLocationSum;
 
 @Component

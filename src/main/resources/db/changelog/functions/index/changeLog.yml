@@ -4,43 +4,17 @@ databaseChangeLog:
         type: postgresql
 
   - include:
+      file: "codeValue/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
       file: "organization/changeLog.yml"
       relativeToChangelogFile: true
 
   - include:
+      file: "projectIdentifier/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
       file: "stationId/changeLog.yml"
-      relativeToChangelogFile: true
-
-  - include:
-      file: "codeValue/changeLog.yml"
-      relativeToChangelogFile: true
-
-
-
-  - include:
-      file: "orgData/changeLog.yml"
-      relativeToChangelogFile: true
-
-  - include:
-      file: "projectData/changeLog.yml"
-      relativeToChangelogFile: true
-
-#  - include:
-#      file: "projectObject/changeLog.yml"
-#      relativeToChangelogFile: true
-
-  - include:
-      file: "monitoringLocation/changeLog.yml"
-      relativeToChangelogFile: true
-
-  - include:
-      file: "activity/changeLog.yml"
-      relativeToChangelogFile: true
-
-  - include:
-      file: "result/changeLog.yml"
-      relativeToChangelogFile: true
-
-  - include:
-      file: "resDetectQntLimit/changeLog.yml"
       relativeToChangelogFile: true

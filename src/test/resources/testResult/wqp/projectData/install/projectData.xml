@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <project_data
+        data_source_id="0"
+        data_source="TESTSRC"
+        project_id="23478"
+        organization="ARS"
+        organization_name="Agricultural Research Service"
+        project_identifier="CEAP"
+        project_name="Conservation Effects Assessment Program"
+        description="The goal of the ARS Conservation Effects Assessment Project (CEAP) Watershed Assessment Study (WAS) is to provide the American people better understanding of the role agricultural conservation practices and programs play in achieving the nation's environmental objectives - clean air and water, healthy soils, and functioning habitat for wildlife. Improved understanding of conservation performance is also needed to improve future conservation programs and practices. The CEAP WAS in part of the overall USDA CEAP project, providing additional scientific basis for the CEAP National Assessment being led by NRCS. The initial effort focused on croplands, with grazing lands and wetlands being added in 2007. The project has been implemented on a watershed basis in key agro-ecological regions around the nation."
+        sampling_design_type_code="sampling design type code"
+        qapp_approved_indicator="qapp approved indicator"
+        qapp_approval_agency_name="U.S. EPA"
+        project_file_url="/organizations/WQXTEST/projects/Bay%20Park%202015/files"
+        monitoring_location_weight_url="/organizations/WQXTEST/projects/11/projectMonitoringLocationWeightings"
+        />
+    <project_data
+        data_source_id="999"
+        data_source="OTHERSRC"
+        project_id="32141234"
+        organization="BBGGR"
+        organization_name="Berry Berry Good Garden Rentals"
+        project_identifier="CSA"
+        project_name="Community Supported Agriculture"
+        description="Help keep GP above water."
+        sampling_design_type_code="sampling design type code 3"
+        qapp_approved_indicator="qapp approved indicator 4"
+        qapp_approval_agency_name="GPE"
+        project_file_url="/organizations/BBGGR/projects/Bay%20Park%202015/files"
+        monitoring_location_weight_url="/organizations/BBGGR/projects/11/projectMonitoringLocationWeightings"
+        />
+</dataset>

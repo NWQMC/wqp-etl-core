@@ -1,10 +1,12 @@
 select create_swap_table ('testsrc', 'wqp', 'org_data');
 select create_swap_table ('testsrc', 'wqp', 'project_data');
 select create_swap_table ('testsrc', 'wqp', 'station');
+select create_swap_table ('testsrc', 'wqp', 'bio_hab_metric');
 select create_swap_table ('testsrc', 'wqp', 'activity');
 select create_swap_table ('testsrc', 'wqp', 'act_metric');
 select create_swap_table ('testsrc', 'wqp', 'result');
 select create_swap_table ('testsrc', 'wqp', 'r_detect_qnt_lmt');
+select create_swap_table ('testsrc', 'wqp', 'prj_ml_weighting');
 
 select create_swap_table ('testsrc', 'wqp', 'activity_sum');
 select create_swap_table ('testsrc', 'wqp', 'result_sum');
