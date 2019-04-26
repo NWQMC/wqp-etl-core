@@ -48,6 +48,12 @@ public class Activity {
 	private String sampleCollectMethodCtx;
 	private String sampleCollectMethodName;
 	private String sampleCollectEquipName;
+	private String assemblageSampledName;
+	private Integer activityReachLength;
+	private String activityReachLengthUnit;
+	private Integer activityPassCount;
+	private String activitySampleCollectMethodDescription;
+	private String activitySampleCollectEquipmentComments;
 
 	public Integer getDataSourceId() {
 		return dataSourceId;
@@ -289,5 +295,41 @@ public class Activity {
 	}
 	public void setSampleCollectEquipName(String sampleCollectEquipName) {
 		this.sampleCollectEquipName = sampleCollectEquipName;
+	}
+	public String getAssemblageSampledName() {
+		return assemblageSampledName;
+	}
+	public void setAssemblageSampledName(String assemblageSampledName) {
+		this.assemblageSampledName = assemblageSampledName;
+	}
+	public Integer getActivityReachLength() {
+		return activityReachLength;
+	}
+	public void setActivityReachLength(Integer activityReachLength) {
+		this.activityReachLength = activityReachLength;
+	}
+	public String getActivityReachLengthUnit() {
+		return activityReachLengthUnit;
+	}
+	public void setActivityReachLengthUnit(String activityReachLengthUnit) {
+		this.activityReachLengthUnit = activityReachLengthUnit;
+	}
+	public Integer getActivityPassCount() {
+		return activityPassCount;
+	}
+	public void setActivityPassCount(Integer activityPassCount) {
+		this.activityPassCount = activityPassCount;
+	}
+	public String getActivitySampleCollectMethodDescription() {
+		return activitySampleCollectMethodDescription;
+	}
+	public void setActivitySampleCollectMethodDescription(String activitySampleCollectMethodDescription) {
+		this.activitySampleCollectMethodDescription = activitySampleCollectMethodDescription;
+	}
+	public String getActivitySampleCollectEquipmentComments() {
+		return activitySampleCollectEquipmentComments;
+	}
+	public void setActivitySampleCollectEquipmentComments(String activitySampleCollectEquipmentComments) {
+		this.activitySampleCollectEquipmentComments = activitySampleCollectEquipmentComments;
 	}
 }
