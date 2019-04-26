@@ -15,8 +15,8 @@ public class InstallParameterizedPreparedStatementSetter implements Parameterize
 	public void setValues(PreparedStatement ps, InstallTable installTable) throws SQLException {
 		ps.setString(1, installTable.getWqpDataSource());
 		ps.setString(2, installTable.getWqpSchemaName());
-		ps.setString(3, installTable.getBase_table_name());
-		ps.setInt(4, installTable.getData_source_id());
+		ps.setString(3, installTable.getBaseTableName());
+		ps.setInt(4, installTable.getDataSourceId());
 	}
 
 }

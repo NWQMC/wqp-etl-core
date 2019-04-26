@@ -15,21 +15,21 @@ public class BiologicalHabitatMetric {
 	private String huc;
 	private String governmentalUnitCode;
 	private PGgeometry geom;
-	private String index_identifier;
-	private String index_type_identifier;
-	private String index_type_context;
-	private String index_type_name;
-	private String resource_title_name;
-	private String resource_creator_name;
-	private String resource_subject_text;
-	private String resource_publisher_name;
-	private String resource_date;
-	private String resource_identifier;
-	private String index_type_scale_text;
-	private String index_score_numeric;
-	private String index_qualifier_code;
-	private String index_comment;
-	private String index_calculated_date;
+	private String indexIdentifier;
+	private String indexTypeIdentifier;
+	private String indexTypeContext;
+	private String indexTypeName;
+	private String resourceTitleName;
+	private String resourceCreatorName;
+	private String resourceSubjectText;
+	private String resourcePublisherName;
+	private String resourceDate;
+	private String resourceIdentifier;
+	private String indexTypeScaleText;
+	private String indexScoreNumeric;
+	private String indexQualifierCode;
+	private String indexComment;
+	private String indexCalculatedDate;
 
 	public Integer getDataSourceId() {
 		return dataSourceId;
@@ -85,94 +85,94 @@ public class BiologicalHabitatMetric {
 	public void setGeom(PGgeometry geom) {
 		this.geom = geom;
 	}
-	public String getIndex_identifier() {
-		return index_identifier;
+	public String getIndexIdentifier() {
+		return indexIdentifier;
 	}
-	public void setIndex_identifier(String index_identifier) {
-		this.index_identifier = index_identifier;
+	public void setIndexIdentifier(String indexIdentifier) {
+		this.indexIdentifier = indexIdentifier;
 	}
-	public String getIndex_type_identifier() {
-		return index_type_identifier;
+	public String getIndexTypeIdentifier() {
+		return indexTypeIdentifier;
 	}
-	public void setIndex_type_identifier(String index_type_identifier) {
-		this.index_type_identifier = index_type_identifier;
+	public void setIndexTypeIdentifier(String indexTypeIdentifier) {
+		this.indexTypeIdentifier = indexTypeIdentifier;
 	}
-	public String getIndex_type_context() {
-		return index_type_context;
+	public String getIndexTypeContext() {
+		return indexTypeContext;
 	}
-	public void setIndex_type_context(String index_type_context) {
-		this.index_type_context = index_type_context;
+	public void setIndexTypeContext(String indexTypeContext) {
+		this.indexTypeContext = indexTypeContext;
 	}
-	public String getIndex_type_name() {
-		return index_type_name;
+	public String getIndexTypeName() {
+		return indexTypeName;
 	}
-	public void setIndex_type_name(String index_type_name) {
-		this.index_type_name = index_type_name;
+	public void setIndexTypeName(String indexTypeName) {
+		this.indexTypeName = indexTypeName;
 	}
-	public String getResource_title_name() {
-		return resource_title_name;
+	public String getResourceTitleName() {
+		return resourceTitleName;
 	}
-	public void setResource_title_name(String resource_title_name) {
-		this.resource_title_name = resource_title_name;
+	public void setResourceTitleName(String resourceTitleName) {
+		this.resourceTitleName = resourceTitleName;
 	}
-	public String getResource_creator_name() {
-		return resource_creator_name;
+	public String getResourceCreatorName() {
+		return resourceCreatorName;
 	}
-	public void setResource_creator_name(String resource_creator_name) {
-		this.resource_creator_name = resource_creator_name;
+	public void setResourceCreatorName(String resourceCreatorName) {
+		this.resourceCreatorName = resourceCreatorName;
 	}
-	public String getResource_subject_text() {
-		return resource_subject_text;
+	public String getResourceSubjectText() {
+		return resourceSubjectText;
 	}
-	public void setResource_subject_text(String resource_subject_text) {
-		this.resource_subject_text = resource_subject_text;
+	public void setResourceSubjectText(String resourceSubjectText) {
+		this.resourceSubjectText = resourceSubjectText;
 	}
-	public String getResource_publisher_name() {
-		return resource_publisher_name;
+	public String getResourcePublisherName() {
+		return resourcePublisherName;
 	}
-	public void setResource_publisher_name(String resource_publisher_name) {
-		this.resource_publisher_name = resource_publisher_name;
+	public void setResourcePublisherName(String resourcePublisherName) {
+		this.resourcePublisherName = resourcePublisherName;
 	}
-	public String getResource_date() {
-		return resource_date;
+	public String getResourceDate() {
+		return resourceDate;
 	}
-	public void setResource_date(String resource_date) {
-		this.resource_date = resource_date;
+	public void setResourceDate(String resourceDate) {
+		this.resourceDate = resourceDate;
 	}
-	public String getResource_identifier() {
-		return resource_identifier;
+	public String getResourceIdentifier() {
+		return resourceIdentifier;
 	}
-	public void setResource_identifier(String resource_identifier) {
-		this.resource_identifier = resource_identifier;
+	public void setResourceIdentifier(String resourceIdentifier) {
+		this.resourceIdentifier = resourceIdentifier;
 	}
-	public String getIndex_type_scale_text() {
-		return index_type_scale_text;
+	public String getIndexTypeScaleText() {
+		return indexTypeScaleText;
 	}
-	public void setIndex_type_scale_text(String index_type_scale_text) {
-		this.index_type_scale_text = index_type_scale_text;
+	public void setIndexTypeScaleText(String indexTypeScaleText) {
+		this.indexTypeScaleText = indexTypeScaleText;
 	}
-	public String getIndex_score_numeric() {
-		return index_score_numeric;
+	public String getIndexScoreNumeric() {
+		return indexScoreNumeric;
 	}
-	public void setIndex_score_numeric(String index_score_numeric) {
-		this.index_score_numeric = index_score_numeric;
+	public void setIndexScoreNumeric(String indexScoreNumeric) {
+		this.indexScoreNumeric = indexScoreNumeric;
 	}
-	public String getIndex_qualifier_code() {
-		return index_qualifier_code;
+	public String getIndexQualifierCode() {
+		return indexQualifierCode;
 	}
-	public void setIndex_qualifier_code(String index_qualifier_code) {
-		this.index_qualifier_code = index_qualifier_code;
+	public void setIndexQualifierCode(String indexQualifierCode) {
+		this.indexQualifierCode = indexQualifierCode;
 	}
-	public String getIndex_comment() {
-		return index_comment;
+	public String getIndexComment() {
+		return indexComment;
 	}
-	public void setIndex_comment(String index_comment) {
-		this.index_comment = index_comment;
+	public void setIndexComment(String indexComment) {
+		this.indexComment = indexComment;
 	}
-	public String getIndex_calculated_date() {
-		return index_calculated_date;
+	public String getIndexCalculatedDate() {
+		return indexCalculatedDate;
 	}
-	public void setIndex_calculated_date(String index_calculated_date) {
-		this.index_calculated_date = index_calculated_date;
+	public void setIndexCalculatedDate(String indexCalculatedDate) {
+		this.indexCalculatedDate = indexCalculatedDate;
 	}
 }
