@@ -1,34 +1,27 @@
 package gov.acwi.wqp.etl.projectData.index;
 
-import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.configuration.annotation.StepScope;
-import org.springframework.batch.core.scope.context.ChunkContext;
-import org.springframework.batch.core.step.tasklet.Tasklet;
-import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.stereotype.Component;
 
-import gov.acwi.wqp.etl.NoopResultSetExtractor;
+import gov.acwi.wqp.etl.EtlConstantUtils;
+import gov.acwi.wqp.etl.index.BuildProjectIdentifierIndex;
+import gov.acwi.wqp.etl.projectData.ProjectData;
 
 @Component
 @StepScope
-public class BuildProjectDataIdentifierIndex implements Tasklet {
-
-	private final JdbcTemplate jdbcTemplate;
-	private final PreparedStatementSetter pss;
+public class BuildProjectDataIdentifierIndex extends BuildProjectIdentifierIndex {
 
 	@Autowired
 	public BuildProjectDataIdentifierIndex(JdbcTemplate jdbcTemplate,
-			PreparedStatementSetter pss) {
-		this.jdbcTemplate = jdbcTemplate;
-		this.pss = pss;
+			@Value(EtlConstantUtils.VALUE_JOB_PARM_DATA_SOURCE) String wqpDataSource,
+			@Value(EtlConstantUtils.VALUE_JOB_PARM_WQP_SCHEMA) String wqpSchemaName) {
+		super(jdbcTemplate, wqpDataSource, wqpSchemaName);
 	}
 
-	@Override
-	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-		jdbcTemplate.query("select * from build_project_data_swap_identifier_index(?,?)", pss, new NoopResultSetExtractor());
-		return RepeatStatus.FINISHED;
+	protected String getBaseTableName() {
+		return ProjectData.BASE_TABLE_NAME;
 	}
 }

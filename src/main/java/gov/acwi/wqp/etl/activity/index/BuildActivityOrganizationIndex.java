@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import gov.acwi.wqp.etl.BuildOrganizationIndex;
 import gov.acwi.wqp.etl.EtlConstantUtils;
 import gov.acwi.wqp.etl.activity.Activity;
+import gov.acwi.wqp.etl.index.BuildOrganizationIndex;
 
 @Component
 @StepScope

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <tables
+        table_catalog="wqp_db"
+        table_schema="wqp"
+        table_name="project_data"
+        table_type="BASE TABLE"
+    />
+    <tables
+        table_catalog="wqp_db"
+        table_schema="wqp"
+        table_name="project_data_othersrc"
+        table_type="BASE TABLE"
+    />
+    <tables
+        table_catalog="wqp_db"
+        table_schema="wqp"
+        table_name="project_data_testsrc"
+        table_type="BASE TABLE"
+    />
+    <tables
+        table_catalog="wqp_db"
+        table_schema="wqp"
+        table_name="project_data_biodata"
+        table_type="BASE TABLE"
+    />
+    <tables
+        table_catalog="wqp_db"
+        table_schema="wqp"
+        table_name="project_data_nwis"
+        table_type="BASE TABLE"
+    />
+    <tables
+        table_catalog="wqp_db"
+        table_schema="wqp"
+        table_name="project_data_stewards"
+        table_type="BASE TABLE"
+    />
+    <tables
+        table_catalog="wqp_db"
+        table_schema="wqp"
+        table_name="project_data_storet"
+        table_type="BASE TABLE"
+    />
+</dataset>

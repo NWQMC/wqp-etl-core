@@ -2,5 +2,6 @@
 <dataset>
     <last_etl
         data_source_id="0"
+        within_one_minute="true"
     />
 </dataset>
