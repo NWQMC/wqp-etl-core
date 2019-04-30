@@ -15,21 +15,21 @@ import gov.acwi.wqp.etl.EtlConstantUtils;
 
 @Configuration
 public class DatabaseFinalize {
-//TODO WQP-1399
+
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 
-//	@Autowired
+//TODO WQP-1446	@Autowired
 //	@Qualifier("analyze")
 //	private Tasklet analyze;
 //
-//	@Autowired
+//TODO WQP-1396	@Autowired
 //	@Qualifier("validate")
 //	private Tasklet validate;
-//
-//	@Autowired
-//	@Qualifier("install")
-//	private Tasklet install;
+
+	@Autowired
+	@Qualifier("install")
+	private Tasklet install;
 
 	@Autowired
 	@Qualifier("updateLastETL")
@@ -45,12 +45,12 @@ public class DatabaseFinalize {
 	@Bean
 	public Flow databaseFinalizeFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.CREATE_DATABASE_FINALIZE_FLOW)
-//				.start(addRiStep())
+//TODO WQP-1395				.start(addRiStep())
 //				.next(analyzeStep())
 //				.next(validateStep())
-//				.next(installStep())
+				.start(installStep())
 //				.next(finalizeStep())
-				.start(updateLastETLStep())
+				.next(updateLastETLStep())
 				.build();
 	}
 
@@ -74,11 +74,11 @@ public class DatabaseFinalize {
 //				.tasklet(validate)
 //				.build();
 //	}
-//
-//	@Bean
-//	public Step installStep() {
-//		return stepBuilderFactory.get("installStep")
-//				.tasklet(install)
-//				.build();
-//	}
+
+	@Bean
+	public Step installStep() {
+		return stepBuilderFactory.get("installStep")
+				.tasklet(install)
+				.build();
+	}
 }

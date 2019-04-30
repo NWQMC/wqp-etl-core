@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <project_data
+        data_source_id="999"
+        data_source="OTHERSRC"
+        project_id="32141234"
+        organization="BBGGR"
+        organization_name="Berry Berry Good Garden Rentals"
+        project_identifier="CSA"
+        project_name="Community Supported Agriculture"
+        description="Help keep GP above water."
+        sampling_design_type_code="sampling design type code 3"
+        qapp_approved_indicator="qapp approved indicator 4"
+        qapp_approval_agency_name="GPE"
+        project_file_url="/organizations/BBGGR/projects/Bay%20Park%202015/files"
+        monitoring_location_weight_url="/organizations/BBGGR/projects/11/projectMonitoringLocationWeightings"
+        />
+</dataset>

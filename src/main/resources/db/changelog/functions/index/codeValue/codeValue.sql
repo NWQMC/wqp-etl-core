@@ -3,9 +3,9 @@ returns void
 language plpgsql
 as $$
 declare
-	swap_table_name varchar := base_table_name || '_swap_' || wqp_data_source;
-	index_name varchar := swap_table_name || '_code_value';
+    swap_table_name varchar := base_table_name || '_swap_' || wqp_data_source;
+    index_name varchar := swap_table_name || '_code_value';
 begin
-	execute format('create index if not exists %I on %I.%I(code_value) with (fillfactor = 100)', index_name, wqp_schema_name, swap_table_name);
+    execute format('create index if not exists %I on %I.%I(code_value) with (fillfactor = 100)', index_name, wqp_schema_name, swap_table_name);
 end
 $$

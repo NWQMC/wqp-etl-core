@@ -29,17 +29,38 @@ public final class EtlConstantUtils {
 	public static final String SETUP_PROJECT_DATA_SWAP_TABLE_FLOW = "setupProjectDataSwapTableFlow";
 	public static final String BUILD_PROJECT_DATA_INDEXES_FLOW = "buildProjectDataIndexesFlow";
 
+	public static final String SETUP_PROJECT_OBJECT_SWAP_TABLE_FLOW = "setupProjectObjectSwapTableFlow";
+	public static final String BUILD_PROJECT_OBJECT_INDEXES_FLOW = "buildProjectObjectIndexesFlow";
+
 	public static final String SETUP_MONITORING_LOCATION_SWAP_TABLE_FLOW = "setupMonitoringLocationSwapTableFlow";
 	public static final String BUILD_MONITORING_LOCATION_INDEXES_FLOW = "buildMonitoringLocationIndexesFlow";
+
+	public static final String SETUP_BIOLOGICAL_HABITAT_METRIC_SWAP_TABLE_FLOW = "setupBiologicalHabitatMetricSwapTableFlow";
+	public static final String BUILD_BIOLOGICAL_HABITAT_METRIC_INDEXES_FLOW = "buildBiologicalHabitatMetricIndexesFlow";
+
+	public static final String SETUP_MONITORING_LOCATION_OBJECT_SWAP_TABLE_FLOW = "setupMonitoringLocationObjectSwapTableFlow";
+	public static final String BUILD_MONITORING_LOCATION_OBJECT_INDEXES_FLOW = "buildMonitoringLocationObjectIndexesFlow";
 
 	public static final String SETUP_ACTIVITY_SWAP_TABLE_FLOW = "setupActivitySwapTableFlow";
 	public static final String BUILD_ACTIVITY_INDEXES_FLOW = "buildActivityIndexesFlow";
 
+	public static final String SETUP_ACTIVITY_OBJECT_SWAP_TABLE_FLOW = "setupActivityObjectSwapTableFlow";
+	public static final String BUILD_ACTIVITY_OBJECT_INDEXES_FLOW = "buildActivityObjectIndexesFlow";
+
+	public static final String SETUP_ACTIVITY_METRIC_SWAP_TABLE_FLOW = "setupActivityMetricSwapTableFlow";
+	public static final String BUILD_ACTIVITY_METRIC_INDEXES_FLOW = "buildActivityMetricIndexesFlow";
+
 	public static final String SETUP_RESULT_SWAP_TABLE_FLOW = "setupResultSwapTableFlow";
 	public static final String BUILD_RESULT_INDEXES_FLOW = "buildResultIndexesFlow";
 
+	public static final String SETUP_RESULT_OBJECT_SWAP_TABLE_FLOW = "setupResultObjectSwapTableFlow";
+	public static final String BUILD_RESULT_OBJECT_INDEXES_FLOW = "buildResultObjectIndexesFlow";
+
 	public static final String SETUP_RES_DETECT_QNT_LIMIT_SWAP_TABLE_FLOW = "setupResDetectQntLimitSwapTableFlow";
 	public static final String BUILD_RES_DETECT_QNT_LIMIT_INDEXES_FLOW = "buildResDetectQntLimitIndexesFlow";
+
+	public static final String SETUP_PROJECT_ML_WEIGHTING_SWAP_TABLE_FLOW = "setupProjectMLWeightingSwapTableFlow";
+	public static final String BUILD_PROJECT_ML_WEIGHTING_INDEXES_FLOW = "buildProjectMLWeightingIndexesFlow";
 
 	public static final String CREATE_SUMMARIES_FLOW = "createSummariesFlow";
 	public static final String CREATE_LOOKUP_CODES_FLOW = "createLookupCodesFlow";
