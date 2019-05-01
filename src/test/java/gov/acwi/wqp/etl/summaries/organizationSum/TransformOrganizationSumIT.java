@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import javax.annotation.PostConstruct;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.Job;
@@ -21,7 +20,6 @@ import org.springframework.core.io.support.EncodedResource;
 import org.springframework.jdbc.datasource.init.ScriptException;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
 
-import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
@@ -29,7 +27,6 @@ import gov.acwi.wqp.etl.BaseFlowIT;
 import gov.acwi.wqp.etl.summaries.organizationSum.index.BuildOrganizationSumIndexesFlowIT;
 import gov.acwi.wqp.etl.summaries.organizationSum.table.SetupOrganizationSumSwapTableFlowIT;
 
-@Ignore
 public class TransformOrganizationSumIT extends BaseFlowIT {
 
 	@Autowired
@@ -51,22 +48,22 @@ public class TransformOrganizationSumIT extends BaseFlowIT {
 		jobLauncherTestUtils.setJob(testJob);
 	}
 
-	@Test
-	@DatabaseSetup(value="classpath:/testResult/wqp/organizationSum/empty.xml")
-	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
-	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
-	public void transformOrganizationSumStepTest() {
-		try {
-			JobExecution jobExecution = jobLauncherTestUtils.launchStep("transformOrganizationSumStep", testJobParameters);
-			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
-		} catch (Exception e) {
-			e.printStackTrace();
-			fail(e.getLocalizedMessage());
-		}
-	}
+//TODO - WQP-1406	@Test
+//	@DatabaseSetup(value="classpath:/testResult/wqp/organizationSum/empty.xml")
+//	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
+//	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+//	public void transformOrganizationSumStepTest() {
+//		try {
+//			JobExecution jobExecution = jobLauncherTestUtils.launchStep("transformOrganizationSumStep", testJobParameters);
+//			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			fail(e.getLocalizedMessage());
+//		}
+//	}
 
 	@Test
-	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
+//TODO - WQP-1406	@DatabaseSetup(value="classpath:/testData/wqp/result/csv/")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
@@ -75,7 +72,7 @@ public class TransformOrganizationSumIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupOrganizationSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+//TODO - WQP-1406	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void organizationSumFlowTest() {
 		Job organizationSumFlowTest = jobBuilderFactory.get("organizationSumFlowTest")
 					.start(organizationSumFlow)
