@@ -108,7 +108,7 @@ public class CreateSummariesIT extends BaseFlowIT {
 			query=SetupMlGroupingSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildOrganizationSumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/organizationSum/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,

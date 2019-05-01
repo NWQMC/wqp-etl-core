@@ -37,7 +37,7 @@ public class InstallWithOutQwportalSummaryIT {
 	private Install install;
 
 	@Test
-	public void includeQwportalSum() {
+	public void doNotIncludeQwportalSum() {
 		LinkedList<InstallTable> tables = (LinkedList<InstallTable>) install.getInstallTables();
 		assertEquals(28, tables.size());
 	}
