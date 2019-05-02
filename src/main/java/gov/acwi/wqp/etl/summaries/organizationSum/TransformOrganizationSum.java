@@ -40,7 +40,7 @@ public class TransformOrganizationSum {
 	public Flow organizationSumFlow() {
 		return new FlowBuilder<SimpleFlow>("organizationSumFlow")
 				.start(setupOrganizationSumSwapTableFlow)
-				.next(transformOrganizationSumStep())
+//TODO - WQP-1406				.next(transformOrganizationSumStep())
 				.next(buildOrganizationSumIndexesFlow)
 				.build();
 	}

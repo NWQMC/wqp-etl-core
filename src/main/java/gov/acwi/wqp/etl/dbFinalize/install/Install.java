@@ -14,6 +14,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ParameterizedPreparedStatementSetter;
 import org.springframework.stereotype.Component;
 
+import gov.acwi.wqp.etl.ConfigurationService;
 import gov.acwi.wqp.etl.EtlConstantUtils;
 import gov.acwi.wqp.etl.activity.Activity;
 import gov.acwi.wqp.etl.activityMetric.ActivityMetric;
@@ -54,18 +55,22 @@ public class Install implements Tasklet {
 	private final String wqpSchemaName;
 	private final Integer wqpDataSourceId;
 	private final ParameterizedPreparedStatementSetter<InstallTable> ppss;
+	private ConfigurationService configurationService;
+
 
 	@Autowired
 	public Install(JdbcTemplate jdbcTemplate,
 			@Value(EtlConstantUtils.VALUE_JOB_PARM_DATA_SOURCE) String wqpDataSource,
 			@Value(EtlConstantUtils.VALUE_JOB_PARM_WQP_SCHEMA) String wqpSchemaName,
 			@Value(EtlConstantUtils.VALUE_JOB_PARM_DATA_SOURCE_ID) Integer wqpDataSourceId,
-			ParameterizedPreparedStatementSetter<InstallTable> ppss) {
+			ParameterizedPreparedStatementSetter<InstallTable> ppss,
+			ConfigurationService configurationService) {
 		this.jdbcTemplate = jdbcTemplate;
 		this.wqpDataSource = wqpDataSource;
 		this.wqpSchemaName = wqpSchemaName;
 		this.wqpDataSourceId = wqpDataSourceId;
 		this.ppss = ppss;
+		this.configurationService = configurationService;
 	}
 
 	@Override
@@ -77,7 +82,7 @@ public class Install implements Tasklet {
 		return RepeatStatus.FINISHED;
 	}
 
-	private Collection<InstallTable> getInstallTables() {
+	protected Collection<InstallTable> getInstallTables() {
 		Collection<InstallTable> installTables = new LinkedList<>();
 		installTables.add(new InstallTable(wqpDataSource, wqpSchemaName, OrgData.BASE_TABLE_NAME, wqpDataSourceId));
 		installTables.add(new InstallTable(wqpDataSource, wqpSchemaName, ProjectData.BASE_TABLE_NAME, wqpDataSourceId));
@@ -98,7 +103,9 @@ public class Install implements Tasklet {
 		installTables.add(new InstallTable(wqpDataSource, wqpSchemaName, MlGrouping.BASE_TABLE_NAME, wqpDataSourceId));
 		installTables.add(new InstallTable(wqpDataSource, wqpSchemaName, OrganizationSum.BASE_TABLE_NAME, wqpDataSourceId));
 		installTables.add(new InstallTable(wqpDataSource, wqpSchemaName, MonitoringLocationSum.BASE_TABLE_NAME, wqpDataSourceId));
-		installTables.add(new InstallTable(wqpDataSource, wqpSchemaName, QwportalSummary.BASE_TABLE_NAME, wqpDataSourceId));
+		if (configurationService.isQwportalSummary()) {
+			installTables.add(new InstallTable(wqpDataSource, wqpSchemaName, QwportalSummary.BASE_TABLE_NAME, wqpDataSourceId));
+		}
 		installTables.add(new InstallTable(wqpDataSource, wqpSchemaName, Assemblage.BASE_TABLE_NAME, wqpDataSourceId));
 		installTables.add(new InstallTable(wqpDataSource, wqpSchemaName, CharacteristicName.BASE_TABLE_NAME, wqpDataSourceId));
 		installTables.add(new InstallTable(wqpDataSource, wqpSchemaName, CharacteristicType.BASE_TABLE_NAME, wqpDataSourceId));

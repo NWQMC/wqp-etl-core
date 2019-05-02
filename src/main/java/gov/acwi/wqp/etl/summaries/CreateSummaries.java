@@ -28,9 +28,9 @@ public class CreateSummaries {
 	@Autowired
 	@Qualifier("mlGroupingFlow")
 	private Flow mlGroupingFlow;
-//	@Autowired
-//	@Qualifier("organizationSumFlow")
-//	private Flow organizationSumFlow;
+	@Autowired
+	@Qualifier("organizationSumFlow")
+	private Flow organizationSumFlow;
 	@Autowired
 	@Qualifier("monitoringLocationSumFlow")
 	private Flow monitoringLocationSumFlow;
@@ -45,7 +45,7 @@ public class CreateSummaries {
 				.next(resultSumFlow)
 				.next(orgGroupingFlow)
 				.next(mlGroupingFlow)
-//TODO - WQP-1406				.next(organizationSumFlow)
+				.next(organizationSumFlow)
 				.next(monitoringLocationSumFlow);
 		if (configurationService.isQwportalSummary()) {
 			flowBuilder = flowBuilder.next(qwportalSummaryFlow);

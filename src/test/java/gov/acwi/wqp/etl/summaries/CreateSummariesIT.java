@@ -34,6 +34,8 @@ import gov.acwi.wqp.etl.summaries.monitoringLocationSum.index.BuildMonitoringLoc
 import gov.acwi.wqp.etl.summaries.monitoringLocationSum.table.SetupMonitoringLocationSumSwapTableFlowIT;
 import gov.acwi.wqp.etl.summaries.orgGrouping.index.BuildOrgGroupingIndexesFlowIT;
 import gov.acwi.wqp.etl.summaries.orgGrouping.table.SetupOrgGroupingSwapTableFlowIT;
+import gov.acwi.wqp.etl.summaries.organizationSum.index.BuildOrganizationSumIndexesFlowIT;
+import gov.acwi.wqp.etl.summaries.organizationSum.table.SetupOrganizationSumSwapTableFlowIT;
 import gov.acwi.wqp.etl.summaries.qwportalSummary.table.SetupQwportalSummarySwapTableFlowIT;
 import gov.acwi.wqp.etl.summaries.resultSum.index.BuildResultSumIndexesFlowIT;
 import gov.acwi.wqp.etl.summaries.resultSum.table.SetupResultSumSwapTableFlowIT;
@@ -104,14 +106,14 @@ public class CreateSummariesIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupMlGroupingSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
-//TODO WQP-1406	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/indexes/all.xml",
-//			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-//			table=EXPECTED_DATABASE_TABLE,
-//			query=BuildOrganizationSumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-//	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/organizationSum/create.xml",
-//			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-//			table=EXPECTED_DATABASE_TABLE,
-//			query=SetupOrganizationSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
+	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/indexes/all.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
+			query=BuildOrganizationSumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
+	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/organizationSum/create.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
+			query=SetupOrganizationSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocationSum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
