@@ -41,13 +41,19 @@ public class Activity {
 	private String sampleAqfrName;
 	private String hydrologicConditionName;
 	private String hydrologicEventName;
+	private String assemblageSampledName;
+	private String actReachLength;
+	private String actReachLengthUnit;
+	private Integer actPassCount;
 	private String projectName;
 	private String monitoringLocationName;
 	private String activityComment;
 	private String sampleCollectMethodId;
 	private String sampleCollectMethodCtx;
 	private String sampleCollectMethodName;
+	private String actSamCollectMethDesc;
 	private String sampleCollectEquipName;
+	private String actSamCollectEquipComments;
 
 	public Integer getDataSourceId() {
 		return dataSourceId;
@@ -248,6 +254,30 @@ public class Activity {
 	public void setHydrologicEventName(String hydrologicEventName) {
 		this.hydrologicEventName = hydrologicEventName;
 	}
+	public String getAssemblageSampledName() {
+		return assemblageSampledName;
+	}
+	public void setAssemblageSampledName(String assemblageSampledName) {
+		this.assemblageSampledName = assemblageSampledName;
+	}
+	public String getActReachLength() {
+		return actReachLength;
+	}
+	public void setActReachLength(String actReachLength) {
+		this.actReachLength = actReachLength;
+	}
+	public String getActReachLengthUnit() {
+		return actReachLengthUnit;
+	}
+	public void setActReachLengthUnit(String actReachLengthUnit) {
+		this.actReachLengthUnit = actReachLengthUnit;
+	}
+	public Integer getActPassCount() {
+		return actPassCount;
+	}
+	public void setActPassCount(Integer actPassCount) {
+		this.actPassCount = actPassCount;
+	}
 	public String getProjectName() {
 		return projectName;
 	}
@@ -284,10 +314,22 @@ public class Activity {
 	public void setSampleCollectMethodName(String sampleCollectMethodName) {
 		this.sampleCollectMethodName = sampleCollectMethodName;
 	}
+	public String getActSamCollectMethDesc() {
+		return actSamCollectMethDesc;
+	}
+	public void setActSamCollectMethDesc(String actSamCollectMethDesc) {
+		this.actSamCollectMethDesc = actSamCollectMethDesc;
+	}
 	public String getSampleCollectEquipName() {
 		return sampleCollectEquipName;
 	}
 	public void setSampleCollectEquipName(String sampleCollectEquipName) {
 		this.sampleCollectEquipName = sampleCollectEquipName;
+	}
+	public String getActSamCollectEquipComments() {
+		return actSamCollectEquipComments;
+	}
+	public void setActSamCollectEquipComments(String actSamCollectEquipComments) {
+		this.actSamCollectEquipComments = actSamCollectEquipComments;
 	}
 }

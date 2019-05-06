@@ -4,3 +4,5 @@
 .settings
 /application.yml
 /target
+.idea/
+wqp-etl-core.iml
