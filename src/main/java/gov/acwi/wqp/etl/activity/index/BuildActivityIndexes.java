@@ -19,6 +19,10 @@ public class BuildActivityIndexes {
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 
+	@Autowired
+	@Qualifier("buildActivityActivityIndex")
+	private Tasklet buildActivityActivityIndex;
+
 //WQP-1400
 //	@Autowired
 //	@Qualifier("buildActivityCountryIndex")
@@ -76,6 +80,13 @@ public class BuildActivityIndexes {
 //	@Qualifier("buildActivityStationIndex")
 //	private Tasklet buildActivityStationIndex;
 //
+	@Bean
+	public Step buildActivityActivityIndexStep() {
+		return stepBuilderFactory.get("buildActivityActivityIndexStep")
+				.tasklet(buildActivityActivityIndex)
+				.build();
+	}
+
 //
 //	@Bean
 //	public Step buildActivityCountryIndexStep() {
@@ -178,7 +189,7 @@ public class BuildActivityIndexes {
 	@Bean
 	public Flow buildActivityIndexesFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.BUILD_ACTIVITY_INDEXES_FLOW)
-				.start(buildActivityOrganizationIndexStep())
+				.start(buildActivityActivityIndexStep())
 //				.start(buildActivityCountryIndexStep())
 //				.next(buildActivityCountyIndexStep())
 //				.next(buildActivityGeomIndexStep())
@@ -188,7 +199,7 @@ public class BuildActivityIndexes {
 //				.next(buildActivityHuc4IndexStep())
 //				.next(buildActivityHuc6IndexStep())
 //				.next(buildActivityHuc8IndexStep())
-//				.next(buildActivityOrganizationIndexStep())
+				.next(buildActivityOrganizationIndexStep())
 //				.next(buildActivitySiteIndexStep())
 //				.next(buildActivitySiteTypeIndexStep())
 //				.next(buildActivityStateIndexStep())
