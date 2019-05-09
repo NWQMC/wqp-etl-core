@@ -6,10 +6,17 @@ public class ProjectData extends OrgData {
 
 	public static final String BASE_TABLE_NAME = "project_data";
 
+	private Integer projectId;
 	private String projectIdentifier;
 	private String projectName;
 	private String description;
 
+	public Integer getProjectId() {
+		return projectId;
+	}
+	public void setProjectId(Integer projectId) {
+		this.projectId = projectId;
+	}
 	public String getProjectIdentifier() {
 		return projectIdentifier;
 	}
