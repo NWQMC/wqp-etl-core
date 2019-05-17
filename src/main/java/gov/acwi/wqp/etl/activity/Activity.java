@@ -29,6 +29,7 @@ public class Activity {
 	private String activityStopDate;
 	private String activityStopTime;
 	private String actStopTimeZone;
+	private String activityRelativeDepthName;
 	private String activityDepth;
 	private String activityDepthUnit;
 	private String activityDepthRefPoint;
@@ -180,7 +181,13 @@ public class Activity {
 	}
 	public void setActStopTimeZone(String actStopTimeZone) {
 		this.actStopTimeZone = actStopTimeZone;
-	}	
+	}
+	public String getActivityRelativeDepthName() {
+		return activityRelativeDepthName;
+	}
+	public void setActivityRelativeDepthName(String activityRelativeDepthName) {
+		this.activityRelativeDepthName = activityRelativeDepthName;
+	}
 	public String getActivityDepth() {
 		return activityDepth;
 	}
