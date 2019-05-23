@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.build_county_index"
+      changes:
+        - sqlFile:
+            path: county.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists build_county_index(character varying,character varying,character varying);

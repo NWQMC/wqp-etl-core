@@ -20,8 +20,160 @@ public class BuildActivityMetricIndexes {
 	private StepBuilderFactory stepBuilderFactory;
 
 	@Autowired
+	@Qualifier("buildActivityMetricActivityIndex")
+	private Tasklet buildActivityMetricActivityIndex;
+
+	@Autowired
+	@Qualifier("buildActivityMetricActivityIdIndex")
+	private Tasklet buildActivityMetricActivityIdIndex;
+
+	@Autowired
+	@Qualifier("buildActivityMetricCountryIndex")
+	private Tasklet buildActivityMetricCountryIndex;
+
+	@Autowired
+	@Qualifier("buildActivityMetricCountyIndex")
+	private Tasklet buildActivityMetricCountyIndex;
+
+	@Autowired
+	@Qualifier("buildActivityMetricEventDateIndex")
+	private Tasklet buildActivityMetricEventDateIndex;
+
+	@Autowired
+	@Qualifier("buildActivityMetricGeomIndex")
+	private Tasklet buildActivityMetricGeomIndex;
+
+	@Autowired
+	@Qualifier("buildActivityMetricHuc10Index")
+	private Tasklet buildActivityMetricHuc10Index;
+
+	@Autowired
+	@Qualifier("buildActivityMetricHuc12Index")
+	private Tasklet buildActivityMetricHuc12Index;
+
+	@Autowired
+	@Qualifier("buildActivityMetricHuc2Index")
+	private Tasklet buildActivityMetricHuc2Index;
+
+	@Autowired
+	@Qualifier("buildActivityMetricHuc4Index")
+	private Tasklet buildActivityMetricHuc4Index;
+
+	@Autowired
+	@Qualifier("buildActivityMetricHuc6Index")
+	private Tasklet buildActivityMetricHuc6Index;
+
+	@Autowired
+	@Qualifier("buildActivityMetricHuc8Index")
+	private Tasklet buildActivityMetricHuc8Index;
+
+	@Autowired
 	@Qualifier("buildActivityMetricOrganizationIndex")
 	private Tasklet buildActivityMetricOrganizationIndex;
+
+	@Autowired
+	@Qualifier("buildActivityMetricSampleMediaIndex")
+	private Tasklet buildActivityMetricSampleMediaIndex;
+
+	@Autowired
+	@Qualifier("buildActivityMetricSiteIdIndex")
+	private Tasklet buildActivityMetricSiteIdIndex;
+
+	@Autowired
+	@Qualifier("buildActivityMetricSiteTypeIndex")
+	private Tasklet buildActivityMetricSiteTypeIndex;
+
+	@Autowired
+	@Qualifier("buildActivityMetricStateIndex")
+	private Tasklet buildActivityMetricStateIndex;
+
+	@Autowired
+	@Qualifier("buildActivityMetricStationIdIndex")
+	private Tasklet buildActivityMetricStationIdIndex;
+
+	@Bean
+	public Step buildActivityMetricActivityIndexStep() {
+		return stepBuilderFactory.get("buildActivityMetricActivityIndexStep")
+				.tasklet(buildActivityMetricActivityIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildActivityMetricActivityIdIndexStep() {
+		return stepBuilderFactory.get("buildActivityMetricActivityIdIndexStep")
+				.tasklet(buildActivityMetricActivityIdIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildActivityMetricCountryIndexStep() {
+		return stepBuilderFactory.get("buildActivityMetricCountryIndexStep")
+				.tasklet(buildActivityMetricCountryIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildActivityMetricCountyIndexStep() {
+		return stepBuilderFactory.get("buildActivityMetricCountyIndexStep")
+				.tasklet(buildActivityMetricCountyIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildActivityMetricEventDateIndexStep() {
+		return stepBuilderFactory.get("buildActivityMetricEventDateIndexStep")
+				.tasklet(buildActivityMetricEventDateIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildActivityMetricGeomIndexStep() {
+		return stepBuilderFactory.get("buildActivityMetricGeomIndexStep")
+				.tasklet(buildActivityMetricGeomIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildActivityMetricHuc10IndexStep() {
+		return stepBuilderFactory.get("buildActivityMetricHuc10IndexStep")
+				.tasklet(buildActivityMetricHuc10Index)
+				.build();
+	}
+
+	@Bean
+	public Step buildActivityMetricHuc12IndexStep() {
+		return stepBuilderFactory.get("buildActivityMetricHuc12IndexStep")
+				.tasklet(buildActivityMetricHuc12Index)
+				.build();
+	}
+
+	@Bean
+	public Step buildActivityMetricHuc2IndexStep() {
+		return stepBuilderFactory.get("buildActivityMetricHuc2IndexStep")
+				.tasklet(buildActivityMetricHuc2Index)
+				.build();
+	}
+
+	@Bean
+	public Step buildActivityMetricHuc4IndexStep() {
+		return stepBuilderFactory.get("buildActivityMetricHuc4IndexStep")
+				.tasklet(buildActivityMetricHuc4Index)
+				.build();
+	}
+
+	@Bean
+	public Step buildActivityMetricHuc6IndexStep() {
+		return stepBuilderFactory.get("buildActivityMetricHuc6IndexStep")
+				.tasklet(buildActivityMetricHuc6Index)
+				.build();
+	}
+
+	@Bean
+	public Step buildActivityMetricHuc8IndexStep() {
+		return stepBuilderFactory.get("buildActivityMetricHuc8IndexStep")
+				.tasklet(buildActivityMetricHuc8Index)
+				.build();
+	}
 
 	@Bean
 	public Step buildActivityMetricOrganizationIndexStep() {
@@ -31,9 +183,61 @@ public class BuildActivityMetricIndexes {
 	}
 
 	@Bean
+	public Step buildActivityMetricSampleMediaIndexStep() {
+		return stepBuilderFactory.get("buildActivityMetricSampleMediaIndexStep")
+				.tasklet(buildActivityMetricSampleMediaIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildActivityMetricSiteIdIndexStep() {
+		return stepBuilderFactory.get("buildActivityMetricSiteIdIndexStep")
+				.tasklet(buildActivityMetricSiteIdIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildActivityMetricSiteTypeIndexStep() {
+		return stepBuilderFactory.get("buildActivityMetricSiteTypeIndexStep")
+				.tasklet(buildActivityMetricSiteTypeIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildActivityMetricStateIndexStep() {
+		return stepBuilderFactory.get("buildActivityMetricStateIndexStep")
+				.tasklet(buildActivityMetricStateIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildActivityMetricStationIdIndexStep() {
+		return stepBuilderFactory.get("buildActivityMetricStationIdIndexStep")
+				.tasklet(buildActivityMetricStationIdIndex)
+				.build();
+	}
+
+	@Bean
 	public Flow buildActivityMetricIndexesFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.BUILD_ACTIVITY_METRIC_INDEXES_FLOW)
-				.start(buildActivityMetricOrganizationIndexStep())
+				.start(buildActivityMetricActivityIndexStep())
+				.next(buildActivityMetricActivityIdIndexStep())
+				.next(buildActivityMetricCountryIndexStep())
+				.next(buildActivityMetricCountyIndexStep())
+				.next(buildActivityMetricEventDateIndexStep())
+				.next(buildActivityMetricGeomIndexStep())
+				.next(buildActivityMetricHuc10IndexStep())
+				.next(buildActivityMetricHuc12IndexStep())
+				.next(buildActivityMetricHuc2IndexStep())
+				.next(buildActivityMetricHuc4IndexStep())
+				.next(buildActivityMetricHuc6IndexStep())
+				.next(buildActivityMetricHuc8IndexStep())
+				.next(buildActivityMetricOrganizationIndexStep())
+				.next(buildActivityMetricSampleMediaIndexStep())
+				.next(buildActivityMetricSiteIdIndexStep())
+				.next(buildActivityMetricSiteTypeIndexStep())
+				.next(buildActivityMetricStateIndexStep())
+				.next(buildActivityMetricStationIdIndexStep())
 				.build();
 	}
 

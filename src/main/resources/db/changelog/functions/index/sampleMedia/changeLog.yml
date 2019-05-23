@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.build_sample_media_index"
+      changes:
+        - sqlFile:
+            path: sampleMedia.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists build_sample_media_index(character varying,character varying,character varying);

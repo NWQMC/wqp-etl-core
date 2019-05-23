@@ -60,8 +60,8 @@ public class BuildMonitoringLocationIndexes {
 	private Tasklet buildMonitoringLocationOrganizationIndex;
 
 	@Autowired
-	@Qualifier("buildMonitoringLocationSiteIndex")
-	private Tasklet buildMonitoringLocationSiteIndex;
+	@Qualifier("buildMonitoringLocationSiteIdIndex")
+	private Tasklet buildMonitoringLocationSiteIdIndex;
 
 	@Autowired
 	@Qualifier("buildMonitoringLocationSiteTypeIndex")
@@ -72,8 +72,8 @@ public class BuildMonitoringLocationIndexes {
 	private Tasklet buildMonitoringLocationStateIndex;
 
 	@Autowired
-	@Qualifier("buildMonitoringLocationStationIndex")
-	private Tasklet buildMonitoringLocationStationIndex;
+	@Qualifier("buildMonitoringLocationStationIdIndex")
+	private Tasklet buildMonitoringLocationStationIdIndex;
 
 
 	@Bean
@@ -147,9 +147,9 @@ public class BuildMonitoringLocationIndexes {
 	}
 
 	@Bean
-	public Step buildMonitoringLocationSiteIndexStep() {
-		return stepBuilderFactory.get("buildMonitoringLocationSiteIndexStep")
-				.tasklet(buildMonitoringLocationSiteIndex)
+	public Step buildMonitoringLocationSiteIdIndexStep() {
+		return stepBuilderFactory.get("buildMonitoringLocationSiteIdIndexStep")
+				.tasklet(buildMonitoringLocationSiteIdIndex)
 				.build();
 	}
 
@@ -168,9 +168,9 @@ public class BuildMonitoringLocationIndexes {
 	}
 
 	@Bean
-	public Step buildMonitoringLocationStationIndexStep() {
-		return stepBuilderFactory.get("buildMonitoringLocationStationIndexStep")
-				.tasklet(buildMonitoringLocationStationIndex)
+	public Step buildMonitoringLocationStationIdIndexStep() {
+		return stepBuilderFactory.get("buildMonitoringLocationStationIdIndexStep")
+				.tasklet(buildMonitoringLocationStationIdIndex)
 				.build();
 	}
 
@@ -178,22 +178,20 @@ public class BuildMonitoringLocationIndexes {
 	@Bean
 	public Flow buildMonitoringLocationIndexesFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.BUILD_MONITORING_LOCATION_INDEXES_FLOW)
-				.start(buildMonitoringLocationOrganizationIndexStep())
-				//TODO correct SQL - WQP-1400
-//				.start(buildMonitoringLocationCountryIndexStep())
-//				.next(buildMonitoringLocationCountyIndexStep())
-//				.next(buildMonitoringLocationGeomIndexStep())
-//				.next(buildMonitoringLocationHuc10IndexStep())
-//				.next(buildMonitoringLocationHuc12IndexStep())
-//				.next(buildMonitoringLocationHuc2IndexStep())
-//				.next(buildMonitoringLocationHuc4IndexStep())
-//				.next(buildMonitoringLocationHuc6IndexStep())
-//				.next(buildMonitoringLocationHuc8IndexStep())
-//				.next(buildMonitoringLocationOrganizationIndexStep())
-//				.next(buildMonitoringLocationSiteIndexStep())
-//				.next(buildMonitoringLocationSiteTypeIndexStep())
-//				.next(buildMonitoringLocationStateIndexStep())
-//				.next(buildMonitoringLocationStationIndexStep())
+				.start(buildMonitoringLocationCountryIndexStep())
+				.next(buildMonitoringLocationCountyIndexStep())
+				.next(buildMonitoringLocationGeomIndexStep())
+				.next(buildMonitoringLocationHuc10IndexStep())
+				.next(buildMonitoringLocationHuc12IndexStep())
+				.next(buildMonitoringLocationHuc2IndexStep())
+				.next(buildMonitoringLocationHuc4IndexStep())
+				.next(buildMonitoringLocationHuc6IndexStep())
+				.next(buildMonitoringLocationHuc8IndexStep())
+				.next(buildMonitoringLocationOrganizationIndexStep())
+				.next(buildMonitoringLocationSiteIdIndexStep())
+				.next(buildMonitoringLocationSiteTypeIndexStep())
+				.next(buildMonitoringLocationStateIndexStep())
+				.next(buildMonitoringLocationStationIdIndexStep())
 				.build();
 	}
 

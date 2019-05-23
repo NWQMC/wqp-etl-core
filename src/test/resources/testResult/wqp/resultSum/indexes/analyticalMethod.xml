@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <pg_indexes
+        tablename="result_sum_swap_testsrc"
+        indexname="result_sum_swap_testsrc_analytical_method"
+        indexdef="CREATE INDEX result_sum_swap_testsrc_analytical_method ON wqp.result_sum_swap_testsrc USING btree (analytical_method) WITH (fillfactor='100')"
+     />
+</dataset>
