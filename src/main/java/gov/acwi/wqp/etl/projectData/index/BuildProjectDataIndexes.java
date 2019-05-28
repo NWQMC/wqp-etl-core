@@ -24,8 +24,8 @@ public class BuildProjectDataIndexes {
 	private Tasklet buildProjectDataOrganizationIndex;
 
 	@Autowired
-	@Qualifier("buildProjectDataIdentifierIndex")
-	private Tasklet buildProjectDataIdentifierIndex;
+	@Qualifier("buildProjectDataProjectIdentifierIndex")
+	private Tasklet buildProjectDataProjectIdentifierIndex;
 
 	@Bean
 	public Step buildProjectDataOrganizationIndexStep() {
@@ -35,9 +35,9 @@ public class BuildProjectDataIndexes {
 	}
 
 	@Bean
-	public Step buildProjectDataIdentifierIndexStep() {
-		return stepBuilderFactory.get("buildProjectDataIdentifierIndexStep")
-				.tasklet(buildProjectDataIdentifierIndex)
+	public Step buildProjectDataProjectIdentifierIndexStep() {
+		return stepBuilderFactory.get("buildProjectDataProjectIdentifierIndexStep")
+				.tasklet(buildProjectDataProjectIdentifierIndex)
 				.build();
 	}
 
@@ -45,7 +45,7 @@ public class BuildProjectDataIndexes {
 	public Flow buildProjectDataIndexesFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.BUILD_PROJECT_DATA_INDEXES_FLOW)
 				.start(buildProjectDataOrganizationIndexStep())
-				.next(buildProjectDataIdentifierIndexStep())
+				.next(buildProjectDataProjectIdentifierIndexStep())
 				.build();
 	}
 

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <pg_indexes
+        tablename="station_swap_testsrc"
+        indexname="station_swap_testsrc_county"
+        indexdef="CREATE INDEX station_swap_testsrc_county ON wqp.station_swap_testsrc USING btree (&quot;substring&quot;((governmental_unit_code)::text, '^[^:]+:[^:]+:[^:]+$'::text)) WITH (fillfactor='100')"
+     />
+</dataset>

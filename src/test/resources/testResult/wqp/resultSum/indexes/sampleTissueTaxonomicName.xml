@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <pg_indexes
+        tablename="result_sum_swap_testsrc"
+        indexname="result_sum_swap_testsrc_sample_tissue_taxonomic_name"
+        indexdef="CREATE INDEX result_sum_swap_testsrc_sample_tissue_taxonomic_name ON wqp.result_sum_swap_testsrc USING btree (sample_tissue_taxonomic_name) WITH (fillfactor='100')"
+     />
+</dataset>

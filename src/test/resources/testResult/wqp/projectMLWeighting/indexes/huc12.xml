@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <pg_indexes
+        tablename="prj_ml_weighting_swap_testsrc"
+        indexname="prj_ml_weighting_swap_testsrc_huc_12"
+        indexdef="CREATE INDEX prj_ml_weighting_swap_testsrc_huc_12 ON wqp.prj_ml_weighting_swap_testsrc USING btree (&quot;substring&quot;((huc)::text, '[0-9]{12}'::text)) WITH (fillfactor='100')"
+     />
+</dataset>

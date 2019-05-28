@@ -18,8 +18,152 @@ public class BuildMonitoringLocationSumIndexes {
 	private StepBuilderFactory stepBuilderFactory;
 
 	@Autowired
+	@Qualifier("buildMonitoringLocationSumCountryIndex")
+	private Tasklet buildMonitoringLocationSumCountryIndex;
+
+	@Autowired
+	@Qualifier("buildMonitoringLocationSumCountyIndex")
+	private Tasklet buildMonitoringLocationSumCountyIndex;
+
+	@Autowired
+	@Qualifier("buildMonitoringLocationSumGeomIndex")
+	private Tasklet buildMonitoringLocationSumGeomIndex;
+
+	@Autowired
+	@Qualifier("buildMonitoringLocationSumHuc10Index")
+	private Tasklet buildMonitoringLocationSumHuc10Index;
+
+	@Autowired
+	@Qualifier("buildMonitoringLocationSumHuc12Index")
+	private Tasklet buildMonitoringLocationSumHuc12Index;
+
+	@Autowired
+	@Qualifier("buildMonitoringLocationSumHuc2Index")
+	private Tasklet buildMonitoringLocationSumHuc2Index;
+
+	@Autowired
+	@Qualifier("buildMonitoringLocationSumHuc4Index")
+	private Tasklet buildMonitoringLocationSumHuc4Index;
+
+	@Autowired
+	@Qualifier("buildMonitoringLocationSumHuc6Index")
+	private Tasklet buildMonitoringLocationSumHuc6Index;
+
+	@Autowired
+	@Qualifier("buildMonitoringLocationSumHuc8Index")
+	private Tasklet buildMonitoringLocationSumHuc8Index;
+
+	@Autowired
+	@Qualifier("buildMonitoringLocationSumOrganizationIndex")
+	private Tasklet buildMonitoringLocationSumOrganizationIndex;
+
+	@Autowired
+	@Qualifier("buildMonitoringLocationSumSiteIdIndex")
+	private Tasklet buildMonitoringLocationSumSiteIdIndex;
+
+	@Autowired
+	@Qualifier("buildMonitoringLocationSumSiteTypeIndex")
+	private Tasklet buildMonitoringLocationSumSiteTypeIndex;
+
+	@Autowired
+	@Qualifier("buildMonitoringLocationSumStateIndex")
+	private Tasklet buildMonitoringLocationSumStateIndex;
+
+	@Autowired
 	@Qualifier("buildMonitoringLocationSumStationIdIndex")
 	private Tasklet buildMonitoringLocationSumStationIdIndex;
+
+
+	@Bean
+	public Step buildMonitoringLocationSumCountryIndexStep() {
+		return stepBuilderFactory.get("buildMonitoringLocationSumCountryIndexStep")
+				.tasklet(buildMonitoringLocationSumCountryIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildMonitoringLocationSumCountyIndexStep() {
+		return stepBuilderFactory.get("buildMonitoringLocationSumCountyIndexStep")
+				.tasklet(buildMonitoringLocationSumCountyIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildMonitoringLocationSumGeomIndexStep() {
+		return stepBuilderFactory.get("buildMonitoringLocationSumGeomIndexStep")
+				.tasklet(buildMonitoringLocationSumGeomIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildMonitoringLocationSumHuc10IndexStep() {
+		return stepBuilderFactory.get("buildMonitoringLocationSumHuc10IndexStep")
+				.tasklet(buildMonitoringLocationSumHuc10Index)
+				.build();
+	}
+
+	@Bean
+	public Step buildMonitoringLocationSumHuc12IndexStep() {
+		return stepBuilderFactory.get("buildMonitoringLocationSumHuc12IndexStep")
+				.tasklet(buildMonitoringLocationSumHuc12Index)
+				.build();
+	}
+
+	@Bean
+	public Step buildMonitoringLocationSumHuc2IndexStep() {
+		return stepBuilderFactory.get("buildMonitoringLocationSumHuc2IndexStep")
+				.tasklet(buildMonitoringLocationSumHuc2Index)
+				.build();
+	}
+
+	@Bean
+	public Step buildMonitoringLocationSumHuc4IndexStep() {
+		return stepBuilderFactory.get("buildMonitoringLocationSumHuc4IndexStep")
+				.tasklet(buildMonitoringLocationSumHuc4Index)
+				.build();
+	}
+
+	@Bean
+	public Step buildMonitoringLocationSumHuc6IndexStep() {
+		return stepBuilderFactory.get("buildMonitoringLocationSumHuc6IndexStep")
+				.tasklet(buildMonitoringLocationSumHuc6Index)
+				.build();
+	}
+
+	@Bean
+	public Step buildMonitoringLocationSumHuc8IndexStep() {
+		return stepBuilderFactory.get("buildMonitoringLocationSumHuc8IndexStep")
+				.tasklet(buildMonitoringLocationSumHuc8Index)
+				.build();
+	}
+
+	@Bean
+	public Step buildMonitoringLocationSumOrganizationIndexStep() {
+		return stepBuilderFactory.get("buildMonitoringLocationSumOrganizationIndexStep")
+				.tasklet(buildMonitoringLocationSumOrganizationIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildMonitoringLocationSumSiteIdIndexStep() {
+		return stepBuilderFactory.get("buildMonitoringLocationSumSiteIdIndexStep")
+				.tasklet(buildMonitoringLocationSumSiteIdIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildMonitoringLocationSumSiteTypeIndexStep() {
+		return stepBuilderFactory.get("buildMonitoringLocationSumSiteTypeIndexStep")
+				.tasklet(buildMonitoringLocationSumSiteTypeIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildMonitoringLocationSumStateIndexStep() {
+		return stepBuilderFactory.get("buildMonitoringLocationSumStateIndexStep")
+				.tasklet(buildMonitoringLocationSumStateIndex)
+				.build();
+	}
 
 	@Bean
 	public Step buildMonitoringLocationSumStationIdIndexStep() {
@@ -28,10 +172,24 @@ public class BuildMonitoringLocationSumIndexes {
 				.build();
 	}
 
+
 	@Bean
 	public Flow buildMonitoringLocationSumIndexesFlow() {
 		return new FlowBuilder<SimpleFlow>("buildMonitoringLocationSumIndexesFlow")
-				.start(buildMonitoringLocationSumStationIdIndexStep())
+				.start(buildMonitoringLocationSumCountryIndexStep())
+				.next(buildMonitoringLocationSumCountyIndexStep())
+				.next(buildMonitoringLocationSumGeomIndexStep())
+				.next(buildMonitoringLocationSumHuc10IndexStep())
+				.next(buildMonitoringLocationSumHuc12IndexStep())
+				.next(buildMonitoringLocationSumHuc2IndexStep())
+				.next(buildMonitoringLocationSumHuc4IndexStep())
+				.next(buildMonitoringLocationSumHuc6IndexStep())
+				.next(buildMonitoringLocationSumHuc8IndexStep())
+				.next(buildMonitoringLocationSumOrganizationIndexStep())
+				.next(buildMonitoringLocationSumSiteIdIndexStep())
+				.next(buildMonitoringLocationSumSiteTypeIndexStep())
+				.next(buildMonitoringLocationSumStateIndexStep())
+				.next(buildMonitoringLocationSumStationIdIndexStep())
 				.build();
 	}
 
