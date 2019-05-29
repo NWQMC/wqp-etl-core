@@ -29,10 +29,21 @@ public class TransformOrgGrouping {
 	@Qualifier("buildOrgGroupingIndexesFlow")
 	private Flow buildOrgGroupingIndexesFlow;
 
+	@Autowired
+	@Qualifier("analyzeOrgGrouping")
+	private Tasklet analyzeOrgGrouping;
+
 	@Bean
 	public Step transformOrgGroupingStep() {
 		return stepBuilderFactory.get("transformOrgGroupingStep")
 				.tasklet(transformOrgGroupingTasklet)
+				.build();
+	}
+
+	@Bean
+	public Step analyzeOrgGroupingStep() {
+		return stepBuilderFactory.get("analyzeOrgGroupingStep")
+				.tasklet(analyzeOrgGrouping)
 				.build();
 	}
 
@@ -42,6 +53,7 @@ public class TransformOrgGrouping {
 				.start(setupOrgGroupingSwapTableFlow)
 				.next(transformOrgGroupingStep())
 				.next(buildOrgGroupingIndexesFlow)
+				.next(analyzeOrgGroupingStep())
 				.build();
 	}
 

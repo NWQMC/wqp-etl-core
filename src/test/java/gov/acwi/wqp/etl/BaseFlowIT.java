@@ -61,6 +61,7 @@ public abstract class BaseFlowIT {
 
 	public static final String EXPECTED_DATABASE_TABLE_CHECK_TABLE = "tables";
 	public static final String EXPECTED_DATABASE_TABLE_CHECK_INDEX = "pg_indexes";
+	public static final String TABLE_NAME_PG_STAT_ALL_TABLES = "pg_stat_all_tables";
 
 	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_BARE = "select table_catalog, table_schema, table_name, table_type from information_schema.tables where table_name";
 	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_BARE + "=";
@@ -77,6 +78,8 @@ public abstract class BaseFlowIT {
 			+ "activity_count_past_60_months,result_count,result_count_past_12_months,result_count_past_60_months,"
 			+ "summary_past_12_months::text, summary_past_60_months::text, summary_all_months::text from ";
 	public static final String EXPECTED_DATABASE_QUERY_STATION_SUM_ORDER_BY = " order by data_source_id, station_id";
+
+	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = "select schemaname, relname, (now() - last_analyze) < make_interval(mins => 1) within_one_minute from pg_stat_all_tables where relname = ";
 
 	public static final LocalDate TEST_DATE = LocalDate.now();
 

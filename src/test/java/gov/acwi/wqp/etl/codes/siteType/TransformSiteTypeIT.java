@@ -29,6 +29,8 @@ import gov.acwi.wqp.etl.codes.siteType.table.SetupSiteTypeSwapTableFlowIT;
 
 public class TransformSiteTypeIT extends BaseFlowIT {
 
+	public static final String EXPECTED_DATABASE_QUERY = EXPECTED_DATABASE_QUERY_ANALYZE + "'site_type_swap_testsrc'";
+
 	@Autowired
 	@Qualifier("createSiteTypeFlow")
 	private Flow createSiteTypeFlow;
@@ -63,6 +65,22 @@ public class TransformSiteTypeIT extends BaseFlowIT {
 	}
 
 	@Test
+	@ExpectedDatabase(value="classpath:/testResult/analyze/siteType.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			query=EXPECTED_DATABASE_QUERY)
+	public void analyzeSiteTypeStepTest() {
+		try {
+			JobExecution jobExecution = jobLauncherTestUtils.launchStep("analyzeSiteTypeStep", testJobParameters);
+			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		}
+	}
+
+	@Test
 	@DatabaseSetup(value="classpath:/testResult/wqp/monitoringLocationSum/monitoringLocationSum.xml")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/siteType/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
@@ -73,10 +91,15 @@ public class TransformSiteTypeIT extends BaseFlowIT {
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupSiteTypeSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/siteType/siteType.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testResult/analyze/siteType.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			query=EXPECTED_DATABASE_QUERY)
 	public void siteTypeFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			Thread.sleep(1000);
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());

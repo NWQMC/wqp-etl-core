@@ -29,10 +29,21 @@ public class TransformSampleMedia {
 	@Qualifier("buildSampleMediaIndexesFlow")
 	private Flow buildSampleMediaIndexesFlow;
 
+	@Autowired
+	@Qualifier("analyzeSampleMedia")
+	private Tasklet analyzeSampleMedia;
+
 	@Bean
 	public Step transformSampleMediaStep() {
 		return stepBuilderFactory.get("transformSampleMediaStep")
 				.tasklet(transformSampleMediaTasklet)
+				.build();
+	}
+
+	@Bean
+	public Step analyzeSampleMediaStep() {
+		return stepBuilderFactory.get("analyzeSampleMediaStep")
+				.tasklet(analyzeSampleMedia)
 				.build();
 	}
 
@@ -42,6 +53,7 @@ public class TransformSampleMedia {
 				.start(setupSampleMediaSwapTableFlow)
 				.next(transformSampleMediaStep())
 				.next(buildSampleMediaIndexesFlow)
+				.next(analyzeSampleMediaStep())
 				.build();
 	}
 

@@ -29,6 +29,8 @@ import gov.acwi.wqp.etl.summaries.qwportalSummary.table.SetupQwportalSummarySwap
 
 public class TransformQwportalSummaryIT extends BaseFlowIT {
 
+	public static final String EXPECTED_DATABASE_QUERY = EXPECTED_DATABASE_QUERY_ANALYZE + "'qwportal_summary_swap_testsrc'";
+
 	@Autowired
 	@Qualifier("qwportalSummaryFlow")
 	private Flow qwportalSummaryFlow;
@@ -63,12 +65,32 @@ public class TransformQwportalSummaryIT extends BaseFlowIT {
 	}
 
 	@Test
+	@ExpectedDatabase(value="classpath:/testResult/analyze/qwportalSummary.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			query=EXPECTED_DATABASE_QUERY)
+	public void analyzeQwportalSummaryStepTest() {
+		try {
+			JobExecution jobExecution = jobLauncherTestUtils.launchStep("analyzeQwportalSummaryStep", testJobParameters);
+			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		}
+	}
+
+	@Test
 	@DatabaseSetup(value="classpath:/testResult/wqp/activitySum/activitySum.xml")
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/qwportalSummary/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupQwportalSummarySwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/qwportalSummary/qwportalSummary.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testResult/analyze/qwportalSummary.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			query=EXPECTED_DATABASE_QUERY)
 	public void qwportalSummaryFlowTest() {
 		Job qwportalSumFlowTest = jobBuilderFactory.get("qwportalSummaryFlowTest")
 					.start(qwportalSummaryFlow)
@@ -78,6 +100,7 @@ public class TransformQwportalSummaryIT extends BaseFlowIT {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			Thread.sleep(1000);
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());

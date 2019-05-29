@@ -29,6 +29,8 @@ import gov.acwi.wqp.etl.summaries.organizationSum.table.SetupOrganizationSumSwap
 
 public class TransformOrganizationSumIT extends BaseFlowIT {
 
+	public static final String EXPECTED_DATABASE_QUERY = EXPECTED_DATABASE_QUERY_ANALYZE + "'organization_sum_swap_testsrc'";
+
 	@Autowired
 	@Qualifier("organizationSumFlow")
 	private Flow organizationSumFlow;
@@ -63,6 +65,22 @@ public class TransformOrganizationSumIT extends BaseFlowIT {
 //	}
 
 	@Test
+	@ExpectedDatabase(value="classpath:/testResult/analyze/organizationSum.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			query=EXPECTED_DATABASE_QUERY)
+	public void analyzeOrganizationSumStepTest() {
+		try {
+			JobExecution jobExecution = jobLauncherTestUtils.launchStep("analyzeOrganizationSumStep", testJobParameters);
+			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		}
+	}
+
+	@Test
 //TODO - WQP-1406	@DatabaseSetup(value="classpath:/testData/wqp/result/csv/")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
@@ -73,6 +91,10 @@ public class TransformOrganizationSumIT extends BaseFlowIT {
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupOrganizationSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 //TODO - WQP-1406	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testResult/analyze/organizationSum.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			query=EXPECTED_DATABASE_QUERY)
 	public void organizationSumFlowTest() {
 		Job organizationSumFlowTest = jobBuilderFactory.get("organizationSumFlowTest")
 					.start(organizationSumFlow)
@@ -82,6 +104,7 @@ public class TransformOrganizationSumIT extends BaseFlowIT {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			Thread.sleep(1000);
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());

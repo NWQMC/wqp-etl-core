@@ -29,10 +29,21 @@ public class TransformMonitoringLoc {
 	@Qualifier("buildMonitoringLocIndexesFlow")
 	private Flow buildMonitoringLocIndexesFlow;
 
+	@Autowired
+	@Qualifier("analyzeMonitoringLoc")
+	private Tasklet analyzeMonitoringLoc;
+
 	@Bean
 	public Step transformMonitoringLocStep() {
 		return stepBuilderFactory.get("transformMonitoringLocStep")
 				.tasklet(transformMonitoringLocTasklet)
+				.build();
+	}
+
+	@Bean
+	public Step analyzeMonitoringLocStep() {
+		return stepBuilderFactory.get("analyzeMonitoringLocStep")
+				.tasklet(analyzeMonitoringLoc)
 				.build();
 	}
 
@@ -42,6 +53,7 @@ public class TransformMonitoringLoc {
 				.start(setupMonitoringLocSwapTableFlow)
 				.next(transformMonitoringLocStep())
 				.next(buildMonitoringLocIndexesFlow)
+				.next(analyzeMonitoringLocStep())
 				.build();
 	}
 

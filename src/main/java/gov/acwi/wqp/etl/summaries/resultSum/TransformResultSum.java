@@ -29,10 +29,21 @@ public class TransformResultSum {
 	@Qualifier("buildResultSumIndexesFlow")
 	private Flow buildResultSumIndexesFlow;
 
+	@Autowired
+	@Qualifier("analyzeResultSum")
+	private Tasklet analyzeResultSum;
+
 	@Bean
 	public Step transformResultSumStep() {
 		return stepBuilderFactory.get("transformResultSumStep")
 				.tasklet(transformResultSumTasklet)
+				.build();
+	}
+
+	@Bean
+	public Step analyzeResultSumStep() {
+		return stepBuilderFactory.get("analyzeResultSumStep")
+				.tasklet(analyzeResultSum)
 				.build();
 	}
 
@@ -42,6 +53,7 @@ public class TransformResultSum {
 				.start(setupResultSumSwapTableFlow)
 				.next(transformResultSumStep())
 				.next(buildResultSumIndexesFlow)
+				.next(analyzeResultSumStep())
 				.build();
 	}
 

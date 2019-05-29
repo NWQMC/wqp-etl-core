@@ -29,10 +29,21 @@ public class TransformCountry {
 	@Qualifier("buildCountryIndexesFlow")
 	private Flow buildCountryIndexesFlow;
 
+	@Autowired
+	@Qualifier("analyzeCountry")
+	private Tasklet analyzeCountry;
+
 	@Bean
 	public Step transformCountryStep() {
 		return stepBuilderFactory.get("transformCountryStep")
 				.tasklet(transformCountryTasklet)
+				.build();
+	}
+
+	@Bean
+	public Step analyzeCountryStep() {
+		return stepBuilderFactory.get("analyzeCountryStep")
+				.tasklet(analyzeCountry)
 				.build();
 	}
 
@@ -42,6 +53,7 @@ public class TransformCountry {
 				.start(setupCountrySwapTableFlow)
 				.next(transformCountryStep())
 				.next(buildCountryIndexesFlow)
+				.next(analyzeCountryStep())
 				.build();
 	}
 

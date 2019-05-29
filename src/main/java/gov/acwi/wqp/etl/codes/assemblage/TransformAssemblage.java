@@ -29,10 +29,21 @@ public class TransformAssemblage {
 	@Qualifier("buildAssemblageIndexesFlow")
 	private Flow buildAssemblageIndexesFlow;
 
+	@Autowired
+	@Qualifier("analyzeAssemblage")
+	private Tasklet analyzeAssemblage;
+
 	@Bean
 	public Step transformAssemblageStep() {
 		return stepBuilderFactory.get("transformAssemblageStep")
 				.tasklet(transformAssemblageTasklet)
+				.build();
+	}
+
+	@Bean
+	public Step analyzeAssemblageStep() {
+		return stepBuilderFactory.get("analyzeAssemblageStep")
+				.tasklet(analyzeAssemblage)
 				.build();
 	}
 
@@ -42,6 +53,7 @@ public class TransformAssemblage {
 				.start(setupAssemblageSwapTableFlow)
 				.next(transformAssemblageStep())
 				.next(buildAssemblageIndexesFlow)
+				.next(analyzeAssemblageStep())
 				.build();
 	}
 

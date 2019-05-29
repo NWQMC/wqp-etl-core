@@ -30,6 +30,8 @@ import gov.acwi.wqp.etl.summaries.resultSum.table.SetupResultSumSwapTableFlowIT;
 
 public class TransformResultSumIT extends BaseFlowIT {
 
+	public static final String EXPECTED_DATABASE_QUERY = EXPECTED_DATABASE_QUERY_ANALYZE + "'result_sum_swap_testsrc'";
+
 	@Autowired
 	@Qualifier("resultSumFlow")
 	private Flow resultSumFlow;
@@ -64,6 +66,22 @@ public class TransformResultSumIT extends BaseFlowIT {
 	}
 
 	@Test
+	@ExpectedDatabase(value="classpath:/testResult/analyze/resultSum.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			query=EXPECTED_DATABASE_QUERY)
+	public void analyzeResultSumStepTest() {
+		try {
+			JobExecution jobExecution = jobLauncherTestUtils.launchStep("analyzeResultSumStep", testJobParameters);
+			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		}
+	}
+
+	@Test
 	@DatabaseSetup(value="classpath:/testData/wqp/result/csv/")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resultSum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
@@ -74,6 +92,10 @@ public class TransformResultSumIT extends BaseFlowIT {
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupResultSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resultSum/csv/", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testResult/analyze/resultSum.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			query=EXPECTED_DATABASE_QUERY)
 	public void resultSumFlowTest() {
 		Job resultSumFlowTest = jobBuilderFactory.get("resultSumFlowTest")
 					.start(resultSumFlow)
@@ -83,6 +105,7 @@ public class TransformResultSumIT extends BaseFlowIT {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			Thread.sleep(1000);
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());

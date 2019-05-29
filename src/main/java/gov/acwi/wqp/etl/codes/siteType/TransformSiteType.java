@@ -29,10 +29,21 @@ public class TransformSiteType {
 	@Qualifier("buildSiteTypeIndexesFlow")
 	private Flow buildSiteTypeIndexesFlow;
 
+	@Autowired
+	@Qualifier("analyzeSiteType")
+	private Tasklet analyzeSiteType;
+
 	@Bean
 	public Step transformSiteTypeStep() {
 		return stepBuilderFactory.get("transformSiteTypeStep")
 				.tasklet(transformSiteTypeTasklet)
+				.build();
+	}
+
+	@Bean
+	public Step analyzeSiteTypeStep() {
+		return stepBuilderFactory.get("analyzeSiteTypeStep")
+				.tasklet(analyzeSiteType)
 				.build();
 	}
 
@@ -42,6 +53,7 @@ public class TransformSiteType {
 				.start(setupSiteTypeSwapTableFlow)
 				.next(transformSiteTypeStep())
 				.next(buildSiteTypeIndexesFlow)
+				.next(analyzeSiteTypeStep())
 				.build();
 	}
 

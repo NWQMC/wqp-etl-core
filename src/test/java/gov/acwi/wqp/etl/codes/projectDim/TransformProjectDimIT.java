@@ -29,6 +29,8 @@ import gov.acwi.wqp.etl.codes.projectDim.table.SetupProjectDimSwapTableFlowIT;
 
 public class TransformProjectDimIT extends BaseFlowIT {
 
+	public static final String EXPECTED_DATABASE_QUERY = EXPECTED_DATABASE_QUERY_ANALYZE + "'project_dim_swap_testsrc'";
+
 	@Autowired
 	@Qualifier("createProjectDimFlow")
 	private Flow createProjectDimFlow;
@@ -63,6 +65,22 @@ public class TransformProjectDimIT extends BaseFlowIT {
 	}
 
 	@Test
+	@ExpectedDatabase(value="classpath:/testResult/analyze/projectDim.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			query=EXPECTED_DATABASE_QUERY)
+	public void analyzeProjectDimStepTest() {
+		try {
+			JobExecution jobExecution = jobLauncherTestUtils.launchStep("analyzeProjectDimStep", testJobParameters);
+			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		}
+	}
+
+	@Test
 	@DatabaseSetup(value="classpath:/testResult/wqp/activitySum/activitySum.xml")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/projectDim/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
@@ -73,10 +91,15 @@ public class TransformProjectDimIT extends BaseFlowIT {
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupProjectDimSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/projectDim/projectDim.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testResult/analyze/projectDim.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			query=EXPECTED_DATABASE_QUERY)
 	public void projectDimFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			Thread.sleep(1000);
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());

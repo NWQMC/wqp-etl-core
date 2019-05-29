@@ -25,10 +25,21 @@ public class TransformQwportalSummary {
 	@Qualifier("transformQwportalSummaryTasklet")
 	private Tasklet transformQwportalSummaryTasklet;
 
+	@Autowired
+	@Qualifier("analyzeQwportalSummary")
+	private Tasklet analyzeQwportalSummary;
+
 	@Bean
 	public Step transformQwportalSummaryStep() {
 		return stepBuilderFactory.get("transformQwportalSummaryStep")
 				.tasklet(transformQwportalSummaryTasklet)
+				.build();
+	}
+
+	@Bean
+	public Step analyzeQwportalSummaryStep() {
+		return stepBuilderFactory.get("analyzeQwportalSummaryStep")
+				.tasklet(analyzeQwportalSummary)
 				.build();
 	}
 
@@ -38,6 +49,7 @@ public class TransformQwportalSummary {
 		return new FlowBuilder<SimpleFlow>("qwportalSummaryFlow")
 				.start(setupQwportalSummarySwapTableFlow)
 				.next(transformQwportalSummaryStep())
+				.next(analyzeQwportalSummaryStep())
 				.build();
 	}
 

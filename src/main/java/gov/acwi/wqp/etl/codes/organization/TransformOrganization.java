@@ -29,10 +29,21 @@ public class TransformOrganization {
 	@Qualifier("buildOrganizationIndexesFlow")
 	private Flow buildOrganizationIndexesFlow;
 
+	@Autowired
+	@Qualifier("analyzeOrganization")
+	private Tasklet analyzeOrganization;
+
 	@Bean
 	public Step transformOrganizationStep() {
 		return stepBuilderFactory.get("transformOrganizationStep")
 				.tasklet(transformOrganizationTasklet)
+				.build();
+	}
+
+	@Bean
+	public Step analyzeOrganizationStep() {
+		return stepBuilderFactory.get("analyzeOrganizationStep")
+				.tasklet(analyzeOrganization)
 				.build();
 	}
 
@@ -42,6 +53,7 @@ public class TransformOrganization {
 				.start(setupOrganizationSwapTableFlow)
 				.next(transformOrganizationStep())
 				.next(buildOrganizationIndexesFlow)
+				.next(analyzeOrganizationStep())
 				.build();
 	}
 

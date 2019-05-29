@@ -30,6 +30,8 @@ import gov.acwi.wqp.etl.summaries.monitoringLocationSum.table.SetupMonitoringLoc
 
 public class TransformMonitoringLocationSumIT extends BaseFlowIT {
 
+	public static final String EXPECTED_DATABASE_QUERY = EXPECTED_DATABASE_QUERY_ANALYZE + "'station_sum_swap_testsrc'";
+
 	public static final String EXPECTED_DATABASE_TABLE_STATION_SUM = "station_sum_swap_testsrc";
 	public static final String EXPECTED_DATABASE_QUERY_STATION_SUM = BASE_EXPECTED_DATABASE_QUERY_STATION_SUM
 			+ EXPECTED_DATABASE_TABLE_STATION_SUM + EXPECTED_DATABASE_QUERY_STATION_SUM_ORDER_BY;
@@ -79,6 +81,22 @@ public class TransformMonitoringLocationSumIT extends BaseFlowIT {
 	}
 
 	@Test
+	@ExpectedDatabase(value="classpath:/testResult/analyze/monitoringLocationSum.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			query=EXPECTED_DATABASE_QUERY)
+	public void analyzeMonitoringLocationSumStepTest() {
+		try {
+			JobExecution jobExecution = jobLauncherTestUtils.launchStep("analyzeMonitoringLocationSumStep", testJobParameters);
+			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		}
+	}
+
+	@Test
 	@DatabaseSetup(value="classpath:/testData/wqp/monitoringLocation/monitoringLocation.xml")
 	@DatabaseSetup(value="classpath:/testData/wqp/activity/csv/")
 	@DatabaseSetup(value="classpath:/testData/wqp/result/csv/")
@@ -100,6 +118,10 @@ public class TransformMonitoringLocationSumIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocationSum/monitoringLocationSum.xml",
 			table=EXPECTED_DATABASE_TABLE_STATION_SUM,
 			query=EXPECTED_DATABASE_QUERY_STATION_SUM)
+	@ExpectedDatabase(value="classpath:/testResult/analyze/monitoringLocationSum.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			query=EXPECTED_DATABASE_QUERY)
 	public void monitoringLocationSumFlowTest() {
 		Job monitoringLocationSumFlowTest = jobBuilderFactory.get("monitoringLocationSumFlowTest")
 					.start(monitoringLocationSumFlow)
@@ -109,6 +131,7 @@ public class TransformMonitoringLocationSumIT extends BaseFlowIT {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			Thread.sleep(1000);
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());

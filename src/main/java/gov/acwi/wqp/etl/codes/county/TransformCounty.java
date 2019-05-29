@@ -29,10 +29,21 @@ public class TransformCounty {
 	@Qualifier("buildCountyIndexesFlow")
 	private Flow buildCountyIndexesFlow;
 
+	@Autowired
+	@Qualifier("analyzeCounty")
+	private Tasklet analyzeCounty;
+
 	@Bean
 	public Step transformCountyStep() {
 		return stepBuilderFactory.get("transformCountyStep")
 				.tasklet(transformCountyTasklet)
+				.build();
+	}
+
+	@Bean
+	public Step analyzeCountyStep() {
+		return stepBuilderFactory.get("analyzeCountyStep")
+				.tasklet(analyzeCounty)
 				.build();
 	}
 
@@ -42,6 +53,7 @@ public class TransformCounty {
 				.start(setupCountySwapTableFlow)
 				.next(transformCountyStep())
 				.next(buildCountyIndexesFlow)
+				.next(analyzeCountyStep())
 				.build();
 	}
 

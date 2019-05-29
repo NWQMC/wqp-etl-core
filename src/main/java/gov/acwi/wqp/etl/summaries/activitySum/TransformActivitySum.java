@@ -29,10 +29,21 @@ public class TransformActivitySum {
 	@Qualifier("buildActivitySumIndexesFlow")
 	private Flow buildActivitySumIndexesFlow;
 
+	@Autowired
+	@Qualifier("analyzeActivitySum")
+	private Tasklet analyzeActivitySum;
+
 	@Bean
 	public Step transformActivitySumStep() {
 		return stepBuilderFactory.get("transformActivitySumStep")
 				.tasklet(transformActivitySumTasklet)
+				.build();
+	}
+
+	@Bean
+	public Step analyzeActivitySumStep() {
+		return stepBuilderFactory.get("analyzeActivitySumStep")
+				.tasklet(analyzeActivitySum)
 				.build();
 	}
 
@@ -42,6 +53,7 @@ public class TransformActivitySum {
 				.start(setupActivitySumSwapTableFlow)
 				.next(transformActivitySumStep())
 				.next(buildActivitySumIndexesFlow)
+				.next(analyzeActivitySumStep())
 				.build();
 	}
 

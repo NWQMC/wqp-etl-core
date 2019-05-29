@@ -29,6 +29,8 @@ import gov.acwi.wqp.etl.summaries.activitySum.table.SetupActivitySumSwapTableFlo
 
 public class TransformActivitySumIT extends BaseFlowIT {
 
+	public static final String EXPECTED_DATABASE_QUERY = EXPECTED_DATABASE_QUERY_ANALYZE + "'activity_sum_swap_testsrc'";
+
 	@Autowired
 	@Qualifier("activitySumFlow")
 	private Flow activitySumFlow;
@@ -65,6 +67,22 @@ public class TransformActivitySumIT extends BaseFlowIT {
 	}
 
 	@Test
+	@ExpectedDatabase(value="classpath:/testResult/analyze/activitySum.xml",
+	assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+	table=TABLE_NAME_PG_STAT_ALL_TABLES,
+	query=EXPECTED_DATABASE_QUERY)
+	public void analyzeActivitySumStepTest() {
+		try {
+			JobExecution jobExecution = jobLauncherTestUtils.launchStep("analyzeActivitySumStep", testJobParameters);
+			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		}
+	}
+
+	@Test
 	@DatabaseSetup(value="classpath:/testData/wqp/activity/csv/")
 	@DatabaseSetup(value="classpath:/testData/wqp/activityMetric/activityMetric.xml")
 	@DatabaseSetup(value="classpath:/testData/wqp/result/csv/")
@@ -77,10 +95,15 @@ public class TransformActivitySumIT extends BaseFlowIT {
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupActivitySumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activitySum/activitySum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testResult/analyze/activitySum.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			query=EXPECTED_DATABASE_QUERY)
 	public void activitySumFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			Thread.sleep(1000);
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());
