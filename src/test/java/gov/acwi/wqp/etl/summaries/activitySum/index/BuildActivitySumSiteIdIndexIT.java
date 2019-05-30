@@ -16,7 +16,7 @@ public class BuildActivitySumSiteIdIndexIT extends BaseBuildActivitySumIndexesIT
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activitySum/indexes/siteId.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY + " and indexname='activity_sum_swap_testsrc_site_id'")
+			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='activity_sum_swap_testsrc_site_id'")
 	public void buildActivitySumSiteIdIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

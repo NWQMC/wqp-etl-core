@@ -29,7 +29,7 @@ import gov.acwi.wqp.etl.codes.county.table.SetupCountySwapTableFlowIT;
 
 public class TransformCountyIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = EXPECTED_DATABASE_QUERY_ANALYZE + "'county_swap_testsrc'";
+	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_ANALYZE + "'county_swap_testsrc'";
 
 	@Autowired
 	@Qualifier("createCountyFlow")
@@ -68,7 +68,7 @@ public class TransformCountyIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/analyze/county.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=TABLE_NAME_PG_STAT_ALL_TABLES,
-			query=EXPECTED_DATABASE_QUERY)
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void analyzeCountyStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchStep("analyzeCountyStep", testJobParameters);
@@ -85,16 +85,16 @@ public class TransformCountyIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/county/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=BuildCountyIndexesFlowIT.EXPECTED_DATABASE_QUERY)
+			query=BuildCountyIndexesFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/county/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
-			query=SetupCountySwapTableFlowIT.EXPECTED_DATABASE_QUERY)
+			query=SetupCountySwapTableFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/county/county.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/analyze/county.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=TABLE_NAME_PG_STAT_ALL_TABLES,
-			query=EXPECTED_DATABASE_QUERY)
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void countyFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);

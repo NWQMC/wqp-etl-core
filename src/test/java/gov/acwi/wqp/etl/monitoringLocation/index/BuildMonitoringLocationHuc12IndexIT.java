@@ -16,7 +16,7 @@ public class BuildMonitoringLocationHuc12IndexIT extends BaseBuildMonitoringLoca
 	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocation/indexes/huc12.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY + " and indexname='station_swap_testsrc_huc_12'")
+			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='station_swap_testsrc_huc_12'")
 	public void buildMonitoringLocationHuc12IndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

@@ -16,7 +16,7 @@ public class BuildActivityMetricIndexesFlowIT extends BaseBuildActivityMetricInd
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activityMetric/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY)
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void buildActivityMetricMetricIndexesFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);

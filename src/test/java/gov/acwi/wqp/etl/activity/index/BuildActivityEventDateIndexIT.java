@@ -16,7 +16,7 @@ public class BuildActivityEventDateIndexIT extends BaseBuildActivityIndexesIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activity/indexes/eventDate.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY + " and indexname='activity_swap_testsrc_event_date'")
+			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='activity_swap_testsrc_event_date'")
 	public void buildActivityEventDateIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

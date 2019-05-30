@@ -30,7 +30,7 @@ import gov.acwi.wqp.etl.summaries.resultSum.table.SetupResultSumSwapTableFlowIT;
 
 public class TransformResultSumIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = EXPECTED_DATABASE_QUERY_ANALYZE + "'result_sum_swap_testsrc'";
+	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_ANALYZE + "'result_sum_swap_testsrc'";
 
 	@Autowired
 	@Qualifier("resultSumFlow")
@@ -69,7 +69,7 @@ public class TransformResultSumIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/analyze/resultSum.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=TABLE_NAME_PG_STAT_ALL_TABLES,
-			query=EXPECTED_DATABASE_QUERY)
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void analyzeResultSumStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchStep("analyzeResultSumStep", testJobParameters);
@@ -86,16 +86,16 @@ public class TransformResultSumIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resultSum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=BuildResultSumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
+			query=BuildResultSumIndexesFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/resultSum/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
-			query=SetupResultSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
+			query=SetupResultSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resultSum/csv/", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/analyze/resultSum.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=TABLE_NAME_PG_STAT_ALL_TABLES,
-			query=EXPECTED_DATABASE_QUERY)
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void resultSumFlowTest() {
 		Job resultSumFlowTest = jobBuilderFactory.get("resultSumFlowTest")
 					.start(resultSumFlow)

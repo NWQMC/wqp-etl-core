@@ -29,7 +29,7 @@ import gov.acwi.wqp.etl.codes.taxaName.table.SetupTaxaNameSwapTableFlowIT;
 
 public class TransformTaxaNameIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = EXPECTED_DATABASE_QUERY_ANALYZE + "'taxa_name_swap_testsrc'";
+	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_ANALYZE + "'taxa_name_swap_testsrc'";
 
 	@Autowired
 	@Qualifier("createTaxaNameFlow")
@@ -68,7 +68,7 @@ public class TransformTaxaNameIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/analyze/taxaName.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=TABLE_NAME_PG_STAT_ALL_TABLES,
-			query=EXPECTED_DATABASE_QUERY)
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void analyzeTaxaNameStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchStep("analyzeTaxaNameStep", testJobParameters);
@@ -85,16 +85,16 @@ public class TransformTaxaNameIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/taxaName/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=BuildTaxaNameIndexesFlowIT.EXPECTED_DATABASE_QUERY)
+			query=BuildTaxaNameIndexesFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/taxaName/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
-			query=SetupTaxaNameSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
+			query=SetupTaxaNameSwapTableFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/taxaName/taxaName.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/analyze/taxaName.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=TABLE_NAME_PG_STAT_ALL_TABLES,
-			query=EXPECTED_DATABASE_QUERY)
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void taxaNameFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);

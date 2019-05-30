@@ -19,7 +19,7 @@ import gov.acwi.wqp.etl.EtlConstantUtils;
 
 public class AnalyzeOrgDataIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = EXPECTED_DATABASE_QUERY_ANALYZE + "'org_data_swap_testsrc'";
+	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_ANALYZE + "'org_data_swap_testsrc'";
 
 	@Autowired
 	@Qualifier(EtlConstantUtils.ANALYZE_ORG_DATA_FLOW)
@@ -39,7 +39,7 @@ public class AnalyzeOrgDataIT extends BaseFlowIT {
 			value="classpath:/testResult/analyze/orgData.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=TABLE_NAME_PG_STAT_ALL_TABLES,
-			query=EXPECTED_DATABASE_QUERY)
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void analyzeOrgDataFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);

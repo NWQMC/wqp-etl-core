@@ -29,7 +29,7 @@ import gov.acwi.wqp.etl.codes.monitoringLoc.table.SetupMonitoringLocSwapTableFlo
 
 public class TransformMonitoringLocIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = EXPECTED_DATABASE_QUERY_ANALYZE + "'monitoring_loc_swap_testsrc'";
+	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_ANALYZE + "'monitoring_loc_swap_testsrc'";
 
 	@Autowired
 	@Qualifier("createMonitoringLocFlow")
@@ -68,7 +68,7 @@ public class TransformMonitoringLocIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/analyze/monitoringLoc.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=TABLE_NAME_PG_STAT_ALL_TABLES,
-			query=EXPECTED_DATABASE_QUERY)
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void analyzeMonitoringLocStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchStep("analyzeMonitoringLocStep", testJobParameters);
@@ -85,16 +85,16 @@ public class TransformMonitoringLocIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLoc/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=BuildMonitoringLocIndexesFlowIT.EXPECTED_DATABASE_QUERY)
+			query=BuildMonitoringLocIndexesFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/monitoringLoc/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
-			query=SetupMonitoringLocSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
+			query=SetupMonitoringLocSwapTableFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLoc/monitoringLoc.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/analyze/monitoringLoc.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=TABLE_NAME_PG_STAT_ALL_TABLES,
-			query=EXPECTED_DATABASE_QUERY)
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void monitoringLocFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);

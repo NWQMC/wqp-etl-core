@@ -16,7 +16,7 @@ public class BuildResultCountyIndexIT extends BaseBuildResultIndexesIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/result/indexes/county.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY + " and indexname='result_swap_testsrc_county'")
+			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='result_swap_testsrc_county'")
 	public void buildResultCountyIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

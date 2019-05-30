@@ -16,7 +16,7 @@ public class BuildBiologicalHabitatMetricStationIdIndexIT extends BaseBuildBiolo
 	@ExpectedDatabase(value="classpath:/testResult/wqp/biologicalHabitatMetric/indexes/stationId.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY + " and indexname='bio_hab_metric_swap_testsrc_station_id'")
+			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='bio_hab_metric_swap_testsrc_station_id'")
 	public void buildBiologicalHabitatMetricStationIdIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

@@ -16,7 +16,7 @@ public class BuildResultSumAnalyticalMethodIndexIT extends BaseBuildResultSumInd
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resultSum/indexes/analyticalMethod.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY + " and indexname='result_sum_swap_testsrc_analytical_method'")
+			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='result_sum_swap_testsrc_analytical_method'")
 	public void buildResultSumAnalyticalMethodIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

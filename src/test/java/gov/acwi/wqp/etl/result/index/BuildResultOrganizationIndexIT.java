@@ -15,7 +15,7 @@ public class BuildResultOrganizationIndexIT extends BaseBuildResultIndexesIT {
 	@Test
 	@ExpectedDatabase(value="classpath:/testResult/wqp/result/indexes/organization.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY + " and indexname='result_swap_testsrc_organization'")
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='result_swap_testsrc_organization'")
 	public void buildResultOrganizationIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

@@ -10,7 +10,7 @@ import gov.acwi.wqp.etl.EtlConstantUtils;
 
 public abstract class BaseBuildBiologicalHabitatMetricIndexesIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX + "'bio_hab_metric_swap_testsrc'";
+	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX + "'bio_hab_metric_swap_testsrc'";
 
 	@Autowired
 	@Qualifier(EtlConstantUtils.BUILD_BIOLOGICAL_HABITAT_METRIC_INDEXES_FLOW)

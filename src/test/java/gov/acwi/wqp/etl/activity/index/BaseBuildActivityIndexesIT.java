@@ -10,7 +10,7 @@ import gov.acwi.wqp.etl.EtlConstantUtils;
 
 public abstract class BaseBuildActivityIndexesIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX + "'activity_swap_testsrc'";
+	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX + "'activity_swap_testsrc'";
 
 	@Autowired
 	@Qualifier(EtlConstantUtils.BUILD_ACTIVITY_INDEXES_FLOW)

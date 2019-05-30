@@ -29,7 +29,7 @@ import gov.acwi.wqp.etl.codes.country.table.SetupCountrySwapTableFlowIT;
 
 public class TransformCountryIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = EXPECTED_DATABASE_QUERY_ANALYZE + "'country_swap_testsrc'";
+	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_ANALYZE + "'country_swap_testsrc'";
 
 	@Autowired
 	@Qualifier("createCountryFlow")
@@ -68,7 +68,7 @@ public class TransformCountryIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/analyze/country.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=TABLE_NAME_PG_STAT_ALL_TABLES,
-			query=EXPECTED_DATABASE_QUERY)
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void analyzeCountryStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchStep("analyzeCountryStep", testJobParameters);
@@ -85,16 +85,16 @@ public class TransformCountryIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/country/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=BuildCountryIndexesFlowIT.EXPECTED_DATABASE_QUERY)
+			query=BuildCountryIndexesFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/country/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
-			query=SetupCountrySwapTableFlowIT.EXPECTED_DATABASE_QUERY)
+			query=SetupCountrySwapTableFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/country/country.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/analyze/country.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=TABLE_NAME_PG_STAT_ALL_TABLES,
-			query=EXPECTED_DATABASE_QUERY)
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void countryFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);

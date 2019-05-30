@@ -9,7 +9,7 @@ import gov.acwi.wqp.etl.BaseFlowIT;
 
 public abstract class BaseBuildActivitySumIndexesIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX + "'activity_sum_swap_testsrc'";
+	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX + "'activity_sum_swap_testsrc'";
 
 	@Autowired
 	@Qualifier("buildActivitySumIndexesFlow")

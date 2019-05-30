@@ -16,7 +16,7 @@ public class BuildProjectMLWeightingStateIndexIT extends BaseBuildProjectMLWeigh
 	@ExpectedDatabase(value="classpath:/testResult/wqp/projectMLWeighting/indexes/state.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY + " and indexname='prj_ml_weighting_swap_testsrc_state'")
+			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='prj_ml_weighting_swap_testsrc_state'")
 	public void buildProjectMLWeightingStateIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

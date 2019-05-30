@@ -16,7 +16,7 @@ public class BuildMonitoringLocationSumGeomIndexIT extends BaseBuildMonitoringLo
 	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocationSum/indexes/geom.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY + " and indexname='station_sum_swap_testsrc_geom'")
+			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='station_sum_swap_testsrc_geom'")
 	public void buildMonitoringLocationSumGeomIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

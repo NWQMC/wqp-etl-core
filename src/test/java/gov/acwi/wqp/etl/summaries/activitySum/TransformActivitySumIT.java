@@ -29,7 +29,7 @@ import gov.acwi.wqp.etl.summaries.activitySum.table.SetupActivitySumSwapTableFlo
 
 public class TransformActivitySumIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = EXPECTED_DATABASE_QUERY_ANALYZE + "'activity_sum_swap_testsrc'";
+	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_ANALYZE + "'activity_sum_swap_testsrc'";
 
 	@Autowired
 	@Qualifier("activitySumFlow")
@@ -70,7 +70,7 @@ public class TransformActivitySumIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/analyze/activitySum.xml",
 	assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 	table=TABLE_NAME_PG_STAT_ALL_TABLES,
-	query=EXPECTED_DATABASE_QUERY)
+	query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void analyzeActivitySumStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchStep("analyzeActivitySumStep", testJobParameters);
@@ -89,16 +89,16 @@ public class TransformActivitySumIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activitySum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=BuildActivitySumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
+			query=BuildActivitySumIndexesFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/activitySum/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
-			query=SetupActivitySumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
+			query=SetupActivitySumSwapTableFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activitySum/activitySum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/analyze/activitySum.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=TABLE_NAME_PG_STAT_ALL_TABLES,
-			query=EXPECTED_DATABASE_QUERY)
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void activitySumFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);

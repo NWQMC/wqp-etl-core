@@ -16,7 +16,7 @@ public class BuildResDetectQntLimitStateIndexIT extends BaseBuildResDetectQntLim
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resDetectQntLimit/indexes/state.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY + " and indexname='r_detect_qnt_lmt_swap_testsrc_state'")
+			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='r_detect_qnt_lmt_swap_testsrc_state'")
 	public void buildResDetectQntLimitStateIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

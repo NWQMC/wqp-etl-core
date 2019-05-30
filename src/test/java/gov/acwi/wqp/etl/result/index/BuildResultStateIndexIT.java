@@ -16,7 +16,7 @@ public class BuildResultStateIndexIT extends BaseBuildResultIndexesIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/result/indexes/state.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY + " and indexname='result_swap_testsrc_state'")
+			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='result_swap_testsrc_state'")
 	public void buildResultStateIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

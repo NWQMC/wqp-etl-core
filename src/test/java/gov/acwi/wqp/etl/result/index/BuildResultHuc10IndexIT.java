@@ -16,7 +16,7 @@ public class BuildResultHuc10IndexIT extends BaseBuildResultIndexesIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/result/indexes/huc10.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY + " and indexname='result_swap_testsrc_huc_10'")
+			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='result_swap_testsrc_huc_10'")
 	public void buildResultHuc10IndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

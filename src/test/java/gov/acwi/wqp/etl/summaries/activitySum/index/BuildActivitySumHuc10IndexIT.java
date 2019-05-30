@@ -16,7 +16,7 @@ public class BuildActivitySumHuc10IndexIT extends BaseBuildActivitySumIndexesIT 
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activitySum/indexes/huc10.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY + " and indexname='activity_sum_swap_testsrc_huc_10'")
+			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='activity_sum_swap_testsrc_huc_10'")
 	public void buildActivitySumHuc10IndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

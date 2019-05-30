@@ -16,7 +16,7 @@ public class BuildResDetectQntLimitCharacteristicTypeIndexIT extends BaseBuildRe
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resDetectQntLimit/indexes/characteristicType.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY + " and indexname='r_detect_qnt_lmt_swap_testsrc_characteristic_type'")
+			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='r_detect_qnt_lmt_swap_testsrc_characteristic_type'")
 	public void buildResDetectQntLimitCharacteristicTypeIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

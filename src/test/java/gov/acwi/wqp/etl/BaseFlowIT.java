@@ -79,7 +79,8 @@ public abstract class BaseFlowIT {
 			+ "summary_past_12_months::text, summary_past_60_months::text, summary_all_months::text from ";
 	public static final String EXPECTED_DATABASE_QUERY_STATION_SUM_ORDER_BY = " order by data_source_id, station_id";
 
-	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = "select schemaname, relname, (now() - last_analyze) < make_interval(mins => 1) within_one_minute from pg_stat_all_tables where relname = ";
+	public static final String BASE_EXPECTED_DATABASE_QUERY_ANALYZE_BARE = "select schemaname, relname, (now() - last_analyze) < make_interval(mins => 1) within_one_minute from pg_stat_all_tables ";
+	public static final String BASE_EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_ANALYZE_BARE + "where relname = ";
 
 	public static final LocalDate TEST_DATE = LocalDate.now();
 

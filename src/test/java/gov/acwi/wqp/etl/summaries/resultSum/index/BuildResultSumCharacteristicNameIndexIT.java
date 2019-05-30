@@ -16,7 +16,7 @@ public class BuildResultSumCharacteristicNameIndexIT extends BaseBuildResultSumI
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resultSum/indexes/characteristicName.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY + " and indexname='result_sum_swap_testsrc_characteristic_name'")
+			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='result_sum_swap_testsrc_characteristic_name'")
 	public void buildResultSumCharacteristicNameIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

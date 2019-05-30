@@ -29,7 +29,7 @@ import gov.acwi.wqp.etl.codes.siteType.table.SetupSiteTypeSwapTableFlowIT;
 
 public class TransformSiteTypeIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = EXPECTED_DATABASE_QUERY_ANALYZE + "'site_type_swap_testsrc'";
+	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_ANALYZE + "'site_type_swap_testsrc'";
 
 	@Autowired
 	@Qualifier("createSiteTypeFlow")
@@ -68,7 +68,7 @@ public class TransformSiteTypeIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/analyze/siteType.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=TABLE_NAME_PG_STAT_ALL_TABLES,
-			query=EXPECTED_DATABASE_QUERY)
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void analyzeSiteTypeStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchStep("analyzeSiteTypeStep", testJobParameters);
@@ -85,16 +85,16 @@ public class TransformSiteTypeIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/siteType/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=BuildSiteTypeIndexesFlowIT.EXPECTED_DATABASE_QUERY)
+			query=BuildSiteTypeIndexesFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/siteType/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
-			query=SetupSiteTypeSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
+			query=SetupSiteTypeSwapTableFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/siteType/siteType.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/analyze/siteType.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=TABLE_NAME_PG_STAT_ALL_TABLES,
-			query=EXPECTED_DATABASE_QUERY)
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void siteTypeFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);

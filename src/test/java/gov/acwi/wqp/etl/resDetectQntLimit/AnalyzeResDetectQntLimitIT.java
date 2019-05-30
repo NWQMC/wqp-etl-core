@@ -19,7 +19,7 @@ import gov.acwi.wqp.etl.EtlConstantUtils;
 
 public class AnalyzeResDetectQntLimitIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = EXPECTED_DATABASE_QUERY_ANALYZE + "'r_detect_qnt_lmt_swap_testsrc'";
+	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_ANALYZE + "'r_detect_qnt_lmt_swap_testsrc'";
 
 	@Autowired
 	@Qualifier(EtlConstantUtils.ANALYZE_RES_DETECT_QNT_LIMIT_FLOW)
@@ -39,7 +39,7 @@ public class AnalyzeResDetectQntLimitIT extends BaseFlowIT {
 			value="classpath:/testResult/analyze/resDetectQntLimit.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=TABLE_NAME_PG_STAT_ALL_TABLES,
-			query=EXPECTED_DATABASE_QUERY)
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void analyzeResDetectQntLimitFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);

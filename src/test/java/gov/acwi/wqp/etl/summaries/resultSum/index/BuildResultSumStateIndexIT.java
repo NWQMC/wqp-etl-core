@@ -16,7 +16,7 @@ public class BuildResultSumStateIndexIT extends BaseBuildResultSumIndexesIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resultSum/indexes/state.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY + " and indexname='result_sum_swap_testsrc_state'")
+			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='result_sum_swap_testsrc_state'")
 	public void buildResultSumStateIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

@@ -16,7 +16,7 @@ public class BuildResDetectQntLimitSiteIdIndexIT extends BaseBuildResDetectQntLi
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resDetectQntLimit/indexes/siteId.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY + " and indexname='r_detect_qnt_lmt_swap_testsrc_site_id'")
+			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='r_detect_qnt_lmt_swap_testsrc_site_id'")
 	public void buildResDetectQntLimitSiteIdIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

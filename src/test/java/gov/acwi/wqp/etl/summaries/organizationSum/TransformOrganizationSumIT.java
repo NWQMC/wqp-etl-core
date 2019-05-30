@@ -29,7 +29,7 @@ import gov.acwi.wqp.etl.summaries.organizationSum.table.SetupOrganizationSumSwap
 
 public class TransformOrganizationSumIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY = EXPECTED_DATABASE_QUERY_ANALYZE + "'organization_sum_swap_testsrc'";
+	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_ANALYZE + "'organization_sum_swap_testsrc'";
 
 	@Autowired
 	@Qualifier("organizationSumFlow")
@@ -68,7 +68,7 @@ public class TransformOrganizationSumIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/analyze/organizationSum.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=TABLE_NAME_PG_STAT_ALL_TABLES,
-			query=EXPECTED_DATABASE_QUERY)
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void analyzeOrganizationSumStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchStep("analyzeOrganizationSumStep", testJobParameters);
@@ -85,16 +85,16 @@ public class TransformOrganizationSumIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=BuildOrganizationSumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
+			query=BuildOrganizationSumIndexesFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/organizationSum/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
-			query=SetupOrganizationSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
+			query=SetupOrganizationSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
 //TODO - WQP-1406	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/analyze/organizationSum.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=TABLE_NAME_PG_STAT_ALL_TABLES,
-			query=EXPECTED_DATABASE_QUERY)
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void organizationSumFlowTest() {
 		Job organizationSumFlowTest = jobBuilderFactory.get("organizationSumFlowTest")
 					.start(organizationSumFlow)

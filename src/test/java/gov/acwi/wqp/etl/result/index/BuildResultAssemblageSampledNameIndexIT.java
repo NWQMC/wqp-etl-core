@@ -16,7 +16,7 @@ public class BuildResultAssemblageSampledNameIndexIT extends BaseBuildResultInde
 	@ExpectedDatabase(value="classpath:/testResult/wqp/result/indexes/assemblageSampledName.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY + " and indexname='result_swap_testsrc_assemblage_sampled_name'")
+			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='result_swap_testsrc_assemblage_sampled_name'")
 	public void buildResultAssemblageSampledNameIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils
