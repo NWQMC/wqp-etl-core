@@ -29,10 +29,21 @@ public class TransformCharacteristicName {
 	@Qualifier("buildCharacteristicNameIndexesFlow")
 	private Flow buildCharacteristicNameIndexesFlow;
 
+	@Autowired
+	@Qualifier("analyzeCharacteristicName")
+	private Tasklet analyzeCharacteristicName;
+
 	@Bean
 	public Step transformCharacteristicNameStep() {
 		return stepBuilderFactory.get("transformCharacteristicNameStep")
 				.tasklet(transformCharacteristicNameTasklet)
+				.build();
+	}
+
+	@Bean
+	public Step analyzeCharacteristicNameStep() {
+		return stepBuilderFactory.get("analyzeCharacteristicNameStep")
+				.tasklet(analyzeCharacteristicName)
 				.build();
 	}
 
@@ -42,6 +53,7 @@ public class TransformCharacteristicName {
 				.start(setupCharacteristicNameSwapTableFlow)
 				.next(transformCharacteristicNameStep())
 				.next(buildCharacteristicNameIndexesFlow)
+				.next(analyzeCharacteristicNameStep())
 				.build();
 	}
 

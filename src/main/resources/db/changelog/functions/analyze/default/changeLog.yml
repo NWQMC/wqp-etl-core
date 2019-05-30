@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.analyze_table_default"
+      changes:
+        - sqlFile:
+            path: analyzeTableDefault.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists analyze_table_default(character varying,character varying,character varying);

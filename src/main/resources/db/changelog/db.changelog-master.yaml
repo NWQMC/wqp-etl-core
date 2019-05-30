@@ -22,3 +22,7 @@ databaseChangeLog:
   - include:
       file: "functions/install/changeLog.yml"
       relativeToChangelogFile: true
+
+  - include:
+      file: "functions/analyze/changeLog.yml"
+      relativeToChangelogFile: true
