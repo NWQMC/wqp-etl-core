@@ -16,7 +16,7 @@ public class BuildResultSumSiteTypeIndexIT extends BaseBuildResultSumIndexesIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resultSum/indexes/siteType.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='result_sum_swap_testsrc_site_type'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='result_sum_swap_testsrc_site_type'")
 	public void buildResultSumSiteTypeIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

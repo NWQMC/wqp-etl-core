@@ -16,7 +16,7 @@ public class BuildResDetectQntLimitSampleTissueTaxonomicNameIndexIT extends Base
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resDetectQntLimit/indexes/sampleTissueTaxonomicName.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='r_detect_qnt_lmt_swap_testsrc_sample_tissue_taxonomic_name'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='r_detect_qnt_lmt_swap_testsrc_sample_tissue_taxonomic_name'")
 	public void buildResDetectQntLimitSampleTissueTaxonomicNameIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

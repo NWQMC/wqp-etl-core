@@ -16,7 +16,7 @@ public class BuildProjectMLWeightingStationIdIndexIT extends BaseBuildProjectMLW
 	@ExpectedDatabase(value="classpath:/testResult/wqp/projectMLWeighting/indexes/stationId.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='prj_ml_weighting_swap_testsrc_station_id'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='prj_ml_weighting_swap_testsrc_station_id'")
 	public void buildProjectMLWeightingStationIdIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

@@ -16,7 +16,7 @@ public class BuildResultSumGeomIndexIT extends BaseBuildResultSumIndexesIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resultSum/indexes/geom.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='result_sum_swap_testsrc_geom'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='result_sum_swap_testsrc_geom'")
 	public void buildResultSumGeomIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

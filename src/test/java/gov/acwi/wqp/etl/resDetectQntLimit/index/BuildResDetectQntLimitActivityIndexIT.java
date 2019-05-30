@@ -16,7 +16,7 @@ public class BuildResDetectQntLimitActivityIndexIT extends BaseBuildResDetectQnt
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resDetectQntLimit/indexes/activity.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='r_detect_qnt_lmt_swap_testsrc_activity'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='r_detect_qnt_lmt_swap_testsrc_activity'")
 	public void buildResDetectQntLimitActivityIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

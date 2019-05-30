@@ -15,7 +15,7 @@ public class BuildActivitySumSampeMediaIndexIT extends BaseBuildActivitySumIndex
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activitySum/indexes/sampleMedia.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='activity_sum_swap_testsrc_sample_media'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='activity_sum_swap_testsrc_sample_media'")
 	public void buildActivitySumSampleMediaIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

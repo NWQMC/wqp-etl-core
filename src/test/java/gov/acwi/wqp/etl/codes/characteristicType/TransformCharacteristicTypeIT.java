@@ -85,11 +85,11 @@ public class TransformCharacteristicTypeIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/characteristicType/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=BuildCharacteristicTypeIndexesFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=BuildCharacteristicTypeIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/characteristicType/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
-			query=SetupCharacteristicTypeSwapTableFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=SetupCharacteristicTypeSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/characteristicType/characteristicType.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/analyze/characteristicType.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,

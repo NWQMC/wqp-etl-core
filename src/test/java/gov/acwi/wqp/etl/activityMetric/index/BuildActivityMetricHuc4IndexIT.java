@@ -16,7 +16,7 @@ public class BuildActivityMetricHuc4IndexIT extends BaseBuildActivityMetricIndex
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activityMetric/indexes/huc4.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='act_metric_swap_testsrc_huc_4'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='act_metric_swap_testsrc_huc_4'")
 	public void buildActivityMetricHuc4IndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

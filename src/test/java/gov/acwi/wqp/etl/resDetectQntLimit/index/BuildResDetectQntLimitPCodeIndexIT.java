@@ -16,7 +16,7 @@ public class BuildResDetectQntLimitPCodeIndexIT extends BaseBuildResDetectQntLim
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resDetectQntLimit/indexes/pCode.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='r_detect_qnt_lmt_swap_testsrc_p_code'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='r_detect_qnt_lmt_swap_testsrc_p_code'")
 	public void buildResDetectQntLimitPCodeIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

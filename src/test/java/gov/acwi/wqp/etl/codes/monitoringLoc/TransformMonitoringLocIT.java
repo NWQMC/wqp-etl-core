@@ -85,11 +85,11 @@ public class TransformMonitoringLocIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLoc/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=BuildMonitoringLocIndexesFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=BuildMonitoringLocIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/monitoringLoc/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
-			query=SetupMonitoringLocSwapTableFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=SetupMonitoringLocSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLoc/monitoringLoc.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/analyze/monitoringLoc.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,

@@ -16,7 +16,7 @@ public class BuildBiologicalHabitatMetricHuc4IndexIT extends BaseBuildBiological
 	@ExpectedDatabase(value="classpath:/testResult/wqp/biologicalHabitatMetric/indexes/huc4.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='bio_hab_metric_swap_testsrc_huc_4'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='bio_hab_metric_swap_testsrc_huc_4'")
 	public void buildBiologicalHabitatMetricHuc4IndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

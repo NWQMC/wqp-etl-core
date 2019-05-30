@@ -16,7 +16,7 @@ public class BuildResultCharacteristicNameIndexIT extends BaseBuildResultIndexes
 	@ExpectedDatabase(value="classpath:/testResult/wqp/result/indexes/characteristicName.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='result_swap_testsrc_characteristic_name'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='result_swap_testsrc_characteristic_name'")
 	public void buildResultCharacteristicNameIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

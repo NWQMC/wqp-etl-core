@@ -85,11 +85,11 @@ public class TransformCountryIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/country/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=BuildCountryIndexesFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=BuildCountryIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/country/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
-			query=SetupCountrySwapTableFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=SetupCountrySwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/country/country.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/analyze/country.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,

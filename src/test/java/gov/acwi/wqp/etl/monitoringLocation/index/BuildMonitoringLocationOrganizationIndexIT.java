@@ -16,7 +16,7 @@ public class BuildMonitoringLocationOrganizationIndexIT extends BaseBuildMonitor
 	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocation/indexes/organization.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='station_swap_testsrc_organization'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='station_swap_testsrc_organization'")
 	public void buildMonitoringLocationOrganizationIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

@@ -16,7 +16,7 @@ public class BuildResDetectQntLimitCountryIndexIT extends BaseBuildResDetectQntL
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resDetectQntLimit/indexes/country.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='r_detect_qnt_lmt_swap_testsrc_country'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='r_detect_qnt_lmt_swap_testsrc_country'")
 	public void buildResDetectQntLimitCountryIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

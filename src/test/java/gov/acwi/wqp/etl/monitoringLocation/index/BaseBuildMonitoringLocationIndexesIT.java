@@ -10,7 +10,7 @@ import gov.acwi.wqp.etl.EtlConstantUtils;
 
 public abstract class BaseBuildMonitoringLocationIndexesIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX + "'station_swap_testsrc'";
+	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX + "'station_swap_testsrc'";
 
 	@Autowired
 	@Qualifier(EtlConstantUtils.BUILD_MONITORING_LOCATION_INDEXES_FLOW)

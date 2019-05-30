@@ -85,11 +85,11 @@ public class TransformCountyIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/county/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=BuildCountyIndexesFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=BuildCountyIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/county/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
-			query=SetupCountySwapTableFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=SetupCountySwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/county/county.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/analyze/county.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,

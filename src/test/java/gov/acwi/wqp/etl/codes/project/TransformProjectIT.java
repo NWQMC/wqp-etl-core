@@ -85,11 +85,11 @@ public class TransformProjectIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/project/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=BuildProjectIndexesFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=BuildProjectIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/project/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
-			query=SetupProjectSwapTableFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=SetupProjectSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/project/project.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/analyze/project.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,

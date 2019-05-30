@@ -16,7 +16,7 @@ public class BuildActivityMetricActivityIndexIT extends BaseBuildActivityMetricI
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activityMetric/indexes/activity.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='act_metric_swap_testsrc_activity'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='act_metric_swap_testsrc_activity'")
 	public void buildActivityMetricActivityIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

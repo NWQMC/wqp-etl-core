@@ -16,7 +16,7 @@ public class BuildResultSumSampleTissueTaxonomicNameIndexIT extends BaseBuildRes
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resultSum/indexes/sampleTissueTaxonomicName.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='result_sum_swap_testsrc_sample_tissue_taxonomic_name'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='result_sum_swap_testsrc_sample_tissue_taxonomic_name'")
 	public void buildResultSumSampleTissueTaxonomicNameIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

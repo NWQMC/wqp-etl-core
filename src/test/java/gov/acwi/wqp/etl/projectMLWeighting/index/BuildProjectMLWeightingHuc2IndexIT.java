@@ -16,7 +16,7 @@ public class BuildProjectMLWeightingHuc2IndexIT extends BaseBuildProjectMLWeight
 	@ExpectedDatabase(value="classpath:/testResult/wqp/projectMLWeighting/indexes/huc2.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='prj_ml_weighting_swap_testsrc_huc_2'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='prj_ml_weighting_swap_testsrc_huc_2'")
 	public void buildProjectMLWeightingHuc2IndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

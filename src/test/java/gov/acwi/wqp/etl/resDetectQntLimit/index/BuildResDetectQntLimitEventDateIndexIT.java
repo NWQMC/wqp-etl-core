@@ -16,7 +16,7 @@ public class BuildResDetectQntLimitEventDateIndexIT extends BaseBuildResDetectQn
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resDetectQntLimit/indexes/eventDate.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='r_detect_qnt_lmt_swap_testsrc_event_date'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='r_detect_qnt_lmt_swap_testsrc_event_date'")
 	public void buildResDetectQntLimitEventDateIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

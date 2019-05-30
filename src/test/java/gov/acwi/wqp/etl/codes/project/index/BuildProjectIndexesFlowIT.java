@@ -18,7 +18,7 @@ import gov.acwi.wqp.etl.BaseFlowIT;
 
 public class BuildProjectIndexesFlowIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX + "'project_swap_testsrc'";
+	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX + "'project_swap_testsrc'";
 
 	@Autowired
 	@Qualifier("buildProjectIndexesFlow")
@@ -36,7 +36,7 @@ public class BuildProjectIndexesFlowIT extends BaseFlowIT {
 	@Test
 	@ExpectedDatabase(value="classpath:/testResult/wqp/project/indexes/codeValue.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='project_swap_testsrc_code_value'")
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY + " and indexname='project_swap_testsrc_code_value'")
 	public void buildProjectCodeValueIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils
@@ -51,7 +51,7 @@ public class BuildProjectIndexesFlowIT extends BaseFlowIT {
 	@Test
 	@ExpectedDatabase(value="classpath:/testResult/wqp/project/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY_ANALYZE)
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY)
 	public void buildProjectIndexesFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);

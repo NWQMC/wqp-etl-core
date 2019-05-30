@@ -16,7 +16,7 @@ public class BuildResDetectQntLimitHuc10IndexIT extends BaseBuildResDetectQntLim
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resDetectQntLimit/indexes/huc10.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='r_detect_qnt_lmt_swap_testsrc_huc_10'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='r_detect_qnt_lmt_swap_testsrc_huc_10'")
 	public void buildResDetectQntLimitHuc10IndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

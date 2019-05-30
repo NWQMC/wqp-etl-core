@@ -16,7 +16,7 @@ public class BuildMonitoringLocationSumHuc4IndexIT extends BaseBuildMonitoringLo
 	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocationSum/indexes/huc4.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='station_sum_swap_testsrc_huc_4'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='station_sum_swap_testsrc_huc_4'")
 	public void buildMonitoringLocationSumHuc4IndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

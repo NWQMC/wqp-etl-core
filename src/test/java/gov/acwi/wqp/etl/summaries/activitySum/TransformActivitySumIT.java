@@ -89,11 +89,11 @@ public class TransformActivitySumIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activitySum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=BuildActivitySumIndexesFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=BuildActivitySumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/activitySum/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
-			query=SetupActivitySumSwapTableFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=SetupActivitySumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activitySum/activitySum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/analyze/activitySum.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,

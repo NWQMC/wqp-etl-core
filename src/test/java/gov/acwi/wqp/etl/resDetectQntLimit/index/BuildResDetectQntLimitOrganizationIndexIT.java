@@ -15,7 +15,7 @@ public class BuildResDetectQntLimitOrganizationIndexIT extends BaseBuildResDetec
 	@Test
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resDetectQntLimit/indexes/organization.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='r_detect_qnt_lmt_swap_testsrc_organization'")
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY + " and indexname='r_detect_qnt_lmt_swap_testsrc_organization'")
 	public void buildResDetectQntLimitOrganizationIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

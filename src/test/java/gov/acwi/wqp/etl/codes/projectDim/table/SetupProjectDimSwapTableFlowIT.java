@@ -18,7 +18,7 @@ import gov.acwi.wqp.etl.BaseFlowIT;
 
 public class SetupProjectDimSwapTableFlowIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE + "'project_dim_swap_testsrc'";
+	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE + "'project_dim_swap_testsrc'";
 
 	@Autowired
 	@Qualifier("setupProjectDimSwapTableFlow")
@@ -36,7 +36,7 @@ public class SetupProjectDimSwapTableFlowIT extends BaseFlowIT {
 	@Test
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/projectDim/drop.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY_ANALYZE)
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void dropProjectDimSwapTableStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils
@@ -51,7 +51,7 @@ public class SetupProjectDimSwapTableFlowIT extends BaseFlowIT {
 	@Test
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/projectDim/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY_ANALYZE)
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void createProjectDimSwapTableStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils
@@ -66,7 +66,7 @@ public class SetupProjectDimSwapTableFlowIT extends BaseFlowIT {
 	@Test
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/projectDim/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY_ANALYZE)
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void setupProjectDimSwapTableFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);

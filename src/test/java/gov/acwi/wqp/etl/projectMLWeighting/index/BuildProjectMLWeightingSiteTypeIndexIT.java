@@ -16,7 +16,7 @@ public class BuildProjectMLWeightingSiteTypeIndexIT extends BaseBuildProjectMLWe
 	@ExpectedDatabase(value="classpath:/testResult/wqp/projectMLWeighting/indexes/siteType.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='prj_ml_weighting_swap_testsrc_site_type'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='prj_ml_weighting_swap_testsrc_site_type'")
 	public void buildProjectMLWeightingSiteTypeIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

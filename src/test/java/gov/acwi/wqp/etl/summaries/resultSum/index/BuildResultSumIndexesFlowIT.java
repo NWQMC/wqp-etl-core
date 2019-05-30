@@ -15,7 +15,7 @@ public class BuildResultSumIndexesFlowIT extends BaseBuildResultSumIndexesIT {
 	@Test
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resultSum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY_ANALYZE)
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY)
 	public void buildResultSumIndexesFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);

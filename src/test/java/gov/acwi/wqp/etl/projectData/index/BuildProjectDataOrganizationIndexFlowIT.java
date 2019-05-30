@@ -15,7 +15,7 @@ public class BuildProjectDataOrganizationIndexFlowIT extends BaseBuildProjectDat
 	@Test
 	@ExpectedDatabase(value="classpath:/testResult/wqp/projectData/indexes/organization.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='project_data_swap_testsrc_organization'")
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY + " and indexname='project_data_swap_testsrc_organization'")
 	public void buildProjectDataOrganizationIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

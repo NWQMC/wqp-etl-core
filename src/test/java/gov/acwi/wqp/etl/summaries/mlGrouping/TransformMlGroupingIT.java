@@ -87,11 +87,11 @@ public class TransformMlGroupingIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/mlGrouping/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=BuildMlGroupingIndexesFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=BuildMlGroupingIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/mlGrouping/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
-			query=SetupMlGroupingSwapTableFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=SetupMlGroupingSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/mlGrouping/csv/", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/analyze/mlGrouping.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,

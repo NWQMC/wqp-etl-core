@@ -16,7 +16,7 @@ public class BuildActivitySumCountyIndexIT extends BaseBuildActivitySumIndexesIT
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activitySum/indexes/county.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='activity_sum_swap_testsrc_county'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='activity_sum_swap_testsrc_county'")
 	public void buildActivitySumCountyIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

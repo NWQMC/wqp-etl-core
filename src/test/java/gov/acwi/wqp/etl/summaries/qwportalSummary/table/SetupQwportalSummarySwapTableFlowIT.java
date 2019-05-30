@@ -18,7 +18,7 @@ import gov.acwi.wqp.etl.BaseFlowIT;
 
 public class SetupQwportalSummarySwapTableFlowIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE + "'qwportal_summary_swap_testsrc'";
+	public static final String EXPECTED_DATABASE_QUERY = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE + "'qwportal_summary_swap_testsrc'";
 
 	@Autowired
 	@Qualifier("setupQwportalSummarySwapTableFlow")
@@ -36,7 +36,7 @@ public class SetupQwportalSummarySwapTableFlowIT extends BaseFlowIT {
 	@Test
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/qwportalSummary/drop.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY_ANALYZE)
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void dropQwportalSummarySwapTableStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils
@@ -51,7 +51,7 @@ public class SetupQwportalSummarySwapTableFlowIT extends BaseFlowIT {
 	@Test
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/qwportalSummary/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY_ANALYZE)
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void createQwportalSummarySwapTableStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils
@@ -66,7 +66,7 @@ public class SetupQwportalSummarySwapTableFlowIT extends BaseFlowIT {
 	@Test
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/qwportalSummary/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY_ANALYZE)
+			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE, query=EXPECTED_DATABASE_QUERY)
 	public void setupQwportalSummarySwapTableFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);

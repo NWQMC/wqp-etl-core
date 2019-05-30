@@ -85,11 +85,11 @@ public class TransformOrganizationIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/organization/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=BuildOrganizationIndexesFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=BuildOrganizationIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/organization/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
-			query=SetupOrganizationSwapTableFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=SetupOrganizationSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/organization/organization.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/analyze/organization.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,

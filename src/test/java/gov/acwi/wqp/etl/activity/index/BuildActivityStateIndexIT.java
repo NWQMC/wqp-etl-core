@@ -16,7 +16,7 @@ public class BuildActivityStateIndexIT extends BaseBuildActivityIndexesIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/activity/indexes/state.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='activity_swap_testsrc_state'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='activity_swap_testsrc_state'")
 	public void buildActivityStateIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

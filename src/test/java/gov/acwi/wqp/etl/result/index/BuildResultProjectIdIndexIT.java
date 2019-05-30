@@ -16,7 +16,7 @@ public class BuildResultProjectIdIndexIT extends BaseBuildResultIndexesIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/result/indexes/projectId.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='result_swap_testsrc_project_id'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='result_swap_testsrc_project_id'")
 	public void buildResultProjectIdIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

@@ -16,7 +16,7 @@ public class BuildResultSumCountryIndexIT extends BaseBuildResultSumIndexesIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/resultSum/indexes/country.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='result_sum_swap_testsrc_country'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='result_sum_swap_testsrc_country'")
 	public void buildResultSumCountryIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

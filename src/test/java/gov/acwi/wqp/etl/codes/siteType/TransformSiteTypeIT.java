@@ -85,11 +85,11 @@ public class TransformSiteTypeIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/siteType/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=BuildSiteTypeIndexesFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=BuildSiteTypeIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/siteType/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
-			query=SetupSiteTypeSwapTableFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=SetupSiteTypeSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/siteType/siteType.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/analyze/siteType.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,

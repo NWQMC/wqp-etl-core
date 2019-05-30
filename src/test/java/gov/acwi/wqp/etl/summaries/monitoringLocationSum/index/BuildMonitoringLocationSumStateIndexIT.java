@@ -16,7 +16,7 @@ public class BuildMonitoringLocationSumStateIndexIT extends BaseBuildMonitoringL
 	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocationSum/indexes/state.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='station_sum_swap_testsrc_state'")
+			query=EXPECTED_DATABASE_QUERY + " and indexname='station_sum_swap_testsrc_state'")
 	public void buildMonitoringLocationSumStateIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

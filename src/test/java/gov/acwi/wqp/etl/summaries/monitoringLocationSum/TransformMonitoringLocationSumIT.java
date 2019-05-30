@@ -110,11 +110,11 @@ public class TransformMonitoringLocationSumIT extends BaseFlowIT {
 	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocationSum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=BuildMonitoringLocationSumIndexesFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=BuildMonitoringLocationSumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/monitoringLocationSum/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
-			query=SetupMonitoringLocationSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=SetupMonitoringLocationSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocationSum/monitoringLocationSum.xml",
 			table=EXPECTED_DATABASE_TABLE_STATION_SUM,
 			query=EXPECTED_DATABASE_QUERY_STATION_SUM)

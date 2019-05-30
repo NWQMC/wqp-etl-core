@@ -15,7 +15,7 @@ public class BuildProjectDataProjectIdentifierIndexFlowIT extends BaseBuildProje
 	@Test
 	@ExpectedDatabase(value="classpath:/testResult/wqp/projectData/indexes/identifier.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY_ANALYZE + " and indexname='project_data_swap_testsrc_project_identifier'")
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY + " and indexname='project_data_swap_testsrc_project_identifier'")
 	public void buildProjectDataProjectIdentifierIndexStepTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils

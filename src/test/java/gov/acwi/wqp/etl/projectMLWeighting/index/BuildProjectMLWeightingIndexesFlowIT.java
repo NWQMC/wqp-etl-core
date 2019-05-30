@@ -16,7 +16,7 @@ public class BuildProjectMLWeightingIndexesFlowIT extends BaseBuildProjectMLWeig
 	@ExpectedDatabase(value="classpath:/testResult/wqp/projectMLWeighting/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=EXPECTED_DATABASE_QUERY)
 	public void buildProjectMLWeightingIndexesFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);

@@ -16,7 +16,7 @@ public class BuildBiologicalHabitatMetricIndexesFlowIT extends BaseBuildBiologic
 	@ExpectedDatabase(value="classpath:/testResult/wqp/biologicalHabitatMetric/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
-			query=EXPECTED_DATABASE_QUERY_ANALYZE)
+			query=EXPECTED_DATABASE_QUERY)
 	public void buildBiologicalHabitatMetricIndexesFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);
