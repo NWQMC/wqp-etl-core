@@ -62,6 +62,7 @@ public class CreateSummariesIT extends BaseFlowIT {
 	}
 
 	@Test
+	@DatabaseSetup(value="classpath:/testData/wqp/orgData/orgDataOld.xml")
 	@DatabaseSetup(value="classpath:/testData/wqp/monitoringLocation/monitoringLocation.xml")
 	@DatabaseSetup(value="classpath:/testData/wqp/activity/csv/")
 	@DatabaseSetup(value="classpath:/testData/wqp/activityMetric/activityMetric.xml")
