@@ -52,7 +52,7 @@ public class TransformOrganizationIT extends BaseFlowIT {
 
 	@Test
 	@DatabaseSetup(value="classpath:/testResult/wqp/organization/empty.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/organizationSum/organizationSum.xml")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/organization/organization.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void transformOrganizationStepTest() {
 		try {
@@ -81,7 +81,7 @@ public class TransformOrganizationIT extends BaseFlowIT {
 	}
 
 	@Test
-	@DatabaseSetup(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/organizationSum/organizationSum.xml")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/organization/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,

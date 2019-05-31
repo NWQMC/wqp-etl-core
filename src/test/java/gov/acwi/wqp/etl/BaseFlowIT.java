@@ -88,6 +88,10 @@ public abstract class BaseFlowIT {
 	public static final LocalDate TEST_DATE_MINUS_12_MONTHS_1_DAY = TEST_DATE_MINUS_12_MONTHS.minusDays(1);
 	public static final LocalDate TEST_DATE_MINUS_60_MONTHS = TEST_DATE.minusMonths(60);
 	public static final LocalDate TEST_DATE_MINUS_60_MONTHS_1_DAY = TEST_DATE_MINUS_60_MONTHS.minusDays(1);
+	public static final LocalDate TEST_DATE_MINUS_CURRENT_YEAR = LocalDate.of(TEST_DATE.getYear(), 1, 1);
+	public static final LocalDate TEST_DATE_MINUS_CURRENT_YEAR_1_DAY = TEST_DATE_MINUS_CURRENT_YEAR.minusDays(1);
+	public static final LocalDate TEST_DATE_MINUS_FIVE_YEAR = TEST_DATE_MINUS_CURRENT_YEAR.minusYears(4);
+	public static final LocalDate TEST_DATE_MINUS_FIVE_YEAR_1_DAY = TEST_DATE_MINUS_FIVE_YEAR.minusDays(1);
 
 	@Autowired
 	protected JdbcTemplate jdbcTemplate;

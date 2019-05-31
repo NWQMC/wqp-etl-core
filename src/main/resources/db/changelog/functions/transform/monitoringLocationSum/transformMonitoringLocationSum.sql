@@ -34,23 +34,28 @@ begin
                             summary_all_months,
                             summary_past_12_months,
                             summary_past_60_months)
-         with ml_yr_sum_result as (
+         with months_window as (select (now() - interval ''12 month'')::date the_12_months_cutoff,
+                                        (now() - interval ''60 month'')::date the_60_months_cutoff
+                               ),
+              ml_yr_sum_result as (
                                    select data_source_id,
                                           station_id,
                                           max(coalesce(last_updated, event_date)) event_date_all_time,
                                           count(*) result_count,
-                                          count(case when event_date >= (now() - interval ''12 month'')::date then 1 else null end) result_count_past_12_months,
-                                          count(case when event_date >= (now() - interval ''60 month'')::date then 1 else null end) result_count_past_60_months
-                                     from %I.%I
+                                          count(case when event_date >= the_12_months_cutoff then 1 else null end) result_count_past_12_months,
+                                          count(case when event_date >= the_60_months_cutoff then 1 else null end) result_count_past_60_months
+                                     from %I.%I,
+                                          months_window
                                         group by data_source_id, station_id
                                   ),
               ml_yr_sum_activity as (
                                      select data_source_id,
                                             station_id,
                                             count(distinct activity_id) activity_count,
-                                            count(distinct case when event_date >= (now() - interval ''12 month'')::date then activity_id else null end) activity_count_past_12_months,
-                                            count(distinct case when event_date >= (now() - interval ''60 month'')::date then activity_id else null end) activity_count_past_60_months
-                                       from %I.%I
+                                            count(distinct case when event_date >= the_12_months_cutoff then activity_id else null end) activity_count_past_12_months,
+                                            count(distinct case when event_date >= the_60_months_cutoff then activity_id else null end) activity_count_past_60_months
+                                       from %I.%I,
+                                            months_window
                                           group by data_source_id, station_id
                                     ),
               ml_period_agg as (

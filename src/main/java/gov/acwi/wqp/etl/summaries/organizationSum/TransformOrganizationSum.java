@@ -51,7 +51,7 @@ public class TransformOrganizationSum {
 	public Flow organizationSumFlow() {
 		return new FlowBuilder<SimpleFlow>("organizationSumFlow")
 				.start(setupOrganizationSumSwapTableFlow)
-//TODO - WQP-1406				.next(transformOrganizationSumStep())
+				.next(transformOrganizationSumStep())
 				.next(buildOrganizationSumIndexesFlow)
 				.next(analyzeOrganizationSumStep())
 				.build();
