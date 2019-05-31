@@ -46,6 +46,16 @@ public class FileSensingDataSetLoader extends AbstractDataSetLoader {
 		replacementDataSet.addReplacementSubstring("[YEAR-LE-60-MONTHS]", String.valueOf(BaseFlowIT.TEST_DATE_MINUS_60_MONTHS.getYear()));
 		replacementDataSet.addReplacementSubstring("[YEAR-GT-60-MONTHS]", String.valueOf(BaseFlowIT.TEST_DATE_MINUS_60_MONTHS_1_DAY.getYear()));
 
+		replacementDataSet.addReplacementSubstring("[DATE-LE-CURRENT-YEAR]", BaseFlowIT.TEST_DATE_MINUS_CURRENT_YEAR.toString());
+		replacementDataSet.addReplacementSubstring("[DATE-GT-CURRENT-YEAR]", BaseFlowIT.TEST_DATE_MINUS_CURRENT_YEAR_1_DAY.toString());
+		replacementDataSet.addReplacementSubstring("[DATE-LE-FIVE-YEAR]", BaseFlowIT.TEST_DATE_MINUS_FIVE_YEAR.toString());
+		replacementDataSet.addReplacementSubstring("[DATE-GT-FIVE-YEAR]", BaseFlowIT.TEST_DATE_MINUS_FIVE_YEAR_1_DAY.toString());
+
+		replacementDataSet.addReplacementSubstring("[YEAR-LE-CURRENT-YEAR]", String.valueOf(BaseFlowIT.TEST_DATE_MINUS_CURRENT_YEAR.getYear()));
+		replacementDataSet.addReplacementSubstring("[YEAR-GT-CURRENT-YEAR]", String.valueOf(BaseFlowIT.TEST_DATE_MINUS_CURRENT_YEAR_1_DAY.getYear()));
+		replacementDataSet.addReplacementSubstring("[YEAR-LE-FIVE-YEAR]", String.valueOf(BaseFlowIT.TEST_DATE_MINUS_FIVE_YEAR.getYear()));
+		replacementDataSet.addReplacementSubstring("[YEAR-GT-FIVE-YEAR]", String.valueOf(BaseFlowIT.TEST_DATE_MINUS_FIVE_YEAR_1_DAY.getYear()));
+
 		return replacementDataSet;
 	}
 

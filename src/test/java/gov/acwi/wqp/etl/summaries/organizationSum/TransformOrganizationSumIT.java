@@ -20,6 +20,7 @@ import org.springframework.core.io.support.EncodedResource;
 import org.springframework.jdbc.datasource.init.ScriptException;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
 
+import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
@@ -50,19 +51,21 @@ public class TransformOrganizationSumIT extends BaseFlowIT {
 		jobLauncherTestUtils.setJob(testJob);
 	}
 
-//TODO - WQP-1406	@Test
-//	@DatabaseSetup(value="classpath:/testResult/wqp/organizationSum/empty.xml")
-//	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
-//	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
-//	public void transformOrganizationSumStepTest() {
-//		try {
-//			JobExecution jobExecution = jobLauncherTestUtils.launchStep("transformOrganizationSumStep", testJobParameters);
-//			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			fail(e.getLocalizedMessage());
-//		}
-//	}
+//TODO - WQP-1406
+	@Test
+	@DatabaseSetup(value="classpath:/testResult/wqp/organizationSum/empty.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/orgData/orgDataOld.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/result/yearsWindow/csv/")
+	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/withFineGrainedYears.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	public void transformOrganizationSumStepTest() {
+		try {
+			JobExecution jobExecution = jobLauncherTestUtils.launchStep("transformOrganizationSumStep", testJobParameters);
+			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		}
+	}
 
 	@Test
 	@ExpectedDatabase(value="classpath:/testResult/analyze/organizationSum.xml",
@@ -81,7 +84,8 @@ public class TransformOrganizationSumIT extends BaseFlowIT {
 	}
 
 	@Test
-//TODO - WQP-1406	@DatabaseSetup(value="classpath:/testData/wqp/result/csv/")
+//TODO - WQP-1406
+	@DatabaseSetup(value="classpath:/testData/wqp/result/yearsWindow/csv/")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
@@ -90,7 +94,7 @@ public class TransformOrganizationSumIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupOrganizationSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
-//TODO - WQP-1406	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/withFineGrainedYears.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	@ExpectedDatabase(value="classpath:/testResult/analyze/organizationSum.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=TABLE_NAME_PG_STAT_ALL_TABLES,

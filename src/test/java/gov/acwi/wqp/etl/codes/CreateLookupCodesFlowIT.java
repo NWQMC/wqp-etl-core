@@ -76,7 +76,7 @@ public class CreateLookupCodesFlowIT extends BaseFlowIT {
 	@Test
 	@DatabaseSetup(value="classpath:/testResult/wqp/activitySum/activitySum.xml")
 	@DatabaseSetup(value="classpath:/testResult/wqp/monitoringLocationSum/monitoringLocationSum.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/organizationSum/organizationSum.xml")
 	@DatabaseSetup(value="classpath:/testData/wqp/result/csv/")
 	@DatabaseSetup(value="classpath:/testResult/wqp/resultSum/csv/")
 
