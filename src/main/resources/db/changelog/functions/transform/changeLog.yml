@@ -13,10 +13,6 @@ databaseChangeLog:
       relativeToChangelogFile: true
 
   - include:
-      file: "resultSum/changeLog.yml"
-      relativeToChangelogFile: true
-
-  - include:
       file: "organizationSum/changeLog.yml"
       relativeToChangelogFile: true
 
