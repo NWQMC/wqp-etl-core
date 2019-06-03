@@ -20,6 +20,7 @@ import org.springframework.core.io.support.EncodedResource;
 import org.springframework.jdbc.datasource.init.ScriptException;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
 
+import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
 import com.github.springtestdbunit.assertion.DatabaseAssertionMode;
 
@@ -28,6 +29,8 @@ import gov.acwi.wqp.etl.summaries.organizationSum.index.BuildOrganizationSumInde
 import gov.acwi.wqp.etl.summaries.organizationSum.table.SetupOrganizationSumSwapTableFlowIT;
 
 public class TransformOrganizationSumIT extends BaseFlowIT {
+
+	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_ANALYZE + "'organization_sum_swap_testsrc'";
 
 	@Autowired
 	@Qualifier("organizationSumFlow")
@@ -48,22 +51,41 @@ public class TransformOrganizationSumIT extends BaseFlowIT {
 		jobLauncherTestUtils.setJob(testJob);
 	}
 
-//TODO - WQP-1406	@Test
-//	@DatabaseSetup(value="classpath:/testResult/wqp/organizationSum/empty.xml")
-//	@DatabaseSetup(value="classpath:/testData/wqp/result/result.xml")
-//	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
-//	public void transformOrganizationSumStepTest() {
-//		try {
-//			JobExecution jobExecution = jobLauncherTestUtils.launchStep("transformOrganizationSumStep", testJobParameters);
-//			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			fail(e.getLocalizedMessage());
-//		}
-//	}
+//TODO - WQP-1406
+	@Test
+	@DatabaseSetup(value="classpath:/testResult/wqp/organizationSum/empty.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/orgData/orgDataOld.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/result/yearsWindow/csv/")
+	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/withFineGrainedYears.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	public void transformOrganizationSumStepTest() {
+		try {
+			JobExecution jobExecution = jobLauncherTestUtils.launchStep("transformOrganizationSumStep", testJobParameters);
+			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		}
+	}
 
 	@Test
-//TODO - WQP-1406	@DatabaseSetup(value="classpath:/testData/wqp/result/csv/")
+	@ExpectedDatabase(value="classpath:/testResult/analyze/organizationSum.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
+	public void analyzeOrganizationSumStepTest() {
+		try {
+			JobExecution jobExecution = jobLauncherTestUtils.launchStep("analyzeOrganizationSumStep", testJobParameters);
+			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		}
+	}
+
+	@Test
+//TODO - WQP-1406
+	@DatabaseSetup(value="classpath:/testData/wqp/result/yearsWindow/csv/")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
@@ -72,7 +94,11 @@ public class TransformOrganizationSumIT extends BaseFlowIT {
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupOrganizationSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
-//TODO - WQP-1406	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/withFineGrainedYears.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testResult/analyze/organizationSum.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void organizationSumFlowTest() {
 		Job organizationSumFlowTest = jobBuilderFactory.get("organizationSumFlowTest")
 					.start(organizationSumFlow)
@@ -82,6 +108,7 @@ public class TransformOrganizationSumIT extends BaseFlowIT {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			Thread.sleep(1000);
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());

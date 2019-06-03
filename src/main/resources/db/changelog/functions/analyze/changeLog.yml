@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - include:
+      file: "activity/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "activityMetric/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "biologicalHabitatMetric/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "default/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "monitoringLocation/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "orgData/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "projectData/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "projectMLWeighting/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "resDetectQntLimit/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "result/changeLog.yml"
+      relativeToChangelogFile: true

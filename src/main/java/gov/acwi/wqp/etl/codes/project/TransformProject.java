@@ -29,10 +29,21 @@ public class TransformProject {
 	@Qualifier("buildProjectIndexesFlow")
 	private Flow buildProjectIndexesFlow;
 
+	@Autowired
+	@Qualifier("analyzeProject")
+	private Tasklet analyzeProject;
+
 	@Bean
 	public Step transformProjectStep() {
 		return stepBuilderFactory.get("transformProjectStep")
 				.tasklet(transformProjectTasklet)
+				.build();
+	}
+
+	@Bean
+	public Step analyzeProjectStep() {
+		return stepBuilderFactory.get("analyzeProjectStep")
+				.tasklet(analyzeProject)
 				.build();
 	}
 
@@ -42,6 +53,7 @@ public class TransformProject {
 				.start(setupProjectSwapTableFlow)
 				.next(transformProjectStep())
 				.next(buildProjectIndexesFlow)
+				.next(analyzeProjectStep())
 				.build();
 	}
 

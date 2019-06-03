@@ -29,10 +29,21 @@ public class TransformTaxaName {
 	@Qualifier("buildTaxaNameIndexesFlow")
 	private Flow buildTaxaNameIndexesFlow;
 
+	@Autowired
+	@Qualifier("analyzeTaxaName")
+	private Tasklet analyzeTaxaName;
+
 	@Bean
 	public Step transformTaxaNameStep() {
 		return stepBuilderFactory.get("transformTaxaNameStep")
 				.tasklet(transformTaxaNameTasklet)
+				.build();
+	}
+
+	@Bean
+	public Step analyzeTaxaNameStep() {
+		return stepBuilderFactory.get("analyzeTaxaNameStep")
+				.tasklet(analyzeTaxaName)
 				.build();
 	}
 
@@ -42,6 +53,7 @@ public class TransformTaxaName {
 				.start(setupTaxaNameSwapTableFlow)
 				.next(transformTaxaNameStep())
 				.next(buildTaxaNameIndexesFlow)
+				.next(analyzeTaxaNameStep())
 				.build();
 	}
 

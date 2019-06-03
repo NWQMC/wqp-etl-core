@@ -31,7 +31,7 @@ import gov.acwi.wqp.etl.EtlConstantUtils;
 public class InstallFailureIT extends BaseFlowIT {
 
 	public static final String EXPECTED_DATABASE_QUERY_TABLE = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_LIKE
-			+ "'%old' or table_name like '%testsrc' or table_name like '%swap%'";
+			+ "'%testsrc%'";
 
 	@Value("classpath:db/testInstall/setup.sql")
 	protected Resource setupScript;

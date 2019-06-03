@@ -26,7 +26,6 @@
 "wqp_db","wqp","county_swap_testsrc","BASE TABLE"
 "wqp_db","wqp","county_testsrc","BASE TABLE"
 "wqp_db","wqp","county_testsrc_old","BASE TABLE"
-"wqp_db","wqp","etl_threshold","BASE TABLE"
 "wqp_db","wqp","ml_grouping_swap_testsrc","BASE TABLE"
 "wqp_db","wqp","ml_grouping_testsrc","BASE TABLE"
 "wqp_db","wqp","ml_grouping_testsrc_old","BASE TABLE"

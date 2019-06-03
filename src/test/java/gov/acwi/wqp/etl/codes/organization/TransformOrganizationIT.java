@@ -29,6 +29,8 @@ import gov.acwi.wqp.etl.codes.organization.table.SetupOrganizationSwapTableFlowI
 
 public class TransformOrganizationIT extends BaseFlowIT {
 
+	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_ANALYZE + "'organization_swap_testsrc'";
+
 	@Autowired
 	@Qualifier("createOrganizationFlow")
 	private Flow createOrganizationFlow;
@@ -50,7 +52,7 @@ public class TransformOrganizationIT extends BaseFlowIT {
 
 	@Test
 	@DatabaseSetup(value="classpath:/testResult/wqp/organization/empty.xml")
-	@DatabaseSetup(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml")
+	@DatabaseSetup(value="classpath:/testData/wqp/organizationSum/organizationSum.xml")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/organization/organization.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
 	public void transformOrganizationStepTest() {
 		try {
@@ -63,7 +65,23 @@ public class TransformOrganizationIT extends BaseFlowIT {
 	}
 
 	@Test
-	@DatabaseSetup(value="classpath:/testResult/wqp/organizationSum/organizationSum.xml")
+	@ExpectedDatabase(value="classpath:/testResult/analyze/organization.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
+	public void analyzeOrganizationStepTest() {
+		try {
+			JobExecution jobExecution = jobLauncherTestUtils.launchStep("analyzeOrganizationStep", testJobParameters);
+			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			Thread.sleep(1000);
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		}
+	}
+
+	@Test
+	@DatabaseSetup(value="classpath:/testData/wqp/organizationSum/organizationSum.xml")
 	@ExpectedDatabase(value="classpath:/testResult/wqp/organization/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
@@ -73,10 +91,15 @@ public class TransformOrganizationIT extends BaseFlowIT {
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupOrganizationSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/organization/organization.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
+	@ExpectedDatabase(value="classpath:/testResult/analyze/organization.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void organizationFlowTest() {
 		try {
 			JobExecution jobExecution = jobLauncherTestUtils.launchJob(testJobParameters);
 			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			Thread.sleep(1000);
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.getLocalizedMessage());

@@ -29,10 +29,21 @@ public class TransformState {
 	@Qualifier("buildStateIndexesFlow")
 	private Flow buildStateIndexesFlow;
 
+	@Autowired
+	@Qualifier("analyzeState")
+	private Tasklet analyzeState;
+
 	@Bean
 	public Step transformStateStep() {
 		return stepBuilderFactory.get("transformStateStep")
 				.tasklet(transformStateTasklet)
+				.build();
+	}
+
+	@Bean
+	public Step analyzeStateStep() {
+		return stepBuilderFactory.get("analyzeStateStep")
+				.tasklet(analyzeState)
 				.build();
 	}
 
@@ -42,6 +53,7 @@ public class TransformState {
 				.start(setupStateSwapTableFlow)
 				.next(transformStateStep())
 				.next(buildStateIndexesFlow)
+				.next(analyzeStateStep())
 				.build();
 	}
 

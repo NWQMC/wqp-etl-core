@@ -29,10 +29,21 @@ public class TransformMlGrouping {
 	@Qualifier("buildMlGroupingIndexesFlow")
 	private Flow buildMlGroupingIndexesFlow;
 
+	@Autowired
+	@Qualifier("analyzeMlGrouping")
+	private Tasklet analyzeMlGrouping;
+
 	@Bean
 	public Step transformMlGroupingStep() {
 		return stepBuilderFactory.get("transformMlGroupingStep")
 				.tasklet(transformMlGroupingTasklet)
+				.build();
+	}
+
+	@Bean
+	public Step analyzeMlGroupingStep() {
+		return stepBuilderFactory.get("analyzeMlGroupingStep")
+				.tasklet(analyzeMlGrouping)
 				.build();
 	}
 
@@ -42,6 +53,7 @@ public class TransformMlGrouping {
 				.start(setupMlGroupingSwapTableFlow)
 				.next(transformMlGroupingStep())
 				.next(buildMlGroupingIndexesFlow)
+				.next(analyzeMlGroupingStep())
 				.build();
 	}
 

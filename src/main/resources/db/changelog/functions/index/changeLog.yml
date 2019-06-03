@@ -8,7 +8,67 @@ databaseChangeLog:
       relativeToChangelogFile: true
 
   - include:
+      file: "activityId/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "analyticalMethod/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "assemblageSampledName/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "characteristicName/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "characteristicType/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
       file: "codeValue/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "country/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "county/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "huc10/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "huc12/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "huc2/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "huc4/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "huc6/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "huc8/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "eventDate/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "geom/changeLog.yml"
       relativeToChangelogFile: true
 
   - include:
@@ -16,7 +76,39 @@ databaseChangeLog:
       relativeToChangelogFile: true
 
   - include:
+      file: "projectId/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "pCode/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
       file: "projectIdentifier/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "resultId/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "sampleMedia/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "sampleTissueTaxonomicName/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "siteId/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "siteType/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "state/changeLog.yml"
       relativeToChangelogFile: true
 
   - include:

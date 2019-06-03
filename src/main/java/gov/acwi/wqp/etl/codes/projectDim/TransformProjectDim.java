@@ -29,10 +29,21 @@ public class TransformProjectDim {
 	@Qualifier("buildProjectDimIndexesFlow")
 	private Flow buildProjectDimIndexesFlow;
 
+	@Autowired
+	@Qualifier("analyzeProjectDim")
+	private Tasklet analyzeProjectDim;
+
 	@Bean
 	public Step transformProjectDimStep() {
 		return stepBuilderFactory.get("transformProjectDimStep")
 				.tasklet(transformProjectDimTasklet)
+				.build();
+	}
+
+	@Bean
+	public Step analyzeProjectDimStep() {
+		return stepBuilderFactory.get("analyzeProjectDimStep")
+				.tasklet(analyzeProjectDim)
 				.build();
 	}
 
@@ -42,6 +53,7 @@ public class TransformProjectDim {
 				.start(setupProjectDimSwapTableFlow)
 				.next(transformProjectDimStep())
 				.next(buildProjectDimIndexesFlow)
+				.next(analyzeProjectDimStep())
 				.build();
 	}
 

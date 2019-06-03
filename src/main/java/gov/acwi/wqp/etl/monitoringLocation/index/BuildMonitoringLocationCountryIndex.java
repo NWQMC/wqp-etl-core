@@ -1,30 +1,27 @@
 package gov.acwi.wqp.etl.monitoringLocation.index;
 
-import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.configuration.annotation.StepScope;
-import org.springframework.batch.core.scope.context.ChunkContext;
-import org.springframework.batch.core.step.tasklet.Tasklet;
-import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import gov.acwi.wqp.etl.EtlConstantUtils;
+import gov.acwi.wqp.etl.index.BuildCountryIndex;
+import gov.acwi.wqp.etl.monitoringLocation.MonitoringLocation;
+
 @Component
 @StepScope
-public class BuildMonitoringLocationCountryIndex implements Tasklet {
-
-	private final JdbcTemplate jdbcTemplate;
+public class BuildMonitoringLocationCountryIndex extends BuildCountryIndex {
 
 	@Autowired
-	public BuildMonitoringLocationCountryIndex(JdbcTemplate jdbcTemplate) {
-		this.jdbcTemplate = jdbcTemplate;
+	public BuildMonitoringLocationCountryIndex(JdbcTemplate jdbcTemplate,
+			@Value(EtlConstantUtils.VALUE_JOB_PARM_DATA_SOURCE) String wqpDataSource,
+			@Value(EtlConstantUtils.VALUE_JOB_PARM_WQP_SCHEMA) String wqpSchemaName) {
+		super(jdbcTemplate, wqpDataSource, wqpSchemaName);
 	}
 
-	@Override
-	public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-		jdbcTemplate.update("create index if not exists station_testsrc_country on station_swap_testsrc(governmental_unit_code)");
-//TODO correct SQL - WQP-1400
-//		jdbcTemplate.update("create index if not exists station_testsrc_country on ${schemaName}.station_testsrc(substring(governmental_unit_code, '[^:]+')) with (fillfactor = 100)");
-		return RepeatStatus.FINISHED;
+	protected String getBaseTableName() {
+		return MonitoringLocation.BASE_TABLE_NAME;
 	}
 }

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <pg_indexes
+        tablename="act_metric_swap_testsrc"
+        indexname="act_metric_swap_testsrc_geom"
+        indexdef="CREATE INDEX act_metric_swap_testsrc_geom ON wqp.act_metric_swap_testsrc USING gist (geom) WITH (fillfactor='100')"
+     />
+</dataset>

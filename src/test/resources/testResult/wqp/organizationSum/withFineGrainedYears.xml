@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <organization_sum_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
+        organization_id="3000000"
+        organization="ARS"
+        organization_name="Agricultural Research Service"
+        organization_type="Federal/US Government"
+        all_time_last_result="[DATE-LE-CURRENT-YEAR]"
+        all_time_site_count="4"
+        all_time_activity_count="9"
+        five_year_last_result="[DATE-LE-CURRENT-YEAR]"
+        five_year_site_count="1"
+        five_year_activity_count="3"
+        current_year_last_result="[DATE-LE-CURRENT-YEAR]"
+        current_year_site_count="1"
+        current_year_activity_count="1"
+    />
+</dataset>

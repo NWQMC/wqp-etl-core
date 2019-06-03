@@ -29,6 +29,10 @@ public class TransformOrganizationSum {
 	@Qualifier("buildOrganizationSumIndexesFlow")
 	private Flow buildOrganizationSumIndexesFlow;
 
+	@Autowired
+	@Qualifier("analyzeOrganizationSum")
+	private Tasklet analyzeOrganizationSum;
+
 	@Bean
 	public Step transformOrganizationSumStep() {
 		return stepBuilderFactory.get("transformOrganizationSumStep")
@@ -37,11 +41,19 @@ public class TransformOrganizationSum {
 	}
 
 	@Bean
+	public Step analyzeOrganizationSumStep() {
+		return stepBuilderFactory.get("analyzeOrganizationSumStep")
+				.tasklet(analyzeOrganizationSum)
+				.build();
+	}
+
+	@Bean
 	public Flow organizationSumFlow() {
 		return new FlowBuilder<SimpleFlow>("organizationSumFlow")
 				.start(setupOrganizationSumSwapTableFlow)
-//TODO - WQP-1406				.next(transformOrganizationSumStep())
+				.next(transformOrganizationSumStep())
 				.next(buildOrganizationSumIndexesFlow)
+				.next(analyzeOrganizationSumStep())
 				.build();
 	}
 

@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.build_site_id_index"
+      changes:
+        - sqlFile:
+            path: siteId.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists build_site_id_index(character varying,character varying,character varying);

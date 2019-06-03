@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <pg_indexes
+        tablename="result_swap_testsrc"
+        indexname="result_swap_testsrc_assemblage_sampled_name"
+        indexdef="CREATE INDEX result_swap_testsrc_assemblage_sampled_name ON wqp.result_swap_testsrc USING btree (assemblage_sampled_name) WITH (fillfactor='100')"
+     />
+</dataset>

@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.build_huc_2_index"
+      changes:
+        - sqlFile:
+            path: huc2.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists build_huc_2_index(character varying,character varying,character varying);

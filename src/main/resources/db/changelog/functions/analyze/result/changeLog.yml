@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.analyze_result"
+      changes:
+        - sqlFile:
+            path: analyzeResult.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists analyze_result(character varying,character varying,character varying);

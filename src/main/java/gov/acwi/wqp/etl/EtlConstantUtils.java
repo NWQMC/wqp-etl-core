@@ -25,42 +25,55 @@ public final class EtlConstantUtils {
 	//Shared Flow Names
 	public static final String SETUP_ORG_DATA_SWAP_TABLE_FLOW = "setupOrgDataSwapTableFlow";
 	public static final String BUILD_ORG_DATA_INDEXES_FLOW = "buildOrgDataIndexesFlow";
+	public static final String ANALYZE_ORG_DATA_FLOW = "analyzeOrgDataFlow";
 
 	public static final String SETUP_PROJECT_DATA_SWAP_TABLE_FLOW = "setupProjectDataSwapTableFlow";
 	public static final String BUILD_PROJECT_DATA_INDEXES_FLOW = "buildProjectDataIndexesFlow";
+	public static final String ANALYZE_PROJECT_DATA_FLOW = "analyzeProjectDataFlow";
 
 	public static final String SETUP_PROJECT_OBJECT_SWAP_TABLE_FLOW = "setupProjectObjectSwapTableFlow";
 	public static final String BUILD_PROJECT_OBJECT_INDEXES_FLOW = "buildProjectObjectIndexesFlow";
+	public static final String ANALYZE_PROJECT_OBJECT_FLOW = "analyzeProjectObjectFlow";
 
 	public static final String SETUP_MONITORING_LOCATION_SWAP_TABLE_FLOW = "setupMonitoringLocationSwapTableFlow";
 	public static final String BUILD_MONITORING_LOCATION_INDEXES_FLOW = "buildMonitoringLocationIndexesFlow";
+	public static final String ANALYZE_MONITORING_LOCATION_FLOW = "analyzeMonitoringLocationFlow";
 
 	public static final String SETUP_BIOLOGICAL_HABITAT_METRIC_SWAP_TABLE_FLOW = "setupBiologicalHabitatMetricSwapTableFlow";
 	public static final String BUILD_BIOLOGICAL_HABITAT_METRIC_INDEXES_FLOW = "buildBiologicalHabitatMetricIndexesFlow";
+	public static final String ANALYZE_BIOLOGICAL_HABITAT_METRIC_FLOW = "analyzeBiologicalHabitatMetricFlow";
 
 	public static final String SETUP_MONITORING_LOCATION_OBJECT_SWAP_TABLE_FLOW = "setupMonitoringLocationObjectSwapTableFlow";
 	public static final String BUILD_MONITORING_LOCATION_OBJECT_INDEXES_FLOW = "buildMonitoringLocationObjectIndexesFlow";
+	public static final String ANALYZE_MONITORING_LOCATION_OBJECT_FLOW = "analyzeMonitoringLocationObjectFlow";
 
 	public static final String SETUP_ACTIVITY_SWAP_TABLE_FLOW = "setupActivitySwapTableFlow";
 	public static final String BUILD_ACTIVITY_INDEXES_FLOW = "buildActivityIndexesFlow";
+	public static final String ANALYZE_ACTIVITY_FLOW = "analyzeActivityFlow";
 
 	public static final String SETUP_ACTIVITY_OBJECT_SWAP_TABLE_FLOW = "setupActivityObjectSwapTableFlow";
 	public static final String BUILD_ACTIVITY_OBJECT_INDEXES_FLOW = "buildActivityObjectIndexesFlow";
+	public static final String ANALYZE_ACTIVITY_OBJECT_FLOW = "analyzeActivityObjectFlow";
 
 	public static final String SETUP_ACTIVITY_METRIC_SWAP_TABLE_FLOW = "setupActivityMetricSwapTableFlow";
 	public static final String BUILD_ACTIVITY_METRIC_INDEXES_FLOW = "buildActivityMetricIndexesFlow";
+	public static final String ANALYZE_ACTIVITY_METRIC_FLOW = "analyzeActivityMetricFlow";
 
 	public static final String SETUP_RESULT_SWAP_TABLE_FLOW = "setupResultSwapTableFlow";
 	public static final String BUILD_RESULT_INDEXES_FLOW = "buildResultIndexesFlow";
+	public static final String ANALYZE_RESULT_FLOW = "analyzeResultFlow";
 
 	public static final String SETUP_RESULT_OBJECT_SWAP_TABLE_FLOW = "setupResultObjectSwapTableFlow";
 	public static final String BUILD_RESULT_OBJECT_INDEXES_FLOW = "buildResultObjectIndexesFlow";
+	public static final String ANALYZE_RESULT_OBJECT_FLOW = "analyzeResultObjectFlow";
 
 	public static final String SETUP_RES_DETECT_QNT_LIMIT_SWAP_TABLE_FLOW = "setupResDetectQntLimitSwapTableFlow";
 	public static final String BUILD_RES_DETECT_QNT_LIMIT_INDEXES_FLOW = "buildResDetectQntLimitIndexesFlow";
+	public static final String ANALYZE_RES_DETECT_QNT_LIMIT_FLOW = "analyzeResDetectQntLimitFlow";
 
 	public static final String SETUP_PROJECT_ML_WEIGHTING_SWAP_TABLE_FLOW = "setupProjectMLWeightingSwapTableFlow";
 	public static final String BUILD_PROJECT_ML_WEIGHTING_INDEXES_FLOW = "buildProjectMLWeightingIndexesFlow";
+	public static final String ANALYZE_PROJECT_ML_WEIGHTING_FLOW = "analyzeProjectMLWeightingFlow";
 
 	public static final String CREATE_SUMMARIES_FLOW = "createSummariesFlow";
 	public static final String CREATE_LOOKUP_CODES_FLOW = "createLookupCodesFlow";
