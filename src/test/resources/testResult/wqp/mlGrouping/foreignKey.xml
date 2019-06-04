@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <pg_constraint
+        conrelid="ml_grouping_swap_testsrc"
+        conname="ml_grouping_testsrc_fk_station_sum"
+        pg_get_constraintdef="FOREIGN KEY (data_source_id, station_id) REFERENCES station_sum_swap_testsrc(data_source_id, station_id)"
+    />
+</dataset>

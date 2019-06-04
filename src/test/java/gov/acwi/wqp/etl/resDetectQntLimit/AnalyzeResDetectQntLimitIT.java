@@ -38,7 +38,7 @@ public class AnalyzeResDetectQntLimitIT extends BaseFlowIT {
 	@ExpectedDatabase(
 			value="classpath:/testResult/analyze/resDetectQntLimit.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			table=EXPECTED_DATABASE_TABLE_CHECK_ANALYZE,
 			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void analyzeResDetectQntLimitFlowTest() {
 		try {

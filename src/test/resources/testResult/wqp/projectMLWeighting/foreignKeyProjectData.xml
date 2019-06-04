@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <pg_constraint
+        conrelid="prj_ml_weighting_swap_testsrc"
+        conname="prj_ml_weighting_testsrc_fk_project_data"
+        pg_get_constraintdef="FOREIGN KEY (data_source_id, project_id) REFERENCES project_data_swap_testsrc(data_source_id, project_id)"
+    />
+</dataset>

@@ -11,7 +11,7 @@ declare
 begin
 
     /* Attempt to drop the old partition, just in case it is hanging around from a previous ETL. */
-    execute format('drop table if exists %I.%I', wqp_schema_name, old_partition_name);
+    execute format('drop table if exists %I.%I cascade', wqp_schema_name, old_partition_name);
 
     /* Add a check constraint to the new data conforms to the partitioning - This should prevent a validation during the ATTATCH Partion from taking an ACCESS EXCLUSIVE lock on the base_table_name. */
     execute format('alter table %I.%I add constraint check_partition check (data_source_id = %L)', wqp_schema_name, swap_table_name, data_source_id);

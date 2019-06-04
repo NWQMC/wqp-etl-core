@@ -33,10 +33,9 @@ public class TransformMonitoringLocationSum {
 	@Qualifier("analyzeMonitoringLocationSum")
 	private Tasklet analyzeMonitoringLocationSum;
 
-	//TODO correct SQL - WQP-1395
-//	@Autowired
-//	@Qualifier("createMonitoringLocationSumPkTasklet")
-//	private Tasklet createMonitoringLocationSumPkTasklet;
+	@Autowired
+	@Qualifier("addMonitoringLocationSumPrimaryKey")
+	private Tasklet addMonitoringLocationSumPrimaryKey;
 
 	@Bean
 	public Step transformMonitoringLocationSumStep() {
@@ -52,20 +51,19 @@ public class TransformMonitoringLocationSum {
 				.build();
 	}
 
-	//TODO correct SQL - WQP-1395
-//	@Bean
-//	public Step createMonitoringLocationSumPkStep() {
-//		return stepBuilderFactory.get("createMonitoringLocationSumPkStep")
-//				.tasklet(createMonitoringLocationSumPkTasklet)
-//				.build();
-//	}
+	@Bean
+	public Step addMonitoringLocationSumPrimaryKeyStep() {
+		return stepBuilderFactory.get("addMonitoringLocationSumPrimaryKeyStep")
+				.tasklet(addMonitoringLocationSumPrimaryKey)
+				.build();
+	}
 
 	@Bean
 	public Flow monitoringLocationSumFlow() {
 		return new FlowBuilder<SimpleFlow>("monitoringLocationSumFlow")
 				.start(setupMonitoringLocationSumSwapTableFlow)
 				.next(transformMonitoringLocationSumStep())
-//				.next(createMonitoringLocationSumPkStep())
+				.next(addMonitoringLocationSumPrimaryKeyStep())
 				.next(buildMonitoringLocationSumIndexesFlow)
 				.next(analyzeMonitoringLocationSumStep())
 				.build();

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <pg_constraint
+        conrelid="org_data_swap_testsrc"
+        conname="org_data_swap_testsrc_pk"
+        pg_get_constraintdef="PRIMARY KEY (data_source_id, organization_id)"
+    />
+</dataset>

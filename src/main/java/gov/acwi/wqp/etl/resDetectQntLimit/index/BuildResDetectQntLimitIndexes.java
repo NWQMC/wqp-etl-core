@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import gov.acwi.wqp.etl.EtlConstantUtils;
-
 @Configuration
 public class BuildResDetectQntLimitIndexes {
 
@@ -297,7 +295,7 @@ public class BuildResDetectQntLimitIndexes {
 
 	@Bean
 	public Flow buildResDetectQntLimitIndexesFlow() {
-		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.BUILD_RES_DETECT_QNT_LIMIT_INDEXES_FLOW)
+		return new FlowBuilder<SimpleFlow>("buildResDetectQntLimitIndexesFlow")
 				.start(buildResDetectQntLimitActivityIndexStep())
 				.next(buildResDetectQntLimitAnalyticalMethodIndexStep())
 				.next(buildResDetectQntLimitAssemblageSampledNameIndexStep())
