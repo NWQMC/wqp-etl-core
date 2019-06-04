@@ -72,6 +72,7 @@ public class TransformOrganizationSumIT extends BaseFlowIT {
 
 	@Test
 //TODO - WQP-1406
+	@DatabaseSetup(value="classpath:/testData/wqp/orgData/orgDataOld.xml")
 	@DatabaseSetup(value="classpath:/testData/wqp/result/yearsWindow/csv/")
 	@ExpectedDatabase(
 			value="classpath:/testResult/wqp/organizationSum/indexes/all.xml",
