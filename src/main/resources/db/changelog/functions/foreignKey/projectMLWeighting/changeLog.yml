@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.add_project_ml_weighting_foreign_key_monitoring_location"
+      changes:
+        - sqlFile:
+            path: addProjectMLWeightingForeignKeyMonitoringLocation.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists add_project_ml_weighting_foreign_key_monitoring_location(character varying,character varying,character varying);
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.add_project_ml_weighting_foreign_key_project_data"
+      changes:
+        - sqlFile:
+            path: addProjectMLWeightingForeignKeyProjectData.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists add_project_ml_weighting_foreign_key_project_data(character varying,character varying,character varying);

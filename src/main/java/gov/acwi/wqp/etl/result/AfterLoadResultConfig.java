@@ -14,14 +14,30 @@ import org.springframework.context.annotation.Configuration;
 import gov.acwi.wqp.etl.EtlConstantUtils;
 
 @Configuration
-public class AnalyzeResultConfig {
+public class AfterLoadResultConfig {
 
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 
+
+	@Autowired
+	@Qualifier("buildResultIndexesFlow")
+	public Flow buildResultIndexesFlow;
+
+	@Autowired
+	@Qualifier("addResultForeignKeyMonitoringLocation")
+	private Tasklet addResultForeignKeyMonitoringLocation;
+
 	@Autowired
 	@Qualifier("analyzeResult")
 	private Tasklet analyzeResult;
+
+	@Bean
+	public Step addResultForeignKeyMonitoringLocationStep() {
+		return stepBuilderFactory.get("addResultForeignKeyMonitoringLocationStep")
+				.tasklet(addResultForeignKeyMonitoringLocation)
+				.build();
+	}
 
 	@Bean
 	public Step analyzeResultStep() {
@@ -31,9 +47,19 @@ public class AnalyzeResultConfig {
 	}
 
 	@Bean
+	@Deprecated
 	public Flow analyzeResultFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.ANALYZE_RESULT_FLOW)
 				.start(analyzeResultStep())
+				.build();
+	}
+
+	@Bean
+	public Flow afterLoadResultFlow() {
+		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.AFTER_LOAD_RESULT_FLOW)
+				.start(buildResultIndexesFlow)
+				.next(addResultForeignKeyMonitoringLocationStep())
+				.next(analyzeResultStep())
 				.build();
 	}
 }

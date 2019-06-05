@@ -61,15 +61,23 @@ public abstract class BaseFlowIT {
 
 	public static final String EXPECTED_DATABASE_TABLE_CHECK_TABLE = "tables";
 	public static final String EXPECTED_DATABASE_TABLE_CHECK_INDEX = "pg_indexes";
-	public static final String TABLE_NAME_PG_STAT_ALL_TABLES = "pg_stat_all_tables";
+	public static final String EXPECTED_DATABASE_TABLE_CHECK_ANALYZE = "pg_stat_all_tables";
+	public static final String EXPECTED_DATABASE_TABLE_CHECK_RI = "pg_constraint";
+	public static final String EXPECTED_DATABASE_TABLE_CHECK_PRIMARY_KEY = EXPECTED_DATABASE_TABLE_CHECK_RI;
+	public static final String EXPECTED_DATABASE_TABLE_CHECK_FOREIGN_KEY = EXPECTED_DATABASE_TABLE_CHECK_RI;
 
+	public static final String EQUALS_QUERY = " = ";
+	public static final String LIKE_QUERY = " like ";
 	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_BARE = "select table_catalog, table_schema, table_name, table_type from information_schema.tables where table_name";
-	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_BARE + "=";
-	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_LIKE = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_BARE + " like ";
+	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_BARE + EQUALS_QUERY;
+	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_LIKE = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_BARE + LIKE_QUERY;
 
-	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX_BARE = "select tablename, indexname, indexdef from pg_indexes where tablename";
-	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX_BARE + "=";
-	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX_LIKE = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX_BARE + " like ";
+	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX_BARE = "select tablename, indexname, indexdef from pg_indexes";
+	public static final String INDEXES_FOR_PK_ONLY = " where indexname like '%pk' and tablename";
+	public static final String INDEXES_WITHOUT_PK = " where indexname not like '%pk' and tablename";
+	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX_BARE + INDEXES_WITHOUT_PK + EQUALS_QUERY;
+	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX_LIKE = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX_BARE + INDEXES_WITHOUT_PK + LIKE_QUERY;
+	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX_PK = BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX_BARE + INDEXES_FOR_PK_ONLY + EQUALS_QUERY;
 
 	//This query is needed as the DBUnit code doesn't correctly read the JSON columns from the catalog. By specifying the columns as text we actually get them in the compare.
 	public static final String BASE_EXPECTED_DATABASE_QUERY_STATION_SUM = "select data_source_id,data_source,station_id,site_id,"
@@ -81,6 +89,10 @@ public abstract class BaseFlowIT {
 
 	public static final String BASE_EXPECTED_DATABASE_QUERY_ANALYZE_BARE = "select schemaname, relname, (now() - last_analyze) < make_interval(mins => 1) within_one_minute from pg_stat_all_tables ";
 	public static final String BASE_EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_ANALYZE_BARE + "where relname = ";
+
+	public static final String BASE_EXPECTED_DATABASE_QUERY_RI = "select conrelid::regclass, conname, pg_get_constraintdef(oid) from pg_constraint where contype = ";
+	public static final String BASE_EXPECTED_DATABASE_QUERY_PRIMARY_KEY = BASE_EXPECTED_DATABASE_QUERY_RI + "'p' and conrelid::regclass::text ";
+	public static final String BASE_EXPECTED_DATABASE_QUERY_FOREIGN_KEY = BASE_EXPECTED_DATABASE_QUERY_RI + "'f' and conrelid::regclass::text ";
 
 	public static final LocalDate TEST_DATE = LocalDate.now();
 

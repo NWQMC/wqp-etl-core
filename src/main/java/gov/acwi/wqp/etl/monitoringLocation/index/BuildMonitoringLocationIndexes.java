@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import gov.acwi.wqp.etl.EtlConstantUtils;
-
 @Configuration
 public class BuildMonitoringLocationIndexes {
 
@@ -177,7 +175,7 @@ public class BuildMonitoringLocationIndexes {
 
 	@Bean
 	public Flow buildMonitoringLocationIndexesFlow() {
-		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.BUILD_MONITORING_LOCATION_INDEXES_FLOW)
+		return new FlowBuilder<SimpleFlow>("buildMonitoringLocationIndexesFlow")
 				.start(buildMonitoringLocationCountryIndexStep())
 				.next(buildMonitoringLocationCountyIndexStep())
 				.next(buildMonitoringLocationGeomIndexStep())

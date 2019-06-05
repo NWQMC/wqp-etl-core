@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import gov.acwi.wqp.etl.EtlConstantUtils;
-
 @Configuration
 public class BuildProjectMLWeightingIndexes {
 
@@ -185,7 +183,7 @@ public class BuildProjectMLWeightingIndexes {
 
 	@Bean
 	public Flow buildProjectMLWeightingIndexesFlow() {
-		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.BUILD_PROJECT_ML_WEIGHTING_INDEXES_FLOW)
+		return new FlowBuilder<SimpleFlow>("buildProjectMLWeightingIndexesFlow")
 				.start(buildProjectMLWeightingCountryIndexStep())
 				.next(buildProjectMLWeightingCountyIndexStep())
 				.next(buildProjectMLWeightingGeomIndexStep())

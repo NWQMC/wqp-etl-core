@@ -14,10 +14,14 @@ import org.springframework.context.annotation.Configuration;
 import gov.acwi.wqp.etl.EtlConstantUtils;
 
 @Configuration
-public class AnalyzeBiologicalHabitatMetricConfig {
+public class AfterLoadBiologicalHabitatMetricConfig {
 
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
+
+	@Autowired
+	@Qualifier("buildBiologicalHabitatMetricIndexesFlow")
+	public Flow buildBiologicalHabitatMetricIndexesFlow;
 
 	@Autowired
 	@Qualifier("analyzeBiologicalHabitatMetric")
@@ -31,9 +35,18 @@ public class AnalyzeBiologicalHabitatMetricConfig {
 	}
 
 	@Bean
+	@Deprecated
 	public Flow analyzeBiologicalHabitatMetricFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.ANALYZE_BIOLOGICAL_HABITAT_METRIC_FLOW)
 				.start(analyzeBiologicalHabitatMetricStep())
+				.build();
+	}
+
+	@Bean
+	public Flow afterLoadBiologicalHabitatMetricFlow() {
+		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.AFTER_LOAD_BIOLOGICAL_HABITAT_METRIC_FLOW)
+				.start(buildBiologicalHabitatMetricIndexesFlow)
+				.next(analyzeBiologicalHabitatMetricStep())
 				.build();
 	}
 }

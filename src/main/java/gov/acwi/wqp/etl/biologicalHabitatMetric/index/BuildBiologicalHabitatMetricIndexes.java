@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import gov.acwi.wqp.etl.EtlConstantUtils;
-
 @Configuration
 public class BuildBiologicalHabitatMetricIndexes {
 
@@ -174,7 +172,7 @@ public class BuildBiologicalHabitatMetricIndexes {
 
 	@Bean
 	public Flow buildBiologicalHabitatMetricIndexesFlow() {
-		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.BUILD_BIOLOGICAL_HABITAT_METRIC_INDEXES_FLOW)
+		return new FlowBuilder<SimpleFlow>("buildBiologicalHabitatMetricIndexesFlow")
 				.start(buildBiologicalHabitatMetricCountryIndexStep())
 				.next(buildBiologicalHabitatMetricCountyIndexStep())
 				.next(buildBiologicalHabitatMetricGeomIndexStep())

@@ -14,14 +14,29 @@ import org.springframework.context.annotation.Configuration;
 import gov.acwi.wqp.etl.EtlConstantUtils;
 
 @Configuration
-public class AnalyzeProjectDataConfig {
+public class AfterLoadProjectDataConfig {
 
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 
 	@Autowired
+	@Qualifier("buildProjectDataIndexesFlow")
+	public Flow buildProjectDataIndexesFlow;
+
+	@Autowired
+	@Qualifier("addProjectDataPrimaryKey")
+	private Tasklet addProjectDataPrimaryKey;
+
+	@Autowired
 	@Qualifier("analyzeProjectData")
 	private Tasklet analyzeProjectData;
+
+	@Bean
+	public Step addProjectDataPrimaryKeyStep() {
+		return stepBuilderFactory.get("addProjectDataPrimaryKeyStep")
+				.tasklet(addProjectDataPrimaryKey)
+				.build();
+	}
 
 	@Bean
 	public Step analyzeProjectDataStep() {
@@ -31,9 +46,19 @@ public class AnalyzeProjectDataConfig {
 	}
 
 	@Bean
+	@Deprecated
 	public Flow analyzeProjectDataFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.ANALYZE_PROJECT_DATA_FLOW)
 				.start(analyzeProjectDataStep())
+				.build();
+	}
+
+	@Bean
+	public Flow afterLoadProjectDataFlow() {
+		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.AFTER_LOAD_PROJECT_DATA_FLOW)
+				.start(buildProjectDataIndexesFlow)
+				.next(addProjectDataPrimaryKeyStep())
+				.next(analyzeProjectDataStep())
 				.build();
 	}
 }

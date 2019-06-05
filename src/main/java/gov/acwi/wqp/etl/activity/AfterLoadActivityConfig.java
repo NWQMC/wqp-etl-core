@@ -14,14 +14,40 @@ import org.springframework.context.annotation.Configuration;
 import gov.acwi.wqp.etl.EtlConstantUtils;
 
 @Configuration
-public class AnalyzeActivityConfig {
+public class AfterLoadActivityConfig {
 
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 
 	@Autowired
+	@Qualifier("buildActivityIndexesFlow")
+	public Flow buildActivityIndexesFlow;
+
+	@Autowired
+	@Qualifier("addActivityPrimaryKey")
+	private Tasklet addActivityPrimaryKey;
+
+	@Autowired
+	@Qualifier("addActivityForeignKeyMonitoringLocation")
+	private Tasklet addActivityForeignKeyMonitoringLocation;
+
+	@Autowired
 	@Qualifier("analyzeActivity")
 	private Tasklet analyzeActivity;
+
+	@Bean
+	public Step addActivityPrimaryKeyStep() {
+		return stepBuilderFactory.get("addActivityPrimaryKeyStep")
+				.tasklet(addActivityPrimaryKey)
+				.build();
+	}
+
+	@Bean
+	public Step addActivityForeignKeyMonitoringLocationStep() {
+		return stepBuilderFactory.get("addActivityForeignKeyMonitoringLocationStep")
+				.tasklet(addActivityForeignKeyMonitoringLocation)
+				.build();
+	}
 
 	@Bean
 	public Step analyzeActivityStep() {
@@ -31,9 +57,20 @@ public class AnalyzeActivityConfig {
 	}
 
 	@Bean
+	@Deprecated
 	public Flow analyzeActivityFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.ANALYZE_ACTIVITY_FLOW)
 				.start(analyzeActivityStep())
+				.build();
+	}
+
+	@Bean
+	public Flow afterLoadActivityFlow() {
+		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.AFTER_LOAD_ACTIVITY_FLOW)
+				.start(buildActivityIndexesFlow)
+				.next(addActivityPrimaryKeyStep())
+				.next(addActivityForeignKeyMonitoringLocationStep())
+				.next(analyzeActivityStep())
 				.build();
 	}
 }
