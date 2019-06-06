@@ -37,6 +37,9 @@ public class CreateSummaries {
 	@Autowired
 	@Qualifier("qwportalSummaryFlow")
 	private Flow qwportalSummaryFlow;
+	@Autowired
+	@Qualifier("addSummariesForeignKeysFlow")
+	private Flow addSummariesForeignKeysFlow;
 
 	@Bean
 	public Flow createSummariesFlow() {
@@ -46,7 +49,8 @@ public class CreateSummaries {
 				.next(orgGroupingFlow)
 				.next(mlGroupingFlow)
 				.next(organizationSumFlow)
-				.next(monitoringLocationSumFlow);
+				.next(monitoringLocationSumFlow)
+				.next(addSummariesForeignKeysFlow);
 		if (configurationService.isQwportalSummary()) {
 			flowBuilder = flowBuilder.next(qwportalSummaryFlow);
 		}

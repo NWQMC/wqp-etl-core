@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.result_sum_foreign_key_monitoring_location"
+      changes:
+        - sqlFile:
+            path: addResultSumForeignKeyMonitoringLocation.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists result_sum_foreign_key_monitoring_location(character varying,character varying,character varying);

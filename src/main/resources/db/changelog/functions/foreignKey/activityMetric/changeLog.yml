@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.add_activity_metric_foreign_key_activity"
+      changes:
+        - sqlFile:
+            path: addActivityMetricForeignKeyActivity.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists add_activity_metric_foreign_key_activity(character varying,character varying,character varying);

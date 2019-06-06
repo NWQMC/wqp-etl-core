@@ -3,11 +3,6 @@ package gov.acwi.wqp.etl.summaries.organizationSum;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.nio.charset.Charset;
-import java.sql.SQLException;
-
-import javax.annotation.PostConstruct;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.batch.core.ExitStatus;
@@ -16,9 +11,6 @@ import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.core.io.support.EncodedResource;
-import org.springframework.jdbc.datasource.init.ScriptException;
-import org.springframework.jdbc.datasource.init.ScriptUtils;
 
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
@@ -35,12 +27,6 @@ public class TransformOrganizationSumIT extends BaseFlowIT {
 	@Autowired
 	@Qualifier("organizationSumFlow")
 	private Flow organizationSumFlow;
-
-	@PostConstruct
-	public void beforeClass() throws ScriptException, SQLException {
-		EncodedResource encodedResource = new EncodedResource(resource, Charset.forName("UTF-8"));
-		ScriptUtils.executeSqlScript(dataSource.getConnection(), encodedResource);
-	}
 
 	@Before
 	public void setUp() {
@@ -68,9 +54,10 @@ public class TransformOrganizationSumIT extends BaseFlowIT {
 	}
 
 	@Test
-	@ExpectedDatabase(value="classpath:/testResult/analyze/organizationSum.xml",
+	@ExpectedDatabase(
+			value="classpath:/testResult/analyze/organizationSum.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			table=EXPECTED_DATABASE_TABLE_CHECK_ANALYZE,
 			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void analyzeOrganizationSumStepTest() {
 		try {
@@ -85,19 +72,24 @@ public class TransformOrganizationSumIT extends BaseFlowIT {
 
 	@Test
 //TODO - WQP-1406
+	@DatabaseSetup(value="classpath:/testData/wqp/orgData/orgDataOld.xml")
 	@DatabaseSetup(value="classpath:/testData/wqp/result/yearsWindow/csv/")
-	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/indexes/all.xml",
+	@ExpectedDatabase(
+			value="classpath:/testResult/wqp/organizationSum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildOrganizationSumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/organizationSum/create.xml",
+	@ExpectedDatabase(
+			connection=CONNECTION_INFORMATION_SCHEMA,
+			value="classpath:/testResult/wqp/organizationSum/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupOrganizationSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
 	@ExpectedDatabase(value="classpath:/testResult/wqp/organizationSum/withFineGrainedYears.xml", assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED)
-	@ExpectedDatabase(value="classpath:/testResult/analyze/organizationSum.xml",
+	@ExpectedDatabase(
+			value="classpath:/testResult/analyze/organizationSum.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			table=EXPECTED_DATABASE_TABLE_CHECK_ANALYZE,
 			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void organizationSumFlowTest() {
 		Job organizationSumFlowTest = jobBuilderFactory.get("organizationSumFlowTest")

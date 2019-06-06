@@ -1,5 +1,5 @@
 /* Drop and create the swap table so we are sure to have a clean verions (no indexes constraints, etc. */
-drop table if exists wqp.project_data_swap_testsrc;
+drop table if exists wqp.project_data_swap_testsrc cascade;
 select create_swap_table ('testsrc', 'wqp', 'project_data');
 
 /* Setup a different partition to show we don't touch it. */

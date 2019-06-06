@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - include:
+      file: "activity/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "monitoringLocation/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "monitoringLocationSum/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "orgData/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "projectData/changeLog.yml"
+      relativeToChangelogFile: true

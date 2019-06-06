@@ -3,11 +3,6 @@ package gov.acwi.wqp.etl.summaries.monitoringLocationSum;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.nio.charset.Charset;
-import java.sql.SQLException;
-
-import javax.annotation.PostConstruct;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.batch.core.ExitStatus;
@@ -16,9 +11,6 @@ import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.core.io.support.EncodedResource;
-import org.springframework.jdbc.datasource.init.ScriptException;
-import org.springframework.jdbc.datasource.init.ScriptUtils;
 
 import com.github.springtestdbunit.annotation.DatabaseSetup;
 import com.github.springtestdbunit.annotation.ExpectedDatabase;
@@ -30,21 +22,18 @@ import gov.acwi.wqp.etl.summaries.monitoringLocationSum.table.SetupMonitoringLoc
 
 public class TransformMonitoringLocationSumIT extends BaseFlowIT {
 
-	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_ANALYZE + "'station_sum_swap_testsrc'";
-
 	public static final String EXPECTED_DATABASE_TABLE_STATION_SUM = "station_sum_swap_testsrc";
+	public static final String TABLE_NAME = "'" + EXPECTED_DATABASE_TABLE_STATION_SUM + "'";
+	public static final String EXPECTED_DATABASE_QUERY_ANALYZE = BASE_EXPECTED_DATABASE_QUERY_ANALYZE + TABLE_NAME;
+	public static final String EXPECTED_DATABASE_QUERY_PRIMARY_KEY = BASE_EXPECTED_DATABASE_QUERY_PRIMARY_KEY
+			+ EQUALS_QUERY + TABLE_NAME;
+
 	public static final String EXPECTED_DATABASE_QUERY_STATION_SUM = BASE_EXPECTED_DATABASE_QUERY_STATION_SUM
 			+ EXPECTED_DATABASE_TABLE_STATION_SUM + EXPECTED_DATABASE_QUERY_STATION_SUM_ORDER_BY;
 
 	@Autowired
 	@Qualifier("monitoringLocationSumFlow")
 	private Flow monitoringLocationSumFlow;
-
-	@PostConstruct
-	public void beforeClass() throws ScriptException, SQLException {
-		EncodedResource encodedResource = new EncodedResource(resource, Charset.forName("UTF-8"));
-		ScriptUtils.executeSqlScript(dataSource.getConnection(), encodedResource);
-	}
 
 	@Before
 	public void setUp() {
@@ -81,9 +70,31 @@ public class TransformMonitoringLocationSumIT extends BaseFlowIT {
 	}
 
 	@Test
-	@ExpectedDatabase(value="classpath:/testResult/analyze/monitoringLocationSum.xml",
+	@ExpectedDatabase(
+			value="classpath:/testResult/wqp/monitoringLocationSum/indexes/pk.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
+			query=BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX_PK + TABLE_NAME)
+	@ExpectedDatabase(
+			value="classpath:/testResult/wqp/monitoringLocationSum/primaryKey.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=EXPECTED_DATABASE_TABLE_CHECK_PRIMARY_KEY,
+			query=EXPECTED_DATABASE_QUERY_PRIMARY_KEY)
+	public void addMonitoringLocationSumPrimaryKeyStepTest() {
+		try {
+			JobExecution jobExecution = jobLauncherTestUtils.launchStep("addMonitoringLocationSumPrimaryKeyStep", testJobParameters);
+			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		}
+	}
+
+	@Test
+	@ExpectedDatabase(
+			value="classpath:/testResult/analyze/monitoringLocationSum.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=EXPECTED_DATABASE_TABLE_CHECK_ANALYZE,
 			query=EXPECTED_DATABASE_QUERY_ANALYZE)
 	public void analyzeMonitoringLocationSumStepTest() {
 		try {
@@ -107,21 +118,36 @@ public class TransformMonitoringLocationSumIT extends BaseFlowIT {
 	@DatabaseSetup(value="classpath:/testData/wqx/country/country.xml")
 	@DatabaseSetup(value="classpath:/testData/wqx/state/state.xml")
 	@DatabaseSetup(value="classpath:/testData/wqx/county/county.xml")
-	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocationSum/indexes/all.xml",
+	@ExpectedDatabase(
+			value="classpath:/testResult/wqp/monitoringLocationSum/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
 			query=BuildMonitoringLocationSumIndexesFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(connection=CONNECTION_INFORMATION_SCHEMA, value="classpath:/testResult/wqp/monitoringLocationSum/create.xml",
+	@ExpectedDatabase(
+			connection=CONNECTION_INFORMATION_SCHEMA,
+			value="classpath:/testResult/wqp/monitoringLocationSum/create.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_TABLE,
 			query=SetupMonitoringLocationSumSwapTableFlowIT.EXPECTED_DATABASE_QUERY)
-	@ExpectedDatabase(value="classpath:/testResult/wqp/monitoringLocationSum/monitoringLocationSum.xml",
+	@ExpectedDatabase(
+			value="classpath:/testResult/wqp/monitoringLocationSum/monitoringLocationSum.xml",
 			table=EXPECTED_DATABASE_TABLE_STATION_SUM,
 			query=EXPECTED_DATABASE_QUERY_STATION_SUM)
-	@ExpectedDatabase(value="classpath:/testResult/analyze/monitoringLocationSum.xml",
+	@ExpectedDatabase(
+			value="classpath:/testResult/analyze/monitoringLocationSum.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
-			table=TABLE_NAME_PG_STAT_ALL_TABLES,
+			table=EXPECTED_DATABASE_TABLE_CHECK_ANALYZE,
 			query=EXPECTED_DATABASE_QUERY_ANALYZE)
+	@ExpectedDatabase(
+			value="classpath:/testResult/wqp/monitoringLocationSum/indexes/pk.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX,
+			query=BASE_EXPECTED_DATABASE_QUERY_CHECK_INDEX_PK + TABLE_NAME)
+	@ExpectedDatabase(
+			value="classpath:/testResult/wqp/monitoringLocationSum/primaryKey.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=EXPECTED_DATABASE_TABLE_CHECK_PRIMARY_KEY,
+			query=EXPECTED_DATABASE_QUERY_PRIMARY_KEY)
 	public void monitoringLocationSumFlowTest() {
 		Job monitoringLocationSumFlowTest = jobBuilderFactory.get("monitoringLocationSumFlowTest")
 					.start(monitoringLocationSumFlow)

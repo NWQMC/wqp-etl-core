@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.add_activity_primary_key"
+      changes:
+        - sqlFile:
+            path: addActivityPrimaryKey.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists add_activity_primary_key(character varying,character varying,character varying);

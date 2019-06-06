@@ -11,8 +11,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import gov.acwi.wqp.etl.EtlConstantUtils;
-
 @Configuration
 public class BuildActivityIndexes {
 
@@ -230,7 +228,7 @@ public class BuildActivityIndexes {
 
 	@Bean
 	public Flow buildActivityIndexesFlow() {
-		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.BUILD_ACTIVITY_INDEXES_FLOW)
+		return new FlowBuilder<SimpleFlow>("buildActivityIndexesFlow")
 				.start(buildActivityActivityIndexStep())
 				.next(buildActivityActivityIdIndexStep())
 				.next(buildActivityCountryIndexStep())

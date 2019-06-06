@@ -5,6 +5,6 @@ as $$
 declare
     swap_table_name varchar := base_table_name || '_swap_' || wqp_data_source;
 begin
-    execute format('drop table if exists %I.%I', wqp_schema_name, swap_table_name);
+    execute format('drop table if exists %I.%I cascade', wqp_schema_name, swap_table_name);
 end
 $$

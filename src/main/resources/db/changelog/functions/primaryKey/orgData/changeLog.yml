@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.add_org_data_primary_key"
+      changes:
+        - sqlFile:
+            path: addOrgDataPrimaryKey.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists add_org_data_primary_key(character varying,character varying,character varying);

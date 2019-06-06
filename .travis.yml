@@ -11,4 +11,4 @@ jdk:
 install: true
 
 script:
-  - mvn verify
+  - mvn verify -Dlogging.level.root=ERROR

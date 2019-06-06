@@ -14,14 +14,29 @@ import org.springframework.context.annotation.Configuration;
 import gov.acwi.wqp.etl.EtlConstantUtils;
 
 @Configuration
-public class AnalyzeActivityMetricConfig {
+public class AfterLoadActivityMetricConfig {
 
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 
 	@Autowired
+	@Qualifier("buildActivityMetricIndexesFlow")
+	public Flow buildActivityMetricIndexesFlow;
+
+	@Autowired
+	@Qualifier("addActivityMetricForeignKeyActivity")
+	private Tasklet addActivityMetricForeignKeyActivity;
+
+	@Autowired
 	@Qualifier("analyzeActivityMetric")
 	private Tasklet analyzeActivityMetric;
+
+	@Bean
+	public Step addActivityMetricForeignKeyActivityStep() {
+		return stepBuilderFactory.get("addActivityMetricForeignKeyActivityStep")
+				.tasklet(addActivityMetricForeignKeyActivity)
+				.build();
+	}
 
 	@Bean
 	public Step analyzeActivityMetricStep() {
@@ -31,9 +46,19 @@ public class AnalyzeActivityMetricConfig {
 	}
 
 	@Bean
+	@Deprecated
 	public Flow analyzeActivityMetricFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.ANALYZE_ACTIVITY_METRIC_FLOW)
 				.start(analyzeActivityMetricStep())
+				.build();
+	}
+
+	@Bean
+	public Flow afterLoadActivityMetricFlow() {
+		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.AFTER_LOAD_ACTIVITY_METRIC_FLOW)
+				.start(buildActivityMetricIndexesFlow)
+				.next(addActivityMetricForeignKeyActivityStep())
+				.next(analyzeActivityMetricStep())
 				.build();
 	}
 }

@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.add_activity_foreign_key_monitoring_location"
+      changes:
+        - sqlFile:
+            path: addActivityForeignKeyMonitoringLocation.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists add_activity_foreign_key_monitoring_location(character varying,character varying,character varying);

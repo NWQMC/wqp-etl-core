@@ -14,10 +14,14 @@ import org.springframework.context.annotation.Configuration;
 import gov.acwi.wqp.etl.EtlConstantUtils;
 
 @Configuration
-public class AnalyzeResDetectQntLimitConfig {
+public class AfterLoadResDetectQntLimitConfig {
 
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
+
+	@Autowired
+	@Qualifier("buildResDetectQntLimitIndexesFlow")
+	public Flow buildResDetectQntLimitIndexesFlow;
 
 	@Autowired
 	@Qualifier("analyzeResDetectQntLimit")
@@ -31,9 +35,18 @@ public class AnalyzeResDetectQntLimitConfig {
 	}
 
 	@Bean
+	@Deprecated
 	public Flow analyzeResDetectQntLimitFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.ANALYZE_RES_DETECT_QNT_LIMIT_FLOW)
 				.start(analyzeResDetectQntLimitStep())
+				.build();
+	}
+
+	@Bean
+	public Flow afterLoadResDetectQntLimitFlow() {
+		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.AFTER_LOAD_RES_DETECT_QNT_LIMIT_FLOW)
+				.start(buildResDetectQntLimitIndexesFlow)
+				.next(analyzeResDetectQntLimitStep())
 				.build();
 	}
 }

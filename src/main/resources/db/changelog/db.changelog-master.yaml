@@ -26,3 +26,11 @@ databaseChangeLog:
   - include:
       file: "functions/analyze/changeLog.yml"
       relativeToChangelogFile: true
+
+  - include:
+      file: "functions/primaryKey/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "functions/foreignKey/changeLog.yml"
+      relativeToChangelogFile: true
