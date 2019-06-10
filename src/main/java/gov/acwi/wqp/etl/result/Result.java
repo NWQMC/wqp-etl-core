@@ -37,7 +37,42 @@ public class Result extends Activity {
 	private String detectionLimitDesc;
 	private String pCode;
 	private String analysisPrepDateTx;
+	private String biologicalIntent;
+	private String resBioIndividualId;
+	private String unidentifiedSpeciesIdentifier;
+	private String resGroupSummaryCtWt;
+	private String resGroupSummaryCtWtUnit;
 
+	public String getBiologicalIntent() {
+		return biologicalIntent;
+	}
+	public void setBiologicalIntent(String biologicalIntent) {
+		this.biologicalIntent = biologicalIntent;
+	}
+	public String getResBioIndividualId() {
+		return resBioIndividualId;
+	}
+	public void setResBioIndividualId(String resBioIndividualId) {
+		this.resBioIndividualId = resBioIndividualId;
+	}
+	public String getUnidentifiedSpeciesIdentifier() {
+		return unidentifiedSpeciesIdentifier;
+	}
+	public void setUnidentifiedSpeciesIdentifier(String unidentifiedSpeciesIdentifier) {
+		this.unidentifiedSpeciesIdentifier = unidentifiedSpeciesIdentifier;
+	}
+	public String getResGroupSummaryCtWt() {
+		return resGroupSummaryCtWt;
+	}
+	public void setResGroupSummaryCtWt(String resGroupSummaryCtWt) {
+		this.resGroupSummaryCtWt = resGroupSummaryCtWt;
+	}
+	public String getResGroupSummaryCtWtUnit() {
+		return resGroupSummaryCtWtUnit;
+	}
+	public void setResGroupSummaryCtWtUnit(String resGroupSummaryCtWtUnit) {
+		this.resGroupSummaryCtWtUnit = resGroupSummaryCtWtUnit;
+	}
 	public Integer getResultId() {
 		return resultId;
 	}
