@@ -234,6 +234,14 @@
                     </images>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <version>2.5.3</version>
+                <configuration>
+                    <arguments>-DskipTests=true -Ddocker.skip=true</arguments>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
