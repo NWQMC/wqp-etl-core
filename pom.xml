@@ -16,7 +16,7 @@
 
     <scm>
         <connection>scm:git:https://github.com/NWQMC/wqp-etl-core.git</connection>
-        <developerConnection>scm:git:git@github.com:NWQMC/wqp-etl-core.git</developerConnection>
+        <developerConnection>scm:git:https://github.com/NWQMC/wqp-etl-core.git</developerConnection>
         <url>https://github.com/NWQMC/wqp-etl-core.git</url>
         <tag>HEAD</tag>
     </scm>
@@ -256,13 +256,13 @@
                 <configuration>
                     <arguments>-DskipTests=true -Ddocker.skip=true</arguments>
                     <providerImplementations>
-                        <git>gitexe</git>
+                        <git>jgit</git>
                     </providerImplementations>
                 </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>org.apache.maven.scm</groupId>
-                        <artifactId>maven-scm-provider-gitexe</artifactId>
+                        <artifactId>maven-scm-provider-jgit</artifactId>
                         <version>1.11.2</version>
                     </dependency>
                     <dependency>
