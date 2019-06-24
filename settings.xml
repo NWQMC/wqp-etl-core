@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd">
+  <servers>
+    <server>
+      <id>wma-maven-releases</id>
+      <username>${ARTIFACTORY_USER}</username>
+      <password>${ARTIFACTORY_PASSWORD}</password>
+    </server>
+    <server>
+      <id>wma-maven-snapshots</id>
+      <username>${ARTIFACTORY_USER}</username>
+      <password>${ARTIFACTORY_PASSWORD}</password>
+    </server>
+  </servers>
+  <profiles>
+    <profile>
+      <id>artifactory</id>
+      <repositories>
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>wma-maven-releases</id>
+          <name>wma-maven-releases</name>
+          <url>https://cida.usgs.gov/artifactory/wma-maven-releases</url>
+        </repository>
+        <repository>
+          <snapshots/>
+          <id>wma-maven-snapshots</id>
+          <name>wma-maven-snapshots</name>
+          <url>https://cida.usgs.gov/artifactory/wma-maven-snapshots</url>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>artifactory</activeProfile>
+  </activeProfiles>
+</settings>
