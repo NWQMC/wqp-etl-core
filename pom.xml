@@ -15,11 +15,24 @@
     </ciManagement>
 
     <scm>
-        <connection>scm:git:https://github.com/NWQMC/wqp-etl-core.git</connection>
-        <developerConnection>scm:git:https://github.com/NWQMC/wqp-etl-core.git</developerConnection>
-        <url>https://github.com/NWQMC/wqp-etl-core.git</url>
+        <connection>scm:git:https://github.com/dsteinich/wqp-etl-core.git</connection>
+        <developerConnection>scm:git:https://github.com/dsteinich/wqp-etl-core.git</developerConnection>
+        <url>https://github.com/dsteinich/wqp-etl-core.git</url>
         <tag>HEAD</tag>
     </scm>
+
+    <repositories>
+        <repository>
+            <id>Central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>WMA</id>
+            <name>WMA Artifactory</name>
+            <url>${wma.maven.url}/wma-maven-centralized/</url>
+        </repository>
+    </repositories>
 
     <distributionManagement>
         <repository>
