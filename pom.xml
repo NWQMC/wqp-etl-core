@@ -255,7 +255,9 @@
                 <version>2.5.3</version>
                 <configuration>
                     <arguments>-DskipTests=true -Ddocker.skip=true</arguments>
-
+                    <providerImplementations>
+                        <git>gitexe</git>
+                    </providerImplementations>
                 </configuration>
                 <dependencies>
                     <dependency>
