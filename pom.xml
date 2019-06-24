@@ -255,14 +255,12 @@
                 <version>2.5.3</version>
                 <configuration>
                     <arguments>-DskipTests=true -Ddocker.skip=true</arguments>
-                    <providerImplementations>
-                        <git>jgit</git>
-                    </providerImplementations>
+
                 </configuration>
                 <dependencies>
                     <dependency>
                         <groupId>org.apache.maven.scm</groupId>
-                        <artifactId>maven-scm-provider-jgit</artifactId>
+                        <artifactId>maven-scm-provider-gitexe</artifactId>
                         <version>1.11.2</version>
                     </dependency>
                     <dependency>
