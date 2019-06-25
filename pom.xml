@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>gov.acwi</groupId>
     <artifactId>wqp-etl-core</artifactId>
-    <version>0.1.4</version>
+    <version>0.1.4-SNAPSHOT</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,10 +16,10 @@
     </ciManagement>
 
     <scm>
-        <connection>scm:git:https://github.com/dsteinich/wqp-etl-core.git</connection>
-        <developerConnection>scm:git:https://github.com/dsteinich/wqp-etl-core.git</developerConnection>
-        <url>https://github.com/dsteinich/wqp-etl-core.git</url>
-        <tag></tag>
+        <connection>scm:git:https://github.com/NWQMC/wqp-etl-core.git</connection>
+        <developerConnection>scm:git:https://github.com/NWQMC/wqp-etl-core.git</developerConnection>
+        <url>https://github.com/NWQMC/wqp-etl-core.git</url>
+        <tag>HEAD</tag>
     </scm>
 
     <repositories>
@@ -195,21 +195,17 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <autoCreateCustomNetworks>true</autoCreateCustomNetworks>
 <!--                     <showLogs>true</showLogs> -->
                     <containerNamePattern>%a</containerNamePattern>
                     <images>
                         <image>
-                            <name>usgswma/wqp_db:ci</name>
-<!--                             <name>usgswma/wqp_db:etl</name> -->
+                            <name>usgswma/wqp_db:etl</name>
+                            <alias>wqpDatabase</alias>
                             <run>
                                 <network>
                                     <mode>custom</mode>
-                                    <name>wqp</name>
-                                    <alias>wqpDatabase</alias>
+                                    <name>wqpEtlCore</name>
                                 </network>
-<!--                                 <domainname>wqpDatabase</domainname> -->
-<!--                                 <hostname>wqpDatabase</hostname> -->
                                 <ports>
                                     <port>5437:5432</port>
                                 </ports>
@@ -262,29 +258,6 @@
                         </image>
                     </images>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.3</version>
-                <configuration>
-                    <arguments>-DskipTests=true -Ddocker.skip=true</arguments>
-                    <providerImplementations>
-                        <git>jgit</git>
-                    </providerImplementations>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.maven.scm</groupId>
-                        <artifactId>maven-scm-provider-jgit</artifactId>
-                        <version>1.11.2</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.apache.maven.scm</groupId>
-                        <artifactId>maven-scm-api</artifactId>
-                        <version>1.11.2</version>
-                    </dependency>
-                </dependencies>
             </plugin>
         </plugins>
     </build>
