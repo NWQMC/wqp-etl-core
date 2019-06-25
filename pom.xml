@@ -16,9 +16,9 @@
     </ciManagement>
 
     <scm>
-        <connection>scm:git:https://github.com/NWQMC/wqp-etl-core.git</connection>
-        <developerConnection>scm:git:https://github.com/NWQMC/wqp-etl-core.git</developerConnection>
-        <url>https://github.com/NWQMC/wqp-etl-core.git</url>
+        <connection>scm:git:https://github.com/dsteinich/wqp-etl-core.git</connection>
+        <developerConnection>scm:git:https://github.com/dsteinich/wqp-etl-core.git</developerConnection>
+        <url>https://github.com/dsteinich/wqp-etl-core.git</url>
         <tag></tag>
     </scm>
 
