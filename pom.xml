@@ -7,6 +7,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
+        <wma.maven.url>https://cida.usgs.gov/artifactory</wma.maven.url>
     </properties>
 
     <ciManagement>
@@ -30,7 +31,7 @@
         <repository>
             <id>WMA</id>
             <name>WMA Artifactory</name>
-            <url>${wma.maven.url}/wma-maven-centralized/</url>
+            <url>${wma.maven.url}/list/wma-maven-centralized/</url>
         </repository>
     </repositories>
 
@@ -38,12 +39,12 @@
         <repository>
             <id>wma-maven-releases</id>
             <name>wma-maven-releases</name>
-            <url>https://cida.usgs.gov/artifactory/wma-maven-releases</url>
+            <url>${wma.maven.url}/wma-maven-releases</url>
         </repository>
         <snapshotRepository>
             <id>wma-maven-snapshots</id>
             <name>wma-maven-snapshots</name>
-            <url>https://cida.usgs.gov/artifactory/wma-maven-snapshots</url>
+            <url>${wma.maven.url}/wma-maven-snapshots</url>
         </snapshotRepository>
     </distributionManagement>
 
