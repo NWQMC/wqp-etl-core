@@ -20,6 +20,14 @@
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
+            <id>Central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2/</url>
+        </repository>
+        <repository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
           <id>wma-maven-releases</id>
           <name>wma-maven-releases</name>
           <url>https://cida.usgs.gov/artifactory/wma-maven-releases</url>
