@@ -207,7 +207,7 @@
                                     <name>${TESTING_DATABASE_NETWORK}</name>
                                 </network>
                                 <ports>
-                                    <port>${TESTING_DATABASE_PORT}:5432</port>
+                                    <port>5437:5432</port>
                                 </ports>
                                 <env>
                                     <CONTEXTS>external,ci,schemaLoad</CONTEXTS>
