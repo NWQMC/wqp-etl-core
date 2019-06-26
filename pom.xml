@@ -202,10 +202,10 @@
                             <name>usgswma/wqp_db:etl</name>
                             <alias>wqpDatabase</alias>
                             <run>
-                                <network>
-                                    <mode>custom</mode>
-                                    <name>wqpEtlCore</name>
-                                </network>
+<!--                                 <network> -->
+<!--                                     <mode>custom</mode> -->
+<!--                                     <name>wqpEtlCore</name> -->
+<!--                                 </network> -->
                                 <ports>
                                     <port>5437:5432</port>
                                 </ports>
