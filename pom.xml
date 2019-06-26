@@ -146,14 +146,14 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <configuration>
                     <environmentVariables>
-                        <WQP_DATABASE_ADDRESS>wqpDatabase</WQP_DATABASE_ADDRESS>
-                        <WQP_DATABASE_PORT>5432</WQP_DATABASE_PORT>
+                        <WQP_DATABASE_ADDRESS>${TESTING_DATABASE_ADDRESS}</WQP_DATABASE_ADDRESS>
+                        <WQP_DATABASE_PORT>${TESTING_DATABASE_PORT}</WQP_DATABASE_PORT>
                         <WQP_DATABASE_NAME>wqp_db</WQP_DATABASE_NAME>
                         <WQP_SCHEMA_NAME>wqp</WQP_SCHEMA_NAME>
                         <WQP_SCHEMA_OWNER_USERNAME>wqp_core</WQP_SCHEMA_OWNER_USERNAME>
                         <WQP_SCHEMA_OWNER_PASSWORD>changeMe</WQP_SCHEMA_OWNER_PASSWORD>
-                        <NWIS_DATABASE_ADDRESS>wqpDatabase</NWIS_DATABASE_ADDRESS>
-                        <NWIS_DATABASE_PORT>5432</NWIS_DATABASE_PORT>
+                        <NWIS_DATABASE_ADDRESS>${TESTING_DATABASE_ADDRESS}</NWIS_DATABASE_ADDRESS>
+                        <NWIS_DATABASE_PORT>${TESTING_DATABASE_PORT}</NWIS_DATABASE_PORT>
                         <NWIS_DATABASE_NAME>wqp_db</NWIS_DATABASE_NAME>
                         <NWIS_SCHEMA_OWNER_USERNAME>nwis_ws_star</NWIS_SCHEMA_OWNER_USERNAME>
                         <NWIS_SCHEMA_OWNER_PASSWORD>changeMe</NWIS_SCHEMA_OWNER_PASSWORD>
@@ -204,10 +204,10 @@
                             <run>
                                 <network>
                                     <mode>custom</mode>
-                                    <name>wqpEtlCore</name>
+                                    <name>${TESTING_DATABASE_NETWORK}</name>
                                 </network>
                                 <ports>
-                                    <port>5437:5432</port>
+                                    <port>${TESTING_DATABASE_PORT}:5432</port>
                                 </ports>
                                 <env>
                                     <CONTEXTS>external,ci,schemaLoad</CONTEXTS>
