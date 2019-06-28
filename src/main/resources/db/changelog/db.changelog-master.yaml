@@ -8,29 +8,5 @@ databaseChangeLog:
       relativeToChangelogFile: true
 
   - include:
-      file: "functions/table/changeLog.yml"
-      relativeToChangelogFile: true
-
-  - include:
-      file: "functions/index/changeLog.yml"
-      relativeToChangelogFile: true
-
-  - include:
-      file: "functions/transform/changeLog.yml"
-      relativeToChangelogFile: true
-
-  - include:
-      file: "functions/install/changeLog.yml"
-      relativeToChangelogFile: true
-
-  - include:
-      file: "functions/analyze/changeLog.yml"
-      relativeToChangelogFile: true
-
-  - include:
-      file: "functions/primaryKey/changeLog.yml"
-      relativeToChangelogFile: true
-
-  - include:
-      file: "functions/foreignKey/changeLog.yml"
+      file: "functions/changeLog.yml"
       relativeToChangelogFile: true

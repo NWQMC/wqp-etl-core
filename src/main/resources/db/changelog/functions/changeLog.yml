@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - include:
+      file: "table/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "index/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "transform/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "install/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "analyze/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "primaryKey/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "foreignKey/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "encodeUriComponent/changeLog.yml"
+      relativeToChangelogFile: true
