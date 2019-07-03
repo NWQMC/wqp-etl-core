@@ -6,3 +6,4 @@
 /target
 .idea/
 wqp-etl-core.iml
+/.env

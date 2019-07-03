@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.encode_uri_component"
+      changes:
+        - sqlFile:
+            path: encodeUriComponent.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists encode_uri_component(text, text);

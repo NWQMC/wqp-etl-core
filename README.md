@@ -16,15 +16,18 @@ This application utilizes a PostgreSQL database. The Docker Hub image usgswma/wq
 Create an application.yml file in the project directory containing the following (shown are example values - they should match the values you used in creating the etlDB):
 
 ```yml
-WQP_DATABASE_ADDRESS: <localhost>
-WQP_DATABASE_PORT: <5437>
+TESTING_DATABASE_ADDRESS: <localhost>
+TESTING_DATABASE_PORT: <5437>
+
+WQP_DATABASE_ADDRESS: ${TESTING_DATABASE_ADDRESS}
+WQP_DATABASE_PORT: ${TESTING_DATABASE_PORT}
 WQP_DATABASE_NAME: <wqp_db>
 WQP_SCHEMA_NAME: <wqp>
 WQP_SCHEMA_OWNER_USERNAME: <wqp_core>
 WQP_SCHEMA_OWNER_PASSWORD: <changeMe>
 
-NWIS_DATABASE_ADDRESS: <localhost>
-NWIS_DATABASE_PORT: <5437>
+NWIS_DATABASE_ADDRESS: ${TESTING_DATABASE_ADDRESS}
+NWIS_DATABASE_PORT: ${TESTING_DATABASE_PORT}
 NWIS_DATABASE_NAME: <wqp_db>
 NWIS_SCHEMA_OWNER_USERNAME: <nwis_ws_star>
 NWIS_SCHEMA_OWNER_PASSWORD: <changeMe>
@@ -40,6 +43,10 @@ CONTEXTS: external,ci,schemaLoad
 ```
 
 #### Environment variable definitions
+##### Database Location
+*   **TESTING_DATABASE_ADDRESS** Host name or IP address of the PostgreSQL database.
+*   **TESTING_DATABASE_PORT** Port the PostgreSQL Database is listening on.
+
 ##### WQP Schema
 *   **WQP_DATABASE_ADDRESS** - Host name or IP address of the PostgreSQL database.
 *   **WQP_DATABASE_PORT** - Port the PostgreSQL Database is listening on.
@@ -76,5 +83,5 @@ mvn package
 To additionally start up a Docker database and run the integration tests of the application use:
 
 ```shell
-mvn verify
+mvn verify -DTESTING_DATABASE_PORT=5437 -DTESTING_DATABASE_ADDRESS=localhost -DTESTING_DATABASE_NETWORK=wqpEtlCore
 ```

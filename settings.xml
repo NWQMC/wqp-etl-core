@@ -17,6 +17,11 @@
       <id>artifactory</id>
       <repositories>
         <repository>
+            <id>Central</id>
+            <name>Maven Central</name>
+            <url>https://repo.maven.apache.org/maven2/</url>
+        </repository>
+        <repository>
           <snapshots>
             <enabled>false</enabled>
           </snapshots>
