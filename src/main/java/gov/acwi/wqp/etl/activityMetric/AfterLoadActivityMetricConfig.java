@@ -46,14 +46,6 @@ public class AfterLoadActivityMetricConfig {
 	}
 
 	@Bean
-	@Deprecated
-	public Flow analyzeActivityMetricFlow() {
-		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.ANALYZE_ACTIVITY_METRIC_FLOW)
-				.start(analyzeActivityMetricStep())
-				.build();
-	}
-
-	@Bean
 	public Flow afterLoadActivityMetricFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.AFTER_LOAD_ACTIVITY_METRIC_FLOW)
 				.start(buildActivityMetricIndexesFlow)

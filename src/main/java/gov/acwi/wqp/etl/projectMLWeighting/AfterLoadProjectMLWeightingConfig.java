@@ -57,14 +57,6 @@ public class AfterLoadProjectMLWeightingConfig {
 	}
 
 	@Bean
-	@Deprecated
-	public Flow analyzeProjectMLWeightingFlow() {
-		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.ANALYZE_PROJECT_ML_WEIGHTING_FLOW)
-				.start(analyzeProjectMLWeightingStep())
-				.build();
-	}
-
-	@Bean
 	public Flow afterLoadProjectMLWeightingFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.AFTER_LOAD_ACTIVITY_FLOW)
 				.start(buildProjectMLWeightingIndexesFlow)

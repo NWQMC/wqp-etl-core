@@ -46,14 +46,6 @@ public class AfterLoadProjectDataConfig {
 	}
 
 	@Bean
-	@Deprecated
-	public Flow analyzeProjectDataFlow() {
-		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.ANALYZE_PROJECT_DATA_FLOW)
-				.start(analyzeProjectDataStep())
-				.build();
-	}
-
-	@Bean
 	public Flow afterLoadProjectDataFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.AFTER_LOAD_PROJECT_DATA_FLOW)
 				.start(buildProjectDataIndexesFlow)

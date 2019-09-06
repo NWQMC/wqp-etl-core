@@ -59,6 +59,15 @@ select create_swap_table ('testsrc', 'wqp', 'state');
 drop table if exists wqp.taxa_name_swap_testsrc cascade;
 select create_swap_table ('testsrc', 'wqp', 'taxa_name');
 
+drop table if exists wqp.activity_object_swap_testsrc cascade;
+select create_swap_table ('testsrc', 'wqp', 'activity_object');
+drop table if exists wqp.project_object_swap_testsrc cascade;
+select create_swap_table ('testsrc', 'wqp', 'project_object');
+drop table if exists wqp.result_object_swap_testsrc cascade;
+select create_swap_table ('testsrc', 'wqp', 'result_object');
+drop table if exists wqp.station_object_swap_testsrc cascade;
+select create_swap_table ('testsrc', 'wqp', 'station_object');
+
 create table if not exists wqx_country
 (cntry_uid integer
 ,cntry_cd character varying (2)

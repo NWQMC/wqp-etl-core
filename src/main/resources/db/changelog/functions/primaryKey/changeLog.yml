@@ -8,7 +8,15 @@ databaseChangeLog:
       relativeToChangelogFile: true
 
   - include:
+      file: "activityObject/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
       file: "monitoringLocation/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "monitoringLocationObject/changeLog.yml"
       relativeToChangelogFile: true
 
   - include:
@@ -21,4 +29,12 @@ databaseChangeLog:
 
   - include:
       file: "projectData/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "projectObject/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "resultObject/changeLog.yml"
       relativeToChangelogFile: true

@@ -35,14 +35,6 @@ public class AfterLoadResDetectQntLimitConfig {
 	}
 
 	@Bean
-	@Deprecated
-	public Flow analyzeResDetectQntLimitFlow() {
-		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.ANALYZE_RES_DETECT_QNT_LIMIT_FLOW)
-				.start(analyzeResDetectQntLimitStep())
-				.build();
-	}
-
-	@Bean
 	public Flow afterLoadResDetectQntLimitFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.AFTER_LOAD_RES_DETECT_QNT_LIMIT_FLOW)
 				.start(buildResDetectQntLimitIndexesFlow)

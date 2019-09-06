@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <pg_indexes
+        tablename="result_object_swap_testsrc"
+        indexname="result_object_swap_testsrc_result_id"
+        indexdef="CREATE INDEX result_object_swap_testsrc_result_id ON wqp.result_object_swap_testsrc USING btree (result_id) WITH (fillfactor='100')"
+     />
+</dataset>

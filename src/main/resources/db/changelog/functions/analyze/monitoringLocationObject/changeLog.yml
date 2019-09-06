@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.analyze_monitoring_location_object"
+      changes:
+        - sqlFile:
+            path: analyzeMonitoringLocationObject.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists analyze_monitoring_location_object(character varying,character varying,character varying);

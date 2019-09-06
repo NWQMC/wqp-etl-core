@@ -40,7 +40,7 @@ public class InstallWithQwportalSummaryIT {
 	@Test
 	public void includeQwportalSum() {
 		LinkedList<InstallTable> tables = (LinkedList<InstallTable>) install.getInstallTables();
-		assertEquals(29, tables.size());
-		assertEquals(QwportalSummary.BASE_TABLE_NAME, tables.get(15).getBaseTableName());
+		assertEquals(33, tables.size());
+		assertEquals(QwportalSummary.BASE_TABLE_NAME, tables.get(19).getBaseTableName());
 	}
 }

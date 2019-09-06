@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - preConditions:
+    - dbms:
+        type: postgresql
+
+  - changeSet:
+      author: drsteini
+      id: "create.function.add_monitoring_location_object_primary_key"
+      changes:
+        - sqlFile:
+            path: addMonitoringLocationObjectPrimaryKey.sql
+            relativeToChangelogFile: true
+            splitStatements: false
+        - rollback: drop function if exists add_monitoring_location_object_primary_key(character varying,character varying,character varying);
