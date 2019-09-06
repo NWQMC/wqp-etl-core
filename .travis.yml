@@ -15,7 +15,7 @@ script:
   - docker run -v /var/run/docker.sock:/var/run/docker.sock -v "$TRAVIS_BUILD_DIR":/usr/src/mymaven -w /usr/src/mymaven --network=wqpEtlCore -e TESTING_DATABASE_PORT=5432 -e TESTING_DATABASE_ADDRESS=wqpDatabase -e TESTING_DATABASE_NETWORK=wqpEtlCore maven:3.6.0-jdk-11 mvn clean verify
 
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - bash <(curl -s https://codecov.io/bash) -s $TRAVIS_BUILD_DIR
 
 after_script:
   - docker network rm wqpEtlCore
