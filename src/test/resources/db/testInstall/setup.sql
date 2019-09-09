@@ -3,6 +3,7 @@
 
 /* Drop all testsrc swap tables. */
 drop table if exists wqp.act_metric_swap_testsrc cascade;
+drop table if exists wqp.activity_object_swap_testsrc cascade;
 drop table if exists wqp.activity_sum_swap_testsrc cascade;
 drop table if exists wqp.activity_swap_testsrc cascade;
 drop table if exists wqp.assemblage_swap_testsrc cascade;
@@ -20,20 +21,24 @@ drop table if exists wqp.organization_swap_testsrc cascade;
 drop table if exists wqp.prj_ml_weighting_swap_testsrc cascade;
 drop table if exists wqp.project_data_swap_testsrc cascade;
 drop table if exists wqp.project_dim_swap_testsrc cascade;
+drop table if exists wqp.project_object_swap_testsrc cascade;
 drop table if exists wqp.project_swap_testsrc cascade;
 drop table if exists wqp.qwportal_summary_swap_testsrc cascade;
 drop table if exists wqp.r_detect_qnt_lmt_swap_testsrc cascade;
+drop table if exists wqp.result_object_swap_testsrc cascade;
 drop table if exists wqp.result_sum_swap_testsrc cascade;
 drop table if exists wqp.result_swap_testsrc cascade;
 drop table if exists wqp.sample_media_swap_testsrc cascade;
 drop table if exists wqp.site_type_swap_testsrc cascade;
 drop table if exists wqp.state_swap_testsrc cascade;
+drop table if exists wqp.station_object_swap_testsrc cascade;
 drop table if exists wqp.station_sum_swap_testsrc cascade;
 drop table if exists wqp.station_swap_testsrc cascade;
 drop table if exists wqp.taxa_name_swap_testsrc cascade;
 
 /* And replace them without indexes. */
 select create_swap_table ('testsrc', 'wqp', 'act_metric');
+select create_swap_table ('testsrc', 'wqp', 'activity_object');
 select create_swap_table ('testsrc', 'wqp', 'activity_sum');
 select create_swap_table ('testsrc', 'wqp', 'activity');
 select create_swap_table ('testsrc', 'wqp', 'assemblage');
@@ -51,20 +56,24 @@ select create_swap_table ('testsrc', 'wqp', 'organization');
 select create_swap_table ('testsrc', 'wqp', 'prj_ml_weighting');
 select create_swap_table ('testsrc', 'wqp', 'project_data');
 select create_swap_table ('testsrc', 'wqp', 'project_dim');
+select create_swap_table ('testsrc', 'wqp', 'project_object');
 select create_swap_table ('testsrc', 'wqp', 'project');
 select create_swap_table ('testsrc', 'wqp', 'qwportal_summary');
 select create_swap_table ('testsrc', 'wqp', 'r_detect_qnt_lmt');
+select create_swap_table ('testsrc', 'wqp', 'result_object');
 select create_swap_table ('testsrc', 'wqp', 'result_sum');
 select create_swap_table ('testsrc', 'wqp', 'result');
 select create_swap_table ('testsrc', 'wqp', 'sample_media');
 select create_swap_table ('testsrc', 'wqp', 'site_type');
 select create_swap_table ('testsrc', 'wqp', 'state');
+select create_swap_table ('testsrc', 'wqp', 'station_object');
 select create_swap_table ('testsrc', 'wqp', 'station_sum');
 select create_swap_table ('testsrc', 'wqp', 'station');
 select create_swap_table ('testsrc', 'wqp', 'taxa_name');
 
 /* Drop all testsrc partitions. */
 drop table if exists wqp.act_metric_testsrc cascade;
+drop table if exists wqp.activity_object_testsrc cascade;
 drop table if exists wqp.activity_sum_testsrc cascade;
 drop table if exists wqp.activity_testsrc cascade;
 drop table if exists wqp.assemblage_testsrc cascade;
@@ -82,20 +91,24 @@ drop table if exists wqp.organization_testsrc cascade;
 drop table if exists wqp.prj_ml_weighting_testsrc cascade;
 drop table if exists wqp.project_data_testsrc cascade;
 drop table if exists wqp.project_dim_testsrc cascade;
+drop table if exists wqp.project_object_testsrc cascade;
 drop table if exists wqp.project_testsrc cascade;
 drop table if exists wqp.qwportal_summary_testsrc cascade;
 drop table if exists wqp.r_detect_qnt_lmt_testsrc cascade;
+drop table if exists wqp.result_object_testsrc cascade;
 drop table if exists wqp.result_sum_testsrc cascade;
 drop table if exists wqp.result_testsrc cascade;
 drop table if exists wqp.sample_media_testsrc cascade;
 drop table if exists wqp.site_type_testsrc cascade;
 drop table if exists wqp.state_testsrc cascade;
+drop table if exists wqp.station_object_testsrc cascade;
 drop table if exists wqp.station_sum_testsrc cascade;
 drop table if exists wqp.station_testsrc cascade;
 drop table if exists wqp.taxa_name_testsrc cascade;
 
 /* And replace them without indexes. */
 create table if not exists wqp.act_metric_testsrc partition of wqp.act_metric for values in (0);
+create table if not exists wqp.activity_object_testsrc partition of wqp.activity_object for values in (0);
 create table if not exists wqp.activity_sum_testsrc partition of wqp.activity_sum for values in (0);
 create table if not exists wqp.activity_testsrc partition of wqp.activity for values in (0);
 create table if not exists wqp.assemblage_testsrc partition of wqp.assemblage for values in (0);
@@ -113,20 +126,24 @@ create table if not exists wqp.organization_testsrc partition of wqp.organizatio
 create table if not exists wqp.prj_ml_weighting_testsrc partition of wqp.prj_ml_weighting for values in (0);
 create table if not exists wqp.project_data_testsrc partition of wqp.project_data for values in (0);
 create table if not exists wqp.project_dim_testsrc partition of wqp.project_dim for values in (0);
+create table if not exists wqp.project_object_testsrc partition of wqp.project_object for values in (0);
 create table if not exists wqp.project_testsrc partition of wqp.project for values in (0);
 create table if not exists wqp.qwportal_summary_testsrc partition of wqp.qwportal_summary for values in (0);
 create table if not exists wqp.r_detect_qnt_lmt_testsrc partition of wqp.r_detect_qnt_lmt for values in (0);
+create table if not exists wqp.result_object_testsrc partition of wqp.result_object for values in (0);
 create table if not exists wqp.result_sum_testsrc partition of wqp.result_sum for values in (0);
 create table if not exists wqp.result_testsrc partition of wqp.result for values in (0);
 create table if not exists wqp.sample_media_testsrc partition of wqp.sample_media for values in (0);
 create table if not exists wqp.site_type_testsrc partition of wqp.site_type for values in (0);
 create table if not exists wqp.state_testsrc partition of wqp.state for values in (0);
+create table if not exists wqp.station_object_testsrc partition of wqp.station_object for values in (0);
 create table if not exists wqp.station_sum_testsrc partition of wqp.station_sum for values in (0);
 create table if not exists wqp.station_testsrc partition of wqp.station for values in (0);
 create table if not exists wqp.taxa_name_testsrc partition of wqp.taxa_name for values in (0);
 
 /* Make sure all _old tables exist, otherwise dbunit cries. */
 create table if not exists wqp.act_metric_testsrc_old (like wqp.act_metric_testsrc);
+create table if not exists wqp.activity_object_testsrc_old (like wqp.activity_object_testsrc);
 create table if not exists wqp.activity_sum_testsrc_old (like wqp.activity_sum_testsrc);
 create table if not exists wqp.activity_testsrc_old (like wqp.activity_testsrc);
 create table if not exists wqp.assemblage_testsrc_old (like wqp.assemblage_testsrc);
@@ -144,20 +161,24 @@ create table if not exists wqp.organization_testsrc_old (like wqp.organization_t
 create table if not exists wqp.prj_ml_weighting_testsrc_old (like wqp.prj_ml_weighting_testsrc);
 create table if not exists wqp.project_data_testsrc_old (like wqp.project_data_testsrc);
 create table if not exists wqp.project_dim_testsrc_old (like wqp.project_dim_testsrc);
+create table if not exists wqp.project_object_testsrc_old (like wqp.project_object_testsrc);
 create table if not exists wqp.project_testsrc_old (like wqp.project_testsrc);
 create table if not exists wqp.qwportal_summary_testsrc_old (like wqp.qwportal_summary_testsrc);
 create table if not exists wqp.r_detect_qnt_lmt_testsrc_old (like wqp.r_detect_qnt_lmt_testsrc);
+create table if not exists wqp.result_object_testsrc_old (like wqp.result_object_testsrc);
 create table if not exists wqp.result_sum_testsrc_old (like wqp.result_sum_testsrc);
 create table if not exists wqp.result_testsrc_old (like wqp.result_testsrc);
 create table if not exists wqp.sample_media_testsrc_old (like wqp.sample_media_testsrc);
 create table if not exists wqp.site_type_testsrc_old (like wqp.site_type_testsrc);
 create table if not exists wqp.state_testsrc_old (like wqp.state_testsrc);
+create table if not exists wqp.station_object_testsrc_old (like wqp.station_object_testsrc);
 create table if not exists wqp.station_sum_testsrc_old (like wqp.station_sum_testsrc);
 create table if not exists wqp.station_testsrc_old (like wqp.station_testsrc);
 create table if not exists wqp.taxa_name_testsrc_old (like wqp.taxa_name_testsrc);
 
 /* Make sure all _old tables are empty. */
 truncate table wqp.act_metric_testsrc_old;
+truncate table wqp.activity_object_testsrc_old;
 truncate table wqp.activity_sum_testsrc_old;
 truncate table wqp.activity_testsrc_old;
 truncate table wqp.assemblage_testsrc_old;
@@ -175,14 +196,17 @@ truncate table wqp.organization_testsrc_old;
 truncate table wqp.prj_ml_weighting_testsrc_old;
 truncate table wqp.project_data_testsrc_old;
 truncate table wqp.project_dim_testsrc_old;
+truncate table wqp.project_object_testsrc_old;
 truncate table wqp.project_testsrc_old;
 truncate table wqp.qwportal_summary_testsrc_old;
 truncate table wqp.r_detect_qnt_lmt_testsrc_old;
+truncate table wqp.result_object_testsrc_old;
 truncate table wqp.result_sum_testsrc_old;
 truncate table wqp.result_testsrc_old;
 truncate table wqp.sample_media_testsrc_old;
 truncate table wqp.site_type_testsrc_old;
 truncate table wqp.state_testsrc_old;
+truncate table wqp.station_object_testsrc_old;
 truncate table wqp.station_sum_testsrc_old;
 truncate table wqp.station_testsrc_old;
 truncate table wqp.taxa_name_testsrc_old;

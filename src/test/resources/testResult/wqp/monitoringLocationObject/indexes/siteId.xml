@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <pg_indexes
+        tablename="station_object_swap_testsrc"
+        indexname="station_object_swap_testsrc_site_id"
+        indexdef="CREATE INDEX station_object_swap_testsrc_site_id ON wqp.station_object_swap_testsrc USING btree (site_id) WITH (fillfactor='100')"
+     />
+</dataset>

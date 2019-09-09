@@ -4,6 +4,10 @@
         data_source_id="0"
         data_source="TESTSRC"
     />
+    <activity_object_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
+    />
     <activity_sum_swap_testsrc
         data_source_id="0"
         data_source="TESTSRC"
@@ -72,6 +76,10 @@
         data_source_id="0"
         code_value="TESTSRC"
     />
+    <project_object_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
+    />
     <project_swap_testsrc
         data_source_id="0"
         code_value="TESTSRC"
@@ -81,6 +89,10 @@
         huc8="TESTSRC"
     />
     <r_detect_qnt_lmt_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
+    />
+    <result_object_swap_testsrc
         data_source_id="0"
         data_source="TESTSRC"
     />
@@ -103,6 +115,10 @@
     <state_swap_testsrc
         data_source_id="0"
         code_value="TESTSRC"
+    />
+    <station_object_swap_testsrc
+        data_source_id="0"
+        data_source="TESTSRC"
     />
     <station_sum_swap_testsrc
         data_source_id="0"

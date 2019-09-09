@@ -57,14 +57,6 @@ public class AfterLoadActivityConfig {
 	}
 
 	@Bean
-	@Deprecated
-	public Flow analyzeActivityFlow() {
-		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.ANALYZE_ACTIVITY_FLOW)
-				.start(analyzeActivityStep())
-				.build();
-	}
-
-	@Bean
 	public Flow afterLoadActivityFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.AFTER_LOAD_ACTIVITY_FLOW)
 				.start(buildActivityIndexesFlow)

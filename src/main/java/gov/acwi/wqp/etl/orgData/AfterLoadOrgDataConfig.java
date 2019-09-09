@@ -46,14 +46,6 @@ public class AfterLoadOrgDataConfig {
 	}
 
 	@Bean
-	@Deprecated
-	public Flow analyzeOrgDataFlow() {
-		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.ANALYZE_ORG_DATA_FLOW)
-				.start(analyzeOrgDataStep())
-				.build();
-	}
-
-	@Bean
 	public Flow afterLoadOrgDataFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.AFTER_LOAD_ORG_DATA_FLOW)
 				.start(buildOrgDataIndexesFlow)

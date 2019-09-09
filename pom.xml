@@ -249,15 +249,36 @@
                                     <EPA_SCHEMA_OWNER_USERNAME>epa_owner</EPA_SCHEMA_OWNER_USERNAME>
                                     <EPA_SCHEMA_OWNER_PASSWORD>changeMe</EPA_SCHEMA_OWNER_PASSWORD>
                                     <WQX_SCHEMA_NAME>wqx</WQX_SCHEMA_NAME>
+                                    <WQX_DUMP_SCHEMA_NAME>wqx_dump</WQX_DUMP_SCHEMA_NAME>
                                     <STORETW_SCHEMA_NAME>storetw</STORETW_SCHEMA_NAME>
                                 </env>
                                 <wait>
                                     <time>100000</time>
+                                    <log>(?s)PostgreSQL init process complete; ready for start up.*database system is ready to accept connections</log>
                                 </wait>
                             </run>
                         </image>
                     </images>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.4</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

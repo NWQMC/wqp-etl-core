@@ -12,6 +12,10 @@ databaseChangeLog:
       relativeToChangelogFile: true
 
   - include:
+      file: "activityObject/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
       file: "biologicalHabitatMetric/changeLog.yml"
       relativeToChangelogFile: true
 
@@ -24,11 +28,19 @@ databaseChangeLog:
       relativeToChangelogFile: true
 
   - include:
+      file: "monitoringLocationObject/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
       file: "orgData/changeLog.yml"
       relativeToChangelogFile: true
 
   - include:
       file: "projectData/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "projectObject/changeLog.yml"
       relativeToChangelogFile: true
 
   - include:
@@ -41,4 +53,8 @@ databaseChangeLog:
 
   - include:
       file: "result/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
+      file: "resultObject/changeLog.yml"
       relativeToChangelogFile: true

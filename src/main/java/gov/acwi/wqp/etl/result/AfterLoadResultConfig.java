@@ -47,14 +47,6 @@ public class AfterLoadResultConfig {
 	}
 
 	@Bean
-	@Deprecated
-	public Flow analyzeResultFlow() {
-		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.ANALYZE_RESULT_FLOW)
-				.start(analyzeResultStep())
-				.build();
-	}
-
-	@Bean
 	public Flow afterLoadResultFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.AFTER_LOAD_RESULT_FLOW)
 				.start(buildResultIndexesFlow)
