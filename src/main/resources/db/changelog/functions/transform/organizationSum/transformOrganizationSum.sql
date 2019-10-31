@@ -32,7 +32,7 @@ begin
                 org_data.organization_id,
                 org_data.organization,
                 org_data.organization_name,
-                ''/provider/'' || org_data.data_source || ''/'' || org_data.organization organization_url,
+                ''/provider/'' || coalesce(org_data.data_source, '''') || ''/'' || coalesce(org_data.organization, '''') organization_url,
                 org_sum.event_date_all_time all_time_last_result,
                 coalesce(org_sum.site_count_all_time, 0) all_time_site_count,
                 coalesce(org_sum.activity_count_all_time, 0) all_time_activity_count,

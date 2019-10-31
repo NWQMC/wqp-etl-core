@@ -35,7 +35,7 @@ begin
          select data_source_id,
                 fips_state_code,
                 fips_county_code,
-                fips_state_code || fips_county_code fips_state_and_county,
+                coalesce(fips_state_code, '''') || coalesce(fips_county_code, '''') fips_state_and_county,
                 huc8,
                 min(event_date) min_date,
                 max(event_date) max_date,
