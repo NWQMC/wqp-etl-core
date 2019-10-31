@@ -16,7 +16,7 @@ begin
                          site_id code_value,
                          station_name description,
                          organization,
-                         site_id || '' '' || station_name search_text
+                         coalesce(site_id, '''') || '' '' || coalesce(station_name, '''') search_text
            from %I.%I
           where site_type is not null and
                 activity_count > 0',

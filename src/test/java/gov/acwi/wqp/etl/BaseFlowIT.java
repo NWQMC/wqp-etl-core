@@ -68,7 +68,7 @@ public abstract class BaseFlowIT {
 
 	public static final String EQUALS_QUERY = " = ";
 	public static final String LIKE_QUERY = " like ";
-	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_BARE = "select table_catalog, table_schema, table_name, table_type from information_schema.tables where table_name";
+	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_BARE = "select table_catalog, table_schema, table_name, table_type from information_schema.tables where table_schema='wqp' and table_name";
 	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_BARE + EQUALS_QUERY;
 	public static final String BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_LIKE = BASE_EXPECTED_DATABASE_QUERY_CHECK_TABLE_BARE + LIKE_QUERY;
 

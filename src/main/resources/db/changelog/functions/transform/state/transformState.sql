@@ -13,7 +13,7 @@ begin
                             description_with_out_country)
          select distinct data_source_id,
                          substring(governmental_unit_code, ''^[^:]+:[^:]+'') code_value,
-                         substring(governmental_unit_code, ''^[^:]+'') || '', '' || state_name description_with_country,
+                         coalesce(substring(governmental_unit_code, ''^[^:]+''), '''') || '', '' || coalesce(state_name, '''') description_with_country,
                          state_name description_with_out_country
            from %I.%I
           where substring(governmental_unit_code, ''^[^:]+:[^:]+'') is not null',
