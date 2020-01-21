@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- This file is only used to suppress logging set by Spring during initialization.
+Application logging levels and other settings should be set in the appropriate
+application.yml and NOT here. -->
 <configuration>
     <include resource="org/springframework/boot/logging/logback/base.xml" />
     <logger name="org.springframework" level="INFO"/>
