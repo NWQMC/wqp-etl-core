@@ -42,6 +42,10 @@ public class BuildActivityMetricIndexes {
 	private Tasklet buildActivityMetricGeomIndex;
 
 	@Autowired
+	@Qualifier("buildActivityMetricGeom2163Index")
+	private Tasklet buildActivityMetricGeom2163Index;
+
+	@Autowired
 	@Qualifier("buildActivityMetricHuc10Index")
 	private Tasklet buildActivityMetricHuc10Index;
 
@@ -128,6 +132,13 @@ public class BuildActivityMetricIndexes {
 	public Step buildActivityMetricGeomIndexStep() {
 		return stepBuilderFactory.get("buildActivityMetricGeomIndexStep")
 				.tasklet(buildActivityMetricGeomIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildActivityMetricGeom2163IndexStep() {
+		return stepBuilderFactory.get("buildActivityMetricGeom2163IndexStep")
+				.tasklet(buildActivityMetricGeom2163Index)
 				.build();
 	}
 
@@ -224,6 +235,7 @@ public class BuildActivityMetricIndexes {
 				.next(buildActivityMetricCountyIndexStep())
 				.next(buildActivityMetricEventDateIndexStep())
 				.next(buildActivityMetricGeomIndexStep())
+				.next(buildActivityMetricGeom2163IndexStep())
 				.next(buildActivityMetricHuc10IndexStep())
 				.next(buildActivityMetricHuc12IndexStep())
 				.next(buildActivityMetricHuc2IndexStep())

@@ -30,6 +30,10 @@ public class BuildMonitoringLocationSumIndexes {
 	private Tasklet buildMonitoringLocationSumGeomIndex;
 
 	@Autowired
+	@Qualifier("buildMonitoringLocationSumGeom2163Index")
+	private Tasklet buildMonitoringLocationSumGeom2163Index;
+
+	@Autowired
 	@Qualifier("buildMonitoringLocationSumHuc10Index")
 	private Tasklet buildMonitoringLocationSumHuc10Index;
 
@@ -92,6 +96,13 @@ public class BuildMonitoringLocationSumIndexes {
 	public Step buildMonitoringLocationSumGeomIndexStep() {
 		return stepBuilderFactory.get("buildMonitoringLocationSumGeomIndexStep")
 				.tasklet(buildMonitoringLocationSumGeomIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildMonitoringLocationSumGeom2163IndexStep() {
+		return stepBuilderFactory.get("buildMonitoringLocationSumGeom2163IndexStep")
+				.tasklet(buildMonitoringLocationSumGeom2163Index)
 				.build();
 	}
 
@@ -179,6 +190,7 @@ public class BuildMonitoringLocationSumIndexes {
 				.start(buildMonitoringLocationSumCountryIndexStep())
 				.next(buildMonitoringLocationSumCountyIndexStep())
 				.next(buildMonitoringLocationSumGeomIndexStep())
+				.next(buildMonitoringLocationSumGeom2163IndexStep())
 				.next(buildMonitoringLocationSumHuc10IndexStep())
 				.next(buildMonitoringLocationSumHuc12IndexStep())
 				.next(buildMonitoringLocationSumHuc2IndexStep())

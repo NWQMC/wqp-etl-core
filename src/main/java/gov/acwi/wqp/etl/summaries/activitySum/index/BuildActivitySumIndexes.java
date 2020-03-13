@@ -38,6 +38,10 @@ public class BuildActivitySumIndexes {
 	private Tasklet buildActivitySumGeomIndex;
 
 	@Autowired
+	@Qualifier("buildActivitySumGeom2163Index")
+	private Tasklet buildActivitySumGeom2163Index;
+
+	@Autowired
 	@Qualifier("buildActivitySumHuc10Index")
 	private Tasklet buildActivitySumHuc10Index;
 
@@ -121,6 +125,13 @@ public class BuildActivitySumIndexes {
 	public Step buildActivitySumGeomIndexStep() {
 		return stepBuilderFactory.get("buildActivitySumGeomIndexStep")
 				.tasklet(buildActivitySumGeomIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildActivitySumGeom2163IndexStep() {
+		return stepBuilderFactory.get("buildActivitySumGeom2163IndexStep")
+				.tasklet(buildActivitySumGeom2163Index)
 				.build();
 	}
 
@@ -223,6 +234,7 @@ public class BuildActivitySumIndexes {
 				.next(buildActivitySumCountyIndexStep())
 				.next(buildActivitySumEventDateIndexStep())
 				.next(buildActivitySumGeomIndexStep())
+				.next(buildActivitySumGeom2163IndexStep())
 				.next(buildActivitySumHuc10IndexStep())
 				.next(buildActivitySumHuc12IndexStep())
 				.next(buildActivitySumHuc2IndexStep())
