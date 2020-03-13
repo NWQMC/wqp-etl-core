@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <pg_indexes
+        tablename="prj_ml_weighting_swap_testsrc"
+        indexname="prj_ml_weighting_swap_testsrc_geom_2163"
+        indexdef="CREATE INDEX prj_ml_weighting_swap_testsrc_geom_2163 ON wqp.prj_ml_weighting_swap_testsrc USING gist (st_transform(geom, 2163)) WITH (fillfactor='100')"
+     />
+</dataset>

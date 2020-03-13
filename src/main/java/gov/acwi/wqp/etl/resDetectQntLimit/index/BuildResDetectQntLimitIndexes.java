@@ -54,6 +54,10 @@ public class BuildResDetectQntLimitIndexes {
 	private Tasklet buildResDetectQntLimitGeomIndex;
 
 	@Autowired
+	@Qualifier("buildResDetectQntLimitGeom2163Index")
+	private Tasklet buildResDetectQntLimitGeom2163Index;
+
+	@Autowired
 	@Qualifier("buildResDetectQntLimitHuc10Index")
 	private Tasklet buildResDetectQntLimitHuc10Index;
 
@@ -182,6 +186,13 @@ public class BuildResDetectQntLimitIndexes {
 	}
 
 	@Bean
+	public Step buildResDetectQntLimitGeom2163IndexStep() {
+		return stepBuilderFactory.get("buildResDetectQntLimitGeom2163IndexStep")
+				.tasklet(buildResDetectQntLimitGeom2163Index)
+				.build();
+	}
+
+	@Bean
 	public Step buildResDetectQntLimitHuc10IndexStep() {
 		return stepBuilderFactory.get("buildResDetectQntLimitHuc10IndexStep")
 				.tasklet(buildResDetectQntLimitHuc10Index)
@@ -305,6 +316,7 @@ public class BuildResDetectQntLimitIndexes {
 				.next(buildResDetectQntLimitCountyIndexStep())
 				.next(buildResDetectQntLimitEventDateIndexStep())
 				.next(buildResDetectQntLimitGeomIndexStep())
+				.next(buildResDetectQntLimitGeom2163IndexStep())
 				.next(buildResDetectQntLimitHuc10IndexStep())
 				.next(buildResDetectQntLimitHuc12IndexStep())
 				.next(buildResDetectQntLimitHuc2IndexStep())

@@ -30,6 +30,10 @@ public class BuildBiologicalHabitatMetricIndexes {
 	private Tasklet buildBiologicalHabitatMetricGeomIndex;
 
 	@Autowired
+	@Qualifier("buildBiologicalHabitatMetricGeom2163Index")
+	private Tasklet buildBiologicalHabitatMetricGeom2163Index;
+
+	@Autowired
 	@Qualifier("buildBiologicalHabitatMetricHuc10Index")
 	private Tasklet buildBiologicalHabitatMetricHuc10Index;
 
@@ -86,10 +90,18 @@ public class BuildBiologicalHabitatMetricIndexes {
 				.tasklet(buildBiologicalHabitatMetricCountyIndex)
 				.build();
 	}
+
 	@Bean
 	public Step buildBiologicalHabitatMetricGeomIndexStep() {
 		return stepBuilderFactory.get("buildBiologicalHabitatMetricGeomIndexStep")
 				.tasklet(buildBiologicalHabitatMetricGeomIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildBiologicalHabitatMetricGeom2163IndexStep() {
+		return stepBuilderFactory.get("buildBiologicalHabitatMetricGeom2163IndexStep")
+				.tasklet(buildBiologicalHabitatMetricGeom2163Index)
 				.build();
 	}
 
@@ -176,6 +188,7 @@ public class BuildBiologicalHabitatMetricIndexes {
 				.start(buildBiologicalHabitatMetricCountryIndexStep())
 				.next(buildBiologicalHabitatMetricCountyIndexStep())
 				.next(buildBiologicalHabitatMetricGeomIndexStep())
+				.next(buildBiologicalHabitatMetricGeom2163IndexStep())
 				.next(buildBiologicalHabitatMetricHuc10IndexStep())
 				.next(buildBiologicalHabitatMetricHuc12IndexStep())
 				.next(buildBiologicalHabitatMetricHuc2IndexStep())

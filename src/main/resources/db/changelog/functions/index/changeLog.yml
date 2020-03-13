@@ -72,6 +72,10 @@ databaseChangeLog:
       relativeToChangelogFile: true
 
   - include:
+      file: "geom2163/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
       file: "organization/changeLog.yml"
       relativeToChangelogFile: true
 

@@ -30,6 +30,10 @@ public class BuildProjectMLWeightingIndexes {
 	private Tasklet buildProjectMLWeightingGeomIndex;
 
 	@Autowired
+	@Qualifier("buildProjectMLWeightingGeom2163Index")
+	private Tasklet buildProjectMLWeightingGeom2163Index;
+
+	@Autowired
 	@Qualifier("buildProjectMLWeightingHuc10Index")
 	private Tasklet buildProjectMLWeightingHuc10Index;
 
@@ -90,10 +94,18 @@ public class BuildProjectMLWeightingIndexes {
 				.tasklet(buildProjectMLWeightingCountyIndex)
 				.build();
 	}
+
 	@Bean
 	public Step buildProjectMLWeightingGeomIndexStep() {
 		return stepBuilderFactory.get("buildProjectMLWeightingGeomIndexStep")
 				.tasklet(buildProjectMLWeightingGeomIndex)
+				.build();
+	}
+
+	@Bean
+	public Step buildProjectMLWeightingGeom2163IndexStep() {
+		return stepBuilderFactory.get("buildProjectMLWeightingGeom2163IndexStep")
+				.tasklet(buildProjectMLWeightingGeom2163Index)
 				.build();
 	}
 
@@ -187,6 +199,7 @@ public class BuildProjectMLWeightingIndexes {
 				.start(buildProjectMLWeightingCountryIndexStep())
 				.next(buildProjectMLWeightingCountyIndexStep())
 				.next(buildProjectMLWeightingGeomIndexStep())
+				.next(buildProjectMLWeightingGeom2163IndexStep())
 				.next(buildProjectMLWeightingHuc10IndexStep())
 				.next(buildProjectMLWeightingHuc12IndexStep())
 				.next(buildProjectMLWeightingHuc2IndexStep())
