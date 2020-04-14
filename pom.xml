@@ -7,7 +7,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
-        <wma.maven.url>https://cida.usgs.gov/artifactory</wma.maven.url>
+        <wma.maven.url>https://artifactory.wma.chs.usgs.gov/artifactory</wma.maven.url>
     </properties>
 
     <ciManagement>
@@ -21,19 +21,6 @@
         <url>https://github.com/NWQMC/wqp-etl-core.git</url>
         <tag>HEAD</tag>
     </scm>
-
-    <repositories>
-        <repository>
-            <id>Central</id>
-            <name>Maven Central</name>
-            <url>https://repo.maven.apache.org/maven2/</url>
-        </repository>
-        <repository>
-            <id>WMA</id>
-            <name>WMA Artifactory</name>
-            <url>${wma.maven.url}/list/wma-maven-centralized/</url>
-        </repository>
-    </repositories>
 
     <distributionManagement>
         <repository>
