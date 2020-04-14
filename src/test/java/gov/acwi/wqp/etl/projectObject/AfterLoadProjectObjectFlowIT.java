@@ -1,10 +1,10 @@
 package gov.acwi.wqp.etl.projectObject;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.job.flow.Flow;
@@ -29,7 +29,7 @@ public class AfterLoadProjectObjectFlowIT extends BaseFlowIT {
 	@Qualifier(EtlConstantUtils.AFTER_LOAD_PROJECT_OBJECT_FLOW)
 	private Flow afterLoadProjectObjectFlow;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		testJob = jobBuilderFactory.get("afterLoadProjectObjectFlowTest")
 				.start(afterLoadProjectObjectFlow)

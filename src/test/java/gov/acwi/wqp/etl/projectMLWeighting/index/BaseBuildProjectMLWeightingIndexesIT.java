@@ -1,6 +1,6 @@
 package gov.acwi.wqp.etl.projectMLWeighting.index;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,7 +15,7 @@ public abstract class BaseBuildProjectMLWeightingIndexesIT extends BaseFlowIT {
 	@Qualifier("buildProjectMLWeightingIndexesFlow")
 	private Flow buildProjectMLWeightingIndexesFlow;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		testJob = jobBuilderFactory.get("BuildBuildProjectMLWeightingIndexesFlowTest")
 				.start(buildProjectMLWeightingIndexesFlow)
