@@ -7,8 +7,7 @@ import java.time.LocalDate;
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
-import org.junit.Before;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
@@ -29,7 +28,6 @@ import org.springframework.jdbc.datasource.init.ScriptException;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.TestExecutionListeners;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.support.DirtiesContextTestExecutionListener;
 
@@ -38,7 +36,6 @@ import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 
 @SpringBatchTest
 @SpringBootTest
-@RunWith(SpringRunner.class)
 @TestExecutionListeners({
 		DependencyInjectionTestExecutionListener.class,
 		StepScopeTestExecutionListener.class,
@@ -129,7 +126,7 @@ public abstract class BaseFlowIT {
 		ScriptUtils.executeSqlScript(dataSource.getConnection(), encodedResource);
 	}
 
-	@Before
+	@BeforeEach
 	public void baseSetup() {
 		testJobParameters= new JobParametersBuilder()
 				.addJobParameters(jobLauncherTestUtils.getUniqueJobParameters())

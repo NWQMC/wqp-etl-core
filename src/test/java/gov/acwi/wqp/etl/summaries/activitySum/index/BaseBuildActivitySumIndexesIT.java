@@ -1,6 +1,6 @@
 package gov.acwi.wqp.etl.summaries.activitySum.index;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,7 +15,7 @@ public abstract class BaseBuildActivitySumIndexesIT extends BaseFlowIT {
 	@Qualifier("buildActivitySumIndexesFlow")
 	private Flow buildActivitySumIndexesFlow;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		testJob = jobBuilderFactory.get("BuildActivitySumIndexesFlowTest")
 				.start(buildActivitySumIndexesFlow)

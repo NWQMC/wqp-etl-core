@@ -1,6 +1,6 @@
 package gov.acwi.wqp.etl.projectObject.index;
 
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -15,7 +15,7 @@ public abstract class BaseBuildProjectObjectIndexesIT extends BaseFlowIT {
 	@Qualifier("buildProjectObjectIndexesFlow")
 	private Flow buildProjectObjectIndexesFlow;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		testJob = jobBuilderFactory.get("BuildProjectObjectIndexesFlowTest")
 				.start(buildProjectObjectIndexesFlow)

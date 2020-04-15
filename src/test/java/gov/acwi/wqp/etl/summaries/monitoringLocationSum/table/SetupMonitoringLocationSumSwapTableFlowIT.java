@@ -1,10 +1,10 @@
 package gov.acwi.wqp.etl.summaries.monitoringLocationSum.table;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.job.flow.Flow;
@@ -24,7 +24,7 @@ public class SetupMonitoringLocationSumSwapTableFlowIT extends BaseFlowIT {
 	@Qualifier("setupMonitoringLocationSumSwapTableFlow")
 	private Flow setupMonitoringLocationSumSwapTableFlow;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		testJob = jobBuilderFactory.get("setupMonitoringLocationSumSwapTableFlowTest")
 				.start(setupMonitoringLocationSumSwapTableFlow)
