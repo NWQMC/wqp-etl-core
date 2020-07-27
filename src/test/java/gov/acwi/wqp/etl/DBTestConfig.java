@@ -45,6 +45,7 @@ public class DBTestConfig {
 	@Bean
 	public DatabaseConfigBean dbUnitDatabaseConfig() {
 		DatabaseConfigBean dbUnitDbConfig = new DatabaseConfigBean();
+		dbUnitDbConfig.setTableType(new String[] {"PARTITIONED TABLE", "TABLE"});
 		dbUnitDbConfig.setDatatypeFactory(new PostgresqlDataTypeFactoryWithJson());
 		return dbUnitDbConfig;
 	}
