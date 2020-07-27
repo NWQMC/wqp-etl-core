@@ -49,6 +49,21 @@ public class BuildProjectDimIndexesFlowIT extends BaseFlowIT {
 	}
 
 	@Test
+	@ExpectedDatabase(value="classpath:/testResult/wqp/projectDim/indexes/projectDimValue.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY + " and indexname='project_dim_swap_testsrc_project_dim_value'")
+	public void buildProjectDimProjectDimValueIndexStepTest() {
+		try {
+			JobExecution jobExecution = jobLauncherTestUtils
+					.launchStep("buildProjectDimProjectDimValueIndexStep", testJobParameters);
+			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		}
+	}
+
+	@Test
 	@ExpectedDatabase(value="classpath:/testResult/wqp/projectDim/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
 			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY)
