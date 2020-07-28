@@ -21,6 +21,10 @@ public class BuildProjectDimIndexes {
 	@Qualifier("buildProjectDimCodeValueIndex")
 	private Tasklet buildProjectDimCodeValueIndex;
 
+	@Autowired
+	@Qualifier("buildProjectDimProjectDimValueIndex")
+	private Tasklet buildProjectDimProjectDimValueIndex;
+
 	@Bean
 	public Step buildProjectDimCodeValueIndexStep() {
 		return stepBuilderFactory.get("buildProjectDimCodeValueIndexStep")
@@ -29,9 +33,17 @@ public class BuildProjectDimIndexes {
 	}
 
 	@Bean
+	public Step buildProjectDimProjectDimValueIndexStep() {
+		return stepBuilderFactory.get("buildProjectDimProjectDimValueIndexStep")
+				.tasklet(buildProjectDimProjectDimValueIndex)
+				.build();
+	}
+
+	@Bean
 	public Flow buildProjectDimIndexesFlow() {
 		return new FlowBuilder<SimpleFlow>("buildProjectDimIndexesFlow")
 				.start(buildProjectDimCodeValueIndexStep())
+				.next(buildProjectDimProjectDimValueIndexStep())
 				.build();
 	}
 

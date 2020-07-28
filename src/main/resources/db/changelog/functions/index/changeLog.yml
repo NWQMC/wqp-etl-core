@@ -88,6 +88,10 @@ databaseChangeLog:
       relativeToChangelogFile: true
 
   - include:
+      file: "projectDimValue/changeLog.yml"
+      relativeToChangelogFile: true
+
+  - include:
       file: "projectIdentifier/changeLog.yml"
       relativeToChangelogFile: true
 
