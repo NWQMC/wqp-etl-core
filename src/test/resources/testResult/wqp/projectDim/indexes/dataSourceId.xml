@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <pg_indexes
+        tablename="project_dim_swap_testsrc"
+        indexname="project_dim_swap_testsrc_data_source_id"
+        indexdef="CREATE INDEX project_dim_swap_testsrc_data_source_id ON wqp.project_dim_swap_testsrc USING btree (data_source_id) WITH (fillfactor='100')"
+     />
+</dataset>

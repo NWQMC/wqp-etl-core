@@ -63,6 +63,23 @@ public class BuildProjectDimIndexesFlowIT extends BaseFlowIT {
 		}
 	}
 
+
+	@Test
+	@ExpectedDatabase(value="classpath:/testResult/wqp/projectDim/indexes/dataSourceId.xml",
+			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
+			table=EXPECTED_DATABASE_TABLE_CHECK_INDEX, query=EXPECTED_DATABASE_QUERY + " and indexname='project_dim_swap_testsrc_data_source_id'")
+	public void buildProjectDimDataSourceIdIndexStepTest() {
+		try {
+			JobExecution jobExecution = jobLauncherTestUtils
+					.launchStep("buildProjectDimDataSourceIdIndexStep", testJobParameters);	
+			assertEquals(ExitStatus.COMPLETED, jobExecution.getExitStatus());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail(e.getLocalizedMessage());
+		}
+	}
+
 	@Test
 	@ExpectedDatabase(value="classpath:/testResult/wqp/projectDim/indexes/all.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,
