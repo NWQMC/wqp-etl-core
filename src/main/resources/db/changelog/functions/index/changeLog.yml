@@ -40,6 +40,10 @@ databaseChangeLog:
       relativeToChangelogFile: true
 
   - include:
+      file: "dataSourceId/changeLog.yml"
+      relativeToChangelogFile: true
+      
+  - include:
       file: "huc10/changeLog.yml"
       relativeToChangelogFile: true
 
