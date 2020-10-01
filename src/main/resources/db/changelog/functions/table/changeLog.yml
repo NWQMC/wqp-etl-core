@@ -6,6 +6,7 @@ databaseChangeLog:
   - changeSet:
       author: drsteini
       id: "create.function.create_swap_table"
+      runOnChange: true
       changes:
         - sqlFile:
             path: createSwapTable.sql
