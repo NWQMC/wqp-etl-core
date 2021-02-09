@@ -18,6 +18,9 @@ public class ConfigurationService {
 	private Boolean qwportalSummary;
 	@Value("${NWIS_OR_EPA}")
 	private String nwisOrEpa;
+	@Value("#{T(java.lang.Integer).parseInt('${DB_OPERATION_CONCURRENCY:3}')}")
+	private Integer dbOperationConcurrency;
+
 	public String getWqpSchemaName() {
 		return wqpSchemaName;
 	}
@@ -54,5 +57,19 @@ public class ConfigurationService {
 	public void setNwisOrEpa(String nwisOrEpa) {
 		this.nwisOrEpa = nwisOrEpa;
 	}
+
+	/**
+	 * Fetch how many concurrent operations are allowed to be submitted to the db concurrently.
+	 * @return
+	 */
+	public Integer getDbOperationConcurrency() { return dbOperationConcurrency; }
+
+	/**
+	 * Set how many concurrent operations are allowed to be submitted to the db concurrently.
+	 * Defaults to 3 unless specified by the DB_OPERATION_CONCURRENCY env var.
+	 * 2 or 3 is reasonable, but 4 may use all db threads if multiple ETL jobs are running.
+	 * @return
+	 */
+	public void setDbOperationConcurrency(final Integer indexCreationConcurrency) { this.dbOperationConcurrency = indexCreationConcurrency; }
 
 }

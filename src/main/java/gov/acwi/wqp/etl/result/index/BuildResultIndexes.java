@@ -1,5 +1,6 @@
 package gov.acwi.wqp.etl.result.index;
 
+import gov.acwi.wqp.etl.ConcurrentDbStepsUtil;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.job.builder.FlowBuilder;
@@ -13,6 +14,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class BuildResultIndexes {
+
+	@Autowired
+	private ConcurrentDbStepsUtil concurrent;
 
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
@@ -296,32 +300,33 @@ public class BuildResultIndexes {
 	@Bean
 	public Flow buildResultIndexesFlow() {
 		return new FlowBuilder<SimpleFlow>("buildResultIndexesFlow")
-				.start(buildResultActivityIndexStep())
-				.next(buildResultAnalyticalMethodIndexStep())
-				.next(buildResultAssemblageSampledNameIndexStep())
-				.next(buildResultCharacteristicNameIndexStep())
-				.next(buildResultCharacteristicTypeIndexStep())
-				.next(buildResultCountryIndexStep())
-				.next(buildResultCountyIndexStep())
-				.next(buildResultEventDateIndexStep())
-				.next(buildResultGeomIndexStep())
-				.next(buildResultGeom2163IndexStep())
-				.next(buildResultHuc10IndexStep())
-				.next(buildResultHuc12IndexStep())
-				.next(buildResultHuc2IndexStep())
-				.next(buildResultHuc4IndexStep())
-				.next(buildResultHuc6IndexStep())
-				.next(buildResultHuc8IndexStep())
-				.next(buildResultOrganizationIndexStep())
-				.next(buildResultProjectIdIndexStep())
-				.next(buildResultPCodeIndexStep())
-				.next(buildResultSampleMediaIndexStep())
-				.next(buildResultSampleTissueTaxonomicNameIndexStep())
-				.next(buildResultSiteIdIndexStep())
-				.next(buildResultSiteTypeIndexStep())
-				.next(buildResultStateIndexStep())
-				.next(buildResultStationIdIndexStep())
-				.build();
+				       .split(concurrent.taskExecutor()).add(
+							concurrent.makeFlow(buildResultActivityIndexStep()),
+							concurrent.makeFlow(buildResultAnalyticalMethodIndexStep()),
+							concurrent.makeFlow(buildResultAssemblageSampledNameIndexStep()),
+							concurrent.makeFlow(buildResultCharacteristicNameIndexStep()),
+							concurrent.makeFlow(buildResultCharacteristicTypeIndexStep()),
+							concurrent.makeFlow(buildResultCountryIndexStep()),
+							concurrent.makeFlow(buildResultCountyIndexStep()),
+							concurrent.makeFlow(buildResultEventDateIndexStep()),
+							concurrent.makeFlow(buildResultGeomIndexStep()),
+							concurrent.makeFlow(buildResultGeom2163IndexStep()),
+							concurrent.makeFlow(buildResultHuc10IndexStep()),
+							concurrent.makeFlow(buildResultHuc12IndexStep()),
+							concurrent.makeFlow(buildResultHuc2IndexStep()),
+							concurrent.makeFlow(buildResultHuc4IndexStep()),
+							concurrent.makeFlow(buildResultHuc6IndexStep()),
+							concurrent.makeFlow(buildResultHuc8IndexStep()),
+							concurrent.makeFlow(buildResultOrganizationIndexStep()),
+							concurrent.makeFlow(buildResultProjectIdIndexStep()),
+							concurrent.makeFlow(buildResultPCodeIndexStep()),
+							concurrent.makeFlow(buildResultSampleMediaIndexStep()),
+							concurrent.makeFlow(buildResultSampleTissueTaxonomicNameIndexStep()),
+							concurrent.makeFlow(buildResultSiteIdIndexStep()),
+							concurrent.makeFlow(buildResultSiteTypeIndexStep()),
+							concurrent.makeFlow(buildResultStateIndexStep()),
+							concurrent.makeFlow(buildResultStationIdIndexStep())
+						).build();
 	}
 
 }

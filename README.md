@@ -70,6 +70,9 @@ CONTEXTS: external,ci,schemaLoad
 *   **QWPORTAL_SUMMARY_ETL** - Does the ETL populate the qwportal_summary table? true or false.
 *   **NWIS_OR_EPA** - If **QWPORTAL_SUMMARY_ETL** is true, is this an NIWS (N) or STORET WQX (E) ETL.
 *   **CONTEXTS** - Only used when running the Docker database. Should always be external,ci,schemaLoad.
+*   **DB_OPERATION_CONCURRENCY** - Some operations against the db have been parallelized to have SpringBatch
+run multiple concurrent operations against the db, e.g. creating multiple indexes at the same time.  This controls
+the number of paralle operations.  Defaults to 3.
 
 ### Testing
 This project contains JUnit tests. Maven can be used to run them (in addition to the capabilities of your IDE).

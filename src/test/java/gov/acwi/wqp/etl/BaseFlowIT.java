@@ -107,7 +107,7 @@ public abstract class BaseFlowIT {
 	@Autowired
 	protected JobBuilderFactory jobBuilderFactory;
 	@Autowired
-	protected JobLauncherTestUtils jobLauncherTestUtils;
+	protected SmarterJobLauncherTestUtils jobLauncherTestUtils;
 	@Autowired
 	protected DataSource dataSource;
 	@Autowired
