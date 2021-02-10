@@ -3,6 +3,9 @@ package gov.acwi.wqp.etl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Service
 public class ConfigurationService {
 
@@ -55,4 +58,48 @@ public class ConfigurationService {
 		this.nwisOrEpa = nwisOrEpa;
 	}
 
+	//Result table partitioning params
+	//Any/all of these can be spec'ed as a LocalDate in the format 'YYYY-MM-DD', but generally only the year is significant.
+	//See DateRangePartitionStrategy for param details or the Readme.md.
+
+	//Note:  The complex @Value Spel expressions basically say that if the value is unspecified, its null.  If its
+	//specified, parse the value into a LocalDate or LocalDateTime.
+	@Value("#{'${ETL_RESULT_PARTITION_START_DATE:null}' == 'null' ? null : T(java.time.LocalDate).parse('${ETL_RESULT_PARTITION_START_DATE:null}')}")
+	private LocalDate etlResultPartitionStartDate;
+
+	@Value("#{'${ETL_RESULT_PARTITION_ONE_YEAR_BREAK:null}' == 'null' ? null : T(java.time.LocalDate).parse('${ETL_RESULT_PARTITION_ONE_YEAR_BREAK:null}')}")
+	private LocalDate etlResultPartitionOneYearBreak;
+
+	@Value("#{'${ETL_RESULT_PARTITION_QUARTER_BREAK:null}' == 'null' ? null : T(java.time.LocalDate).parse('${ETL_RESULT_PARTITION_QUARTER_BREAK:null}')}")
+	private LocalDate etlResultPartitionQuarterBreak;
+
+	@Value("#{'${ETL_RESULT_PARTITION_END_DATE:null}' == 'null' ? null : T(java.time.LocalDate).parse('${ETL_RESULT_PARTITION_END_DATE:null}')}")
+	private LocalDate etlResultPartitionEndDate;
+
+	//
+	// Testing-only parameter.
+	// Used by ResultPartitionStrategy to spec a time used in unique partition table names.  Defaults to now.
+	@Value("#{'${ETL_RUN_TIME:null}' == 'null' ? null : T(java.time.LocalDateTime).parse('${ETL_RUN_TIME:null}')}")
+	private LocalDateTime etlRunTime;
+
+	public LocalDate getEtlResultPartitionStartDate() { return etlResultPartitionStartDate; }
+
+	public LocalDate getEtlResultPartitionOneYearBreak() {
+		return etlResultPartitionOneYearBreak;
+	}
+
+	public LocalDate getEtlResultPartitionQuarterBreak() {
+		return etlResultPartitionQuarterBreak;
+	}
+
+	public LocalDate getEtlResultPartitionEndDate() {
+		return etlResultPartitionEndDate;
+	}
+
+	public LocalDateTime getEtlRunTime() {
+		if (etlRunTime == null) {
+			etlRunTime = LocalDateTime.now();
+		}
+		return etlRunTime;
+	}
 }

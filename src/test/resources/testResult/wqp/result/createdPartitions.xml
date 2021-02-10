@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <tables
+        parent="result_swap_testsrc"
+        child="result_testsrc_2021010110_minvalue_to_1990_01"
+    />
+    <tables
+            parent="result_swap_testsrc"
+            child="result_testsrc_2021010110_1990_01_to_1995_01"
+    />
+    <tables
+            parent="result_swap_testsrc"
+            child="result_testsrc_2021010110_1995_01_to_2000_01"
+    />
+    <tables
+            parent="result_swap_testsrc"
+            child="result_testsrc_2021010110_2000_01_to_2005_01"
+    />
+    <tables
+            parent="result_swap_testsrc"
+            child="result_testsrc_2021010110_2005_01_to_2010_01"
+    />
+    <tables
+            parent="result_swap_testsrc"
+            child="result_testsrc_2021010110_2010_01_to_maxvalue"
+    />
+</dataset>

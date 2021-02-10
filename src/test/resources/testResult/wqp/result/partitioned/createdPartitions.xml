@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <tables
+        parent="result_swap_testsrc"
+        child="result_testsrc_2021010110_minvalue_to_2005_01"
+    />
+    <tables
+            parent="result_swap_testsrc"
+            child="result_testsrc_2021010110_2005_01_to_2010_01"
+    />
+    <tables
+            parent="result_swap_testsrc"
+            child="result_testsrc_2021010110_2010_01_to_2015_01"
+    />
+    <tables
+            parent="result_swap_testsrc"
+            child="result_testsrc_2021010110_2015_01_to_2016_01"
+    />
+    <tables
+            parent="result_swap_testsrc"
+            child="result_testsrc_2021010110_2016_01_to_2017_01"
+    />
+    <tables
+            parent="result_swap_testsrc"
+            child="result_testsrc_2021010110_2017_01_to_2017_04"
+    />
+    <tables
+            parent="result_swap_testsrc"
+            child="result_testsrc_2021010110_2017_04_to_2017_07"
+    />
+    <tables
+            parent="result_swap_testsrc"
+            child="result_testsrc_2021010110_2017_07_to_2017_10"
+    />
+    <tables
+            parent="result_swap_testsrc"
+            child="result_testsrc_2021010110_2017_10_to_2018_01"
+    />
+    <tables
+            parent="result_swap_testsrc"
+            child="result_testsrc_2021010110_2018_01_to_2018_04"
+    />
+    <tables
+            parent="result_swap_testsrc"
+            child="result_testsrc_2021010110_2018_04_to_maxvalue"
+    />
+</dataset>
