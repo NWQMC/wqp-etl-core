@@ -1,5 +1,6 @@
 package gov.acwi.wqp.etl.activity.index;
 
+import gov.acwi.wqp.etl.ConcurrentDbStepsUtil;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.core.job.builder.FlowBuilder;
@@ -13,6 +14,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class BuildActivityIndexes {
+
+	@Autowired
+	private ConcurrentDbStepsUtil concurrent;
 
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
@@ -240,27 +244,28 @@ public class BuildActivityIndexes {
 	@Bean
 	public Flow buildActivityIndexesFlow() {
 		return new FlowBuilder<SimpleFlow>("buildActivityIndexesFlow")
-				.start(buildActivityActivityIndexStep())
-				.next(buildActivityActivityIdIndexStep())
-				.next(buildActivityCountryIndexStep())
-				.next(buildActivityCountyIndexStep())
-				.next(buildActivityEventDateIndexStep())
-				.next(buildActivityGeomIndexStep())
-				.next(buildActivityGeom2163IndexStep())
-				.next(buildActivityHuc10IndexStep())
-				.next(buildActivityHuc12IndexStep())
-				.next(buildActivityHuc2IndexStep())
-				.next(buildActivityHuc4IndexStep())
-				.next(buildActivityHuc6IndexStep())
-				.next(buildActivityHuc8IndexStep())
-				.next(buildActivityOrganizationIndexStep())
-				.next(buildActivityProjectIdIndexStep())
-				.next(buildActivitySampleMediaIndexStep())
-				.next(buildActivitySiteIdIndexStep())
-				.next(buildActivitySiteTypeIndexStep())
-				.next(buildActivityStateIndexStep())
-				.next(buildActivityStationIdIndexStep())
-				.build();
+				.split(concurrent.taskExecutor()).add(
+					concurrent.makeFlow((buildActivityActivityIndexStep())),
+					concurrent.makeFlow(buildActivityActivityIdIndexStep()),
+					concurrent.makeFlow(buildActivityCountryIndexStep()),
+					concurrent.makeFlow(buildActivityCountyIndexStep()),
+					concurrent.makeFlow(buildActivityEventDateIndexStep()),
+					concurrent.makeFlow(buildActivityGeomIndexStep()),
+					concurrent.makeFlow(buildActivityGeom2163IndexStep()),
+					concurrent.makeFlow(buildActivityHuc10IndexStep()),
+					concurrent.makeFlow(buildActivityHuc12IndexStep()),
+					concurrent.makeFlow(buildActivityHuc2IndexStep()),
+					concurrent.makeFlow(buildActivityHuc4IndexStep()),
+					concurrent.makeFlow(buildActivityHuc6IndexStep()),
+					concurrent.makeFlow(buildActivityHuc8IndexStep()),
+					concurrent.makeFlow(buildActivityOrganizationIndexStep()),
+					concurrent.makeFlow(buildActivityProjectIdIndexStep()),
+					concurrent.makeFlow(buildActivitySampleMediaIndexStep()),
+					concurrent.makeFlow(buildActivitySiteIdIndexStep()),
+					concurrent.makeFlow(buildActivitySiteTypeIndexStep()),
+					concurrent.makeFlow(buildActivityStateIndexStep()),
+					concurrent.makeFlow(buildActivityStationIdIndexStep())
+				).build();
 	}
 
 }
