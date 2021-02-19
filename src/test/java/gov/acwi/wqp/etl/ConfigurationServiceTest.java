@@ -25,7 +25,8 @@ import static org.junit.jupiter.api.Assertions.*;
 })
 @ContextConfiguration(classes = {ConfigurationService.class})
 @DirtiesContext
-@TestPropertySource(properties = {"WQP_SCHEMA_NAME=xyz",
+@TestPropertySource(properties = {"DB_OPERATION_CONCURRENCY=2",
+                                  "WQP_SCHEMA_NAME=xyz",
                                   "ETL_RESULT_PARTITION_START_DATE=1990-01-01",
                                   "ETL_RESULT_PARTITION_ONE_YEAR_BREAK=2015-01-01",
                                   "ETL_RESULT_PARTITION_QUARTER_BREAK=2015-01-01",
@@ -40,6 +41,11 @@ class ConfigurationServiceTest {
 	@Test
 	void getWqpSchemaName() {
 		assertEquals("xyz", config.getWqpSchemaName());
+	}
+
+	@Test
+	public void indexConcurrencyShouldBDefaultTo3() {
+		assertEquals(2, config.getDbOperationConcurrency());
 	}
 
 	@Test

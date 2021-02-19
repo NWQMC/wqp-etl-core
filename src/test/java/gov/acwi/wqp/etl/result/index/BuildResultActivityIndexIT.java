@@ -17,12 +17,6 @@ public class BuildResultActivityIndexIT extends BaseBuildResultIndexesIT {
 	@Autowired
 	private ConfigurationService config;
 
-	//This test really could be moved to a ConfigurationService test, but that test exists in a parallel merge request.
-	@Test
-	public void indexConcurrencyShouldBDefaultTo3() {
-		assertEquals(3, config.getDbOperationConcurrency());
-	}
-
 	@Test
 	@ExpectedDatabase(value="classpath:/testResult/wqp/result/indexes/activity.xml",
 			assertionMode=DatabaseAssertionMode.NON_STRICT_UNORDERED,

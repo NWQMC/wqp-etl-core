@@ -13,6 +13,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class DateRangePartitionStrategyTest {
 
+	private static final String tblName = "MyTab";
+	private static final LocalDate start = LocalDate.of(2005, 1, 1);
+	private static final LocalDate yearBreak = LocalDate.of(2015, 1, 1);
+	private static final LocalDate qtrBreak = LocalDate.of(2018, 1, 1);
+	private static final LocalDate end = LocalDate.of(2019, 1, 1);
+
 	private static final LocalDateTime A_RUN_TIME = LocalDateTime.of(2021, 01, 29, 10, 20, 30);
 
 	Config config = null;
@@ -21,14 +27,9 @@ class DateRangePartitionStrategyTest {
 	@BeforeEach
 	public void init() {
 
-		LocalDate start = LocalDate.of(2005, 1, 1);
-		LocalDate yearBreak = LocalDate.of(2015, 1, 1);
-		LocalDate qtrBreak = LocalDate.of(2018, 1, 1);
-		LocalDate end = LocalDate.of(2019, 1, 1);
+		config = new Config(A_RUN_TIME, tblName, start, yearBreak, qtrBreak, end);
 
-		config = new Config(A_RUN_TIME, "MyTab", start, yearBreak, qtrBreak, end);
-
-		strategy = new DateRangePartitionStrategy(A_RUN_TIME, "MyTab", start, yearBreak, qtrBreak, end);
+		strategy = new DateRangePartitionStrategy(A_RUN_TIME, tblName, start, yearBreak, qtrBreak, end);
 	}
 
 
@@ -46,6 +47,16 @@ class DateRangePartitionStrategyTest {
 
 		assertEquals(LocalDate.of(1995, 1, 1),
 				strategy.findFiveYearDate(LocalDate.of(1999, 12, 31)));
+	}
+
+	@Test
+	void tableNamesAreCorrectFormat() {
+		assertTrue(strategy.getPartitions().get(0).getTableName().matches("MyTab_2021012910_.*"));
+
+		//Try a different month to ensure we have day of month and not day of year
+		strategy = new DateRangePartitionStrategy(LocalDateTime.of(2021, 02, 1, 13, 20, 30), tblName, start, yearBreak, qtrBreak, end);
+
+		assertTrue(strategy.getPartitions().get(0).getTableName().matches("MyTab_2021020113_.*"));
 	}
 
 	@Test
