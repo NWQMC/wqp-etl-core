@@ -103,7 +103,7 @@ See DateRangePartitionStrategy.calcRuntimeConfig for how missing values are fill
 *   **CONTEXTS** - Only used when running the Docker database. Should always be external,ci,schemaLoad.
 *   **DB_OPERATION_CONCURRENCY** - Some operations against the db have been parallelized to have SpringBatch
 run multiple concurrent operations against the db, e.g. creating multiple indexes at the same time.  This controls
-the number of paralle operations.  Defaults to 3.
+the number of paralle operations.  Ensure there are enough db connections to support at least as many. Defaults to 3.
 
 ### Testing
 This project contains JUnit tests. Maven can be used to run them (in addition to the capabilities of your IDE).
