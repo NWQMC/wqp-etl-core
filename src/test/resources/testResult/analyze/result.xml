@@ -1,8 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
+    <!-- Its weird, but the pg_stat_all_tables does not include the parent table of a partition - only the child tables are there. -->
     <pg_stat_all_tables
-        schemaname="wqp"
-        relname="result_swap_testsrc"
-        within_one_minute="true"
-     />
+            schemaname="wqp"
+            relname="result_testsrc_2021010110_minvalue_to_1990_01"
+            within_one_minute="true"
+    />
+    <pg_stat_all_tables
+            schemaname="wqp"
+            relname="result_testsrc_2021010110_1990_01_to_1995_01"
+            within_one_minute="true"
+    />
+    <pg_stat_all_tables
+            schemaname="wqp"
+            relname="result_testsrc_2021010110_1995_01_to_2000_01"
+            within_one_minute="true"
+    />
+    <pg_stat_all_tables
+            schemaname="wqp"
+            relname="result_testsrc_2021010110_2000_01_to_2005_01"
+            within_one_minute="true"
+    />
+    <pg_stat_all_tables
+            schemaname="wqp"
+            relname="result_testsrc_2021010110_2005_01_to_2010_01"
+            within_one_minute="true"
+    />
+    <pg_stat_all_tables
+            schemaname="wqp"
+            relname="result_testsrc_2021010110_2010_01_to_maxvalue"
+            within_one_minute="true"
+    />
 </dataset>

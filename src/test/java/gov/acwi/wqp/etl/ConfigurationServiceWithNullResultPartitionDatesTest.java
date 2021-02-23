@@ -25,6 +25,11 @@ class ConfigurationServiceWithNullResultPartitionDatesTest {
 	ConfigurationService config;
 
 	@Test
+	public void indexConcurrencyShouldBDefaultTo3() {
+		assertEquals(3, config.getDbOperationConcurrency());
+	}
+
+	@Test
 	void getEtlResultPartitionStartDate() {
 		assertNull(config.getEtlResultPartitionStartDate());
 	}

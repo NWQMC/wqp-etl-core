@@ -59,11 +59,6 @@ public class SetupResultTable {
 	}
 
 	@Bean
-	public ResultPartitionStrategy getResultPartitionStrategy() {
-		return resultPartitionStrategy;
-	}
-
-	@Bean
 	public Flow setupResultSwapTableFlow() {
 
 		List<PgDateRangePart> parts = resultPartitionStrategy.getPartitions();

@@ -180,7 +180,7 @@ public class DateRangePartitionStrategy implements RangePartitionStrategy<PgDate
 	 * @return
 	 */
 	String getTableNamePrefix() {
-		return runtimeConfig.baseTableName + "_" + runtimeConfig.runTime.format(DateTimeFormatter.ofPattern("YYYYMMDDHH")) + "_";
+		return runtimeConfig.baseTableName + "_" + runtimeConfig.runTime.format(DateTimeFormatter.ofPattern("YYYYMMddHH")) + "_";
 	}
 
 	@Override
