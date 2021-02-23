@@ -1,13 +1,8 @@
 package gov.acwi.wqp.etl;
 
-import com.github.springtestdbunit.DbUnitTestExecutionListener;
-import com.github.springtestdbunit.annotation.DbUnitConfiguration;
 import org.junit.jupiter.api.Test;
-import org.springframework.batch.test.StepScopeTestExecutionListener;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.*;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
@@ -16,7 +11,7 @@ import org.springframework.test.context.support.DirtiesContextTestExecutionListe
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @TestExecutionListeners({
@@ -44,7 +39,7 @@ class ConfigurationServiceTest {
 	}
 
 	@Test
-	public void indexConcurrencyShouldBDefaultTo3() {
+	public void dbConcurrencyShouldBeSetTo2ViaProperty() {
 		assertEquals(2, config.getDbOperationConcurrency());
 	}
 
