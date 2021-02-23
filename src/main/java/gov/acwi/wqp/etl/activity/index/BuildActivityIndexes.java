@@ -243,6 +243,10 @@ public class BuildActivityIndexes {
 
 	@Bean
 	public Flow buildActivityIndexesFlow() {
+
+		//Note:  This example of a concurrent build is ok for indexes against a single table, but it will not work
+		//on a partitioned table b/c PG creates index name collisions on the child tables if the indexes are created
+		//in parallel.  An example of parallel index creation on a partitioned table is in BuildResultIndexes.
 		return new FlowBuilder<SimpleFlow>("buildActivityIndexesFlow")
 				.split(concurrent.taskExecutor()).add(
 					concurrent.makeFlow((buildActivityActivityIndexStep())),

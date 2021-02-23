@@ -1,7 +1,9 @@
 package gov.acwi.wqp.etl.result.index;
 
-import gov.acwi.wqp.etl.*;
+import gov.acwi.wqp.etl.ConcurrentDbStepsUtil;
+import gov.acwi.wqp.etl.ConfigurationService;
 import gov.acwi.wqp.etl.index.CreateBasicIndex;
+import gov.acwi.wqp.etl.index.CreateGeomIndex;
 import gov.acwi.wqp.etl.partition.PgDateRangePart;
 import gov.acwi.wqp.etl.result.table.ResultPartitionStrategy;
 import org.springframework.batch.core.Step;
@@ -9,7 +11,6 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.core.job.builder.FlowBuilder;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.batch.core.job.flow.support.SimpleFlow;
-import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -144,11 +145,12 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultActivityIndexStep(String tableName) {
+	public Step buildResultActivityIndexStep(String tableName) {
 		return buildBasicIndex(tableName, "activity");
 	}
 
-
+	//
+	//Note:  Once we trust the dynamic build of the indexes, these @Bean dedicated class versions can be deleted.
 	@Bean
 	public Step buildResultAnalyticalMethodIndexStep() {
 		return stepBuilderFactory.get("buildResultAnalyticalMethodIndexStep")
@@ -156,7 +158,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultAnalyticalMethodIndexStep(String tableName) {
+	public Step buildResultAnalyticalMethodIndexStep(String tableName) {
 		return buildBasicIndex(tableName, "analytical_method", "analytical_meth");
 	}
 
@@ -167,7 +169,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultAssemblageSampledNameIndexStep(String tableName) {
+	public Step buildResultAssemblageSampledNameIndexStep(String tableName) {
 		return buildBasicIndex(tableName, "assemblage_sampled_name", "assm_samp_name");
 	}
 
@@ -178,7 +180,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultCharacteristicNameIndexStep(String tableName) {
+	public Step buildResultCharacteristicNameIndexStep(String tableName) {
 		return buildBasicIndex(tableName, "characteristic_name", "charistic_name");
 	}
 
@@ -189,7 +191,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultCharacteristicTypeIndexStep(String tableName) {
+	public Step buildResultCharacteristicTypeIndexStep(String tableName) {
 		return buildBasicIndex(tableName, "characteristic_type", "charistic_type");
 	}
 
@@ -200,7 +202,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultCountryIndexStep(String tableName) {
+	public Step buildResultCountryIndexStep(String tableName) {
 		return buildBasicIndex(tableName, "substring(governmental_unit_code, '^[^:]+')", "country");
 	}
 
@@ -211,7 +213,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultCountyIndexStep(String tableName) {
+	public Step buildResultCountyIndexStep(String tableName) {
 		return buildBasicIndex(tableName, "substring(governmental_unit_code, '^[^:]+:[^:]+:[^:]+$')", "county");
 	}
 
@@ -222,7 +224,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultEventDateIndexStep(String tableName) {
+	public Step buildResultEventDateIndexStep(String tableName) {
 		return buildBasicIndex(tableName, "event_date");
 	}
 
@@ -233,7 +235,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultGeomIndexStep(String tableName) {
+	public Step buildResultGeomIndexStep(String tableName) {
 		return buildGeomIndex(tableName, "geom", null);
 	}
 
@@ -244,7 +246,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultGeom2163IndexStep(String tableName) {
+	public Step buildResultGeom2163IndexStep(String tableName) {
 		return buildGeomIndex(tableName, "geom", 2163);
 	}
 
@@ -255,7 +257,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultHuc10IndexStep(String tableName) {
+	public Step buildResultHuc10IndexStep(String tableName) {
 		return buildBasicIndex(tableName, "substring(huc, '[0-9]{10}')", "huc_10");
 	}
 
@@ -266,7 +268,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultHuc12IndexStep(String tableName) {
+	public Step buildResultHuc12IndexStep(String tableName) {
 		return buildBasicIndex(tableName, "substring(huc, '[0-9]{12}')", "huc_12");
 	}
 
@@ -277,7 +279,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultHuc2IndexStep(String tableName) {
+	public Step buildResultHuc2IndexStep(String tableName) {
 		return buildBasicIndex(tableName, "substring(huc, '[0-9]{2}')", "huc_2");
 	}
 
@@ -288,7 +290,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultHuc4IndexStep(String tableName) {
+	public Step buildResultHuc4IndexStep(String tableName) {
 		return buildBasicIndex(tableName, "substring(huc, '[0-9]{4}')", "huc_4");
 	}
 
@@ -299,7 +301,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultHuc6IndexStep(String tableName) {
+	public Step buildResultHuc6IndexStep(String tableName) {
 		return buildBasicIndex(tableName, "substring(huc, '[0-9]{6}')", "huc_6");
 	}
 
@@ -310,7 +312,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultHuc8IndexStep(String tableName) {
+	public Step buildResultHuc8IndexStep(String tableName) {
 		return buildBasicIndex(tableName, "substring(huc, '[0-9]{8}')", "huc_8");
 	}
 
@@ -321,7 +323,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultOrganizationIndexStep(String tableName) {
+	public Step buildResultOrganizationIndexStep(String tableName) {
 		return buildBasicIndex(tableName, "organization");
 	}
 
@@ -332,7 +334,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultProjectIdIndexStep(String tableName) {
+	public Step buildResultProjectIdIndexStep(String tableName) {
 		return buildBasicIndex(tableName, "project_id");
 	}
 
@@ -343,7 +345,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultPCodeIndexStep(String tableName) {
+	public Step buildResultPCodeIndexStep(String tableName) {
 		return buildBasicIndex(tableName, "p_code");
 	}
 
@@ -354,7 +356,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultSampleMediaIndexStep(String tableName) {
+	public Step buildResultSampleMediaIndexStep(String tableName) {
 		return buildBasicIndex(tableName, "sample_media");
 	}
 
@@ -365,7 +367,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultSampleTissueTaxonomicNameIndexStep(String tableName) {
+	public Step buildResultSampleTissueTaxonomicNameIndexStep(String tableName) {
 		return buildBasicIndex(tableName, "sample_tissue_taxonomic_name", "tissue_taxo");
 	}
 
@@ -376,7 +378,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultSiteIdIndexStep(String tableName) {
+	public Step buildResultSiteIdIndexStep(String tableName) {
 		return buildBasicIndex(tableName, "site_id");
 	}
 
@@ -387,7 +389,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultSiteTypeIndexStep(String tableName) {
+	public Step buildResultSiteTypeIndexStep(String tableName) {
 		return buildBasicIndex(tableName, "site_type");
 	}
 
@@ -398,7 +400,7 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultStateIndexStep(String tableName) {
+	public Step buildResultStateIndexStep(String tableName) {
 		return buildBasicIndex(tableName, "substring(governmental_unit_code, '^[^:]+:[^:]+')", "state");
 	}
 
@@ -409,38 +411,34 @@ public class BuildResultIndexes {
 				.build();
 	}
 
-	public Flow buildResultStationIdIndexStep(String tableName) {
+	public Step buildResultStationIdIndexStep(String tableName) {
 		return buildBasicIndex(tableName, "station_id");
 	}
 
-	public Flow buildBasicIndex(String tableName, String columnName) {
+	public Step buildBasicIndex(String tableName, String columnName) {
 		return buildBasicIndex(tableName, columnName, columnName);
 	}
 
-	public Flow buildBasicIndex(String tableName, String columnName, String shortColName) {
+	public Step buildBasicIndex(String tableName, String columnName, String shortColName) {
 		String idxName = tableName + "_" + shortColName;
 
-		return concurrent.makeFlow(stepBuilderFactory.get("buildIndex_" + idxName)
+		return stepBuilderFactory.get("buildIndex_" + idxName)
 				                           .tasklet(new CreateBasicIndex(jdbcTemplate, config.getWqpSchemaName(),
 						                           tableName, idxName, columnName))
-				                           .build());
+				                           .build();
 	}
 
-	public Flow buildGeomIndex(String tableName, String columnName, Integer projection) {
+	public Step buildGeomIndex(String tableName, String columnName, Integer projection) {
 		return buildGeomIndex(tableName, columnName, columnName, projection);
 	}
 
-	public Flow buildGeomIndex(String tableName, String columnName, String shortColName, Integer projection) {
-		String idxName = tableName + "_" + shortColName;
+	public Step buildGeomIndex(String tableName, String columnName, String shortColName, Integer projection) {
+		String idxName = tableName + "_" + shortColName + ((projection != null)?"_" + projection:"");
 
-		if (projection != null) {
-			idxName+= "_" + projection;
-		}
-
-		return concurrent.makeFlow(stepBuilderFactory.get("buildIndex_" + idxName)
-				                           .tasklet(new CreateBasicIndex(jdbcTemplate, config.getWqpSchemaName(),
-						                           tableName, idxName, columnName))
-				                           .build());
+		return stepBuilderFactory.get("buildIndex_" + idxName)
+				                           .tasklet(new CreateGeomIndex(jdbcTemplate, config.getWqpSchemaName(),
+						                           tableName, idxName, columnName, projection))
+				                           .build();
 	}
 
 	@Bean
@@ -451,44 +449,49 @@ public class BuildResultIndexes {
 		FlowBuilder<SimpleFlow> mainFlow = new FlowBuilder<SimpleFlow>("buildResultIndexesFlow");
 
 		FlowBuilder.SplitBuilder<SimpleFlow> splitChildIdxBuild = mainFlow.split(concurrent.taskExecutor());
+
+
+		ConcurrentDbStepsUtil.ParallelStepBuilder parallelBuild = new ConcurrentDbStepsUtil.ParallelStepBuilder();
+
 		//Create indexes individually on each partition table
 		for (PgDateRangePart part : parts) {
 			String tblName = part.getTableName();
 			{
-				splitChildIdxBuild.add(buildResultActivityIndexStep(tblName));
-				splitChildIdxBuild.add(buildResultAnalyticalMethodIndexStep(tblName));
-				splitChildIdxBuild.add(buildResultAssemblageSampledNameIndexStep(tblName));
-				splitChildIdxBuild.add(buildResultCharacteristicNameIndexStep(tblName));
-				splitChildIdxBuild.add(buildResultCharacteristicTypeIndexStep(tblName));
-				splitChildIdxBuild.add(buildResultCountryIndexStep(tblName));
-				splitChildIdxBuild.add(buildResultCountyIndexStep(tblName));
-				splitChildIdxBuild.add(buildResultEventDateIndexStep(tblName));
-				splitChildIdxBuild.add(buildResultGeomIndexStep(tblName));
-				splitChildIdxBuild.add(buildResultGeom2163IndexStep(tblName));
-				splitChildIdxBuild.add(buildResultHuc10IndexStep(tblName));
-				splitChildIdxBuild.add(buildResultHuc12IndexStep(tblName));
-				splitChildIdxBuild.add(buildResultHuc2IndexStep(tblName));
-				splitChildIdxBuild.add(buildResultHuc4IndexStep(tblName));
-				splitChildIdxBuild.add(buildResultHuc6IndexStep(tblName));
-				splitChildIdxBuild.add(buildResultHuc8IndexStep(tblName));
-				splitChildIdxBuild.add(buildResultOrganizationIndexStep(tblName));
-				splitChildIdxBuild.add(buildResultProjectIdIndexStep(tblName));
-				splitChildIdxBuild.add(buildResultPCodeIndexStep(tblName));
-				splitChildIdxBuild.add(buildResultSampleMediaIndexStep(tblName));
-				splitChildIdxBuild.add(buildResultSampleTissueTaxonomicNameIndexStep(tblName));
-				splitChildIdxBuild.add(buildResultSiteIdIndexStep(tblName));
-				splitChildIdxBuild.add(buildResultSiteTypeIndexStep(tblName));
-				splitChildIdxBuild.add(buildResultStateIndexStep(tblName));
-				splitChildIdxBuild.add(buildResultStationIdIndexStep(tblName));
+				parallelBuild.add(buildResultActivityIndexStep(tblName));
+				parallelBuild.add(buildResultAnalyticalMethodIndexStep(tblName));
+				parallelBuild.add(buildResultAssemblageSampledNameIndexStep(tblName));
+				parallelBuild.add(buildResultCharacteristicNameIndexStep(tblName));
+				parallelBuild.add(buildResultCharacteristicTypeIndexStep(tblName));
+				parallelBuild.add(buildResultCountryIndexStep(tblName));
+				parallelBuild.add(buildResultCountyIndexStep(tblName));
+				parallelBuild.add(buildResultEventDateIndexStep(tblName));
+				parallelBuild.add(buildResultGeomIndexStep(tblName));
+				parallelBuild.add(buildResultGeom2163IndexStep(tblName));
+				parallelBuild.add(buildResultHuc10IndexStep(tblName));
+				parallelBuild.add(buildResultHuc12IndexStep(tblName));
+				parallelBuild.add(buildResultHuc2IndexStep(tblName));
+				parallelBuild.add(buildResultHuc4IndexStep(tblName));
+				parallelBuild.add(buildResultHuc6IndexStep(tblName));
+				parallelBuild.add(buildResultHuc8IndexStep(tblName));
+				parallelBuild.add(buildResultOrganizationIndexStep(tblName));
+				parallelBuild.add(buildResultProjectIdIndexStep(tblName));
+				parallelBuild.add(buildResultPCodeIndexStep(tblName));
+				parallelBuild.add(buildResultSampleMediaIndexStep(tblName));
+				parallelBuild.add(buildResultSampleTissueTaxonomicNameIndexStep(tblName));
+				parallelBuild.add(buildResultSiteIdIndexStep(tblName));
+				parallelBuild.add(buildResultSiteTypeIndexStep(tblName));
+				parallelBuild.add(buildResultStateIndexStep(tblName));
+				parallelBuild.add(buildResultStationIdIndexStep(tblName));
 			}
 
 		}
+
+		splitChildIdxBuild.add(parallelBuild.getFlows());
 
 		//After all the individual partitions are indexed, add the indexes to the parent table
 		//As long as this happens after the child index creation, there should be no contention for index names
 		//Note:  This uses the same logic as before to ensure index names are unchanged on the parent table.
 		//Since these indexes are already created on the child tables, this should happen almost instantly.
-
 		mainFlow.next(buildResultActivityIndexStep());
 		mainFlow.next(buildResultAnalyticalMethodIndexStep());
 		mainFlow.next(buildResultAssemblageSampledNameIndexStep());
