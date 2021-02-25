@@ -5,13 +5,11 @@ import org.springframework.batch.core.job.builder.FlowBuilder;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.batch.core.job.flow.support.SimpleFlow;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.task.*;
+import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
-import org.springframework.util.concurrent.ListenableFuture;
 
-import java.util.*;
-import java.util.concurrent.*;
+import java.util.HashMap;
 
 /**
  * Simplifies creating parallel Steps.
@@ -34,6 +32,7 @@ public class ConcurrentDbStepsUtil {
 	public TaskExecutor taskExecutor() {
 		ThreadPoolTaskExecutor exe = new ThreadPoolTaskExecutor();
 		exe.setMaxPoolSize(config.getDbOperationConcurrency());
+		exe.setCorePoolSize(config.getDbOperationConcurrency());    //Set both to actually have that many threads
 		exe.setThreadNamePrefix("parallel_exe");
 		exe.initialize();
 		return exe;
