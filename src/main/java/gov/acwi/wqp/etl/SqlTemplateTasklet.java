@@ -55,7 +55,7 @@ public abstract class SqlTemplateTasklet implements Tasklet  {
 
 	public String getSqlString(Map<String, String> params) {
 
-		final String noComment = getSqlTemplate().replaceAll("(?s)\\/\\*.*?\\*\\/", ""); //remove all /* ... */ comments
+		final String noComment = getSqlTemplate().replaceAll("(?s)/\\*.*?\\*/", ""); //remove all /* ... */ comments
 
 		var wrap = new Object() { public String text = noComment; };
 
