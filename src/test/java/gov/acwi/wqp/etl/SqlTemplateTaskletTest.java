@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SqlTemplateTaskletTest {
@@ -25,8 +26,7 @@ class SqlTemplateTaskletTest {
 
 		String str = test.getSqlString();
 
-		//Strip out the comments at the top of the file, since they will look the 'correct answer'.  Comments end with "*/".
-		str = str.substring(str.indexOf("*/") + 2);
+		assertFalse(str.matches("(?s).*\\/\\*.*\\*\\/.*")); //There should be no comments in the text
 
 		//create table ${wqp_schema_name}.${table_name}
 		//    (like ${wqp_schema_name}.${like_table_name} including comments) with (fillfactor = 100)
