@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.util.FileCopyUtils;
 
 import java.io.*;
-import java.util.HashMap;
 import java.util.Map;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -56,7 +55,9 @@ public abstract class SqlTemplateTasklet implements Tasklet  {
 
 	public String getSqlString(Map<String, String> params) {
 
-		var wrap = new Object() { public String text = getSqlTemplate(); };
+		final String noComment = getSqlTemplate().replaceAll("(?s)/\\*.*?\\*/", ""); //remove all /* ... */ comments
+
+		var wrap = new Object() { public String text = noComment; };
 
 		params.entrySet().stream().forEach(e -> {
 			wrap.text = wrap.text.replace("${" + e.getKey() + "}", e.getValue());
