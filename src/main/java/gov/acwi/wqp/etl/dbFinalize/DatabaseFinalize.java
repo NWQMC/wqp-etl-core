@@ -76,8 +76,8 @@ public class DatabaseFinalize {
 	@Bean
 	public Flow databaseFinalizeFlow() {
 		return new FlowBuilder<SimpleFlow>(EtlConstantUtils.CREATE_DATABASE_FINALIZE_FLOW)
-				.next(dropResultFKConstraint())
-				.start(installStep())
+				.start(dropResultFKConstraint())
+				.next(installStep())
 				.next(updateLastETLStep())
 				.build();
 	}
