@@ -2,7 +2,7 @@ package gov.acwi.wqp.etl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.batch.core.Step;
+import org.springframework.batch.core.*;
 import org.springframework.batch.core.job.builder.FlowBuilder;
 import org.springframework.batch.core.job.flow.Flow;
 import org.springframework.batch.core.job.flow.support.SimpleFlow;
@@ -18,7 +18,7 @@ import java.util.HashMap;
  * Simplifies creating parallel Steps.
  */
 @Component
-public class ConcurrentDbStepsUtil {
+public class ConcurrentDbStepsUtil implements JobExecutionListener {
 	private static final Logger LOG = LoggerFactory.getLogger(ConcurrentDbStepsUtil.class);
 
 	protected ConfigurationService config;
@@ -116,6 +116,17 @@ public class ConcurrentDbStepsUtil {
 				LOG.info("ConcurrentDbStepsUtil destroy: executor was null (Please remove this log statement)");
 			}
 		}
+	}
+
+	@Override
+	public void beforeJob(final JobExecution jobExecution) {
+		//Nothing
+	}
+
+	@Override
+	public void afterJob(final JobExecution jobExecution) {
+		LOG.info("ConcurrentDbStepsUtil afterJob (Please remove this log statement)");
+		destroy();
 	}
 
 
