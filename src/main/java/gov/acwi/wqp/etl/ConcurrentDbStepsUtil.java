@@ -1,5 +1,7 @@
 package gov.acwi.wqp.etl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.FlowBuilder;
 import org.springframework.batch.core.job.flow.Flow;
@@ -17,6 +19,7 @@ import java.util.HashMap;
  */
 @Component
 public class ConcurrentDbStepsUtil {
+	private static final Logger LOG = LoggerFactory.getLogger(ConcurrentDbStepsUtil.class);
 
 	protected ConfigurationService config;
 
@@ -29,6 +32,8 @@ public class ConcurrentDbStepsUtil {
 	@Autowired
 	public ConcurrentDbStepsUtil(ConfigurationService config) {
 		this.config = config;
+
+		LOG.info("ConcurrentDbStepsUtil instance created (Please remove this log statement at some point)");
 	}
 
 	//Lazy create the Executor
@@ -102,9 +107,13 @@ public class ConcurrentDbStepsUtil {
 
 	@PreDestroy
 	public void destroy() {
+		LOG.info("ConcurrentDbStepsUtil destroy called (Please remove this log statement)");
 		synchronized (executorLock) {
 			if (executor != null) {
 				executor.shutdown();
+				LOG.info("ConcurrentDbStepsUtil destroy: executor shutdown (Please remove this log statement)");
+			} else {
+				LOG.info("ConcurrentDbStepsUtil destroy: executor was null (Please remove this log statement)");
 			}
 		}
 	}
