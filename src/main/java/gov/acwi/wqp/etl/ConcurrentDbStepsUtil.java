@@ -9,6 +9,7 @@ import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.PreDestroy;
 import java.util.HashMap;
 
 /**
@@ -19,10 +20,22 @@ public class ConcurrentDbStepsUtil {
 
 	protected ConfigurationService config;
 
+	/**
+	 * Don't create your own instances!  Simply @Autowired the shared instance where you need one.
+	 * The destroy() method must be called on each instance so that the contained threadpool is shut down, otherwise
+	 * the process will hang after job completion.  Autowiring a reference to this class allows that to happen automatically.
+	 * @param config
+	 */
 	@Autowired
 	public ConcurrentDbStepsUtil(ConfigurationService config) {
 		this.config = config;
 	}
+
+	//Lazy create the Executor
+	private transient ThreadPoolTaskExecutor executor = null;
+
+	//Sync access to the executor
+	private final Object executorLock = new Object();
 
 	/**
 	 * Get a TaskExecutor, which is nominally a ThreadPoolTaskExecutor.
@@ -30,12 +43,20 @@ public class ConcurrentDbStepsUtil {
 	 * @return
 	 */
 	public TaskExecutor taskExecutor() {
-		ThreadPoolTaskExecutor exe = new ThreadPoolTaskExecutor();
-		exe.setMaxPoolSize(config.getDbOperationConcurrency());
-		exe.setCorePoolSize(config.getDbOperationConcurrency());    //Set both to actually have that many threads
-		exe.setThreadNamePrefix("parallel_exe");
-		exe.initialize();
-		return exe;
+
+		synchronized (executorLock) {
+
+			if (executor == null) {
+				ThreadPoolTaskExecutor exe = new ThreadPoolTaskExecutor();
+				exe.setMaxPoolSize(config.getDbOperationConcurrency());
+				exe.setCorePoolSize(config.getDbOperationConcurrency());    //Set both to actually have that many threads
+				exe.setThreadNamePrefix("parallel_exe");
+				exe.initialize();
+				executor = exe;
+			}
+
+			return executor;
+		}
 	}
 
 	/**
@@ -76,6 +97,15 @@ public class ConcurrentDbStepsUtil {
 					.map( k -> new StringBuilder(k).reverse().toString() )
 					.map( k -> flowmap.get(k)).toArray(Flow[]::new);
 
+		}
+	}
+
+	@PreDestroy
+	public void destroy() {
+		synchronized (executorLock) {
+			if (executor != null) {
+				executor.shutdown();
+			}
 		}
 	}
 
