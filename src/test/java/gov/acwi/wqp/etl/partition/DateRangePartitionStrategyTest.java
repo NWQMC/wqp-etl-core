@@ -1,7 +1,5 @@
 package gov.acwi.wqp.etl.partition;
 
-import static gov.acwi.wqp.etl.partition.DateRangePartitionStrategy.Config;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -9,6 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static gov.acwi.wqp.etl.partition.DateRangePartitionStrategy.Config;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DateRangePartitionStrategyTest {
@@ -380,6 +379,49 @@ class DateRangePartitionStrategyTest {
 		assertEquals(PgDateRangePart.MAX_VALUE, ranges.get(7).getSqlFormatRangeEnd());    //This would be 2016-04-01, but adjusts to MAX
 
 		assertEquals(8, ranges.size());
+	}
+
+
+	/**
+	 * The Stewards result data is very limited so requires minimal partition tables.
+	 * This test is to replicate the parameters we would/should set for the Stewards ETL run to make sure they
+	 * result in the expected partitions.
+	 * Basically, Stewards has data frmo 1990 - 2015 w/ a max of 20K records per year.
+	 */
+	@Test
+	void verifyStewardPartitionsLookCorrect() {
+
+		LocalDate startDate = LocalDate.of(1995, 1, 1);
+		LocalDate oneYearBreak = LocalDate.of(2015, 1, 1);
+		LocalDate quarterBreak = LocalDate.of(2015, 1, 1);
+		LocalDate endDate = LocalDate.of(2015, 1, 1);
+
+		DateRangePartitionStrategy strategy = new DateRangePartitionStrategy(A_RUN_TIME, "MyTab",
+				startDate, oneYearBreak, quarterBreak, endDate);
+
+		List<PgDateRangePart> ranges = strategy.getPartitions();
+
+
+		/*
+		In retrospect, I don't like the way this first bin work - it always creates one partition from before time up to
+		startDate.  The end bin doesn't do that - it just leaves the end bin open-ended into the future.
+		 */
+		assertEquals(PgDateRangePart.MIN_VALUE, ranges.get(0).getSqlFormatRangeStart());
+		assertEquals("'1995-01-01'", ranges.get(0).getSqlFormatRangeEnd());
+
+		assertEquals("'1995-01-01'", ranges.get(1).getSqlFormatRangeStart());
+		assertEquals("'2000-01-01'", ranges.get(1).getSqlFormatRangeEnd());
+
+		assertEquals("'2000-01-01'", ranges.get(2).getSqlFormatRangeStart());
+		assertEquals("'2005-01-01'", ranges.get(2).getSqlFormatRangeEnd());
+
+		assertEquals("'2005-01-01'", ranges.get(3).getSqlFormatRangeStart());
+		assertEquals("'2010-01-01'", ranges.get(3).getSqlFormatRangeEnd());
+
+		assertEquals("'2010-01-01'", ranges.get(4).getSqlFormatRangeStart());
+		assertEquals(PgDateRangePart.MAX_VALUE, ranges.get(4).getSqlFormatRangeEnd());
+
+		assertEquals(5, ranges.size());
 	}
 
 }
