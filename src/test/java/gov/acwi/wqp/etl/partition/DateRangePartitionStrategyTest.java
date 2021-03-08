@@ -386,15 +386,20 @@ class DateRangePartitionStrategyTest {
 	 * The Stewards result data is very limited so requires minimal partition tables.
 	 * This test is to replicate the parameters we would/should set for the Stewards ETL run to make sure they
 	 * result in the expected partitions.
-	 * Basically, Stewards has data frmo 1990 - 2015 w/ a max of 20K records per year.
+	 * Basically, Stewards has data from 1990 - 2015 w/ a max of 20K records per year.
+	 * The strategy is to create the largest configurable bins (5 year chunks) for the data, and to have an empty bin
+	 * before the populated dates start and another after the populated dates start.  Those empty bins allow the the db
+	 * to know that there is no data outside the 25 year range of populated data and exclude all partitions from queries
+	 * that don't include those dates.
 	 */
 	@Test
 	void verifyStewardPartitionsLookCorrect() {
 
+		/* The intent is to fully spec all 4 of these params b/c there seems to be no new Stewards data */
 		LocalDate startDate = LocalDate.of(1995, 1, 1);
-		LocalDate oneYearBreak = LocalDate.of(2015, 1, 1);
-		LocalDate quarterBreak = LocalDate.of(2015, 1, 1);
-		LocalDate endDate = LocalDate.of(2015, 1, 1);
+		LocalDate oneYearBreak = LocalDate.of(2020, 1, 1);
+		LocalDate quarterBreak = LocalDate.of(2020, 1, 1);
+		LocalDate endDate = LocalDate.of(2020, 1, 1);
 
 		DateRangePartitionStrategy strategy = new DateRangePartitionStrategy(A_RUN_TIME, "MyTab",
 				startDate, oneYearBreak, quarterBreak, endDate);
@@ -419,9 +424,70 @@ class DateRangePartitionStrategyTest {
 		assertEquals("'2010-01-01'", ranges.get(3).getSqlFormatRangeEnd());
 
 		assertEquals("'2010-01-01'", ranges.get(4).getSqlFormatRangeStart());
-		assertEquals(PgDateRangePart.MAX_VALUE, ranges.get(4).getSqlFormatRangeEnd());
+		assertEquals("'2015-01-01'", ranges.get(4).getSqlFormatRangeEnd());
 
-		assertEquals(5, ranges.size());
+		assertEquals("'2015-01-01'", ranges.get(5).getSqlFormatRangeStart());
+		assertEquals(PgDateRangePart.MAX_VALUE, ranges.get(5).getSqlFormatRangeEnd());
+
+		assertEquals(6, ranges.size());
+	}
+
+	@Test
+	void verifyStoretEpaPartitionsLookCorrect() {
+
+		/* The intent is to spec startDate and oneYearBreak.  The end date and the offset quarterBreak would float.
+		   For testing, the endDate is spec'ed.
+		 */
+		LocalDate startDate = LocalDate.of(1965, 1, 1);
+		LocalDate oneYearBreak = LocalDate.of(1990, 1, 1);
+		LocalDate endDate = LocalDate.of(2021, 3, 8);
+
+		DateRangePartitionStrategy strategy = new DateRangePartitionStrategy(A_RUN_TIME, "MyTab",
+				startDate, oneYearBreak, null, endDate);
+
+		List<PgDateRangePart> ranges = strategy.getPartitions();
+
+
+		/*
+		In retrospect, I don't like the way this first bin work - it always creates one partition from before time up to
+		startDate.  The end bin doesn't do that - it just leaves the end bin open-ended into the future.
+		 */
+		assertEquals(PgDateRangePart.MIN_VALUE, ranges.get(0).getSqlFormatRangeStart());
+		assertEquals("'1965-01-01'", ranges.get(0).getSqlFormatRangeEnd());
+
+		assertEquals("'1965-01-01'", ranges.get(1).getSqlFormatRangeStart());
+		assertEquals("'1970-01-01'", ranges.get(1).getSqlFormatRangeEnd());
+
+		assertEquals("'1970-01-01'", ranges.get(2).getSqlFormatRangeStart());
+		assertEquals("'1975-01-01'", ranges.get(2).getSqlFormatRangeEnd());
+
+		//...
+		assertEquals("'1985-01-01'", ranges.get(5).getSqlFormatRangeStart());
+		assertEquals("'1990-01-01'", ranges.get(5).getSqlFormatRangeEnd());
+
+		assertEquals("'1990-01-01'", ranges.get(6).getSqlFormatRangeStart());
+		assertEquals("'1991-01-01'", ranges.get(6).getSqlFormatRangeEnd());
+
+		//...
+		assertEquals("'2019-01-01'", ranges.get(35).getSqlFormatRangeStart());
+		assertEquals("'2020-01-01'", ranges.get(35).getSqlFormatRangeEnd());
+
+		assertEquals("'2020-01-01'", ranges.get(36).getSqlFormatRangeStart());
+		assertEquals("'2020-04-01'", ranges.get(36).getSqlFormatRangeEnd());
+
+		assertEquals("'2020-04-01'", ranges.get(37).getSqlFormatRangeStart());
+		assertEquals("'2020-07-01'", ranges.get(37).getSqlFormatRangeEnd());
+
+		assertEquals("'2020-07-01'", ranges.get(38).getSqlFormatRangeStart());
+		assertEquals("'2020-10-01'", ranges.get(38).getSqlFormatRangeEnd());
+
+		assertEquals("'2020-10-01'", ranges.get(39).getSqlFormatRangeStart());
+		assertEquals("'2021-01-01'", ranges.get(39).getSqlFormatRangeEnd());
+
+		assertEquals("'2021-01-01'", ranges.get(40).getSqlFormatRangeStart());
+		assertEquals(PgDateRangePart.MAX_VALUE, ranges.get(40).getSqlFormatRangeEnd());
+
+		assertEquals(41, ranges.size());
 	}
 
 }

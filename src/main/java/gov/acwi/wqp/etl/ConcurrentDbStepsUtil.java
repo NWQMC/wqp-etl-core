@@ -32,8 +32,6 @@ public class ConcurrentDbStepsUtil implements JobExecutionListener {
 	@Autowired
 	public ConcurrentDbStepsUtil(ConfigurationService config) {
 		this.config = config;
-
-		LOG.info("ConcurrentDbStepsUtil instance created (Please remove this log statement at some point)");
 	}
 
 	//Lazy create the Executor
@@ -52,6 +50,8 @@ public class ConcurrentDbStepsUtil implements JobExecutionListener {
 		synchronized (executorLock) {
 
 			if (executor == null) {
+				LOG.debug("Creating new ThreadPoolTaskExecutor");
+
 				ThreadPoolTaskExecutor exe = new ThreadPoolTaskExecutor();
 				exe.setMaxPoolSize(config.getDbOperationConcurrency());
 				exe.setCorePoolSize(config.getDbOperationConcurrency());    //Set both to actually have that many threads
@@ -107,13 +107,11 @@ public class ConcurrentDbStepsUtil implements JobExecutionListener {
 
 	@PreDestroy
 	public void destroy() {
-		LOG.info("ConcurrentDbStepsUtil destroy called (Please remove this log statement)");
+		LOG.debug("Shutting down the executor");
 		synchronized (executorLock) {
 			if (executor != null) {
 				executor.shutdown();
-				LOG.info("ConcurrentDbStepsUtil destroy: executor shutdown (Please remove this log statement)");
 			} else {
-				LOG.info("ConcurrentDbStepsUtil destroy: executor was null (Please remove this log statement)");
 			}
 		}
 	}
@@ -125,7 +123,7 @@ public class ConcurrentDbStepsUtil implements JobExecutionListener {
 
 	@Override
 	public void afterJob(final JobExecution jobExecution) {
-		LOG.info("ConcurrentDbStepsUtil afterJob (Please remove this log statement)");
+		LOG.debug("JobExecutionListener afterJob event - will shutdown eecutor");
 		destroy();
 	}
 
