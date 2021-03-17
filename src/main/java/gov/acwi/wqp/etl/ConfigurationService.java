@@ -73,7 +73,7 @@ public class ConfigurationService {
 	 * Set how many concurrent operations are allowed to be submitted to the db concurrently.
 	 * Defaults to 3 unless specified by the DB_OPERATION_CONCURRENCY env var.
 	 * 2 or 3 is reasonable, but 4 may use all db threads if multiple ETL jobs are running.
-	 * @param dbOperationConcurrencyStr An integer as a string, intended to be set by the DB_OPERATION_CONCURRENCY env var.  Null OK, zero is not.
+	 * @param dbOperationConcurrencyStr An integer as a string , intended to be set by the DB_OPERATION_CONCURRENCY env var.  Null OK, zero is not.
 	 */
 	@Value("${DB_OPERATION_CONCURRENCY:#{null}}")
 	public void setDbOperationConcurrency(String dbOperationConcurrencyStr) {
@@ -102,7 +102,7 @@ public class ConfigurationService {
 
 	/**
 	 * Sets a start date for result table partitioning.  See the README.md for more detailed info.
-	 * Intended to be configured via ETL_RESULT_PARTITION_START_DATE env var.  Null allowed.
+	 * @param etlResultPartitionStartDateStr String, parsable as a LocalDate or null.  Intended to be set via ETL_RESULT_PARTITION_START_DATE env var.
 	 */
 	@Value("${ETL_RESULT_PARTITION_START_DATE:#{null}}")
 	public void setEtlResultPartitionStartDate(String etlResultPartitionStartDateStr) {
@@ -126,7 +126,7 @@ public class ConfigurationService {
 	/**
 	 * Sets a date to end five year partitions and begin one year partitions for the result table.
 	 * See the README.md for more detailed info.
-	 * Intended to be configured via ETL_RESULT_PARTITION_ONE_YEAR_BREAK env var.  Null allowed.
+	 * @param etlResultPartitionOneYearBreakStr String, parsable as a LocalDate or null.  Intended to be set via ETL_RESULT_PARTITION_ONE_YEAR_BREAK env var.
 	 */
 	@Value("${ETL_RESULT_PARTITION_ONE_YEAR_BREAK:#{null}}")
 	public void setEtlResultPartitionOneYearBreak(String etlResultPartitionOneYearBreakStr) {
@@ -152,7 +152,7 @@ public class ConfigurationService {
 	/**
 	 * Sets a date to end one year partitions and begin quarter year partitions for the result table.
 	 * See the README.md for more detailed info.
-	 * Intended to be configured via ETL_RESULT_PARTITION_QUARTER_BREAK env var.  Null allowed.
+	 * @param etlResultPartitionQuarterBreakStr String, parsable as a LocalDate or null.  Intended to be set via ETL_RESULT_PARTITION_QUARTER_BREAK env var.
 	 */
 	@Value("${ETL_RESULT_PARTITION_QUARTER_BREAK:#{null}}")
 	public void setEtlResultPartitionQuarterBreak(String etlResultPartitionQuarterBreakStr) {
@@ -178,6 +178,7 @@ public class ConfigurationService {
 	/**
 	 * Sets an end date for result table partitioning.  See the README.md for more detailed info.
 	 * Intended to be configured via ETL_RESULT_PARTITION_END_DATE env var.  Null allowed.
+	 * @param etlResultPartitionEndDateStr String, parsable as a LocalDate or null.  Intended to be set via ETL_RESULT_PARTITION_END_DATE env var.
 	 */
 	@Value("${ETL_RESULT_PARTITION_END_DATE:#{null}}")
 	public void setEtlResultPartitionEndDate(String etlResultPartitionEndDateStr) {
@@ -201,10 +202,9 @@ public class ConfigurationService {
 	}
 
 	/**
-	 * 	Set a runtime for use by ResultPartitionStrategy to time generate unique partition table names.
-	 * 	This is a testing-only parameter, since only in testing would we expect multiple runs w/in the same hour.  Defaults to now.
-	 * 	Intended to be configured via ETL_RUN_TIME env var.  Null allowed.
-	 * @param etlRunTimeStr A string, parsable as a LocalDateTime or null, to be used as the run time.
+	 * Set a runtime for use by ResultPartitionStrategy to time generate unique partition table names.
+	 * This is a testing-only parameter, since only in testing would we expect multiple runs w/in the same hour.  Defaults to now.
+	 * @param etlRunTimeStr A string, parsable as a LocalDateTime or null, to be used as the run time.  Intended to be configured via ETL_RUN_TIME
 	 */
 	@Value("${ETL_RUN_TIME:#{null}}")
 	public void setEtlRunTime(String etlRunTimeStr) {
