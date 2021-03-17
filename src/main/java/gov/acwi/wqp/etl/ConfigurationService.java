@@ -21,8 +21,16 @@ public class ConfigurationService {
 	private Boolean qwportalSummary;
 	@Value("${NWIS_OR_EPA}")
 	private String nwisOrEpa;
-	@Value("#{T(java.lang.Integer).parseInt('${DB_OPERATION_CONCURRENCY:3}')}")
+
+	//
+	//These values all have type conversions and use @Value on a set method
+	private LocalDate etlResultPartitionStartDate;
+	private LocalDate etlResultPartitionOneYearBreak;
+	private LocalDate etlResultPartitionQuarterBreak;
+	private LocalDate etlResultPartitionEndDate;
+	private LocalDateTime etlRunTime;
 	private Integer dbOperationConcurrency;
+
 
 	public String getWqpSchemaName() {
 		return wqpSchemaName;
@@ -62,61 +70,160 @@ public class ConfigurationService {
 	}
 
 	/**
-	 * Fetch how many concurrent operations are allowed to be submitted to the db concurrently.
-	 * @return
-	 */
-	public Integer getDbOperationConcurrency() { return dbOperationConcurrency; }
-
-	/**
 	 * Set how many concurrent operations are allowed to be submitted to the db concurrently.
 	 * Defaults to 3 unless specified by the DB_OPERATION_CONCURRENCY env var.
 	 * 2 or 3 is reasonable, but 4 may use all db threads if multiple ETL jobs are running.
-	 * @return
+	 * @param dbOperationConcurrencyStr An integer as a string, intended to be set by the DB_OPERATION_CONCURRENCY env var.  Null OK, zero is not.
 	 */
-	public void setDbOperationConcurrency(final Integer indexCreationConcurrency) { this.dbOperationConcurrency = indexCreationConcurrency; }
+	@Value("${DB_OPERATION_CONCURRENCY:#{null}}")
+	public void setDbOperationConcurrency(String dbOperationConcurrencyStr) {
+		if (dbOperationConcurrencyStr != null) {
+			try {
+				dbOperationConcurrency = Math.max(Integer.parseInt(dbOperationConcurrencyStr), 1);
+			} catch (NumberFormatException e) {
+				throw new RuntimeException("Unable to parse '" + dbOperationConcurrencyStr + "' as an integer for DB_OPERATION_CONCURRENCY.", e);
+			}
+		} else {
+			dbOperationConcurrency = 3;
+		}
+	}
 
+	/**
+	 * How many concurrent operations are allowed to be submitted to the db concurrently.
+	 * Currently only used for result table index building.
+	 * @return  non-null and non-zero.
+	 */
+	public Integer getDbOperationConcurrency() { return dbOperationConcurrency; }
+
+	//
 	//Result table partitioning params
 	//Any/all of these can be spec'ed as a LocalDate in the format 'YYYY-MM-DD', but generally only the year is significant.
 	//See DateRangePartitionStrategy for param details or the Readme.md.
 
-	//Note:  The complex @Value Spel expressions basically say that if the value is unspecified, its null.  If its
-	//specified, parse the value into a LocalDate or LocalDateTime.
-	@Value("#{'${ETL_RESULT_PARTITION_START_DATE:null}' == 'null' ? null : T(java.time.LocalDate).parse('${ETL_RESULT_PARTITION_START_DATE:null}')}")
-	private LocalDate etlResultPartitionStartDate;
+	/**
+	 * Sets a start date for result table partitioning.  See the README.md for more detailed info.
+	 * Intended to be configured via ETL_RESULT_PARTITION_START_DATE env var.  Null allowed.
+	 */
+	@Value("${ETL_RESULT_PARTITION_START_DATE:#{null}}")
+	public void setEtlResultPartitionStartDate(String etlResultPartitionStartDateStr) {
+		if (etlResultPartitionStartDateStr != null) {
+			try {
+				etlResultPartitionStartDate = LocalDate.parse(etlResultPartitionStartDateStr);
+			} catch (RuntimeException e) {
+				throw new RuntimeException("Unable to parse '" + etlResultPartitionStartDateStr + "' as a LocalDate for ETL_RESULT_PARTITION_START_DATE.", e);
+			}
+		} else {
+			etlResultPartitionStartDate = null;
+		}
+	}
 
-	@Value("#{'${ETL_RESULT_PARTITION_ONE_YEAR_BREAK:null}' == 'null' ? null : T(java.time.LocalDate).parse('${ETL_RESULT_PARTITION_ONE_YEAR_BREAK:null}')}")
-	private LocalDate etlResultPartitionOneYearBreak;
-
-	@Value("#{'${ETL_RESULT_PARTITION_QUARTER_BREAK:null}' == 'null' ? null : T(java.time.LocalDate).parse('${ETL_RESULT_PARTITION_QUARTER_BREAK:null}')}")
-	private LocalDate etlResultPartitionQuarterBreak;
-
-	@Value("#{'${ETL_RESULT_PARTITION_END_DATE:null}' == 'null' ? null : T(java.time.LocalDate).parse('${ETL_RESULT_PARTITION_END_DATE:null}')}")
-	private LocalDate etlResultPartitionEndDate;
-
-	//
-	// Testing-only parameter.
-	// Used by ResultPartitionStrategy to spec a time used in unique partition table names.  Defaults to now.
-	@Value("#{'${ETL_RUN_TIME:null}' == 'null' ? null : T(java.time.LocalDateTime).parse('${ETL_RUN_TIME:null}')}")
-	private LocalDateTime etlRunTime;
-
+	/**
+	 * The start date for result table partitioning.  See the README.md for more detailed info.
+	 * @return  The date or null if not configured.
+	 */
 	public LocalDate getEtlResultPartitionStartDate() { return etlResultPartitionStartDate; }
 
+	/**
+	 * Sets a date to end five year partitions and begin one year partitions for the result table.
+	 * See the README.md for more detailed info.
+	 * Intended to be configured via ETL_RESULT_PARTITION_ONE_YEAR_BREAK env var.  Null allowed.
+	 */
+	@Value("${ETL_RESULT_PARTITION_ONE_YEAR_BREAK:#{null}}")
+	public void setEtlResultPartitionOneYearBreak(String etlResultPartitionOneYearBreakStr) {
+		if (etlResultPartitionOneYearBreakStr != null) {
+			try {
+				etlResultPartitionOneYearBreak = LocalDate.parse(etlResultPartitionOneYearBreakStr);
+			} catch (RuntimeException e) {
+				throw new RuntimeException("Unable to parse '" + etlResultPartitionOneYearBreakStr + "' as a LocalDate for ETL_RESULT_PARTITION_ONE_YEAR_BREAK.", e);
+			}
+		} else {
+			etlResultPartitionOneYearBreak = null;
+		}
+	}
+
+	/**
+	 * A date to end five year partitions and begin one year partitions for the result table.
+	 * @return  The date or null if not configured.
+	 */
 	public LocalDate getEtlResultPartitionOneYearBreak() {
 		return etlResultPartitionOneYearBreak;
 	}
 
+	/**
+	 * Sets a date to end one year partitions and begin quarter year partitions for the result table.
+	 * See the README.md for more detailed info.
+	 * Intended to be configured via ETL_RESULT_PARTITION_QUARTER_BREAK env var.  Null allowed.
+	 */
+	@Value("${ETL_RESULT_PARTITION_QUARTER_BREAK:#{null}}")
+	public void setEtlResultPartitionQuarterBreak(String etlResultPartitionQuarterBreakStr) {
+		if (etlResultPartitionQuarterBreakStr != null) {
+			try {
+				etlResultPartitionQuarterBreak = LocalDate.parse(etlResultPartitionQuarterBreakStr);
+			} catch (RuntimeException e) {
+				throw new RuntimeException("Unable to parse '" + etlResultPartitionQuarterBreakStr + "' as a LocalDate for ETL_RESULT_PARTITION_QUARTER_BREAK.", e);
+			}
+		} else {
+			etlResultPartitionQuarterBreak = null;
+		}
+	}
+
+	/**
+	 * A date to end one year partitions and begin quarter year partitions for the result table.
+	 * @return  The date or null if not configured.
+	 */
 	public LocalDate getEtlResultPartitionQuarterBreak() {
 		return etlResultPartitionQuarterBreak;
 	}
 
+	/**
+	 * Sets an end date for result table partitioning.  See the README.md for more detailed info.
+	 * Intended to be configured via ETL_RESULT_PARTITION_END_DATE env var.  Null allowed.
+	 */
+	@Value("${ETL_RESULT_PARTITION_END_DATE:#{null}}")
+	public void setEtlResultPartitionEndDate(String etlResultPartitionEndDateStr) {
+		if (etlResultPartitionEndDateStr != null) {
+			try {
+				etlResultPartitionEndDate = LocalDate.parse(etlResultPartitionEndDateStr);
+			} catch (RuntimeException e) {
+				throw new RuntimeException("Unable to parse '" + etlResultPartitionEndDateStr + "' as a LocalDate for ETL_RESULT_PARTITION_END_DATE.", e);
+			}
+		} else {
+			etlResultPartitionEndDate = null;
+		}
+	}
+
+	/**
+	 * End date for result table partitioning.  See the README.md for more detailed info.
+	 * @return  The date or null if not configured.
+	 */
 	public LocalDate getEtlResultPartitionEndDate() {
 		return etlResultPartitionEndDate;
 	}
 
-	public LocalDateTime getEtlRunTime() {
-		if (etlRunTime == null) {
+	/**
+	 * 	Set a runtime for use by ResultPartitionStrategy to time generate unique partition table names.
+	 * 	This is a testing-only parameter, since only in testing would we expect multiple runs w/in the same hour.  Defaults to now.
+	 * 	Intended to be configured via ETL_RUN_TIME env var.  Null allowed.
+	 * @param etlRunTimeStr A string, parsable as a LocalDateTime or null, to be used as the run time.
+	 */
+	@Value("${ETL_RUN_TIME:#{null}}")
+	public void setEtlRunTime(String etlRunTimeStr) {
+		if (etlRunTimeStr != null) {
+			try {
+				etlRunTime = LocalDateTime.parse(etlRunTimeStr);
+			} catch (RuntimeException e) {
+				throw new RuntimeException("Unable to parse '" + etlRunTimeStr + "' as a LocalDateTime for ETL_RUN_TIME.", e);
+			}
+		} else {
 			etlRunTime = LocalDateTime.now();
 		}
+	}
+
+	/**
+	 * A runtime for use by ResultPartitionStrategy to time generate unique partition table names.
+	 * @return A non-null LocalDateTime.
+	 */
+	public LocalDateTime getEtlRunTime() {
 		return etlRunTime;
 	}
 }
