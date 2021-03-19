@@ -7,3 +7,7 @@
 .idea/
 wqp-etl-core.iml
 /.env
+pom.xml.releaseBackup
+pom.xml.tag
+release.properties
+pom.xml.next
